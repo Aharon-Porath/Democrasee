@@ -1,0 +1,55 @@
+
+<script src="/plugins/ckeditor/ckeditor.js"></script>
+<script src="/plugins/ckeditor/adapters/jquery.js"></script>
+
+<script>
+    var user = <%- JSON.stringify(locals.user || '') %>;
+    /*$.webshims.polyfill();*/
+    var gamification_price = <%- JSON.stringify(get('gamification_tokens')) %>;
+</script>
+
+<!-- ClickTale Bottom part -->
+<div id="ClickTaleDiv" style="display: none;"></div>
+<script type='text/javascript'>
+    document.write(unescape("%3Cscript%20src='"+
+            (document.location.protocol=='https:'?
+                    'https://clicktale.pantherssl.com/':
+                    'http://s.clicktale.net/')+
+            "WRd.js'%20type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    var ClickTaleSSL=1;
+    if(typeof ClickTale=='function') ClickTale(114,1,"www14");
+</script>
+<!-- ClickTale end of Bottom part -->
+
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-15378843-10']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+
+<%if(user_logged && user){%>
+
+<%}else{%>
+<script type="text/javascript">
+    var force_login = getURLParameter('force_login');
+    if( $.cookie('fb_login',{ path: '/' })==1 || force_login!='null'){
+        facebookLogin(function(err, result){
+            if(!err){
+                window.location.href = window.location.href;
+            }else{
+
+            }
+        }) ;
+    }
+</script>
+
+<%}%>

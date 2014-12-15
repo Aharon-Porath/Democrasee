@@ -1,0 +1,137 @@
+
+a {
+    color: #3b63ef;
+}
+
+#search_form {
+    position: relative;
+}
+
+
+/*-----------------------------*/
+.search-box {
+    padding: 18px 0;
+    height: 31px;
+    clear: both;
+    /*background: url(/images/search-icon.png) 100% 19px no-repeat;*/
+}
+
+.search-box label {
+    float: right;
+    color: #fff;
+    margin-left: 25px;
+    font: normal 18px/37px 'AdumaFOTRegular';
+}
+
+.search-box input[type=text] {
+    border: 1px solid #b7b6b6;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+    height: 25px;
+    width: 330px;
+    margin-left: 5px;
+    padding: 3px 10px 2px;
+    color: #505052;
+    font: bold 15px/30px Arial;
+    float: right;
+    background-color: #f5f5f5;
+}
+
+.big-head .search-box {
+    margin-top: 8px;
+}
+
+.big-head .search-box input[type=text] {
+
+
+
+}
+
+.search-box input[type=submit] {
+    float: right;
+    background: transparent url(/images/URU_search_btn_reg.png) -71px 0 no-repeat;
+    border: 0;
+    margin-top: -1px;
+    width: 34px;
+    height: 38px;
+    color: #ffffff;
+    font: normal 18px/33px 'AdumaFOTRegular';
+    padding: 0;
+    cursor: pointer;
+}
+
+.search-box input[type=submit]:hover {
+    background: transparent url(/images/URU_search_btn_reg.png) -36px 0 no-repeat;
+}
+
+.search-box input[type=submit]:active {
+    background: transparent url(/images/URU_search_btn_reg.png) -1px 0 no-repeat;
+}
+
+/*------------------------*/
+/*------------------------*/
+.main-video {
+    height: 306px;
+    padding-top: 43px;
+    clear: both;
+
+    color: #fff;
+    font: normal 25px/30px 'AdumaFOTRegular';
+}
+
+.main-video .video-box {
+    float: right;
+    margin-left: 58px;
+    position: relative;
+    height: 267px;
+}
+
+.main-video .video-box span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 72px;
+    height: 72px;
+    background: url(/images/play-btn.png) no-repeat;
+    margin: -36px 0 0 -36px;
+}
+
+.main-video .side-title {
+    font:normal 30px/35px 'AdumaFOTRegular';
+    margin-bottom: 5px;
+}
+.main-video .side-text {
+    font:normal 22px/30px 'AdumaFOTRegular';
+    margin-bottom: 42px;
+}
+
+.main-video .side-button {
+    margin-right: -11px; /* To account for transparent bit inside the actual image */
+    float: right;
+    height: 125px;
+}
+
+.main-video .after-button {
+    display: inline-block;
+    width: 190px;
+    margin-top: 45px;
+}
+
+.big-head {
+    background: #ededed url(/images/header-bg-big.png) 0 0 repeat-x;
+}
+
+.merging-area {
+    height: 235px;
+    position:absolute;
+    left:0;
+    right:0;
+    background-color: #ffffff;
+}
+
+.merging-banner {
+    position: absolute;
+    z-index: 1;
+}

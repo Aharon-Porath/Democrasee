@@ -1,0 +1,23 @@
+<div id="{_id}" class="small_comment comment {?is_even}even{:else}odd{/is_even}">
+    {?is_my_comment}
+    <div class="close"></div>
+    {/is_my_comment}
+    <a href="/myuru/{creator_id.id}">
+        <div class="author img-box suggsestion-comment" style="overflow: hidden;">
+            <div class="auto-scale" style="height: 64px; width: 60px" >
+                <img src="{avatar}">
+            </div>
+            <span></span>
+            <div>{username}</div>
+        </div>
+    </a>
+    <!--<span class="photo-pattern"></span>-->
+    <div class="date_time">
+        <a class="underline_and_cursor_when_hover" href="/discussions/{discussion_id}#nested_post_{_id}" title="לינק ישיר לתגובה">
+            {creation_date|time}
+        </a>
+    </div>
+    <div class="content">
+        {text|link|s}
+    </div>
+</div>

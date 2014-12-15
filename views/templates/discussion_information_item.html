@@ -1,0 +1,12 @@
+<li item-id="{_id}">
+    <a href="/information_items/{_id}" target="_blank">
+        {?image_field_preview.url}
+        <div >
+            <img src="{image_field_preview.url}" alt="{title}" title="{title}">
+        </div>
+
+        {/image_field_preview.url}
+        <h2>{title}</h2>
+        <p> {text_field_preview|s}</p>
+    </a>
+</li>
