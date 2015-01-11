@@ -20,7 +20,7 @@
     "facebook-signed-request": "0.0.x",
     "knox": "0.0.11",
     "nodetime":"",
-     "http-proxy":""
+    "http-proxy":"0.10.0"
   },
   "devDependencies": {
   },
