@@ -34,7 +34,9 @@ var Discussion = new Schema({
     })],
     num_of_approved_change_suggestions: {type: Number, 'default': 0},
     is_hot_object: {type:Boolean,'default':false},
-    press_items: [ {press_item_id:{type:ObjectId, ref:'PressItem'}}],
+    press_items: [
+        {press_item_id:{type:ObjectId, ref:'PressItem'}}
+    ],
     links: [new Schema({
         title: String,
         link: String,
