@@ -63,6 +63,7 @@ body {
 
 .big-head #header {
     height: 579px;
+    /*margin-top: 130px;*/
 }
 
 #header #logo {
@@ -465,6 +466,13 @@ body {
     text-align: center;
 }
 */
+
+#login_button
+{
+    left: 0px;
+    position: absolute;
+    top: 220px;
+}
 
 #login_button a
 {

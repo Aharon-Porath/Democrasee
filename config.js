@@ -18,14 +18,14 @@ config.fb_general_params = {
 
 // amazon s3 credentials
 config.s3_creds = {
-    key: 'AKIAJM4EPWE637IGDTQA',
-    secret: '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',
-    bucket: 'uru'
+    key: 'AKIAI3KFGZ2QM7A6L3ZA',
+    secret: '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',
+    bucket: 'idemos'
 };
 
-config.sendgrid_user = 'app2952775@heroku.com';
-config.sendgrid_key = 'a0oui08x';
-config.system_email = 'admin@uru.org.il';
+config.sendgrid_user = 'shailinnovate';
+config.sendgrid_key = 'Zaq1Xsw2';
+config.system_email = 'admin@dev6.linnovate.net';
 
 
 

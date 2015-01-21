@@ -120,7 +120,8 @@ a {
 }
 
 .big-head {
-    background: #ededed url(/images/header-bg-big.png) 0 0 repeat-x;
+    /*background: #ededed url(/images/header-bg-big.png) 0 0 repeat-x;*/
+    background: #ededed url(/images/header-bg-big.png) 0 -140px repeat-x;
 }
 
 .merging-area {
