@@ -23,7 +23,7 @@
     background-color: #3a6af0;
     position: relative;
     color: #fff;
-    font: normal 19px/24px 'AdumaFOTMedium';
+    font: normal 19px/24px 'Arial';
 }
 
 .upper-segment:hover{
@@ -54,7 +54,7 @@
 }
 .lower-segment input{
     margin: 0 0 0px 10px;
-    font: normal 15px 'AdumaFOTMedium';
+    font: normal 15px 'Arial';
     float: left;
     left: 0px;
 }

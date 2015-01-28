@@ -1,7 +1,7 @@
 
 body{
     margin: 0;
-    font-family:arial;
+    font-family:Arial;
     background: #EDEDED url(/images/bg_top1.png) 0 0 repeat-x;
 }
 
@@ -779,7 +779,7 @@ blockquote{
 #content_right_holder .segment.about .text h2,
 #content_right_holder .segment.about .text h3{
     margin:0px 0px 5px 0px;
-    font-family:arial;
+    font-family:Arial;
     font-weight:bold;
     font-size: 1.5em;
 }
@@ -893,7 +893,7 @@ blockquote{
 #content_right_holder .segment.more_stats .text h2,
 #content_right_holder .segment.more_stats .text h3{
     margin:0px 0px 5px 0px;
-    font-family:arial;
+    font-family:Arial;
     font-weight:bold;
 }
 
@@ -1222,7 +1222,7 @@ span.remark{
     background:#f6f6f6;
     float:right;
     width:190px;
-    font-family:arial;
+    font-family:Arial;
     color:#50504f;
     position:relative;
     top:30px;
@@ -1385,7 +1385,7 @@ i.img u{position:absolute;top:-9999999px}
     padding: 0;
     cursor: pointer;
     width: 120px;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
     border: 0;
     display: block;
     margin:11px 0 10px 30px

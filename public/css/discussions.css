@@ -1,6 +1,6 @@
 
 #wrap{
-    font-family: arial;
+    font-family: Arial;
     width: 100%;
 }
 
@@ -267,7 +267,7 @@ h2{
 
 blockquote{
     font-size: 40px;
-    font-family: david;
+    font-family: Arial;
     color: #4A4A4B;
     display: block;
     width: 90%;
@@ -299,7 +299,7 @@ blockquote{
 }
 
 .quote_credit{
-    font-family:david;
+    font-family:Arial;
     font-size:23px;
     font-weight:bold;
     color:#3b63ef;
@@ -309,7 +309,7 @@ blockquote{
 
 .quote_credit a{
     text-decoration:none;
-    font-family:david;
+    font-family:Arial;
     font-size:23px;
     font-weight:bold;
     color:#3b63ef;
@@ -320,7 +320,7 @@ blockquote{
 }
 
 .quote_party{
-    font-family:david;
+    font-family:Arial;
     font-size:23px;
     font-weight:normal;
     color:#3b63ef;
@@ -539,7 +539,7 @@ blockquote{
     overflow:hidden;
     background:url(/images/bg_selector_button.png) no-repeat 0 -77px;
     text-align:center;
-    font-family:david;
+    font-family:Arial;
     color:#fff;
     font-size:19px;
     font-weight:bold;
@@ -683,7 +683,7 @@ blockquote{
     background:#ededed;
     width:100%;
     margin:0 auto;
-    font-family:arial;
+    font-family:Arial;
     float: left;
 }
 
@@ -724,7 +724,7 @@ blockquote{
 #content_right_holder .segment.about .text h2,
 #content_right_holder .segment.about .text h3{
     margin:0px 0px 5px 0px;
-    font-family:arial;
+    font-family:Arial;
     font-weight:bold;
 }
 
@@ -867,7 +867,7 @@ blockquote{
 #content_right_holder .segment.more_stats .text h2,
 #content_right_holder .segment.more_stats .text h3{
     margin:0px 0px 5px 0px;
-    font-family:arial;
+    font-family:Arial;
     font-weight:bold;
 }
 
@@ -1156,7 +1156,7 @@ span.remark{
 
 .quotes_holder .status{
     font-size:14px;
-    font-family:david;
+    font-family:Arial;
     color:#4a4a4b;
     padding:17px 20px 17px 40px;
     position:relative;
@@ -1217,7 +1217,7 @@ span.remark{
     background:#f6f6f6;
     float:right;
     width:190px;
-    font-family:arial;
+    font-family:Arial;
     color:#50504f;
     position:relative;
     top:30px;
@@ -1413,7 +1413,7 @@ span.remark{
 
 .discussions_page .segment.main .segment_bottom .statement .second{
     color: #515151;
-    font-family: arial;
+    font-family: Arial;
     font-size: 12px;
     line-height: 24px;
 
@@ -1574,7 +1574,7 @@ span.remark{
 }
 
 .rating_box .rating_total{
-    font: 'AdumaFOTMedium';
+    font: 'Arial';
     color:#3b63ef;
     font-size:38px;
     border-bottom:1px solid #EBEBEB;
@@ -1738,7 +1738,7 @@ span.remark{
     height:48px;
     border:none;
     cursor:pointer;
-    font: normal 16px/25px 'AdumaFOTMedium';
+    font: normal 16px/25px 'Arial';
     text-decoration: none;
     margin: 0 auto;
 }
@@ -1860,7 +1860,7 @@ span.remark{
 }
 
 .suggestion_content .text_orig{
-    font: 'AdumaFOTMedium';
+    font: 'Arial';
     background:#fcfcf1;
     color:#757d7e;
     padding:10px;
@@ -3152,7 +3152,7 @@ input.button_submit_comment_no_text{
 .write-comment h3 {
     margin-right: 100px;
     color: #50504F;
-    font: normal 22px/44px 'AdumaFOTMedium';
+    font: normal 22px/44px 'Arial';
     border-top: 6px solid #d6dbde;
 }
 
@@ -3578,7 +3578,7 @@ input.button_submit_comment_no_text{
 
 .arrow_box_content{
     color: #50504f;
-    font-family: arial;
+    font-family: Arial;
     font-weight: bold;
     font-size: 13px;
     display: inline-block;
@@ -3714,12 +3714,12 @@ input.button_submit_comment_no_text{
  */
 
 #info_items .mb-inside p {
-    font: normal 13px/20px 'arial';
+    font: normal 13px/20px 'Arial';
     color: #7f7f7e;
 }
 #info_items .mb-inside h2 {
     color: #3b63ef;
-    font: bold 13px/20px 'arial';
+    font: bold 13px/20px 'Arial';
     margin: 0;
     padding: 0;
     border: 0;

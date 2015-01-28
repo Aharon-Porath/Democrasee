@@ -87,7 +87,7 @@ div.intext, div.intext {
     margin-right: 149px;
     width: 323px;
     font-size: 12px;
-    font-family: arial;
+    font-family: Arial;
 }
 
 div.intext-checkbox {
@@ -131,7 +131,7 @@ select#styledSelect.blueText option {
     height: 52px;
     color: #50504f;
     font-style: italic;
-    font-family: arial;
+    font-family: Arial;
     border: 0;
     background-color: #F6F5D0;
 }
@@ -168,7 +168,7 @@ div.down-text p {
     margin-top: 20px;
     color: #80807e;
     font-style: italic;
-    font-family: arial;
+    font-family: Arial;
 }
 
 div.vote-container-non-reg {
@@ -196,7 +196,7 @@ div.down-text-non-reg p {
     margin-top: 20px;
     color: #80807e;
     font-style: italic;
-    font-family: arial;
+    font-family: Arial;
 }
 
 div.reg-container {

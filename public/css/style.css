@@ -23,9 +23,9 @@
 }
 
 @font-face {
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
     src: url('/fonts/adumafot-medium-webfont.eot');
-    src: url('/fonts/adumafot-medium-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/adumafot-medium-webfont.woff') format('woff'), url('/fonts/adumafot-medium-webfont.ttf') format('truetype'), url('/fonts/adumafot-medium-webfont.svg#AdumaFOTMedium') format('svg');
+    src: url('/fonts/adumafot-medium-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/adumafot-medium-webfont.woff') format('woff'), url('/fonts/adumafot-medium-webfont.ttf') format('truetype'), url('/fonts/adumafot-medium-webfont.svg#Arial') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -167,7 +167,7 @@ body {
     font-size: 18px;
     line-height: 22px;
     font-weight: normal;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
     padding-left: 25px;
     display: none;
 }
@@ -236,7 +236,7 @@ body {
     padding: 0;
     cursor: pointer;
     width: 100%;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
 }
 
 .tikunim-box .hide-box input[type=submit]:hover {
@@ -317,7 +317,7 @@ body {
     padding: 0;
     cursor: pointer;
     width: 100%;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
     margin-top: 8px;
     display: block;
 }
@@ -525,7 +525,7 @@ body {
 
 .user-box a.name{
 
-    font-family: arial;
+    font-family: Arial;
     text-decoration: none;
     float: left;
     font-weight: bold;
@@ -564,7 +564,7 @@ body {
     left: -10px;
     height: 180px;
     width: 250px;
-    font-family: arial;
+    font-family: Arial;
     display: none;
 
 }
@@ -828,7 +828,7 @@ color: #ff00af;
 
     border-top: 6px solid #d6dbde;
     color: #50504f;
-    font: normal 24px/49px 'AdumaFOTMedium';
+    font: normal 24px/49px 'Arial';
     margin: 0;
 }
 
@@ -837,7 +837,7 @@ color: #ff00af;
     max-width: 411px;
     border-top: 0;
     color: #50504f;
-    font: normal 20px/35px 'AdumaFOTMedium';
+    font: normal 20px/35px 'Arial';
     margin: 10px 28px 15px 28px;
     padding: 0 0 15px 0;
     border-bottom: solid 1px #ebebeb;
@@ -894,7 +894,7 @@ color: #ff00af;
 
 .news-list .one p {
     color: #50504f;
-    font: normal 13px/17px ARial;
+    font: normal 13px/17px Arial;
     height: 34px;
     overflow: hidden;
     margin-bottom: 30px;
@@ -902,7 +902,7 @@ color: #ff00af;
 
 .news-list .one .item_text_preview p {
     color: #50504f;
-    font: normal 13px/17px ARial;
+    font: normal 13px/17px Arial;
     height: 54px;
     overflow: hidden;
     margin-bottom: 30px;
@@ -1379,7 +1379,7 @@ color: #ff00af;
     float: right;
     margin-right: 11px;
     color: #ffffff;
-    font: normal 22px/22px 'AdumaFOTMedium';
+    font: normal 22px/22px 'Arial';
     text-align: center;
     text-decoration: none;
     padding: 0;
@@ -1486,7 +1486,7 @@ color: #ff00af;
 
 .item_text_preview {
     color: #50504f;
-    font: normal 13px/17px ARial;
+    font: normal 13px/17px Arial;
     height: 54px;
     overflow: hidden;
     margin-bottom: 10px;
@@ -1522,7 +1522,7 @@ color: #ff00af;
     float: right;
     margin-right: 11px;
     color: #ffffff;
-    font: normal 22px/22px 'AdumaFOTMedium';
+    font: normal 22px/22px 'Arial';
     text-align: center;
     text-decoration: none;
     position: relative;
@@ -1800,7 +1800,7 @@ color: #ff00af;
     float: right;
     padding-left: 37px;
     margin: 0 0 0 13px;
-    font: normal 23px/32px "AdumaFOTMedium";
+    font: normal 23px/32px "Arial";
     background: url(/images/basket-icon.png) 0 25% no-repeat;
 }
 
@@ -1808,7 +1808,7 @@ color: #ff00af;
     color: #ffffff;
     float: right;
     margin: 0;
-    font: normal 23px/32px "AdumaFOTMedium";
+    font: normal 23px/32px "Arial";
 }
 
 #card .card-top a.btn {
@@ -1850,7 +1850,7 @@ color: #ff00af;
     height: 14px;
     background: #3b63ef;
     border-radius: 2px;
-    font: bold 10px/14px ARial;
+    font: bold 10px/14px Arial;
 }
 
 #card .card-products .one-col {
@@ -2339,7 +2339,7 @@ color: #ff00af;
     margin-left: 8px;
     background: url(/images/arrow-left.png) 0 40% no-repeat;
     color: #3b63ef;
-    font:   normal 21px/30px 'AdumaFOTMedium'  ;
+    font:   normal 21px/30px 'Arial'  ;
 
 }
 
@@ -2598,7 +2598,7 @@ color: #ff00af;
     background: none;
     border: none;
     color: #3b63ef;
-    font: normal 41px/52px 'AdumaFOTMedium';
+    font: normal 41px/52px 'Arial';
     padding: 0;
     text-align: center;
     width: 98px;
@@ -2838,7 +2838,7 @@ textarea.hidden_textarea::selection {
 
 .card-left h3 {
     color: #50504f;
-    font: normal 23px/50px 'AdumaFOTMedium';
+    font: normal 23px/50px 'Arial';
     margin-bottom: 10px;
 }
 
@@ -2908,7 +2908,7 @@ textarea.hidden_textarea::selection {
 
 .info_items h3 {
     color: #50504f;
-    font: normal 23px/50px 'AdumaFOTMedium';
+    font: normal 23px/50px 'Arial';
     margin-bottom: 10px;
 }
 
@@ -2994,7 +2994,7 @@ textarea.hidden_textarea::selection {
 .write-comment h3 {
     margin-right: 100px;
     color: #50504F;
-    font: normal 22px/44px 'AdumaFOTMedium';
+    font: normal 22px/44px 'Arial';
     border-top: 6px solid #d6dbde;
 }
 
@@ -3229,7 +3229,7 @@ textarea.hidden_textarea::selection {
 .comments-box h2 {
     border-top: 6px solid #d6dbde;
     color: #50504f;
-    font: normal 24px/48px 'AdumaFOTMedium';
+    font: normal 24px/48px 'Arial';
     margin-bottom: 10px;
 }
 
@@ -3918,7 +3918,7 @@ h2 small {
     width: 134px;
     height: 25px;
     color: #50504f;
-    font: normal 16px/25px 'AdumaFOTMedium';
+    font: normal 16px/25px 'Arial';
     text-decoration: none;
     margin: 0 auto;
 }
@@ -4441,27 +4441,27 @@ h2 small {
 
 .one-box .right .text h4 {
     color: #50504f;
-    font: bold 16px/30px ARial;
+    font: bold 16px/30px Arial;
     margin: 0;
 }
 
 .one-box .right .text h4 a {
     color: #50504f;
-    font: bold 16px/30px ARial;
+    font: bold 16px/30px Arial;
     margin: 0;
     text-decoration: none;
 }
 
 .one-box .right .text h4 a:hover {
     color: #50504f;
-    font: bold 16px/30px ARial;
+    font: bold 16px/30px Arial;
     margin: 0;
     text-decoration: underline;
 }
 
 .one-box .right .text p {
     color: #50504f;
-    font: normal 13px/17px ARial;
+    font: normal 13px/17px Arial;
     margin-bottom: 16px;
 }
 
@@ -4483,7 +4483,7 @@ h2 small {
 }
 
 .one-box .right .bottom .ratio span {
-    font: normal 16px/22px 'AdumaFOTMedium';
+    font: normal 16px/22px 'Arial';
     color: #3b63ef;
 }
 
@@ -4806,7 +4806,7 @@ div.action_list::-webkit-scrollbar-button {
 
 .search-result-box .slides-one .one h4 {
     color: #505050;
-    font: bold 17px/19px ARial;
+    font: bold 17px/19px Arial;
     margin-bottom: 10px;
 }
 
@@ -4816,7 +4816,7 @@ div.action_list::-webkit-scrollbar-button {
 
 .search-result-box .slides-one .one p {
     color: #505050;
-    font: normal 13px/17px ARial;
+    font: normal 13px/17px Arial;
     margin-bottom: 20px;
 }
 
@@ -4952,7 +4952,7 @@ div.action_list::-webkit-scrollbar-button {
 .upload-popup .upload-top textarea {
     color: #50504f;
 
-    font: normal 12px/16px ARial;
+    font: normal 12px/16px Arial;
     padding: 7px 8px 7px 22px;
     height: 55px;
     resize: none;
@@ -5651,7 +5651,7 @@ div.action_list::-webkit-scrollbar-button {
     padding: 0;
     cursor: pointer;
     width: 110px;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
     display: block;
     text-decoration: none;
     text-align: center;
@@ -5954,7 +5954,7 @@ div.action_list::-webkit-scrollbar-button {
     font-size: 27px;
     line-height: 35px;
     margin-bottom: 35px;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
     font-weight: normal;
     color: #3b63ef;
 }
@@ -6036,7 +6036,7 @@ div.action_list::-webkit-scrollbar-button {
     color: #3b63ef;
     font-size: 20px;
     line-height: 30px;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
     border-bottom: 1px solid #ececec;
     margin: 0 8px;
     font-weight: normal;
@@ -6082,7 +6082,7 @@ div.action_list::-webkit-scrollbar-button {
     float: right;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-family: arial;
+    font-family: Arial;
     font-size: 13px;
  }
 
@@ -6293,7 +6293,7 @@ color: #5578f1;
 }
 
 .add-offer-small .add-offer-bottom .right .followers {
-    font-family: arial;
+    font-family: Arial;
     border-top: 1px solid #ebebeb;
     border-bottom: 1px solid #ebebeb;
     padding: 11px 0 12px;
@@ -6312,7 +6312,7 @@ color: #5578f1;
     display: inline-block;
 
     text-align: center;
-    font: normal 24px 'AdumaFOTMedium';
+    font: normal 24px 'Arial';
 }
 .add-offer-small .dots
 {
@@ -6331,7 +6331,7 @@ color: #5578f1;
     border-bottom: solid 4px #D6DBDE;
     color:#50504f   ;
     text-align: center;
-    font: normal 20px/42px 'AdumaFOTMedium';
+    font: normal 20px/42px 'Arial';
 
 }
 
@@ -6730,7 +6730,7 @@ a.fraction-btn {
 .followers-box h5 {
     font-size: 24px;
     line-height: 26px;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
     font-weight: normal;
     margin: 0;
     width: 460px;
@@ -7120,13 +7120,13 @@ a.fraction-btn {
 
 .updates-box .right .updates .one h4 {
     color: #50504f;
-    font: bold 16px/18px ARial;
+    font: bold 16px/18px Arial;
     margin-bottom: 6px;
 }
 
 .updates-box .right .updates .one h5 {
     color: #757d7e;
-    font: italic 12px/14px ARial;
+    font: italic 12px/14px Arial;
     margin-bottom: 8px;
 }
 
@@ -7285,7 +7285,7 @@ a.fraction-btn {
 
 .followers-ppl .one .name {
     color: #50504f;
-    font: bold 13px/15px ARial;
+    font: bold 13px/15px Arial;
     padding-bottom: 5px;
     letter-spacing: -0.4px;
     min-height: 45px;
@@ -7293,7 +7293,7 @@ a.fraction-btn {
 
 .followers-ppl .one .date {
     color: #b7b6b6;
-    font: italic 11px/13px ARial;
+    font: italic 11px/13px Arial;
 }
 
 .placeholder {
@@ -7915,7 +7915,7 @@ body.body-action .followers-box h5 {
     font-size: 28px;
 
     line-height: 35px;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
 }
 
 .general-text .qa-box .one {
@@ -7932,7 +7932,7 @@ body.body-action .followers-box h5 {
     color: #3b63ef;
     font-size: 28px;
     line-height: 32px;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
     font-weight: normal;
     margin-bottom: 10px;
 }
@@ -7960,7 +7960,7 @@ body.body-action .followers-box h5 {
     color: #3b63ef;
     font-size: 20px;
     line-height: 31px;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
     font-weight: normal;
     margin-bottom: 13px;
     border-top: 1px solid #ececec;
@@ -7969,7 +7969,7 @@ body.body-action .followers-box h5 {
 
 .names-box .one p {
     color: #7f7f7e;
-    font: normal 13px/20px ARial;
+    font: normal 13px/20px Arial;
     margin: 0;
 }
 
@@ -8902,7 +8902,7 @@ body.body-action .followers-box h5 {
     color: #3b63ef;
     font-size: 28px;
     line-height: 35px;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
 }
 
 .general-text .qa-box .one {
@@ -8919,7 +8919,7 @@ body.body-action .followers-box h5 {
     color: #3b63ef;
     font-size: 28px;
     line-height: 32px;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
     font-weight: normal;
     margin-bottom: 10px;
 }
@@ -8947,7 +8947,7 @@ body.body-action .followers-box h5 {
     color: #3b63ef;
     font-size: 20px;
     line-height: 31px;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
     font-weight: normal;
     margin-bottom: 13px;
     border-top: 1px solid #ececec;
@@ -8956,7 +8956,7 @@ body.body-action .followers-box h5 {
 
 .names-box .one p {
     color: #7f7f7e;
-    font: normal 13px/20px ARial;
+    font: normal 13px/20px Arial;
     margin: 0;
 }
 
@@ -9091,7 +9091,7 @@ a.menu-elections:hover {
     color: #b7b6b6;
     font-size: 18px;
     line-height: 147px;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
 }
 
 .add-event .add-picture a span {
@@ -9119,7 +9119,7 @@ a.menu-elections:hover {
     color: #50504f;
     font-size: 18px;
     line-height: 29px;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
     padding-left: 10px;
 }
 
@@ -9317,7 +9317,7 @@ a.menu-elections:hover {
     color: #50504f;
     font-size: 18px;
     line-height: 20px;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
     padding-left: 12px;
     margin: -2px 0;
 }
@@ -9370,7 +9370,7 @@ a.menu-elections:hover {
     padding: 0;
     cursor: pointer;
     width: 100%;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
     margin-top: 36px;
     display: block;
     text-decoration: none;
@@ -9420,7 +9420,7 @@ ul#subjects
     text-align: center;
 
     color: #50504F;
-    font: 24px 'AdumaFOTMedium';
+    font: 24px 'Arial';
 }
 
 #elected_discussions_list {
@@ -9630,7 +9630,7 @@ div.icons img {
 .sb-title {
     text-align: center;
 
-    font: 18pt 'AdumaFOTMedium';
+    font: 18pt 'Arial';
 }
 
 .sb-text {
@@ -9722,7 +9722,7 @@ div.icons img {
     color: #50504f;
     font-size: 18px;
     line-height: 22px;
-    font-family: 'AdumaFOTMedium';
+    font-family: 'Arial';
     margin-top: 20px;
     margin-left: 15px;
     margin-right: 15px;
@@ -9941,13 +9941,13 @@ change .current class name using plugin option, currentPanel : 'current' */
 
 #content  #info_items .mb-inside  h2 {
     color:	#3b63ef;
-    font: bold  13px/20px 'arial';
+    font: bold  13px/20px 'Arial';
     margin: 0;
     padding: 0 ;
     border: 0;
 }
 #info_items .mb-inside  p {
-    font: normal  13px/20px 'arial';
+    font: normal  13px/20px 'Arial';
     color:	#7f7f7e;
 }
 
@@ -10092,7 +10092,7 @@ change .current class name using plugin option, currentPanel : 'current' */
     color: #FFF;
     display: block;
     float: right;
-    font: normal 12px arial, sans-serif;
+    font: normal 12px Arial, sans-serif;
     height: 42px;
     padding-right: 10px; /* sliding doors padding */
     text-decoration: none;
@@ -10166,7 +10166,7 @@ change .current class name using plugin option, currentPanel : 'current' */
 .cycle_buy_shirt,
 .cycle_buy_shirt div
 {
-    font-family: arial;
+    font-family: Arial;
     font-weight: bold;
     margin-top: 10px;
 }
@@ -10231,7 +10231,7 @@ change .current class name using plugin option, currentPanel : 'current' */
 /* Email Setings Page - Start*/
 
 .email_settings {
-    font-family:arial
+    font-family:Arial
 }
 
 .email_settings #content_main_wrapper{
