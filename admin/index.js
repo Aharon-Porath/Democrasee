@@ -63,20 +63,20 @@ module.exports = function (app) {
         });
     };
 
-    admin.registerMongooseModel("Subject", Models.Subject, null, {
-        list:['name'],
-        order_by:['gui_order'],
-        sortable:'gui_order',
-        search:['name', 'description', 'text_field_preview']
-    });
+    //admin.registerMongooseModel("Subject", Models.Subject, null, {
+    //    list:['name'],
+    //    order_by:['gui_order'],
+    //    sortable:'gui_order',
+    //    search:['name', 'description', 'text_field_preview']
+    //});
 
-    admin.registerMongooseModel('Headline', Models.Headline, null, {
-        list:['title'],
-        search:['title', 'text_field'],
-        actions:[
-      //      previewAction(Models.Headline)
-        ]
-    });
+    //admin.registerMongooseModel('Headline', Models.Headline, null, {
+    //    list:['title'],
+    //    search:['title', 'text_field'],
+    //    actions:[
+    //  //      previewAction(Models.Headline)
+    //    ]
+    //});
 
     admin.registerMongooseModel("User", Models.User, null, {
         form:UserForm,
@@ -249,46 +249,46 @@ module.exports = function (app) {
         filters:['discussion_id']
     });
 
-    admin.registerMongooseModel('Category', Models.Category, null, {
-        list:['name']
-    });
+    //admin.registerMongooseModel('Category', Models.Category, null, {
+    //    list:['name']
+    //});
 
-    admin.registerMongooseModel('AboutUruText', Models.AboutUruText, null, {
-        list:['title'],
-        actions:[
-            //previewAction(Models.AboutUruText)
-        ]
-    });
+    //admin.registerMongooseModel('AboutUruText', Models.AboutUruText, null, {
+    //    list:['title'],
+    //    actions:[
+    //        //previewAction(Models.AboutUruText)
+    //    ]
+    //});
 
-    admin.registerMongooseModel('AboutUruItem', Models.AboutUruItem, null, {
-        list:['text_field'],
-        actions:[
-           // previewAction(Models.AboutUruItem)
-        ]
-    });
+    //admin.registerMongooseModel('AboutUruItem', Models.AboutUruItem, null, {
+    //    list:['text_field'],
+    //    actions:[
+    //       // previewAction(Models.AboutUruItem)
+    //    ]
+    //});
 
-    admin.registerMongooseModel('Team', Models.Team, null, {
-        list:['name'],
-        cloneable:true,
-        actions:[
-           // previewAction(Models.Team)
-        ]
-    });
+    //admin.registerMongooseModel('Team', Models.Team, null, {
+    //    list:['name'],
+    //    cloneable:true,
+    //    actions:[
+    //       // previewAction(Models.Team)
+    //    ]
+    //});
 
-    admin.registerMongooseModel('Founder', Models.Founder, null, {
-        list:['name'],
-        cloneable:true,
-        actions:[
-//            previewAction(Models.Founder)
-        ]
-    });
+//    admin.registerMongooseModel('Founder', Models.Founder, null, {
+//        list:['name'],
+//        cloneable:true,
+//        actions:[
+////            previewAction(Models.Founder)
+//        ]
+//    });
 
-    admin.registerMongooseModel('Qa', Models.Qa, null, {
-        list:['title'],
-        actions:[
-            //previewAction(Models.Qa)
-        ]
-    });
+    //admin.registerMongooseModel('Qa', Models.Qa, null, {
+    //    list:['title'],
+    //    actions:[
+    //        //previewAction(Models.Qa)
+    //    ]
+    //});
 
     admin.registerMongooseModel('FooterLink', mongoose.model('FooterLink'), null, {
         list:['tab', 'name'],
@@ -299,9 +299,9 @@ module.exports = function (app) {
         ]
     });
 
-    admin.registerMongooseModel('ImageUpload', Models.ImageUpload, null, {
-        list:['image.url']
-    });
+    //admin.registerMongooseModel('ImageUpload', Models.ImageUpload, null, {
+    //    list:['image.url']
+    //});
 
     admin.registerAdminUserModel();
 };
