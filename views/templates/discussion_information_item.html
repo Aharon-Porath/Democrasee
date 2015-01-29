@@ -1,5 +1,5 @@
-<li item-id="{_id}">
-    <a href="/information_items/{_id}" target="_blank">
+<li item-id="{_id}" href="/information_items/{_id}">
+    <div href="/information_items/{_id}" class="information-item-link">
         {?image_field_preview.url}
         <div >
             <img src="{image_field_preview.url}" alt="{title}" title="{title}">
@@ -8,5 +8,5 @@
         {/image_field_preview.url}
         <h2>{title}</h2>
         <p> {text_field_preview|s}</p>
-    </a>
+    </div>
 </li>

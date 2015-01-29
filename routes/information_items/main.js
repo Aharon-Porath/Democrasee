@@ -64,6 +64,7 @@ function render_information_item_page(req,res,item) {
             link:'/information_items/' + item.id,
             id:item.id
         },
+        subject: item.title,
         description: item.text_field_preview
     });
 }

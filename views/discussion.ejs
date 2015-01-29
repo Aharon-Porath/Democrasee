@@ -418,6 +418,7 @@ $(document).ready(function () {
 
     if (user && !user.actions_done_by_user) user.actions_done_by_user = {};
 
+
     // toggle edit class to open/close contxt popup window or edit suggestion button
     $('#suggestions_wrapper').on('mouseenter', '.text.change_proposal', function(e){
         var edit_window = $(this).find('.edit_window');
@@ -538,8 +539,49 @@ $(document).ready(function () {
         $.each(data.objects, function (index, item) {
             dust.render('discussion_information_item', item, function (err, out) {
                 $('#slider').append(out);
+
+
             });
         });
+
+        // open information item in colorbox popup
+        $('#slider li').colorbox({
+//    //                        inline: true,
+            href: $(this).attr('href'),
+            iframe: true,
+//            initHeight: "50%",
+//            initWidth: "50%",
+            height: 500,
+            width: 800,
+            onComplete: function () {
+            },
+            onClosed: function () {
+            }
+        });
+//        $('#slider li').each(function() {
+//            $(this).click(function() {
+
+//                console.log($(this));
+//            if (!$(this).hasClass('cboxProcessed')) {
+//                $(this).colorbox({
+//    //                        inline: true,
+//                    href: $(this).attr('href'),
+//                iframe: true,
+//                    height: 500,
+//                    width: 1000,
+//                    innerHeight: 400,
+//                    maxHeight: 600,
+//                    onComplete: function () {
+//                    },
+//                    onClosed: function () {
+//                        $(this).colorbox
+//                    }
+//                });
+//                $(this).addClass('cboxProcessed');
+//            }
+//            });
+//        });
+
 
         $('#info_items #slider').movingBoxes({
             /* width and panelWidth options deprecated, but still work to keep the plugin backwards compatible

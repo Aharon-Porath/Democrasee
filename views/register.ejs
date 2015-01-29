@@ -1,8 +1,4 @@
 ﻿<!DOCTYPE html>
-<%
-//        console.log(error_message);
-//        var error_message = error_message || '';
-%>
 <html>
 <head>
     <% include partials/head.ejs %>
@@ -16,18 +12,19 @@
             <% include partials/failures.ejs %>
             <% include partials/tag_search.ejs %>
         </div>
-        <div id="content" class="cf">   
+        <div id="content" class="cf">
             <h2>
 הרשמה
             </h2>
             <form id="register_form_full" action="/account/register" class="login-form cf" method="POST">
                 <div class="err_msg">
-                <% if(error_message == 'already_exists'){%>
+
+                <% if(typeof error_message != 'undefined' && error_message == 'already_exists'){%>
                         כתובת האימייל שנקלטה מופיעה כבר במערכת. אם שכחת את סיסמתך
                         <a href="/account/forgot_password">
                             לחץ כאן
                         </a>
-                <% } else { %>
+                <% } else if (typeof error_message != 'undefined') { %>
                     <%=error_message%>
                 <%}%>
                 </div>

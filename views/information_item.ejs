@@ -3,49 +3,53 @@
 <html>
 <head>
     <% include partials/head.ejs %>
-    <% include fb_bot/meta.ejs %>
+    <% //include fb_bot/meta.ejs %>
 
     <meta name="title" content="<%=item.title%>" />
 
 </head>
-<body>
-<% include partials/body_top.ejs %>
+<body class="information-page">
+<% //include partials/body_top.ejs %>
 <div id="wrap">
-        <div id="header">
-            <% //include partials/menu.ejs %>
-            <% include partials/user_box.ejs %>
-            <% include partials/failures.ejs %>
-            <!--<% include partials/tag_search.ejs %>-->
-        </div>
+        <!--<div id="header">-->
+            <!--<% //include partials/menu.ejs %>-->
+            <!--<% //include partials/user_box.ejs %>-->
+            <!--<% //include partials/failures.ejs %>-->
+            <!--<% //include partials/tag_search.ejs %>-->
+        <!--</div>-->
 
-        <div id="content" class="cf">
-            <div class="rightCol">
-                <div class="nav-btn">
-                    <a style="width: 158px" href="javascript:void(0);" id="add_button" >
-                        הוסף לסל המידע
-                    </a>
-                    <a class="share" data-title="<%= item.title %>" data-text_preview="<%= item.text_field_preview %>" data-img_src="<%= item.image_field_preview.url %>" rel="/information_items/<%= item.id %>" href="/facebookShare?link=/information_items/<%= item.id %>" target="_blank">שתף</a>
-                      <a href="javascript:void(0);" class="interesting <% if(item.user_likes) { %>on<% } %>" id="like_button"></a>
+        <!--<div id="content" class="cf">-->
+            <!--<div class="rightCol">-->
+                <!--<div class="nav-btn">-->
+                    <!--<a style="width: 158px" href="javascript:void(0);" id="add_button" >-->
+                        <!--הוסף לסל המידע-->
+                    <!--</a>-->
+                    <!--<a class="share" data-title="<%= item.title %>" data-text_preview="<%= item.text_field_preview %>" data-img_src="<%= item.image_field_preview.url %>" rel="/information_items/<%= item.id %>" href="/facebookShare?link=/information_items/<%= item.id %>" target="_blank">שתף</a>-->
+                      <!--<a href="javascript:void(0);" class="interesting <% if(item.user_likes) { %>on<% } %>" id="like_button"></a>-->
 
 
-                </div>
-                <% if(item.subject_id[0]) { %>
+                <!--</div>-->
+                <% if(typeof item.subject_id != 'undefined' && item.subject_id[0]) { %>
                 <h2><a href="/information_items/subject/<%= item.subject_id[0].id %>"><%= item.subject_id[0].name %></a>  <% if(tag_name) { %> <a class="last_breadcrum" href="/information_items/subject/<%= item.subject_id[0].id %>?tag_name=<%= tag_name %>"><%= tag_name %></a><% } %></h2>
                 <% } %>
 
                 <div class="text cf">
                     <h3><%=item.title%></h3>
                     <div class="tags-wrap">
-                        <div class="down">
-                            <span class="arrow"></span>
-                            <ul>
-                                <li><a href="">קישור לפריט מידע זה</a></li>
-                                <li><a href="">דווח על התנהגות לא הולמת</a></li>
-                                <li><a href="">אל תציג פריט מידע זה</a></li>
-                            </ul>
-                        </div>
+                        <!--<div class="down">-->
+                            <!--<span class="arrow"></span>-->
+                            <!--<ul>-->
+                                <!--<li><a href="">קישור לפריט מידע זה</a></li>-->
+                                <!--<li><a href="">דווח על התנהגות לא הולמת</a></li>-->
+                                <!--<li><a href="">אל תציג פריט מידע זה</a></li>-->
+                            <!--</ul>-->
+                        <!--</div>-->
                         <div class="tags">
-                            <% for(var i=0; i<item.tags.length; i++) { %> <a href="/information_items/?tag_name=<%= item.tags[i] %>"><%= item.tags[i] %> </a><% } %>
+                            <%
+                            if (typeof item.tags != 'undefined') {
+                                for(var i=0; i< item.tags.length; i++) { %> <a href="/information_items/?tag_name=<%= item.tags[i] %>"><%= item.tags[i] %> </a><% }
+                            }
+                            %>
 
        <!--                     <div class="more">
                                 <span></span>
@@ -56,26 +60,26 @@
                             </div>-->
                         </div>
                     </div>
-                    <div class="imb-box cf">
-                        <a href="">
-                            <img src="<%=item.image_field.url%>" alt="<%=item.title%>" title="<%=item.title%>"/>
-                        </a>
-                    </div>
+                    <!--<div class="imb-box cf">-->
+                        <!--<a href="">-->
+                            <!--<img src="<%=item.image_field.url%>" alt="<%=item.title%>" title="<%=item.title%>"/>-->
+                        <!--</a>-->
+                    <!--</div>-->
                     <p><%- item.text_field %></p>
                     <div class="link-more">
                         <a href="#">לתחילת הכתבה</a>
                     </div>
                 </div>
             </div>
-            <% if(item.subject_id[0]) { %>
+            <% if(typeof item.subject_id != 'undefined' && item.subject_id[0]) { %>
             <% subject= item.subject_id[0] %>
             <% } %>
-            <!--<% include partials/shopping_cart.ejs %>-->
-        </div>
-    </div>
+            <% //include partials/shopping_cart.ejs %>
+        <!--</div>-->
+    <!--</div>-->
 
 
-<% include partials/footer.ejs %>
+<% //include partials/footer.ejs %>
 
 <script type="text/javascript">
     var current_section=0;
@@ -83,6 +87,12 @@
 
 
     $(document).ready(function () {
+        var x = jQuery('html').outerWidth();
+        var y = jQuery('html').height();
+
+//        parent.jQuery.colorbox.resize({width:x, height:y});
+        parent.jQuery.colorbox.resize({height:y});
+
         var is_logged = "<%= user_logged %>" == "true";
 
             var info_item_id = "<%= item.id %>";
