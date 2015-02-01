@@ -237,15 +237,15 @@ var error_message = error_message || '';
         <ul class="tab-links">
             <li class="active">
                 <a href="#tab1">
-                    <h2>הצעות שהתקבלו
-                        <small id="approved_suggestion_number"></small>
+                    <h2>הצעות לשינוי
+                        <small id="suggestion_number"></small>
                     </h2>
                 </a>
             </li>
             <li>
                 <a href="#tab2">
-                    <h2>הצעות לשינוי
-                        <small id="suggestion_number"></small>
+                    <h2>הצעות שהתקבלו
+                        <small id="approved_suggestion_number"></small>
                     </h2>
                 </a>
             </li>
@@ -258,18 +258,18 @@ var error_message = error_message || '';
 
         <div class="tab-content">
             <div id="tab1" class="tab active">
-                <div id="content_wrapper_approved_suggestions" class="active">
-                    <div id="approved_suggestions_wrapper">
-                    </div>
-                </div>
-            </div>
-
-            <div id="tab2" class="tab">
                 <div id="content_wrapper_suggestions">
                     <div id="suggestions_wrapper">
                     </div>
                     <div class="more-deals" data-executing="false">
                         <a href="javascript: void(0)">עוד הצעות</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab2" class="tab">
+                <div id="content_wrapper_approved_suggestions" class="active">
+                    <div id="approved_suggestions_wrapper">
                     </div>
                 </div>
             </div>
