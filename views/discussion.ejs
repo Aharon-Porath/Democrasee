@@ -545,7 +545,7 @@ $(document).ready(function () {
         });
 
         // open information item in colorbox popup
-        $('#slider li').colorbox({
+        $('#slider li[target!="_blank"]').colorbox({
 //    //                        inline: true,
             href: $(this).attr('href'),
             iframe: true,
@@ -558,6 +558,10 @@ $(document).ready(function () {
             onClosed: function () {
             }
         });
+        $('#slider li[target="_blank"]').click(function() {
+            window.open($(this).attr('href'), 'pdf');
+        });
+
 //        $('#slider li').each(function() {
 //            $(this).click(function() {
 
