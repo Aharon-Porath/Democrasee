@@ -238,94 +238,116 @@ var error_message = error_message || '';
         </a>
     </div>
 
-    <div class="content_break approved_suggestions">
-        <div class="content_break_content">
-            <h2>הצעות שהתקבלו
-                <small id="approved_suggestion_number"></small>
-            </h2>
-        </div>
-    </div>
-    <div id="content_wrapper_approved_suggestions">
-        <div id="approved_suggestions_wrapper">
-        </div>
-    </div>
 
-    <div class="content_break suggestions">
-        <div class="content_break_content">
-            <h2>הצעות לשינוי
-                <small id="suggestion_number"></small>
-            </h2>
-        </div>
-    </div>
-    <div id="content_wrapper_suggestions">
-        <div id="suggestions_wrapper">
-        </div>
-        <div class="more-deals" data-executing="false">
-            <a href="javascript: void(0)">עוד הצעות</a>
-        </div>
-    </div>
-    <div class="content_break comments">
-        <div class="content_break_content comments">
-            <h2 id="comments-title">תגובות <small id="comments_number"></small></h2>
-            <div id="comments_filter">
-                <input data-sort-by="-creation_date" class="button_order_chron selected" type="button" />
-                <input data-sort-by="-popularity" class="button_order_popular" type="button" />
-                <input data-sort-by="-total_votes" class="button_order_contro" type="button" />
-            </div>
-        </div>
-    </div>
-    <div id="content_wrapper_comments">
-        <div id="special_post_wrapper_background">
-            <div id="special_post_wrapper">
+    <!-- TABS TEST start -->
+    <div class="tabs">
+        <ul class="tab-links">
+            <li class="active">
+                <a href="#tab1">
+                    <h2>הצעות שהתקבלו
+                        <small id="approved_suggestion_number"></small>
+                    </h2>
+                </a>
+            </li>
+            <li>
+                <a href="#tab2">
+                    <h2>הצעות לשינוי
+                        <small id="suggestion_number"></small>
+                    </h2>
+                </a>
+            </li>
+            <li>
+                <a href="#tab3">
+                    <h2 id="comments-title">תגובות <small id="comments_number"></small></h2>
+                </a>
+            </li>
+        </ul>
 
+        <div class="tab-content">
+            <div id="tab1" class="tab active">
+                <div id="content_wrapper_approved_suggestions" class="active">
+                    <div id="approved_suggestions_wrapper">
+                    </div>
+                </div>
             </div>
-        </div>
-        <div id="comments_wrapper">
-            <div id="add_comment_wrapper" <%if(user_logged){%> data-creator_id="<%=user._id%>" <%}%> >
-            <!--<h2 class="title">כתיבת תגובה</h2>-->
-            <div class="comment_wrapper">
-                <div class="comment_details">
-                    <div class="img-box" style="overflow: hidden;">
-                        <div style="height:64px" class='auto-scale'>
-                            <img src="<%=avatar%>" alt="אני"/>
+
+            <div id="tab2" class="tab">
+                <div id="content_wrapper_suggestions">
+                    <div id="suggestions_wrapper">
+                    </div>
+                    <div class="more-deals" data-executing="false">
+                        <a href="javascript: void(0)">עוד הצעות</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab3" class="tab">
+                <div class="content_break comments">
+                    <div class="content_break_content comments">
+                        <div id="comments_filter">
+                            <input data-sort-by="-creation_date" class="button_order_chron selected" type="button" />
+                            <input data-sort-by="-popularity" class="button_order_popular" type="button" />
+                            <input data-sort-by="-total_votes" class="button_order_contro" type="button" />
                         </div>
-                        <span></span>
                     </div>
-                    <div class="name">
-                        <%if(user_logged){%>
-                        <%=user.first_name + ' '+ user.last_name%>
-                        <%}else{%>
-                        אני
-                        <%}%>
-                    </div>
-                    <div class="date_time">
-                        <span class="time"><%=(new Date()).format('H:MM') %></span>
-                        <span class="date"><%=(new Date()).format('dd.mm.yy') %></span>
-                    </div>
-                    <% if(user_logged){ %>
-                    <div class="ratings">
-                        <span class="friends"><%=user.num_of_proxies_i_represent%></span>
-                        <span class="awards"><%=user.score%></span>
-                    </div>
-                    <% } %>
                 </div>
-                <div class="content">
-                    <textarea id="discussion_comment" dir="rtl" class="four-col" cols="0" rows="0"></textarea>
-                </div>
-            </div>
-            <input id="submit_post" type="button" class="button_submit_comment" />
-        </div>
-			<div class="pagination_wrapper first_pagination">
-                <div class="pagination">
-                </div>
-            </div>
-            <div class="pagination_wrapper second_pagination">
-                <div class="pagination">
-                </div>
-            </div>
+                <div id="content_wrapper_comments">
+                    <div id="special_post_wrapper_background">
+                        <div id="special_post_wrapper">
 
+                        </div>
+                    </div>
+                    <div id="comments_wrapper">
+                        <div id="add_comment_wrapper" <%if(user_logged){%> data-creator_id="<%=user._id%>" <%}%> >
+                            <!--<h2 class="title">כתיבת תגובה</h2>-->
+                            <div class="comment_wrapper">
+                                <div class="comment_details">
+                                    <div class="img-box" style="overflow: hidden;">
+                                        <div style="height:64px" class='auto-scale'>
+                                            <img src="<%=avatar%>" alt="אני"/>
+                                        </div>
+                                        <span></span>
+                                    </div>
+                                    <div class="name">
+                                        <%if(user_logged){%>
+                                        <%=user.first_name + ' '+ user.last_name%>
+                                        <%}else{%>
+                                        אני
+                                        <%}%>
+                                    </div>
+                                    <div class="date_time">
+                                        <span class="time"><%=(new Date()).format('H:MM') %></span>
+                                        <span class="date"><%=(new Date()).format('dd.mm.yy') %></span>
+                                    </div>
+                                    <% if(user_logged){ %>
+                                    <div class="ratings">
+                                        <span class="friends"><%=user.num_of_proxies_i_represent%></span>
+                                        <span class="awards"><%=user.score%></span>
+                                    </div>
+                                    <% } %>
+                                </div>
+                                <div class="content">
+                                    <textarea id="discussion_comment" dir="rtl" class="four-col" cols="0" rows="0"></textarea>
+                                </div>
+                            </div>
+                            <input id="submit_post" type="button" class="button_submit_comment" />
+                        </div>
+                        <div class="pagination_wrapper first_pagination">
+                            <div class="pagination">
+                            </div>
+                        </div>
+                        <div class="pagination_wrapper second_pagination">
+                            <div class="pagination">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </div>
+    <!-- TABS TEST end -->
+
    <% include partials/footer.ejs %>
 
 <script type="text/javascript">
@@ -2326,6 +2348,19 @@ $(document).ready(function () {
         image_autoscale('.auto-scale img');
 
         $(post_or_suggestion.find('.add_comment textarea')).focus();
+    });
+
+    // TABS
+    jQuery('.tabs .tab-links a').on('click', function(e)  {
+        var currentAttrValue = jQuery(this).attr('href');
+
+        // Show/Hide Tabs
+        jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
+
+        // Change/remove current tab to active
+        jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+
+        e.preventDefault();
     });
 });
 

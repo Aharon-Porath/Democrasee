@@ -1,6 +1,6 @@
 {
-  "name": "uru",
-  "version": "1.0.0",
+  "name": "freakachoo",
+  "version": "1.1.0",
   "private": true,
   "dependencies": {
     "express": "3.x.x",
@@ -20,13 +20,23 @@
     "formage-admin": "git://github.com/IshaiJaffe/formage-admin.git",
     "facebook-signed-request": "0.0.x",
     "knox": "0.0.11",
-    "nodetime":"",
-    "http-proxy":"0.10.0"
+    "nodetime": "",
+    "http-proxy": "0.10.0"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "engines": {
     "node": "0.10.x",
     "npm": ">= 1.1.65"
-  }
+  },
+  "description": "This is URU",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "gitrepo@git.linnovate.net:idemos_secundi.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause"
 }
