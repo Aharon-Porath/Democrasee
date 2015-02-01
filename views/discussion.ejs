@@ -81,13 +81,6 @@ var error_message = error_message || '';
                             </div>
                         <% } %>
                         <hr />
-                        <div class="tags">
-                            <span class="tags_title">תגיות:</span>
-                            <% if(discussion.tags) { for (var c = 0; c <discussion.tags.length; c++) { %>
-                                <span class="tag"><a href="?tag_name=<%=discussion.tags[c]%>"><%=discussion. tags[c] %></a></span>
-                            <% }}%>
-                        </div>
-                        <hr />
                     </div>
                     <div class="segment info services-box">
                         <h2 class="title">סל מידע</h2>
