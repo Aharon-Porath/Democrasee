@@ -88,64 +88,6 @@ var error_message = error_message || '';
                             <% }}%>
                         </div>
                         <hr />
-                        <div class="segment_bottom">
-                            <div class="rating_box">
-                                <div class="rating_total">
-                                    <%= Math.round(discussion.grade*100)/100 %>
-                                </div>
-                                <div class="raters">
-                                    <%= Math.round(discussion.evaluate_counter) %>
-                                    דירוגים
-                                </div>
-                            </div>
-                            <div class="slide-box">
-                                <div class="slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-                                <div class="ui-slider-range ui-widget-header ui-slider-range-min" style="width: 0%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a></div>
-                                <div class="slider-numbers">
-                                    <span>1</span>
-                                    <span>2</span>
-                                    <span>3</span>
-                                    <span>4</span>
-                                    <span>5</span>
-                                    <span>6</span>
-                                    <span>7</span>
-                                    <span>8</span>
-                                    <span>9</span>
-                                    <span>10</span>
-                                </div>
-                            </div>
-                            <div class="statement">
-                                <span class="first">
-                                    גרור את הסמן!
-                                </span>
-
-                                <span class="second">
-                                תן ציון למסמך החזון
-                                </span>
-                            </div>
-                            <div class="button_add_comment">
-                                <input type="button" />
-                            </div>
-                            <div class="button_suggest_revisions active">
-                                <input type="button" />
-                            </div>
-                            <div class="history_details_holder">
-                                <hr />
-                                <div class="item history_button" >
-                                    <input  class="history" type="button" />
-                                </div>
-                                <div class="item draft_no">
-                                    טיוטה מספר: <span>8</span>
-                                </div>
-                                <div class="item last">
-                                    עדכון אחרון: <span>15.03.12</span>
-                                </div>
-                                <div class="item by">
-                                    על ידי:
-                                    <a href="#"></a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="segment info services-box">
                         <h2 class="title">סל מידע</h2>
@@ -153,9 +95,6 @@ var error_message = error_message || '';
                             <!-- MovingBoxes Slider -->
                             <ul id="slider">
                             </ul><!-- end Slider #1 -->
-                        </div>
-                        <div class="underline_and_cursor_when_hover service-8">
-                            לחץ כדי להוסיף פריט
                         </div>
                         <div class="upload-popup">
                             <span class="arrow"></span>
@@ -703,97 +642,6 @@ $(document).ready(function () {
         e.preventDefault();
         focusOnCommentBox();
         scrollTo('#add_comment_wrapper');
-    });
-
-    //set slider text according to user grade
-    if(my_discussion_grade){
-        $('.discussions_page .segment.main .segment_bottom .statement span').text('');
-
-        if(my_discussion_grade >= 0 && my_discussion_grade < 2){
-            $('.discussions_page .segment.main .segment_bottom .statement .second').text('מתנגד נחרצות');
-        }else{
-            if(my_discussion_grade >= 2 && my_discussion_grade < 5){
-                $('.discussions_page .segment.main .segment_bottom .statement .second').text('מתנגד');
-            }else {
-                if(my_discussion_grade >= 5 && my_discussion_grade < 6){
-                    $('.discussions_page .segment.main .segment_bottom .statement .second').text('תומך בעיקרון, אך נדרש שיפור');
-                }else {
-                    if(my_discussion_grade >= 6 && my_discussion_grade < 8){
-                        $('.discussions_page .segment.main .segment_bottom .statement .second').text('תומך');
-                    }else{
-                        $('.discussions_page .segment.main .segment_bottom .statement .second').text('תומך נלהב');
-                    }
-                }
-            }
-        }
-    }
-
-    $(".slider").slider({
-        disabled:is_creator,
-        value:my_discussion_grade,
-        range:"min",
-        min:0,
-        max:10,
-        step:0.10 ,
-        slide: function(event, ui){
-            $('.discussions_page .segment.main .segment_bottom .statement span').text('');
-
-            // change slider text according to grade
-            var current = ui.value;
-
-            if(current >= 0 && current < 2){
-                $('.discussions_page .segment.main .segment_bottom .statement .second').text('מתנגד נחרצות');
-            }else{
-                if(current >= 2 && current < 5){
-                    $('.discussions_page .segment.main .segment_bottom .statement .second').text('מתנגד');
-                }else {
-                    if(current >= 5 && current < 6){
-                        $('.discussions_page .segment.main .segment_bottom .statement .second').text('תומך בעיקרון, אך נדרש שיפור');
-                    }else {
-                        if(current >= 6 && current < 8){
-                            $('.discussions_page .segment.main .segment_bottom .statement .second').text('תומך');
-                        }else{
-                            $('.discussions_page .segment.main .segment_bottom .statement .second').text('תומך נלהב');
-                        }
-                    }
-                }
-            }
-        },
-        change:function (event, ui) {
-            if (event.originalEvent) {      //ugly hack because of slider api bug
-                var my_prev_grade = my_discussion_grade;
-                my_discussion_grade = ui.value;
-
-                var user_info = {
-                    user_logged_in : user.first_name ? true : false,
-                    action_done : (user.actions_done_by_user && user.actions_done_by_user.grade_object) ? true : false,
-                    action_name : "grade_object",
-                    tokens_owned : user.tokens ? user.tokens : 0,
-                    /*price: gamification_price['grade_discussion']*/
-                }
-
-                db_functions.addDiscussionGrade(discussion_id, my_discussion_grade, grade_id, user_info, function (err, data) {
-
-                    if (!err) {
-                        activateMailNotifications();
-                        if(data == 'canceled'){
-                            $(".slider").slider('value',my_prev_grade);
-                        } else {
-    //                    if(!(user.actions_done_by_user && user.actions_done_by_user.grade_object))
-    //                    {
-    //                        user.actions_done_by_user.grade_object = true;
-    //                    }
-                            $(".rating_total").text(Math.round(data.new_grade * 100) / 100);
-                            $(".raters").text(Math.round(data.evaluate_counter) + " דירוגים   ");
-                           // $(".dark_bar").css('width', (my_discussion_grade * 10) + '%');
-                            grade_id = data.grade_id;
-                        }
-                    }
-                    else
-                        console.log(err);
-                });
-            }
-        }
     });
 
     $("#submit_post").on('click', function (e) {
