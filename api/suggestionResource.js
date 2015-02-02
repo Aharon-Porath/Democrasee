@@ -766,7 +766,7 @@ function sendUserOverlapMail(discussion, suggestion, approved_suggestion){
        },
 
        function(user, message, cbk){
-           mail.sendMailFromTemplate(/*user.email*/"movilim@uru.org.il", message, cbk);
+           mail.sendMailFromTemplate(/*user.email*/"aharon@uru.org.il", message, cbk);
        }
    ], function(err){
        if (err) console.error(err);

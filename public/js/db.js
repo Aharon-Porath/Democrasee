@@ -75,7 +75,7 @@ var db_functions = {
                 '<a href="/account/activation">כאן</a>'
                 notActivatedPopup(message);
             } else if (xhr.responseText == 'suspended') {
-                var message = "הושעת מהמערכת עקב החלטת מוביל תחום. אם ברצונך לקבל פרטים נוספים או לערער על ההחלטה, אנא שלח מייל לmovilim@uru.org.il.";
+                var message = "הושעת מהמערכת עקב החלטת מוביל תחום. אם ברצונך לקבל פרטים נוספים או לערער על ההחלטה, אנא שלח מייל לaharon@uru.org.il.";
                 notActivatedPopup(message);
             } else if (xhr.responseText == 'Error: Unauthorized - there is not enought tokens') {
                 alert("אין מספיק אסימונים בשביל לבצע פעולה זו");
