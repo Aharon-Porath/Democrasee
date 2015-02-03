@@ -1878,7 +1878,7 @@ $(document).ready(function () {
                 suggest_grade_id = data.grade_id;
                 $suggestion_wrapper.data('my_grade_id', data.grade_id);
 
-                slider_box.slideDown();
+//                slider_box.slideDown();
                 $('.slider-is-open').removeClass('slider-is-open');
                 $(this).parent().addClass('slider-is-open');
                 self.parent().parent().parent().find(".suggestion_bottom_segment input").removeClass('active');
@@ -1951,6 +1951,8 @@ $(document).ready(function () {
                         }
                     }
                 });
+                var sliderItem = slider_box.find(".slider");
+                sliderItem.slider('option', 'change').call(sliderItem, {originalEvent: true}, {value:10});
             }
             else
             {
