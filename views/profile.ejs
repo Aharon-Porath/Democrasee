@@ -34,12 +34,6 @@
                     };
                 %>
                 <% include partials/image_upload.ejs %>
-                <div class="proxy">
-                    <span><%=pageUser.num_of_proxies_i_represent%></span> מנדטים
-                </div>
-                <div class="respect">
-                    <span><%=pageUser.score%></span> מוניטין
-                </div>
             </div>
             <div class="user-links">
                 <h4 data-bablic-exclude><%=pageUser.first_name+' '+ pageUser.last_name%></h4>
@@ -51,12 +45,6 @@
             <form action="">
                 <textarea id="biography" placeholder=" כאן אפשר לכתוב ביוגרפיה קצרה דברים שאתה אוהב, אג’נדה, דעות, ומה שתרצה על עצמך." cols="0" <%=biographyReadonly? 'readonly': '' %>
                 rows="0"><% if(pageUser.biography){%><%=pageUser.biography%> <% } else { %><% } %></textarea>
-                <% if(!isHisUru){ %>
-                  <input id="invite_friends_bt" type="submit" value="הזמן חברים" />
-                <%} else{ %>
-             <!--    <input id="send_message_bt" type="submit"    class="gray_and_soon"
-                        value="שלח הודעה" />-->
-                <%} %>
             </form>
         </div>
     </div>
@@ -107,36 +95,6 @@
         <%} %>
     </div>
 </div>
-<div class="search-result-box">
-    <h2>
-	<% if(!isHisUru){ %>
-    פעילות שלי במערכת
-    <%} else {%>
-פעילות במערכת
-    <%} %>
-    </h2>
-    <div class="tabs">
-        <ul class="tabs-nav">
-            <li><a href="#discussions-tab">דיונים</a></li>
-            <li class="ui-tabs-hide"><a href="#cycles-tab">קמפיינים</a></li>
-            <li class="ui-tabs-hide"><a href="#actions-tab">פעולות</a></li>
-            <li class="ui-tabs-hide"><a href="#articles-tab">בלוג</a></li>
-        </ul>
-        <div id="discussions-tab" data-bablic-index="false">
-
-        </div>
-        <div id="cycles-tab" data-bablic-index="false">
-
-        </div>
-        <div id="actions-tab" data-bablic-index="false">
-
-        </div>
-        <div id="articles-tab" data-bablic-index="false">
-
-        </div>
-
-    </div>
-</div>
 <div class="profile-bottom cf">
     <div class="right" id="notifications">
         <h2>עדכונים</h2>
@@ -146,17 +104,6 @@
         </div>
     </div>
     <div class="left">
-      <h2>
-        <% if(!isHisUru){ %>
- אחרי מי אני עוקב
-        <%} else {%>
-אחרי מי עוקב
-        <%} %>
-      </h2>
-        <div id="users-list" class="users-list" data-bablic-index="false">
-
-
-        </div>
     </div>
 </div>
 </div>

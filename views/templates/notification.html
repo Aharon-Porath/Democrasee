@@ -35,17 +35,6 @@
         <span class="extra_text">{extra_text}</span>
     </p>
     {/extra_text}
-    {?check_going}
-        {?is_going}
-    <a class="btn share" data-img_src="{img_src.url}" data-text_preview="{text_preview}" data-title="{title}" rel="{link|uc}" href="/facebookShare?link={link|uc}">שתף</a>
-        {:else}
-        <a class="btn join-btn" href="{link}#join" item-id="{_id}">הצטרף</a>
-        {/is_going}
-    {:else}
-    <a class="btn share" data-img_src="{img_src.url}" data-text_preview="{text_preview}" data-title="{title}" rel="{main_link|uc}" href="/facebookShare?link={main_link|uc}">שתף</a>
-    {/check_going}
-
-    </a>
 </div>
 
 
