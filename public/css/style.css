@@ -10472,3 +10472,11 @@ li.active a, li.active a:hover {
 .tab.active {
     display:block;
 }
+
+
+
+
+/* RESET FOR IFRAME IN TLV */
+body {
+    /*background: none;*/
+}
