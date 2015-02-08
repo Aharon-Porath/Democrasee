@@ -4,7 +4,7 @@ var _ = require('underscore'),
     Discussions = require('./discussions'),
     Account = require('./account'),
     AppError = require('./app_error'),
-    MyUru = require('./myuru');
+    profile = require('./profile');
 //  HisUru= require('./hisuru') ;
 
 
@@ -112,7 +112,7 @@ module.exports = function (app) {
 
     router.include('/discussions', Discussions);
 
-    router.include('/myuru', MyUru);
+    router.include('/profile', profile);
 
     router.include('/og', require('../og'));
 

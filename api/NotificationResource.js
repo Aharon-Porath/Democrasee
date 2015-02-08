@@ -157,7 +157,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                     } else {
                         if(user_obj){
                             notification.user = user_obj.first_name + " " + user_obj.last_name;
-                            notification.user_link = "/myuru/" + user_obj._id + '';
+                            notification.user_link = "/profile/" + user_obj._id + '';
                         }
                         notification.part_one = " הגיב על דיון שהשתתפת בו - ";
                     }
@@ -185,7 +185,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                     } else {
                         if(user_obj){
                             notification.user = user_obj.first_name + " " + user_obj.last_name;
-                            notification.user_link = "/myuru/"  + user_obj._id + '';
+                            notification.user_link = "/profile/"  + user_obj._id + '';
                         }
                         notification.part_one = "העלה הצעה לשינוי בדיון שלקחת בו חלק - ";
                     }
@@ -213,7 +213,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                     } else {
                         if(user_obj){
                             notification.user = user_obj.first_name + " " + user_obj.last_name;
-                            notification.user_link = "/myuru/" + user_obj._id + "";
+                            notification.user_link = "/profile/" + user_obj._id + "";
                             notification.pic = user_obj.avatar_url();
                         }
                         notification.part_one = " הגיב על דיון שיצרת - ";
@@ -239,7 +239,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                     } else {
                         if(user_obj){
                             notification.user = user_obj.first_name + " " + user_obj.last_name;
-                            notification.user_link = "/myuru/" + user_obj._id + "";
+                            notification.user_link = "/profile/" + user_obj._id + "";
                         }
                         notification.part_one = "הגיב על הצעה לשינוי שהעלת בדיון - ";
                     }
@@ -358,7 +358,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                 case "user_brings_resource_to_action_you_created":
                     if(user_obj){
                         notification.user = user_obj.first_name + " " + user_obj.last_name;
-                        notification.user_link = "/myuru/" + user_obj._id + '';
+                        notification.user_link = "/profile/" + user_obj._id + '';
                     }
                     if(resource){
                         notification.part_one = " התחייב/ה להביא " + resource.name + " לקידום פעולה ";
@@ -390,7 +390,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                         if(user_obj){
                             notification.part_one = " הוסיף תגובה חדשה לפעולה ";
                             notification.user = user_obj.first_name + " " + user_obj.last_name;
-                            notification.user_link = "/myuru/" + user_obj._id + "";
+                            notification.user_link = "/profile/" + user_obj._id + "";
                         }
 
                     }
@@ -421,7 +421,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                         if(user_obj){
                             notification.part_one = " הוסיף תגובה חדשה לפעולה ";
                             notification.user = user_obj.first_name + " " + user_obj.last_name;
-                            notification.user_link = "/myuru/" + user_obj._id + "";
+                            notification.user_link = "/profile/" + user_obj._id + "";
                         }
                     }
                     notification.part_three = " שבקמפיין ";
@@ -493,7 +493,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                         if(user_obj)
                         notification.user = user_obj.first_name + " " + user_obj.last_name;
                         notification.part_one = " הביע תמיכה ברעיון לפעולה שהעלית בקמפיין "
-                        notification.user_link = "/myuru/" + user_obj._id + '';
+                        notification.user_link = "/profile/" + user_obj._id + '';
                     }
                     if(action){
                         notification.main_link = "/actions/" + action._id;
@@ -577,7 +577,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                     if(user_obj){
                         notification.pic = user_obj.avatar_url();
                         notification.user = user_obj.first_name + " " + user_obj.last_name;
-                        notification.user_link = "/myuru/" + user_obj._id;
+                        notification.user_link = "/profile/" + user_obj._id;
                     }
                     if(num_of_users_that_vote_my_sugg == 1){
                         var support_or_not = "התנגד ל";
@@ -635,7 +635,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                     }
                     if(user_obj){
                         notification.part_two = user_obj.first_name + " " + user_obj.last_name;
-                        notification.link_two = "/myuru/" + user_obj._id;
+                        notification.link_two = "/profile/" + user_obj._id;
                     }
 
                     notification.part_three =
@@ -658,7 +658,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                         "על ידי";
                     if(user_obj){
                         notification.part_two = user_obj.first_name + " " + user_obj.last_name;
-                        notification.link_two = "/myuru/" + user_obj._id;
+                        notification.link_two = "/profile/" + user_obj._id;
                     }
 
                     notification.part_three =
@@ -684,7 +684,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                         "על ידי ";
                     if(user_obj){
                         notification.part_two = user_obj.first_name + " " + user_obj.last_name;
-                        notification.link_two = "/myuru/" + user_obj._id;
+                        notification.link_two = "/profile/" + user_obj._id;
                     }
 
                     notification.part_three =
@@ -713,7 +713,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                         "על ידי ";
                     if(user_obj){
                         notification.part_two = user_obj.first_name + " " + user_obj.last_name;
-                        notification.link_two = "/myuru/" + user_obj._id;
+                        notification.link_two = "/profile/" + user_obj._id;
                     }
                     notification.part_three =
            ", המייצג/ת אותך בעורו";
@@ -732,7 +732,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
 
                         if(user_obj){
                             notification.part_two = user_obj.first_name + " " + user_obj.last_name;
-                            notification.link_two = "/myuru/" + user_obj._id;
+                            notification.link_two = "/profile/" + user_obj._id;
                         }
 
                         notification.part_three =
@@ -801,7 +801,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
 
                         if(user_obj && num_of_users_support == 1){
                             notification.part_two = user_obj.first_name + " " + user_obj.last_name;
-                            notification.link_two = "/myuru/" + user_obj._id;
+                            notification.link_two = "/profile/" + user_obj._id;
                         }else{
                             notification.part_two =
                                 num_of_users_support +
@@ -856,7 +856,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
 
                         if(user_obj && num_of_users_against == 1){
                             notification.part_two = user_obj.first_name + " " + user_obj.last_name;
-                            notification.link_two = "/myuru/" + user_obj._id;
+                            notification.link_two = "/profile/" + user_obj._id;
                         }else{
                             notification.part_two =
                                 num_of_users_against +

@@ -18,7 +18,7 @@
             </a>
         </div>
         <div class="right">
-            <a href="/myuru/{creator_id.id}">
+            <a href="/profile/{creator_id.id}">
                 <div class="img-box transparent-img">
                 <div style="width:60px; height:64px;" class="auto-scale">
                     <img alt="{title}" title="{creator_id.first_name} {creator_id.last_name}"

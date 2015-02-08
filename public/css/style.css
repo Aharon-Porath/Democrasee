@@ -5223,19 +5223,19 @@ div.action_list::-webkit-scrollbar-button {
 }
 
 /*------------------------*/
-.myuru-top .right {
+.profile-top .right {
     float: right;
    /* width: 711px;*/
     width: 980px;
 }
 
-.myuru-top .right .white-box {
+.profile-top .right .white-box {
     background: #fff /*url(/images/border-vertical-dotted.png) 0 0 repeat-y*/;
     height: 202px;
     padding: 18px 18px 0 0;
 }
 
-.myuru-top .right .user {
+.profile-top .right .user {
     float: right;
     width: 112px;
     padding-left: 19px;
@@ -5243,28 +5243,28 @@ div.action_list::-webkit-scrollbar-button {
     height: 180px;
 }
 
-.myuru-top .right .user .img-box {
+.profile-top .right .user .img-box {
     padding-bottom: 15px;
     border-bottom: 1px solid #ececec;
     margin-bottom: 4px;
     position: relative;
 }
 
-.myuru-top .right .user .img-box .image-container {
+.profile-top .right .user .img-box .image-container {
     width:112px;
     height:120px;
     float:right;
 }
 
-.myuru-top .right .user .img-box img {
+.profile-top .right .user .img-box img {
     display: block;
 }
 
-.myuru-top .right .user .img-box .upload_image_placeholder {
+.profile-top .right .user .img-box .upload_image_placeholder {
     background: url(/images/user-fillter-white-big-empty.png) no-repeat;
 }
 
-.myuru-top .right .user .img-box .qq-upload-drop-area {
+.profile-top .right .user .img-box .qq-upload-drop-area {
     position: absolute;
     left: 0;
     right: 0;
@@ -5276,7 +5276,7 @@ div.action_list::-webkit-scrollbar-button {
     text-align: center;
 }
 
-.myuru-top .right .user .proxy {
+.profile-top .right .user .proxy {
     padding: 6px 9px 0 0;
     color: #b7b7b6;
     font: bold 13px/13px Arial;
@@ -5284,7 +5284,7 @@ div.action_list::-webkit-scrollbar-button {
     background: url(/images/proxy-icon.png) 41px 7px no-repeat;
 }
 
-.myuru-top .right .user .proxy span {
+.profile-top .right .user .proxy span {
     position: absolute;
     left: 10px;
     top: 6px;
@@ -5299,7 +5299,7 @@ div.action_list::-webkit-scrollbar-button {
     -webkit-border-radius: 3px;
 }
 
-.myuru-top .right .user .respect {
+.profile-top .right .user .respect {
     padding: 6px 9px 0 0;
     color: #b7b7b6;
     font: bold 13px/13px Arial;
@@ -5307,7 +5307,7 @@ div.action_list::-webkit-scrollbar-button {
     background: url(/images/respect-icon.png) 43px 6px no-repeat;
 }
 
-.myuru-top .right .user .respect span {
+.profile-top .right .user .respect span {
     position: absolute;
     left: 10px;
     top: 6px;
@@ -5322,7 +5322,7 @@ div.action_list::-webkit-scrollbar-button {
     -webkit-border-radius: 3px;
 }
 
-.myuru-top .right .user-links {
+.profile-top .right .user-links {
     float: right;
     width: 131px;
     padding: 28px 19px 0 24px;
@@ -5331,29 +5331,29 @@ div.action_list::-webkit-scrollbar-button {
     margin-left: 13px;
 }
 
-.myuru-top .right .user-links h4 {
+.profile-top .right .user-links h4 {
     color: #7f7f7e;
     font: bold 17px/20px Arial;
     margin-bottom: 12px;
 }
 
-.myuru-top .right .user-links ul {
+.profile-top .right .user-links ul {
     border-top: 1px solid #ececec;
 }
 
-.myuru-top .right .user-links li {
+.profile-top .right .user-links li {
     color: #50504f;
     font: bold 13px/25px Arial;
     border-bottom: 1px solid #ececec;
 }
 
-.myuru-top .right form {
+.profile-top .right form {
     float: right;
     width: 336px;
     padding-top: 29px;
 }
 
-.myuru-top .right form textarea {
+.profile-top .right form textarea {
     border: 1px solid #d6dbde;
     width: 308px;
     height: 71px;
@@ -5365,7 +5365,7 @@ div.action_list::-webkit-scrollbar-button {
     resize: none;
 }
 
-.myuru-top .right form input {
+.profile-top .right form input {
     display: block;
     margin: 0 auto 12px;
     background: url(/images/green-btn.png) repeat-x;
@@ -5379,23 +5379,23 @@ div.action_list::-webkit-scrollbar-button {
     cursor: pointer;
 }
 
-.myuru-top .left {
+.profile-top .left {
     display: none;
     width: 269px;
     float: left;
 }
 
-#content .myuru-top .left h2 {
+#content .profile-top .left h2 {
     color: #3b63ef;
 }
 
-.myuru-top .left .white-box {
+.profile-top .left .white-box {
     background: #fff;
     height: 200px;
     padding: 20px 31px 0 0;
 }
 
-.myuru-top .left .token-bar {
+.profile-top .left .token-bar {
     border: 1px solid #c6c6c6;
     border-radius: 1px;
     -moz-border-radius: 1px;
@@ -5407,7 +5407,7 @@ div.action_list::-webkit-scrollbar-button {
     padding: 23px 22px 24px;
 }
 
-.myuru-top .left .token-bar .top-number {
+.profile-top .left .token-bar .top-number {
     position: absolute;
     color: #949494;
     top: 20px;
@@ -5415,7 +5415,7 @@ div.action_list::-webkit-scrollbar-button {
     font: normal 12px/14px "AdumaFOTRegular";
 }
 
-.myuru-top .left .token-bar .bottom-number {
+.profile-top .left .token-bar .bottom-number {
     position: absolute;
     bottom: 20px;
     right: 11px;
@@ -5423,13 +5423,13 @@ div.action_list::-webkit-scrollbar-button {
     font: normal 12px/14px "AdumaFOTRegular";
 }
 
-.myuru-top .left .token-bar .proxy-woper {
+.profile-top .left .token-bar .proxy-woper {
     position: relative;
 }
 
 /*****************************************************************************************************************************/
 
-.myuru-top .left .token-bar .token-popup {
+.profile-top .left .token-bar .token-popup {
     position: absolute;
 
     display: none;
@@ -5441,11 +5441,11 @@ div.action_list::-webkit-scrollbar-button {
     padding: 16px 24px 0 13px;
 }
 
-.myuru-top .left .token-bar:hover .token-popup {
+.profile-top .left .token-bar:hover .token-popup {
     /*display: block;*/
 }
 
-.myuru-top .left .token-bar .token-popup .user-right {
+.profile-top .left .token-bar .token-popup .user-right {
     float: right;
     padding-left: 7px;
     padding-top: 12px;
@@ -5455,49 +5455,49 @@ div.action_list::-webkit-scrollbar-button {
 
 }
 
-.myuru-top .left .token-bar .token-popup .img-box {
+.profile-top .left .token-bar .token-popup .img-box {
     position: relative;
 }
 
-.myuru-top .left .token-bar .token-popup .img-box img {
+.profile-top .left .token-bar .token-popup .img-box img {
     display: block;
 }
 
-.myuru-top .left .token-bar .token-popup .img-box  img.wraper {
+.profile-top .left .token-bar .token-popup .img-box  img.wraper {
     position: absolute;
     left: 0;
     top: 0;
 }
 
-.myuru-top .left .token-bar .token-popup .user-left {
+.profile-top .left .token-bar .token-popup .user-left {
     float: left;
     /* width: 94px;*/
     width: 153px;
     padding-top: 5px;
 }
 
-.myuru-top .left .token-bar .token-popup .user-left .user-name {
+.profile-top .left .token-bar .token-popup .user-left .user-name {
     overflow: hidden;
     height: 20px;
     width: 83px;
     margin-bottom: 5px
 }
 
-.myuru-top .left .token-bar .token-popup .user-left .left1 {
+.profile-top .left .token-bar .token-popup .user-left .left1 {
     float: left;
 }
 
-.myuru-top .left .token-bar .token-popup .user-left .right1 {
+.profile-top .left .token-bar .token-popup .user-left .right1 {
     float: right;
 }
 
-.myuru-top .left .token-bar .token-popup .user-left p {
+.profile-top .left .token-bar .token-popup .user-left p {
     color: #50504f;
     font: bold 13px/15px Arial;
     margin-bottom: 7px;
 }
 
-.myuru-top .left .token-bar .token-popup .user-left .proxy {
+.profile-top .left .token-bar .token-popup .user-left .proxy {
     color: #b7b6b6;
     font: normal 12px/14px "AdumaFOTRegular";
     position: relative;
@@ -5506,7 +5506,7 @@ div.action_list::-webkit-scrollbar-button {
     margin-bottom: 6px;
 }
 
-.myuru-top .left .token-bar .token-popup .user-left .proxy span {
+.profile-top .left .token-bar .token-popup .user-left .proxy span {
     display: block;
     background: #263a81;
     width: 26px;
@@ -5519,7 +5519,7 @@ div.action_list::-webkit-scrollbar-button {
     -webkit-border-radius: 3px;
 }
 
-.myuru-top .left .token-bar .token-popup .user-left .respect {
+.profile-top .left .token-bar .token-popup .user-left .respect {
     padding-right: 20px;
     color: #b7b6b6;
     font: normal 12px/14px "AdumaFOTRegular";
@@ -5527,7 +5527,7 @@ div.action_list::-webkit-scrollbar-button {
     background: url(/images/respect-icon.png) 98% 0 no-repeat;
 }
 
-.myuru-top .left .token-bar .token-popup .user-left .respect span {
+.profile-top .left .token-bar .token-popup .user-left .respect span {
     display: block;
     background: #263a81;
     width: 26px;
@@ -5540,7 +5540,7 @@ div.action_list::-webkit-scrollbar-button {
     -webkit-border-radius: 3px;
 }
 
-.myuru-top .left .token-bar .token-popup .user-left  .given-mandat-from-me {
+.profile-top .left .token-bar .token-popup .user-left  .given-mandat-from-me {
     float: left;
     background: transparent;
     margin-left: 24px;
@@ -5549,14 +5549,14 @@ div.action_list::-webkit-scrollbar-button {
 
 /*****************************************************************************************************************************/
 
-.myuru-top .left .token-bar .bars {
+.profile-top .left .token-bar .bars {
 
     background: url(/images/token-bar-default.png) 0 100% repeat-y;
     position: relative;
     height: 134px;
 }
 
-.myuru-top .left .token-bar .bars .info {
+.profile-top .left .token-bar .bars .info {
     position: absolute;
     right: 57px;
     top: -7px;
@@ -5566,35 +5566,35 @@ div.action_list::-webkit-scrollbar-button {
     font: bold 12px/15px Arial;
 }
 
-.myuru-top .left .token-bar .bars .grey .info {
+.profile-top .left .token-bar .bars .grey .info {
     background: url(/images/token-info-grey.png) 100% 50% no-repeat;
 }
 
-.myuru-top .left .token-bar .bars .green .info {
+.profile-top .left .token-bar .bars .green .info {
     background: url(/images/token-info-geen.png) 100% 50% no-repeat;
 }
 
-.myuru-top .left .token-bar .bars .proxy-woper .info {
+.profile-top .left .token-bar .bars .proxy-woper .info {
     background: url(/images/token-info-blue.png) 100% 50% no-repeat;
 }
 
-.myuru-top .left .token-bar .bars .grey {
+.profile-top .left .token-bar .bars .grey {
     position: relative;
     background: url(/images/token-bar-grey.png) 0 100% repeat-y;
 }
 
-.myuru-top .left .token-bar .bars .green {
+.profile-top .left .token-bar .bars .green {
     position: relative;
     background: url(/images/token-bar-green.png) 0 100% repeat-y;
 }
 
-.myuru-top .left .token-bar .bars .blue {
+.profile-top .left .token-bar .bars .blue {
     position: relative;
     background: url(/images/token-bar-blue.png) 0 100% repeat-y;
     z-index: 11;
 }
 
-.myuru-top .left .token-bar .bars .border {
+.profile-top .left .token-bar .bars .border {
     position: absolute;
     left: 0;
     top: 0;
@@ -5665,12 +5665,12 @@ div.action_list::-webkit-scrollbar-button {
     background: none;
 }
 
-.myuru-bottom .right {
+.profile-bottom .right {
     float: right;
     width: 671px;
 }
 
-.myuru-bottom .left {
+.profile-bottom .left {
     float: left;
     width: 268px;
 }
@@ -5773,7 +5773,7 @@ div.action_list::-webkit-scrollbar-button {
     background: url(/images/ajax-loader-3.gif) 57px 18px no-repeat;
 }
 
-/*.myuru-bottom .renewal .one a.btn {
+/*.profile-bottom .renewal .one a.btn {
     background-color: #b7b6b6;
     border-color: #8f8f8f;
 }*/

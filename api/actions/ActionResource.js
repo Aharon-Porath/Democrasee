@@ -82,7 +82,7 @@ var ActionResource = module.exports = common.GamificationMongooseResource.extend
     },
 
     get_objects:function (req, filters, sorts, limit, offset, callback) {
-        if (req.query.get == "myUru") {
+        if (req.query.get == "profile") {
             var user_id = req.query.user_id || req.user._id;
             filters['users.user_id'] = user_id;
         }

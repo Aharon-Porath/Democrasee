@@ -1224,7 +1224,7 @@ var db_functions = {
             userIdParam = '&user_id=' + userID;
         }
         db_functions.loggedInAjax({
-            url:'/api/' + api_resource + '?get=myUru' + userIdParam,
+            url:'/api/' + api_resource + '?get=profile' + userIdParam,
             type:"GET",
             async:true,
             success:function (data) {

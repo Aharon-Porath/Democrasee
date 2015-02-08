@@ -427,7 +427,7 @@
                 <div class="one <% if (c==2) {%>last<% }%> ">
 
                     <div class="img-box" style="overflow: hidden;">
-                        <a href="/myuru/<%=cycle.opinion_shapers[c].user_id._id%>">
+                        <a href="/profile/<%=cycle.opinion_shapers[c].user_id._id%>">
                             <div style="width:112px;height:120px; overflow:hidden; " class='auto-scale' >
                                 <img  src="<%=cycle.opinion_shapers[c].user_id.avatar_url %>" alt=""/>
                                 <span class="fillter"></span>
@@ -435,7 +435,7 @@
                             <span></span>
                         </a>
                     </div>
-                    <h4 class="opinion_shaper"><a data-bablic-exclude href="/myuru/<%=cycle.opinion_shapers[c].user_id._id%>"><%=cycle.opinion_shapers[c].user_id.first_name %> <%=cycle.opinion_shapers[c].user_id.last_name %></a></h4>
+                    <h4 class="opinion_shaper"><a data-bablic-exclude href="/profile/<%=cycle.opinion_shapers[c].user_id._id%>"><%=cycle.opinion_shapers[c].user_id.first_name %> <%=cycle.opinion_shapers[c].user_id.last_name %></a></h4>
                     <p class="opinion_shaper"><% if (cycle.opinion_shapers[c].text) {%>  <%=cycle.opinion_shapers[c].text %>  <% } %></p>
                     <div class="badges">
                         <div class="proxy">

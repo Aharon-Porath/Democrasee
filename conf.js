@@ -9,7 +9,7 @@ var headConfigs = module.exports.headConfigs = {
             '/css/feedback.css',
             '/css/colorbox.css',
             '/css/loginpop.css',
-            '/css/myuruproxy.css',
+            '/css/profileproxy.css',
             '/css/jquery.tooltip.css',
             '/css/select2.css',
         ]

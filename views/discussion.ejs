@@ -36,7 +36,7 @@ var error_message = error_message || '';
                             <!--<a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.website.com." title="Share by Email"><img src="http://png-2.findicons.com/files/icons/573/must_have/48/mail.png"/></a>-->
                         </div>
                         <% if(discussion.creator_id){ %>
-                        <div class="author">הדיון נפתח ע"י: <a href="/myuru/<%=discussion.creator_id._id%>"> <%=discussion.creator_id.first_name+ " " +discussion.creator_id.last_name %> </a></div>
+                        <div class="author">הדיון נפתח ע"י: <a href="/profile/<%=discussion.creator_id._id%>"> <%=discussion.creator_id.first_name+ " " +discussion.creator_id.last_name %> </a></div>
                         <% } %>
                         <hr />
                         <div id="short">
@@ -1055,7 +1055,7 @@ $(document).ready(function () {
                 $('.history_details_holder .item.by').hide();
             }
             $('.history_details_holder .item.by a').text(data.objects[0].creator_id.first_name + " " + data.objects[0].creator_id.last_name);
-            $('.history_details_holder .item.by a').attr('href', '../myuru/' + data.objects[0].creator_id.id);
+            $('.history_details_holder .item.by a').attr('href', '../profile/' + data.objects[0].creator_id.id);
             $('.history_details_holder').show();
             $('.content_break.approved_suggestions').show();
 
@@ -1862,7 +1862,7 @@ $(document).ready(function () {
                     $('.item.draft_no span').text(Number($('.item.draft_no span').text()) + 1);
                     $('.history_details_holder .item.last span').text($.datepicker.formatDate('dd.mm.yy', new Date()));
                     $('.history_details_holder .item.by a').text(my_name);
-                    $('.history_details_holder .item.by a').attr('href', '../myuru/' + my_id);
+                    $('.history_details_holder .item.by a').attr('href', '../profile/' + my_id);
 
                     db_functions.getDiscussionTextField(discussion_id, function(err, text_field){
                         $('#discussion_content_textarea').val(text_field);

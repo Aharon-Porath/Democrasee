@@ -4,10 +4,10 @@ var unseen_notifications = user_logged && user ? user.unseen_notifications || 0 
     <%if(user_logged && user){%>
 <div class="user-box">
     <%if(unseen_notifications > 0){%>
-        <a class="notifications" href="/myuru#notifications"><%=unseen_notifications%></a>
+        <a class="notifications" href="/profile#notifications"><%=unseen_notifications%></a>
     <%}%>
     <a class="icon" href="javascript:void(0)"></a>
-    <a data-bablic-exclude class="name" href="/myuru"> <%=user.first_name%></a>
+    <a data-bablic-exclude class="name" href="/profile"> <%=user.first_name%></a>
 </div>
 
         <div class="user-info-box-container">
@@ -88,15 +88,15 @@ var unseen_notifications = user_logged && user ? user.unseen_notifications || 0 
             return false;
         })
 
-        $(".user-box.icon").click(function(){ window.location = "/myuru";});
+        $(".user-box.icon").click(function(){ window.location = "/profile";});
         $(".user-info-box .messages").click(function(){
             db_functions.resetUserNotifications(function(err, result){
-                window.location = "/myuru#notifications";
+                window.location = "/profile#notifications";
                 console.log(err || result);
             })
         });
-        $(".user-info-box .tokens").click(function(){ window.location = "/myuru";});
-        $(".user-info-box .fame").click(function(){ window.location = "/myuru";});
+        $(".user-info-box .tokens").click(function(){ window.location = "/profile";});
+        $(".user-info-box .fame").click(function(){ window.location = "/profile";});
         $(".user-info-box .logout").click(function(){
             $.removeCookie("fb_login",{ path: '/' });
             window.location = "/account/logout";

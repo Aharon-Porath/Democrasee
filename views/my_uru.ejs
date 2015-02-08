@@ -14,7 +14,7 @@
     <!--<% include partials/tag_search.ejs %>-->
 </div>
 <div id="content" class="cf">
-<div class="myuru-top">
+<div class="profile-top">
     <div class="right">
         <h2>
 		<% if(!isHisUru){ %>
@@ -137,7 +137,7 @@
 
     </div>
 </div>
-<div class="myuru-bottom cf">
+<div class="profile-bottom cf">
     <div class="right" id="notifications">
         <h2>עדכונים</h2>
         <div id="renewal" class="renewal" data-bablic-index="false">
@@ -209,7 +209,7 @@
                 if(type == "articles")
                     type = "blogs/article";
                 var  tabDataModel =convertToTabModel(data,type) ;
-                dust.render('myuru_tab',tabDataModel,function(err,out)
+                dust.render('profile_tab',tabDataModel,function(err,out)
                 {
                     if(type == "blogs/article")
                         type = "articles";
@@ -252,7 +252,7 @@
 
         db_functions.getOnWhomUserFollows(userId,function (e,data) {
 
-                dust.renderArray('myuru_follower_item', data.objects,null, function (err, html) {
+                dust.renderArray('profile_follower_item', data.objects,null, function (err, html) {
                     $('#users-list').append(html);
 
             })
@@ -295,7 +295,7 @@
             e.preventDefault();
             db_functions.joinToDiscussionFollowers(item_id,actionType,function(err,data){
 
-                dust.render('myuru_tab_item', data, function(err, html){
+                dust.render('profile_tab_item', data, function(err, html){
                     // $("#"+data._id).replaceWith(html);
                     item.replaceWith(html);
                 })

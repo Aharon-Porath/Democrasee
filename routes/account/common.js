@@ -20,7 +20,7 @@ exports.DONT_NEED_LOGIN_PAGES = [
     /^\/api\//,
 ];//regex
 
-exports.REDIRECT_FOR_LOGIN_PAGES = [/^\/myuru$/, /^\/mail_settings/];
+exports.REDIRECT_FOR_LOGIN_PAGES = [/^\/profile$/, /^\/mail_settings/];
 
 
 var hash_password = exports.hash_password = function (password) {

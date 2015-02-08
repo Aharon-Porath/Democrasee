@@ -126,7 +126,7 @@ padding-bottom: 60px;">
         if(user_logged) {
             db_functions.getNotifications(null, 5, function (data) {
                 dust.renderArray('notification', data.objects, null,function (err, html) {
-                    $('.renewal').append(html).append('<a href="/myuru">' +
+                    $('.renewal').append(html).append('<a href="/profile">' +
 '                        קרא עוד...' +
                     '</a>');
 
