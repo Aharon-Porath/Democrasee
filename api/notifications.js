@@ -115,7 +115,7 @@ exports.create_user_notification = function (notification_type, entity_id, user_
                     // do not send email notifications for blocked notifications
                     // it's temporary for demo
                     if (!_.contains(blocked_email_notifications, notification_type)) {
-                        sendNotificationToUser(noti);
+                        //sendNotificationToUser(noti);
                     }
                 } else {
                     create_new_notification(notification_type, entity_id, user_id, notificatior_id, sub_entity, url, function (err, obj) {
