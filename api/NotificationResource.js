@@ -487,7 +487,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                 case "user_joined_action_you_created":
                     var num_of_joined = notification.notificators.length;
                     if(num_of_joined > 1) {
-                        notification.user = num_of_joined + " חברי עורו";
+                        notification.user = num_of_joined + " משתתפים";
                         notification.part_one = " הביעו תמיכה ברעיון לפעולה שהעלית בקמפיין ";
                     } else {
                         if(user_obj)
@@ -597,7 +597,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                         if(supprorts_sum && against_sum){
                             notification.user = supprorts_sum +
                                 " " +
-                                "חברי עורו"
+                                "משתתפים"
                             ;
                             notification.part_one =
                                 "תמכו בהצעה שהעלית (ו"
@@ -610,13 +610,13 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                         }else if (supprorts_sum){
                             notification.user = supprorts_sum +
                                 " " +
-                                "חברי עורו"
+                                "משתתפים"
                             ;
                             notification.part_one = "תמכו בהצעה שהעלית בדיון - ";
                         }else if (against_sum){
                             notification.user = against_sum +
                                 " " +
-                                "חברי עורו"
+                                "משתתפים"
                             ;
                             notification.part_one = "התנגדו להצעה שהעלית בדיון - ";
                         }
