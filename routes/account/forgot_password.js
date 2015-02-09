@@ -98,7 +98,7 @@ var forgotPassword = function(user,callback)
             templates.renderTemplate('forgot',{user:user},cbk);
         },
         function(body,cbk) {
-            mail.sendMail(user.email,body,'יצירת סיסמא חדשה לאתר עוּרו',cbk);
+            mail.sendMail(user.email,body,'יצירת סיסמא חדשה',cbk);
         }
     ],function(err, obj){
         callback(err, obj);
