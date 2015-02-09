@@ -46,6 +46,11 @@ exports.create_user_notification = function (notification_type, entity_id, user_
         "post_added_to_action_you_created"
     ];
 
+    // notifications from this array will not be sent to users email
+    var blocked_email_notifications = [
+        'approved_change_suggestion_on_discussion_you_are_part_of'
+    ];
+
     if (notificatior_id && _.indexOf(single_notification_arr, notification_type) == -1) {
 
         async.waterfall([
@@ -107,7 +112,11 @@ exports.create_user_notification = function (notification_type, entity_id, user_
                             cbk(null, obj || noti);
                         });
                     }
-                    sendNotificationToUser(noti);
+                    // do not send email notifications for blocked notifications
+                    // it's temporary for demo
+                    if (!_.contains(blocked_email_notifications, notification_type)) {
+                        sendNotificationToUser(noti);
+                    }
                 } else {
                     create_new_notification(notification_type, entity_id, user_id, notificatior_id, sub_entity, url, function (err, obj) {
                         cbk(err, obj);
