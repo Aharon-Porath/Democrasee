@@ -101,6 +101,8 @@ var SuggestionResource = module.exports = common.GamificationMongooseResource.ex
             if (Number(suggestion.wanted_amount_of_tokens) > discussion_participants_count)
                 suggestion.wanted_amount_of_tokens = discussion_participants_count - 1;
 
+            suggestion.wanted_amount_of_tokens = Number(suggestion.threshold_for_accepting_the_suggestion) || 1;
+
             if (req.user) {
                 models.GradeSuggestion.findOne({user_id:req.user._id, suggestion_id:suggestion._id + ""}, {"_id":1, "evaluation_grade":1, "does_support_the_suggestion":1}, function (err, grade_sugg_obj) {
                     if (!err && grade_sugg_obj) {

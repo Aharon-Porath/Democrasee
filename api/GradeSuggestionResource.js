@@ -166,24 +166,83 @@ var GradeSuggestionResource = module.exports = common.GamificationMongooseResour
                     },
 
                     function (cbk1) {
-                        //if there is an admin threshokd specified for the suggestion - it wins
+                        //if there is an admin threshold specified for the suggestion - it wins
 
-                        real_threshold = Number(suggestion_obj.admin_threshold_for_accepting_the_suggestion) || suggestion_obj.threshold_for_accepting_the_suggestion;
-                        if (real_threshold > discussion_participants_count)
-                            real_threshold = discussion_participants_count - 1;
+                        // NEW ALGORITHM START==========================
+                        if (agrees >= suggestion_obj.threshold_for_accepting_the_suggestion) {
 
-                        if (curr_tokens_amout >= real_threshold) {
+                            var users_in_discussion = discussion_participants_count;
+                            var num_all_voters = agrees + not_agrees;
+
+                            var ratio_agrees_not_agrees = 1 - not_agrees / agrees;
+                            var ratio_voters = num_all_voters / users_in_discussion;
+                            console.log('users_in_discussion = '+users_in_discussion);
+                            console.log('num_all_voters = '+num_all_voters);
+                            console.log('ratio_agrees_not_agrees = '+ratio_agrees_not_agrees);
+                            console.log('ratio_voters = '+ratio_voters);
+
+                            var consensus_meter = ratio_agrees_not_agrees * ratio_voters;
+                            console.log('consensus_meter (before) = '+consensus_meter);
+
+                            var current_consensus_meter = discussion_obj.consensus_meter >= 1 ? 1 : discussion_obj.consensus_meter;
+                            console.log('current_consensus_meter = '+ current_consensus_meter);
+                            consensus_meter = (current_consensus_meter + consensus_meter) / 2;
+                            console.log('consensus_meter (after) = '+consensus_meter);
+
+                            var entery_bar = consensus_meter * users_in_discussion;
+                            console.log('entery_bar = '+entery_bar);
+
                             Suggestion.approveSuggestion(suggestion_obj._id, function (err, obj1, suggestion_object) {
                                 if (!err) {
                                     is_approved = true;
                                     replaced_text = suggestion_object.replaced_text;
                                     approve_date = suggestion_object.approve_date;
+                                    // round threshold UP
+                                    var threshold_for_accepting_the_suggestion = Math.ceil(entery_bar);
+                                    console.log('threshold_for_accepting_the_suggestion = '+threshold_for_accepting_the_suggestion);
+
+                                    models.Discussion.update({_id:discussion_obj._id}, {$set:{consensus_meter:consensus_meter, threshold_for_accepting_change_suggestions:threshold_for_accepting_the_suggestion}}, function (err, num) {
+                                        // on approved suggestion - recalculate  threshold_for_accepting_the_suggestion in all other suggestions
+                                        models.Suggestion.update({discussion_id:discussion_obj._id}, {$set: {threshold_for_accepting_the_suggestion:threshold_for_accepting_the_suggestion}}, {multi: true}, function(err, num){
+                                            if (err) {}
+                                        });
+                                        cbk1(err, obj1);
+                                    });
+                                } else {
+                                    cbk1(err, obj1);
                                 }
-                                cbk1(err, obj1);
                             })
                         } else {
                             cbk1();
                         }
+                        // NEW ALGORITHM END===========================
+
+                        // OLD ALGORITHM START=========================
+                        //real_threshold = Number(suggestion_obj.admin_threshold_for_accepting_the_suggestion) || suggestion_obj.threshold_for_accepting_the_suggestion;
+                        //if (real_threshold > discussion_participants_count)
+                        //    real_threshold = discussion_participants_count - 1;
+                        //
+                        //if (curr_tokens_amout >= real_threshold) {
+                        //    Suggestion.approveSuggestion(suggestion_obj._id, function (err, obj1, suggestion_object) {
+                        //        if (!err) {
+                        //            is_approved = true;
+                        //            replaced_text = suggestion_object.replaced_text;
+                        //            approve_date = suggestion_object.approve_date;
+                        //            var consensus_meter = 0.25;
+                        //            models.Discussion.update({_id:discussion_obj._id}, {$set:{consensus_meter:consensus_meter}}, function (err, num) {
+                        //                models.Suggestion.update({discussion_id:discussion_obj._id}, {$set: {threshold_for_accepting_the_suggestion:consensus_meter*discussion_participants_count}}, {multi: true}, function(err, num){
+                        //                    if (err) {}
+                        //                });
+                        //                cbk1(err, obj1);
+                        //            });
+                        //        } else {
+                        //            cbk1(err, obj1);
+                        //        }
+                        //    })
+                        //} else {
+                        //    cbk1();
+                        //}
+                        // OLD ALGORITHM END=============================
                     },
                     //set notification for suggestion creator ("user agree/disagree your suggestion")
                     function (cbk1) {
