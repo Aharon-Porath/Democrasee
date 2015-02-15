@@ -1909,6 +1909,10 @@ span.remark{
 
 .suggestion_bottom_segment .button{
     float:right;
+    position: relative;
+}
+.suggestion_bottom_segment .button .notifications {
+    left: 3px;
 }
 
 .button_pro input{

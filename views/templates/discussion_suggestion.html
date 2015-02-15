@@ -65,9 +65,11 @@
             <div class="suggestion_bottom_segment one">
                 {^is_my_suggestion}
                 <div class="button button_pro">
+                    <a class="notifications" href="#notifications">{agrees}</a>
                     <input class="grading_button  {?grade_obj} {?grade_obj.does_support_the_suggestion} active {/grade_obj.does_support_the_suggestion} {/grade_obj}" type="button" />
                 </div>
                 <div class="button button_against">
+                    <a class="notifications" href="#notifications">{not_agrees}</a>
                     <input class="grading_button  {?grade_obj} {^grade_obj.does_support_the_suggestion} active {/grade_obj.does_support_the_suggestion} {/grade_obj}" type="button" />
                 </div>
                 {/is_my_suggestion}

@@ -534,7 +534,7 @@ body {
     padding: 13px 0 0 10px;
 }
 
-.user-box a.notifications{
+.notifications{
     position: absolute;
     left: -8px;
     top: -8px;

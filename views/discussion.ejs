@@ -1875,6 +1875,8 @@ $(document).ready(function () {
                 var $suggestion = $("div[data-id=" + suggestion_id + "]");
                 $suggestion.find('.supporters_wanted span').text(data.wanted_amount_of_tokens);
                 $suggestion.find('.supporters_current span').text(Math.round(data.curr_amount_of_tokens));
+                $suggestion.find('.button_pro .notifications').text(Math.round(data.agrees));
+                $suggestion.find('.button_against .notifications').text(Math.round(data.not_agrees));
 
                 suggest_grade_id = data.grade_id;
                 $suggestion_wrapper.data('my_grade_id', data.grade_id);
