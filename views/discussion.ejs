@@ -39,7 +39,7 @@ var error_message = error_message || '';
                         <div class="author">הדיון נפתח ע"י: <a href="/profile/<%=discussion.creator_id._id%>"> <%=discussion.creator_id.first_name+ " " +discussion.creator_id.last_name %> </a></div>
                         <% } %>
                         <hr />
-                        <div id="short">
+                        <div id="short" style="display:none;">
                             <div id="discussion_image" style="width: 260px;height: 190px; overflow:hidden;" class='auto-scale  img_holder'>
                                 <img src="<%= discussion.image_field ? discussion.image_field.url ||'' : '' %>" title="<%= discussion.title %>"/>
                             </div>
@@ -51,13 +51,13 @@ var error_message = error_message || '';
                             <a class="read_more" href="javascript:void(0);">להמשך קריאה ולעריכת המסמך</a>
                         </div>
 
-                        <div id="full">
+                        <div id="full-showed">
                             <div class="msg">
                                 בחר בעזרת הסמן קטעי טקסט שברצונך לשנות. לחץ על קטעים מסומנים כדי לראות הצעות שהעלו אחרים
                             </div>
                             <div id="discussion_content" class=""><%- discussion.text_field.replace(/\n/g, '<br />') %></div>
                             <textarea id="discussion_content_textarea" class="hidden_textarea"><%=discussion.text_field%></textarea>
-                            <a class="read_less" href="javascript:void(0);">סגור</a>
+                            <!--<a class="read_less" href="javascript:void(0);">סגור</a>-->
                         </div>
 
                         <% if( discussion.sub_branding && discussion.sub_branding.length>0) { %>
