@@ -5,7 +5,7 @@
 }
 
 #wrap #header{
-    width: 980px;
+    width: 100%;
     margin: 0 auto;
 }
 hr{
@@ -1338,7 +1338,7 @@ span.remark{
 }
 
 .discussions_page #content_main_holder{
-    width:980px;
+    width:100%;
 }
 
 .discussions_page #content_right_holder{
@@ -1456,9 +1456,9 @@ span.remark{
 }
 
 .discussions_page .segment.main .social_holder{
-    position:absolute;
-    top: 50px;
-    left: 20px;
+    position: absolute;
+    top: 69px;
+    right: 20px;
 }
 
 .discussions_page .segment.main .author a,
@@ -1709,7 +1709,8 @@ span.remark{
 }
 
 .content_break .content_break_content{
-    width:980px;
+    /*width:100%;*/
+    width:100%;
     margin: 10px auto;
 }
 
@@ -1719,13 +1720,15 @@ span.remark{
 }
 
 #suggestions_wrapper, #approved_suggestions_wrapper{
-    width:980px;
+    /*width:100%;*/
+    width:100%;
     margin:auto;
 }
 
 .suggestion_wrapper{
     float:right;
-    width: 980px;
+    /*width: 980px;*/
+    width: 100%;
     padding-top: 30px;
     margin: auto;
     position: relative;
@@ -1734,7 +1737,7 @@ span.remark{
 #content_wrapper_suggestions input.button_more_results{
     text-align: center;
     background:url(/images/more-deals.png) no-repeat;
-    width:980px;
+    width:100%;
     height:48px;
     border:none;
     cursor:pointer;
@@ -1754,7 +1757,8 @@ span.remark{
     color:#4a4a4b;
     font-size: 13px;
     position:relative;
-    width:940px;
+    /*width:940px;*/
+    width:100%;
     margin:auto;
     border-bottom: 1px solid #dbdcde;
 }
@@ -1777,7 +1781,8 @@ span.remark{
 .suggestion_details{
     position: relative;
     float:right;
-    width:100px;
+    /*width:100px;*/
+    width:15%;
     margin:20px;
     padding-left:10px;
     border-left:1px solid #dbdcde;
@@ -1818,7 +1823,8 @@ span.remark{
 .suggestion_content{
     margin:20px;
     float:right;
-    width:748px;
+    /*width:748px;*/
+    width:70%;
 }
 
 .suggestion_holder.edit .suggestion_content{
@@ -1881,6 +1887,7 @@ span.remark{
     margin:5px;
     margin-top:20px;
     position: relative;
+    width: 98%;
 }
 
 #approved_suggestions_wrapper .suggestion_bottom_segment {
@@ -1905,7 +1912,7 @@ span.remark{
 .suggestion_bottom_segment.one{	width:260px; border-left:5px solid #fff; }
 .suggestion_bottom_segment.two{	width:150px; border-left:5px solid #fff; color:#757d7e; }
 .suggestion_bottom_segment.three{	width:420px; }
-.suggestion_bottom_segment.wide{	width:900px; }
+.suggestion_bottom_segment.wide{	width:98%; }
 
 .suggestion_bottom_segment .button{
     float:right;
@@ -2164,7 +2171,7 @@ span.remark{
 
 .edit_window{
     display:none;
-    width:830px;
+    width:85%;
     border:solid 5px #d6dbde;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -2307,7 +2314,8 @@ span.remark{
 }
 
 #comments_wrapper, #special_post_wrapper{
-    width:980px;
+    /*width:100%;*/
+    width:100%;
     margin:auto;
     direction:rtl;
 }
@@ -2320,7 +2328,8 @@ span.remark{
 .comment_details{
     position: relative;
     float:right;
-    width:100px;
+    /*width:100px;*/
+    width:15%;
     margin:0px 0px 20px 20px;
     padding-left:10px;
     border-left:1px solid #dbdcde;
@@ -2612,7 +2621,8 @@ cursor: pointer;
 #comments_wrapper .comment_wrapper .content,
 #special_post_wrapper .content{
     float:right;
-    width:670px;
+    width:540px !important;
+    /*width:77%;*/
     font-size:13px;
     color:#50504f;
     line-height:20px;
@@ -2732,8 +2742,9 @@ cursor: pointer;
 }
 
 #comments_wrapper #add_comment_wrapper .comment_wrapper{
-    width:940px;
-    margin-top: 10px;
+    /*width:940px;*/
+    width:100%;
+    /*margin-top: 10px;*/
 }
 
 /*#comments_wrapper .comment_wrapper .content {
@@ -2840,7 +2851,7 @@ input.button_submit_comment_no_text{
 
 #change_proposal{
     float:right;
-    width:980px;
+    width:100%;
     background:#fff;
     color:#50504f;
     font-size:12px;

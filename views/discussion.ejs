@@ -134,35 +134,6 @@ var error_message = error_message || '';
                     </div>
                 </div>
                 <div id="content_left_sidebar">
-                    <% if (discussion.press_items && discussion.press_items.length>0) { %>
-                    <div class="segment press">
-                        <h2>מן העיתונות</h2>
-                        <div id="press_sidebar_holder">
-
-
-                        </div>
-                    </div>
-                    <%} %>
-                    <% if (discussion.links && discussion.links.length>0) { %>
-                    <div class="segment links">
-                        <h2>קישורים מועילים</h2>
-                        <div >
-
-                            <% for (var c = 0; c <discussion.links.length; c++) { %>
-                            <div class="item">
-                                <div class="title">
-                                    <a href="<%= discussion.links[c].link %>"><%= discussion.links[c].title %></a>
-                                </div>
-                                <%if(discussion.links[c].text){ %>
-                                <div class="text">
-                                    <%= discussion.links[c].text %>
-                                </div>
-                                <%} %>
-                            </div>
-                            <% }%>
-                        </div>
-                    </div>
-                    <%} %>
                 </div>
             </div>
         </div>
@@ -1254,7 +1225,7 @@ $(document).ready(function () {
                 // i paste it here to prevent the weird bug "cannot insertBefore null"
                 $('#discussion_comment').ckeditor({
                     height: 70,
-                    width: 810,
+//                    width: 810,
                     'line-height':10,
                     language:'he',
                     removePlugins : 'elementspath',
@@ -1344,7 +1315,7 @@ $(document).ready(function () {
                 if(!err){
                     $('#discussion_comment').ckeditor({
                         height: 70,
-                        width: 810,
+//                        width: 810,
                         'line-height':10,
                         language:'he',
                         removePlugins : 'elementspath',

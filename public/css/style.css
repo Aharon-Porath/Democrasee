@@ -52,13 +52,13 @@ body {
 }
 
 #wrap {
-    width: 980px;
+    width: 100%;
     margin: 0 auto;
 }
 
 #header {
     position: relative;
-    height: 229px;
+    /*height: 229px;*/
 }
 
 .big-head #header {
@@ -498,10 +498,9 @@ body {
 
 .user-box {
     position: absolute;
-    left: 0;
-    top: 138px;
-
-
+    left: 40px;
+    top: 11px;
+    z-index: 100;
 }
 .user-box a.icon{
     width: 43px;
@@ -560,8 +559,8 @@ body {
 .user-info-box-container
 {
     position: absolute;
-    top:190px;
-    left: -10px;
+    top: 65px;
+    left: 280px;
     height: 180px;
     width: 250px;
     font-family: Arial;
@@ -5226,7 +5225,8 @@ div.action_list::-webkit-scrollbar-button {
 .profile-top .right {
     float: right;
    /* width: 711px;*/
-    width: 980px;
+    /*width: 980px;*/
+    width: 100%;
 }
 
 .profile-top .right .white-box {
