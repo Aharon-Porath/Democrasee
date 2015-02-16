@@ -118,9 +118,15 @@ var DiscussionResource = module.exports = common.GamificationMongooseResource.ex
 
     get_object:function (req, id, callback) {
         var self = this;
-        self._super(req, id, function (err, object) {
+        models.Discussion.findById(id, function(err, object) {
             self.get_discussion(object, req.user, callback);
-        })
+        });
+        //self._super(req, id, function (err, object) {
+        //    console.log(id);
+        //    console.log(req);
+        //    console.log(object);
+        //    self.get_discussion(object, req.user, callback);
+        //})
     },
 
     get_objects:function (req, filters, sorts, limit, offset, callback) {

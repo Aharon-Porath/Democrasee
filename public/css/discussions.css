@@ -1912,7 +1912,9 @@ span.remark{
     position: relative;
 }
 .suggestion_bottom_segment .button .notifications {
-    left: 3px;
+    left: 9px;
+    background: none;
+    top: 4px;
 }
 
 .button_pro input{

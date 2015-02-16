@@ -169,7 +169,7 @@ var GradeSuggestionResource = module.exports = common.GamificationMongooseResour
                         //if there is an admin threshold specified for the suggestion - it wins
 
                         // NEW ALGORITHM START==========================
-                        if (agrees >= suggestion_obj.threshold_for_accepting_the_suggestion) {
+                        if (agrees - Math.abs(not_agrees) >= suggestion_obj.threshold_for_accepting_the_suggestion) {
 
                             var users_in_discussion = discussion_participants_count;
                             var num_all_voters = agrees + not_agrees;
