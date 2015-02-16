@@ -1656,6 +1656,8 @@ $(document).ready(function () {
 
     $("#content_main_holder").on("click", ".marker_1", function () {
         if(!mouseDown){
+            // open tab with suggestions first
+            $('#wrap > div.tabs > ul > li:nth-child(1) a').click();
             displayAllSuggestions();
             var id= $(this).data('id');
             $('html, body').animate({
