@@ -23,7 +23,7 @@ h3{
     display: block;
     font-weight: bold;
     line-height: 20px;
-    color: #4a4a4b;
+    color: #FFFFFF;
     font-size: 1.17em;
     -webkit-margin-before: 1em;
     -webkit-margin-after: 1em;
@@ -269,7 +269,7 @@ h2{
 blockquote{
     font-size: 40px;
     font-family: Arial;
-    color: #4A4A4B;
+    color: #FFFFFF;
     display: block;
     width: 90%;
     height: auto;
@@ -631,14 +631,14 @@ blockquote{
 #graph .graph_col.col2 .bar{
     height:22%;
     width:125px;
-    background:#4a4a4b;
+    background:#FFFFFF;
     position:absolute;
     bottom:0px;
     right: 46px;
 }
 
 #graph .graph_col.col2 .percentage{
-    color: #4a4a4b;
+    color: #FFFFFF;
 }
 
 #graph .graph_col.col3 .bar{
@@ -668,7 +668,7 @@ blockquote{
     text-align:justify;
     font-size:13px;
     font-weight:bold;
-    color:#4a4a4b;
+    color:#FFFFFF;
     padding:4px 0;
 }
 
@@ -681,7 +681,7 @@ blockquote{
 }
 
 #content_main_wrapper{
-    background:#ededed;
+    background:rgba(0, 0, 0, 0.2);
     width:100%;
     margin:0 auto;
     font-family:Arial;
@@ -705,7 +705,7 @@ blockquote{
 #content_main_holder .segment.info{
 
 
-    background-color: #f6f6f6;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 #info_items{
@@ -718,7 +718,7 @@ blockquote{
     background:#fff;
     float: right;
     padding:20px;
-    color:#4a4a4b;
+    color:#FFFFFF;
     font-size: 13px;
 }
 
@@ -861,7 +861,7 @@ blockquote{
     background:#fff;
     float: right;
     padding:10px;
-    color:#4a4a4b;
+    color:#FFFFFF;
     font-size: 13px;
 }
 
@@ -1015,7 +1015,7 @@ blockquote{
 }
 
 .header .item.title{
-    color:#4a4a4b;
+    color:#FFFFFF;
     font-size:25px;
 }
 
@@ -1158,7 +1158,7 @@ span.remark{
 .quotes_holder .status{
     font-size:14px;
     font-family:Arial;
-    color:#4a4a4b;
+    color:#FFFFFF;
     padding:17px 20px 17px 40px;
     position:relative;
 
@@ -1352,10 +1352,10 @@ span.remark{
 }
 
 .discussions_page .segment{
-    background:#fff;
+    /*background:#fff;*/
     float: right;
     padding:20px;
-    color:#4a4a4b;
+    color:#ffffff;
     font-size: 13px;
     position:relative;
 }
@@ -1475,15 +1475,15 @@ span.remark{
     padding-bottom: 30px;
 }
 
-.discussions_page #content_wrapper_suggestions,
+/*.discussions_page #content_wrapper_suggestions,*/
 .discussions_page #content_wrapper_approved_suggestions,
 .discussions_page #content_wrapper{
     direction:rtl;
     margin-top: 0px;
     z-index: 0;
-    float: right;
+    /*float: right;*/
     width: 100%;
-    background:#ededed;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .discussions_page #content_main_wrapper{
@@ -1697,7 +1697,7 @@ span.remark{
 }
 
 .title{
-    color:#50504f;
+    color:#ffffff;
 }
 
 .content_break{
@@ -1724,6 +1724,7 @@ span.remark{
     /*width:100%;*/
     width:100%;
     margin:auto;
+    display: inline-block;
 }
 
 .suggestion_wrapper{
@@ -1733,6 +1734,7 @@ span.remark{
     padding-top: 30px;
     margin: auto;
     position: relative;
+    display: table-cell;
 }
 
 #content_wrapper_suggestions input.button_more_results{
@@ -1754,8 +1756,8 @@ span.remark{
 .suggestion_holder.button,
 .suggestion_holder{
     float:right;
-    background:#fff;
-    color:#4a4a4b;
+    background:rgba(0, 0, 0, 0.2);
+    color:#FFFFFF;
     font-size: 13px;
     position:relative;
     /*width:940px;*/
@@ -1897,7 +1899,7 @@ span.remark{
 
 .suggestion_bottom_segment{
     float:right;
-    padding:15px 15px 10px 15px;
+    padding:15px 0;
     min-height: 48px;
     position: relative;
 }
@@ -2420,7 +2422,7 @@ cursor: pointer;
 #special_post_wrapper .comment_wrapper{
     float:right;
     background:#fff;
-    padding:20px;
+    padding:20px 0;
     height: 153px;
     position: relative;
 }
@@ -2556,7 +2558,7 @@ cursor: pointer;
     float:right;
     margin:0 3px;
     font-size:13px;
-    color:#898888;
+    color:#FFFFFF;
     line-height:28px;
 }
 
@@ -2639,7 +2641,7 @@ cursor: pointer;
     padding:10px 40px 10px 10px;
     border:1px solid #e9e9e0;
     font-style:italic;
-    color:#898888;
+    color:#FFFFFF;
     margin-bottom:10px;
 }
 
@@ -2685,7 +2687,7 @@ cursor: pointer;
 }
 
 #comments_wrapper .comment_wrapper .quoted_by{
-    color:#898888;
+    color:#FFFFFF;
     font-size:11px;
     position: absolute;
     bottom: 15px;
@@ -2954,7 +2956,7 @@ input.button_submit_comment_no_text{
 
 
 #content_right_holder .segment.main .marker_1{
-    background:#ffff97;
+    background:#DF17FF;
 }
 #content_right_holder .segment.main .marker_1:hover{
     cursor: pointer;

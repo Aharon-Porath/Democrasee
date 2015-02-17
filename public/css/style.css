@@ -44,11 +44,11 @@ body {
 }
 
 body {
-    background: #ededed url(/images/header-bg.png) 0 0 repeat-x;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .big-head {
-    background: #ededed url(/images/BG-web1.gif) 0 0 repeat-x;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 #wrap {
@@ -529,7 +529,7 @@ body {
     float: left;
     font-weight: bold;
     font-size: 14px;
-    color: #656565;
+    color: #FFFFFF;
     padding: 13px 0 0 10px;
 }
 
@@ -10419,7 +10419,7 @@ body.information-page #wrap {
 /*----- Tabs -----*/
 .tabs {
     width:100%;
-    display:inline-block;
+    display:block;
 }
 
 /*----- Tab Links -----*/
@@ -10431,7 +10431,7 @@ body.information-page #wrap {
 }
 
 .tab-links li {
-    margin:0px 5px;
+    margin:20px 5px 0 5px;
     float:right;
     list-style:none;
 }
@@ -10459,10 +10459,10 @@ li.active a, li.active a:hover {
 
 /*----- Content of Tabs -----*/
 .tab-content {
-    padding:15px;
+    /*padding:15px;*/
     border-radius:3px;
     box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
-    background:#fff;
+    background:rgba(0, 0, 0, 0.2);
 }
 
 .tab {
