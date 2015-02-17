@@ -3163,7 +3163,7 @@ input.button_submit_comment_no_text{
 
 /*-------------------*/
 .write-comment {
-    width: 980px;
+    width: 100%;
     margin: 0 auto 70px;
     clear: both;
     padding-top: 30px;
@@ -3188,7 +3188,7 @@ input.button_submit_comment_no_text{
 
 .write-comment .text-box .left {
     float: left;
-    width: 870px;
+    width: 905%;
 }
 
 .write-comment .text-box .user-right {
