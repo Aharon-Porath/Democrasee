@@ -73,7 +73,19 @@ var registerUser = module.exports.registerUser = function(req,data,next,callback
     async.waterfall([
         // 1) get user by email
         function(cbk) {
-            models.User.findOne({email:new RegExp(user.email,'i')},cbk);
+
+            var query = {email:new RegExp(user.email,'i')};
+
+            // find pattern of gmail emails where: somename+sometag@gmaildomain.any
+            // to prevent use emails with that pattern for registration
+            if (user.email.indexOf('+') > 0) {
+                var re = /(.*)\+.*@(.*)/ig;
+                var m = re.exec(user.email);
+                query = {$or: [ {email:m[1] + '@' + m[2]}, {email:new RegExp(m[1] + '\+.*@'+m[2])} ]};
+            }
+
+            models.User.findOne(query,cbk);
+
         },
 
         // 2) save user
