@@ -3171,7 +3171,7 @@ input.button_submit_comment_no_text{
 
 .write-comment h3 {
     margin-right: 100px;
-    color: #50504F;
+    color: #FFFFFF;
     font: normal 22px/44px 'Arial';
     border-top: 6px solid #d6dbde;
 }
@@ -3188,7 +3188,7 @@ input.button_submit_comment_no_text{
 
 .write-comment .text-box .left {
     float: left;
-    width: 905%;
+    width: 90%;
 }
 
 .write-comment .text-box .user-right {
@@ -3239,7 +3239,7 @@ input.button_submit_comment_no_text{
     display: block;
     color: #7f7f7e;
     font: normal 13px/23px Arial;
-    width: 858px;
+    width: 95%;
     padding: 0 5px;
 }
 
