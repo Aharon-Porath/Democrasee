@@ -44,7 +44,7 @@ body {
 }
 
 body {
-    background: rgba(0, 0, 0, 0.2);
+    /*background: rgba(0, 0, 0, 0.2);*/
 }
 
 .big-head {
@@ -10490,4 +10490,8 @@ body {
 
 #back-to-discussion a {
     color: #FFFFFF;
+}
+
+.cboxIframe {
+    background: #FFF !important;
 }
