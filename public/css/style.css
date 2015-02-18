@@ -826,7 +826,7 @@ color: #ff00af;
 
 
     border-top: 6px solid #d6dbde;
-    color: #50504f;
+    color: #FFFFFF;
     font: normal 24px/49px 'Arial';
     margin: 0;
 }
@@ -10440,7 +10440,7 @@ body.information-page #wrap {
     padding:9px 15px;
     display:inline-block;
     border-radius:3px 3px 0px 0px;
-    background:#7FB5DA;
+    background:#EFE658;
     font-size:16px;
     font-weight:600;
     color:#4c4c4c;
@@ -10479,4 +10479,15 @@ li.active a, li.active a:hover {
 /* RESET FOR IFRAME IN TLV */
 body {
     /*background: none;*/
+}
+
+#back-to-discussion {
+    position: absolute;
+    top: 19px;
+    left: 50%;
+    font-size: 19px;
+}
+
+#back-to-discussion a {
+    color: #FFFFFF;
 }

@@ -1812,14 +1812,14 @@ span.remark{
 .suggestion_details .ratings .friends{
     padding-right:18px;
     background:url(/images/icon_man.png) center right no-repeat;
-    color:#3c63ef;
+    color:#EADC00;
     font-size:11px;
 }
 
 .suggestion_details .ratings .awards{
     padding-right:18px;
     background:url(/images/icon_award.png) center right no-repeat;
-    color:#3c63ef;
+    color:#EADC00;
     font-size:11px;
 }
 
@@ -1881,7 +1881,7 @@ span.remark{
 .suggestion_content .text h3{
     margin:2px 0px 2px 0px;
     font-size:12px;
-    color:#3c63ef;
+    color:#EADC00;
 }
 
 .suggestion_bottom{
@@ -2014,7 +2014,7 @@ span.remark{
 }
 
 .comments_counter span{
-    color:#3c63ef;
+    color:#EADC00;
 }
 
 .comments_counter .close{
@@ -2359,14 +2359,14 @@ span.remark{
 .comment_details .ratings .friends{
     padding-right:18px;
     background:url(/images/icon_man.png) center right no-repeat;
-    color:#3c63ef;
+    color:#EADC00;
     font-size:11px;
 }
 
 .comment_details .ratings .awards{
     padding-right:18px;
     background:url(/images/icon_award.png) center right no-repeat;
-    color:#3c63ef;
+    color:#EADC00;
     font-size:11px;
 }
 
@@ -2382,7 +2382,7 @@ span.remark{
     float:right;
     height:72px;
     width:100%;
-    background:#3c63ef;
+    background:#EADC00;
 }
 
 .most_pop #special_post_wrapper  .content,
@@ -2523,7 +2523,7 @@ cursor: pointer;
 
 #comments_wrapper .content .rating span,
 #special_post_wrapper .content .rating span{
-    color:#3c63ef;
+    color:#EADC00;
     font-weight:bold;
     float:right;
     width:50px;
@@ -2721,7 +2721,7 @@ cursor: pointer;
 }
 
 #comments_wrapper .comment_wrapper .rating_small span.counter{
-    background:#3c63ef;
+    background:#EADC00;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius:3px;
@@ -2837,7 +2837,7 @@ input.button_submit_comment_no_text{
 
 .msg{
     background:#fcfcf1;
-    color:#3b63ef;
+    color:#EADC00;
     font-size:15px;
     font-weight:bold;
     float:right;
@@ -3738,7 +3738,7 @@ input.button_submit_comment_no_text{
     color: #7f7f7e;
 }
 #info_items .mb-inside h2 {
-    color: #3b63ef;
+    color: #EADC00;
     font: bold 13px/20px 'Arial';
     margin: 0;
     padding: 0;
