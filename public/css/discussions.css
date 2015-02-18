@@ -681,7 +681,7 @@ blockquote{
 }
 
 #content_main_wrapper{
-    background:rgba(0, 0, 0, 0.2);
+    background:rgba(0, 0, 0, 0.5);
     width:100%;
     margin:0 auto;
     font-family:Arial;
@@ -705,7 +705,7 @@ blockquote{
 #content_main_holder .segment.info{
 
 
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #info_items{
@@ -1483,7 +1483,7 @@ span.remark{
     z-index: 0;
     /*float: right;*/
     width: 100%;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .discussions_page #content_main_wrapper{
@@ -1756,7 +1756,7 @@ span.remark{
 .suggestion_holder.button,
 .suggestion_holder{
     float:right;
-    background:rgba(0, 0, 0, 0.2);
+    background:rgba(0, 0, 0, 0.5);
     color:#FFFFFF;
     font-size: 13px;
     position:relative;
@@ -1870,8 +1870,8 @@ span.remark{
 
 .suggestion_content .text_orig{
     font: 'Arial';
-    background:#fcfcf1;
-    color:#757d7e;
+    background:#323131;
+    color:#FFFFFF;
     padding:10px;
     border:1px solid #e9e9e0;
     font-style:italic;
@@ -1885,10 +1885,10 @@ span.remark{
 }
 
 .suggestion_bottom{
-    float:right;
-    background:#eff1f2;
-    margin:5px;
-    margin-top:20px;
+    float: right;
+    background: #323131;
+    margin: 5px;
+    margin-top: 20px;
     position: relative;
     width: 98%;
 }
@@ -1899,8 +1899,8 @@ span.remark{
 
 .suggestion_bottom_segment{
     float:right;
-    padding:15px 0;
-    min-height: 48px;
+    padding:11px 5px;
+    min-height: 32px;
     position: relative;
 }
 .suggestion_bottom .date_time {
@@ -1914,7 +1914,7 @@ span.remark{
 
 .suggestion_bottom_segment.one{	width:260px; border-left:5px solid #fff; }
 .suggestion_bottom_segment.two{	width:150px; border-left:5px solid #fff; color:#757d7e; }
-.suggestion_bottom_segment.three{	width:420px; }
+.suggestion_bottom_segment.three{	width:250px; margin-right: 20px; }
 .suggestion_bottom_segment.wide{	width:98%; }
 
 .suggestion_bottom_segment .button{
@@ -2836,7 +2836,7 @@ input.button_submit_comment_no_text{
 /* Discussions Page 2 - start */
 
 .msg{
-    background:#fcfcf1;
+    background:#737373;
     color:#EADC00;
     font-size:15px;
     font-weight:bold;
@@ -2956,11 +2956,14 @@ input.button_submit_comment_no_text{
 
 
 #content_right_holder .segment.main .marker_1{
-    background:#DF17FF;
+    background:#FFFF07;
+    color: #000000;
 }
 #content_right_holder .segment.main .marker_1:hover{
     cursor: pointer;
     background:#ffff07;
+    color: #000000;
+    text-decoration: underline;
 }
 
 #content_right_holder .segment.main .marker_1.off{
