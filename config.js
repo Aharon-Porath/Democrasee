@@ -28,7 +28,7 @@ config.sendgrid_key = 'Zaq1Xsw2';
 config.system_email = 'admin@dev6.linnovate.net';
 
 
-
+config.MAIN_DISCUSSION = process.env['MAIN_DISCUSSION'] || '549ab39ada8a349714000026';
 
 config.DB_URL = process.env['MONGOLAB_URI'] || 'mongodb://localhost/idemos';
 config.ROOT_PATH = process.env.ROOT_PATH || 'http://idemos.herokuapp.com';
