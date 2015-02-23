@@ -5,6 +5,7 @@ module.exports = function(req, res){
     res.statusCode = 302;
     res.setHeader("Location", "/discussions/" + config.MAIN_DISCUSSION);
     res.end();
+
         //}
      //res.render('index.ejs');
 }
