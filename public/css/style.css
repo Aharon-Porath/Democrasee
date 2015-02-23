@@ -37,6 +37,30 @@
     font-weight: normal;
     font-style: normal;
 }
+/*
+ * Alef Hebrew (Hebrew) http://www.google.com/fonts/earlyaccess
+ */
+@font-face {
+    font-family: 'Alef Hebrew';
+    font-style: normal;
+    font-weight: 400;
+    src: url(//fonts.gstatic.com/ea/alefhebrew/v4/Alef-Regular.eot);
+    src: url(//fonts.gstatic.com/ea/alefhebrew/v4/Alef-Regular.eot?#iefix) format('embedded-opentype'),
+    url(//fonts.gstatic.com/ea/alefhebrew/v4/Alef-Regular.woff2) format('woff2'),
+    url(//fonts.gstatic.com/ea/alefhebrew/v4/Alef-Regular.woff) format('woff'),
+    url(//fonts.gstatic.com/ea/alefhebrew/v4/Alef-Regular.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'Alef Hebrew';
+    font-style: normal;
+    font-weight: 700;
+    src: url(//fonts.gstatic.com/ea/alefhebrew/v4/Alef-Bold.eot);
+    src: url(//fonts.gstatic.com/ea/alefhebrew/v4/Alef-Bold.eot?#iefix) format('embedded-opentype'),
+    url(//fonts.gstatic.com/ea/alefhebrew/v4/Alef-Bold.woff2) format('woff2'),
+    url(//fonts.gstatic.com/ea/alefhebrew/v4/Alef-Bold.woff) format('woff'),
+    url(//fonts.gstatic.com/ea/alefhebrew/v4/Alef-Bold.ttf) format('truetype');
+}
+
 
 html,
 body {
@@ -2687,6 +2711,10 @@ color: #ff00af;
 .discussion_content, .action_content {
     height: 188px;
     overflow: hidden;
+}
+
+#discussion_content {
+    font-size: 17px;
 }
 
 .extended .discussion_content, .action_content {
@@ -9353,7 +9381,7 @@ a.menu-elections:hover {
 
 .underline_and_cursor_when_hover {
     text-decoration: none;
-    color: grey
+    color: #ffffff;
 }
 
 .underline_and_cursor_when_hover:hover {

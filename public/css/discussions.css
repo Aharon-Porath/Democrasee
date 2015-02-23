@@ -684,7 +684,7 @@ blockquote{
     background:rgba(0, 0, 0, 0.5);
     width:100%;
     margin:0 auto;
-    font-family:Arial;
+    font-family: 'Alef Hebrew', serif;
     float: left;
 }
 
@@ -1454,6 +1454,7 @@ span.remark{
     margin:0px;
     font-size:26px;
     width: 525px;
+    font-family: Arial;
 }
 
 .discussions_page .segment.main .social_holder{
@@ -2008,7 +2009,7 @@ span.remark{
     font-size:14px;
     font-weight:bold;
     padding-right:30px;
-    margin-top:-15px;
+    margin-top:-18px;
     margin-bottom: -15px;
     float: left;
 }
@@ -2053,7 +2054,7 @@ span.remark{
     width:510px;
     position:relative;
     left:80px;
-    background:url(/images/bg_comments_top.png) repeat-x 0 0;
+    /*background:url(/images/bg_comments_top.png) repeat-x 0 0;*/
     padding-top: 10px;
     border-right:1px solid #e0e0e0;
     border-left:1px solid #e0e0e0;
@@ -2064,13 +2065,13 @@ span.remark{
 .post_or_suggestion_comments_holder .comment.even{
     width: 490px;
     clear: both;
-    background:#f6f6f6;
+    background:rgba(0, 0, 0, 0.5);
 }
 
 .post_or_suggestion_comments_holder .comment.odd{
     width: 490px;
     clear: both;
-    background:#ededed;
+    background:rgba(0, 0, 0, 0.5);
 }
 
 .post_or_suggestion_comments_holder .comment.even span.photo-pattern {
@@ -2120,7 +2121,7 @@ span.remark{
 }
 
 .post_or_suggestion_comments_holder .comment .content{
-    color:#50504f;
+    color:#ffffff;
     font-size:12px;
 }
 
@@ -2421,7 +2422,7 @@ cursor: pointer;
 #comments_wrapper .comment_wrapper,
 #special_post_wrapper .comment_wrapper{
     float:right;
-    background:#fff;
+    background:rgba(0, 0, 0, 0.5) !important;
     padding:20px 0;
     height: 153px;
     position: relative;
@@ -2627,7 +2628,7 @@ cursor: pointer;
     width:540px !important;
     /*width:77%;*/
     font-size:13px;
-    color:#50504f;
+    color:#ffffff;
     line-height:20px;
 }
 
@@ -2763,7 +2764,7 @@ input.button_submit_comment{
     border:none;
     cursor:pointer;
     float:left;
-    margin-top:20px;
+    margin-top:0px;
 }
 input.button_submit_comment.disable{
     background:url(/images/button_submit_comment_d.png) no-repeat 0 0;
@@ -2846,6 +2847,7 @@ input.button_submit_comment_no_text{
     width:648px;
     margin:10px 0;
     border:1px solid #e9e9e0;
+    font-family: Arial;
 }
 
 .change_proposal{

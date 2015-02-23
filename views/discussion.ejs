@@ -28,13 +28,13 @@ var error_message = error_message || '';
                     <div class="segment main">
                         <!--<h2 class="title topic"><%//=discussion.subject_name%> <img src="/images/arrow_left.png" /></h2>-->
                         <h2 class="title">  <%=discussion.title%> </h2>
-                        <div class="social_holder">
-                            <a id="facebook_share" class="share_icon" href="javascript: void(0)"><img src="/images/icon_fb.png"></a>
-                            <a id="twitter_share" class="share_icon" href="javascript: void(0)"><img src="/images/icon_tw.png"></a>
-                            <a id="google_plus_share" class="share_icon" href="javascript: void(0)"><img src="/images/icon_gp.png"></a>
-                            <a id="mail_share" class="share_icon" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.website.com." title="Share by Email"><img src="/images/icon_email.png"></a>
-                            <!--<a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.website.com." title="Share by Email"><img src="http://png-2.findicons.com/files/icons/573/must_have/48/mail.png"/></a>-->
-                        </div>
+                        <!--<div class="social_holder">-->
+                            <!--<a id="facebook_share" class="share_icon" href="javascript: void(0)"><img src="/images/icon_fb.png"></a>-->
+                            <!--<a id="twitter_share" class="share_icon" href="javascript: void(0)"><img src="/images/icon_tw.png"></a>-->
+                            <!--<a id="google_plus_share" class="share_icon" href="javascript: void(0)"><img src="/images/icon_gp.png"></a>-->
+                            <!--<a id="mail_share" class="share_icon" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.website.com." title="Share by Email"><img src="/images/icon_email.png"></a>-->
+                            <!--&lt;!&ndash;<a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.website.com." title="Share by Email"><img src="http://png-2.findicons.com/files/icons/573/must_have/48/mail.png"/></a>&ndash;&gt;-->
+                        <!--</div>-->
                         <% if(discussion.creator_id){ %>
                         <div class="author">הדיון נפתח ע"י: <a href="/profile/<%=discussion.creator_id._id%>"> <%=discussion.creator_id.first_name+ " " +discussion.creator_id.last_name %> </a></div>
                         <% } %>
@@ -246,15 +246,15 @@ var error_message = error_message || '';
             </div>
 
             <div id="tab3" class="tab">
-                <div class="content_break comments">
-                    <div class="content_break_content comments">
-                        <div id="comments_filter">
-                            <input data-sort-by="-creation_date" class="button_order_chron selected" type="button" />
-                            <input data-sort-by="-popularity" class="button_order_popular" type="button" />
-                            <input data-sort-by="-total_votes" class="button_order_contro" type="button" />
-                        </div>
-                    </div>
-                </div>
+                <!--<div class="content_break comments">-->
+                    <!--<div class="content_break_content comments">-->
+                        <!--<div id="comments_filter">-->
+                            <!--<input data-sort-by="-creation_date" class="button_order_chron selected" type="button" />-->
+                            <!--<input data-sort-by="-popularity" class="button_order_popular" type="button" />-->
+                            <!--<input data-sort-by="-total_votes" class="button_order_contro" type="button" />-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <div id="content_wrapper_comments">
                     <div id="special_post_wrapper_background">
                         <div id="special_post_wrapper">
