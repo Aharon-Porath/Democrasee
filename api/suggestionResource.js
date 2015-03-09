@@ -238,7 +238,7 @@ var SuggestionResource = module.exports = common.GamificationMongooseResource.ex
                     }
                 })
                 if (err){
-                    var to = 'aharon@uru.org.il';
+                    var to = 'aharon.porath@gmail.com';
                     var subject = "הועלתה הצעה לשינוי לטקסט שכבר סומן בדיון";
                     /*var body = "<a href='" + req.app.settings.root_path  +  "'/discussions/" + discussion_id + "#post_" + sug + "'>"
                         + "existing suggestion with same indexes"
@@ -768,7 +768,7 @@ function sendUserOverlapMail(discussion, suggestion, approved_suggestion){
        },
 
        function(user, message, cbk){
-           mail.sendMailFromTemplate(/*user.email*/"aharon@uru.org.il", message, cbk);
+           mail.sendMailFromTemplate(/*user.email*/"aharon.porath@gmail.com", message, cbk);
        }
    ], function(err){
        if (err) console.error(err);

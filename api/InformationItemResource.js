@@ -93,7 +93,7 @@ var InformationItemResource = module.exports = common.GamificationMongooseResour
         var user_id = req.session.user_id;
         var self = this;
         var info_item_object = new self.model();
-        var mail_to = 'aharon@uru.org.il';
+        var mail_to = 'aharon.porath@gmail.com';
         var mail_subject = 'new information item';
         var mail_body =
             'YO! a new information item is waiting for you.. the title is: ' + '<a href="http://uru-admin.herokuapp.com/admin/model/InformationItem/document/' + info_item_object.id + '">' + fields.title + '</a>';

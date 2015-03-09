@@ -261,7 +261,7 @@ var sendNotificationToUser = function (notification) {
     var  uru_group = [
         /*'saarsta@gmail.com',*/
         //'konfortydor@gmail.com',
-        //'aharon@uru.org.il',
+        //'aharon.porath@gmail.com',
         //'poaharon@gmail.com',
         //'aharon.porath@gmail.com',
         //'liorur@gmail.com',
