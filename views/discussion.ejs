@@ -1536,6 +1536,9 @@ $(document).ready(function () {
     var mouseDown, mouseUp, top, left;
     var range_txt;
 
+    $('body').on('mousedown', function(e) {
+        mouseDown = e;
+    });
     $('#discussion_content,#discussion_content_textarea')
             .on('mousedown', function (e) {
                 mouseDown = e;
@@ -1543,10 +1546,11 @@ $(document).ready(function () {
                 console.log(mouseDown) ;
             })
             .on('keydown', function (e) {                if (!(e.shiftKey && (e.keyCode <= 40 && e.keyCode >= 37) || (e.ctrlKey && e.keyCode == 65))) e.preventDefault();})
-            .on('dragstart', function (e) {                e.preventDefault();               })
+            .on('dragstart', function (e) {               mouseDown = e;  e.preventDefault(); console.log(mouseDown) ;              })
             .on('mouseup',function (e) {
                 e.stopPropagation();
                 mouseUp = e;
+                console.log(e) ;
                 var err = false;
 
                 left = Math.ceil((mouseDown.clientX + mouseUp.clientX) / 2 - 97);
@@ -1561,7 +1565,7 @@ $(document).ready(function () {
                 }else {
 
                     var flag = discoverRange (range_txt);
-
+                    console.log(range_txt);
                     if (range_txt.length == 0){
                         mouseDown=null
                         return false;
@@ -1614,8 +1618,12 @@ $(document).ready(function () {
                         $("#pop_suggest_bt").click();
                     }else{
                         $("#old_suggestion_popup").hide();
+                        var widthPopup  = $("#new_suggestion_popup .tooltip_2").width();
+                        var leftPopup = e.pageX-97;
+                        leftPopup = leftPopup <= 0 ? 0 : leftPopup;
+                        leftPopup = e.pageX+widthPopup-97 > window.innerWidth ? window.innerWidth-widthPopup-26 : leftPopup;
                         $("#new_suggestion_popup")
-                                .css({ top:top, left: (e.pageX-97), opacity:0 })
+                                .css({ top:top, left: leftPopup, opacity:0 })
                                 .show()
                                 .animate({ top:'-=20px', opacity:1 }, 100, 'linear');
                         setTimeout(function (){  mouseDown=null;},500)
