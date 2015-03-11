@@ -2691,12 +2691,12 @@ color: #ff00af;
 .hidden_textarea {
     background: transparent;
     height: 100%;
-    width: 460px;
+    width: 100%;
     resize: none;
     border: none;
-    color: #7F7F7E;
-    font: normal 13px/17px Arial;
+    color: #ffffff;
     overflow: hidden;
+    font-size: 17px;
 }
 
 .extended .hidden_textarea {
