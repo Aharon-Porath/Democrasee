@@ -1,3 +1,4 @@
+<% if (settings.port != 80) {settings.root_path += ':' + settings.port; } %>
 <div style="direction:rtl">
     <div align="center"><font face="arial"><br><br></font></div>
     <table width="600" border="0" align="center" cellpadding="0" cellspacing="0" dir="rtl">
@@ -12,6 +13,7 @@
                 <p></p>
 
                 <p>תודה על הרשמתך וברוך הבא לאתר . אנא לחץ
+
                     <a href="<%= settings.root_path %>/account/activation?code=<%= user.validation_code %>&id=<%= user.id %>&next=<%= encodeURIComponent(next || '') %>">
                     כאן
                     </a>
