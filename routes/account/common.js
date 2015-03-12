@@ -1,6 +1,6 @@
 var crypto = require('crypto');
 
-exports.DEFAULT_LOGIN_REDIRECT = 'discussions';
+exports.DEFAULT_LOGIN_REDIRECT = 'tlv/';
 
 exports.LOGIN_PATH = '/account/login';
 
