@@ -247,7 +247,7 @@ $(function(){
     '
         });
     }
-    $.cookie('welcome_popup', '1', {path: '/'});
+    $.cookie('welcome_popup', '1', {path: '/', expires: 365});
     if(is_new) {
         var pixel = '<!-- Postclick Tracking Tag Start --><img src="https://secserv.adtech.de/pcsale/3.0/1158/0/0/0/BeaconId=13757;rettype=img;subnid=1;SalesValue=100;;custom1=' + encodeURIComponent(mail) + '" width="1" height="1"><!-- Postclick Tracking Tag End -->';
         if(is_new[1] == 'register')
