@@ -408,6 +408,17 @@ $(function(){
     fbs_click($('.share'));
     initTooltipWithMessage($(".cycle_comming_soon"), "כאן יתקיים התהליך למימוש המציאות הנדרשת שהסכמנו לגביה במערכת הדיונים, באמצעות פעולות, אירועים ועדכונים שוטפים. יעלה בקרוב."   );
     initTooltipWithMessage($(".action_comming_soon"), "יעלה בקרוב");
+
+    $("#fb_ajax_connect").live('click', function(){
+        facebookLogin(function(err, result){
+            if(!err){
+                callback(err, result);
+            }else{
+                callback(err, result);
+                //  $("#login_title").text(err);
+            }
+        })
+    });
 });
 
 $.fn.autoscale = $.fn.imgscale;
