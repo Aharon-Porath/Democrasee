@@ -11529,8 +11529,7 @@ $(function(){
         var pixel = '<!-- Postclick Tracking Tag Start --><img src="https://secserv.adtech.de/pcsale/3.0/1158/0/0/0/BeaconId=13757;rettype=img;subnid=1;SalesValue=100;;custom1=' + encodeURIComponent(mail) + '" width="1" height="1"><!-- Postclick Tracking Tag End -->';
         if(is_new[1] == 'register')
             popupProvider.showOkPopup({
-                message:'הרשמתך התקבלה בהצלחה. כדי להפעיל את חשבון המשתמש שלך, אנא פתח את מייל המערכת שנשלח לכתובת ' +
-                    'שנרשמת איתה.'
+                message:'להשלמת התהליך יש לאשר את ההרשמה במייל שנשלח אליך'
                     +
                     pixel
 

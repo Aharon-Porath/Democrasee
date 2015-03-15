@@ -2837,8 +2837,8 @@ input.button_submit_comment_no_text{
 /* Discussions Page 2 - start */
 
 .msg{
-    background:#737373;
-    color:#EADC00;
+    background:#EADC00;
+    color:#000000;
     font-size:15px;
     font-weight:bold;
     float:right;
@@ -2847,7 +2847,8 @@ input.button_submit_comment_no_text{
     width:648px;
     margin:10px 0;
     border:1px solid #e9e9e0;
-    font-family: Arial;
+    font-family: 'Alef Hebrew', serif;
+    font-size: 21px;
 }
 
 .change_proposal{

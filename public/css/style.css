@@ -5117,6 +5117,7 @@ div.action_list::-webkit-scrollbar-button {
     padding-top: 36px;
     padding-left: 308px;
     padding-bottom: 60px;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .login-form .areas {
@@ -5136,7 +5137,7 @@ div.action_list::-webkit-scrollbar-button {
 }
 
 .login-form .title {
-    color: #50504f;
+    /*color: #50504f;*/
     font: bold 16px/28px Arial;
     padding-bottom: 55px;
 }
@@ -5189,7 +5190,7 @@ div.action_list::-webkit-scrollbar-button {
 .login-form label {
     float: right;
     width: 124px;
-    color: #50504f;
+    /*color: #50504f;*/
     font: bold 16px/32px Arial;
 }
 
@@ -10525,3 +10526,5 @@ body {
 .cboxIframe {
     background: #FFF !important;
 }
+
+#login_pop_form .register {color: darkblue; font-weight: bold; font-size: 18px;}
