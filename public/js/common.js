@@ -411,12 +411,7 @@ $(function(){
 
     $("#fb_ajax_connect").live('click', function(){
         facebookLogin(function(err, result){
-            if(typeof window.vars === "undefined" || typeof window.vars.afterLogin === "undefined") {
-                window.location = window.location ;
-            }   else   {
-                //  window.location = window.location + '?user_name=' + userName + '&proxy_id=' + proxyId + '&post_id=' + post_id;
-                window.vars.afterLogin();
-            }
+            window.location = '/';
         })
     });
 });
