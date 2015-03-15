@@ -32,6 +32,24 @@
             document.location = baseUrl + '/Mobile/Index' + qs;
         }
     </script>
+    <script type="text/javascript">
+            var democraseeRedirect = function () {
+                var parseUrl = window.location.search;
+                var regex = /[?&]([^=#]+)=([^&#]*)/g,
+                        url = window.location.href,
+                        params = {},
+                        match;
+                while (match = regex.exec(url)) {
+                    params[match[1]] = match[2];
+                }
+
+                if (params.redir != null) {
+                    document.getElementById('democrasee').src = decodeURIComponent(params.redir);
+                    console.log(decodeURIComponent(params.redir));
+                }
+            }
+            document.addEventListener('DOMContentLoaded', function() {democraseeRedirect();}, false);
+    </script>
 </head>
 <body class="bodyContent bgpos" style="background-position: 50% 0px;">
     

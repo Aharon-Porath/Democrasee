@@ -79,6 +79,7 @@ app.set('sendgrid_user', process.env.SENDGRID_USER || config.sendgrid_user);
 app.set('sendgrid_key',process.env.SENDGRID_KEY || config.sendgrid_key);
 app.set('system_email', process.env.SYSTEM_EMAIL || config.system_email);
 app.set('root_path', config.ROOT_PATH);
+app.set('index_path', config.INDEX_PATH);
 
 // TODO delete?
 app.set('url2png_api_key', process.env.url2png_api_key || 'P503113E58ED4A');
