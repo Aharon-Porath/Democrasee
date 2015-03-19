@@ -2033,6 +2033,9 @@ color: #ff00af;
 .popup-small {
     width: 390px;
 }
+.welcome-window .popup-small {
+    width: initial;
+}
 
 .give-mandats-popup {
     width: 500px;
@@ -2697,6 +2700,7 @@ color: #ff00af;
     color: #ffffff;
     overflow: hidden;
     font-size: 17px;
+    display: none;
 }
 
 .extended .hidden_textarea {

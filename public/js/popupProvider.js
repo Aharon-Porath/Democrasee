@@ -26,13 +26,16 @@ var popupProvider={
 
         dust.render('ok_popup',popupConfig,function(err,out){
             if(!err){
-                 $.colorbox({ html:out,
+                 $.colorbox(
+                     { html:out,
                      onComplete:function(e){
                        $('.ok-button').click(popupConfig.onOkCilcked);
                      },
                      onClosed:function(){
                          popupConfig.callback();
-                     }
+                     },
+                     width: popupConfig.width || 'auto',
+                     className: popupConfig.className || ''
                  });
             }
         });

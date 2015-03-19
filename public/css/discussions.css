@@ -1,6 +1,6 @@
 
 #wrap{
-    font-family: Arial;
+    font-family: 'Alef Hebrew', Arial, serif;
     width: 100%;
 }
 
@@ -268,7 +268,7 @@ h2{
 
 blockquote{
     font-size: 40px;
-    font-family: Arial;
+    font-family: 'Alef Hebrew', Arial, serif;
     color: #FFFFFF;
     display: block;
     width: 90%;
@@ -300,7 +300,7 @@ blockquote{
 }
 
 .quote_credit{
-    font-family:Arial;
+    font-family:'Alef Hebrew', Arial, serif;
     font-size:23px;
     font-weight:bold;
     color:#3b63ef;
@@ -310,7 +310,7 @@ blockquote{
 
 .quote_credit a{
     text-decoration:none;
-    font-family:Arial;
+    font-family:'Alef Hebrew', Arial, serif;
     font-size:23px;
     font-weight:bold;
     color:#3b63ef;
@@ -321,7 +321,7 @@ blockquote{
 }
 
 .quote_party{
-    font-family:Arial;
+    font-family:'Alef Hebrew', Arial, serif;
     font-size:23px;
     font-weight:normal;
     color:#3b63ef;
@@ -540,7 +540,7 @@ blockquote{
     overflow:hidden;
     background:url(/images/bg_selector_button.png) no-repeat 0 -77px;
     text-align:center;
-    font-family:Arial;
+    font-family:'Alef Hebrew', Arial, serif;
     color:#fff;
     font-size:19px;
     font-weight:bold;
@@ -725,7 +725,7 @@ blockquote{
 #content_right_holder .segment.about .text h2,
 #content_right_holder .segment.about .text h3{
     margin:0px 0px 5px 0px;
-    font-family:Arial;
+    font-family:'Alef Hebrew', Arial, serif;
     font-weight:bold;
 }
 
@@ -868,7 +868,7 @@ blockquote{
 #content_right_holder .segment.more_stats .text h2,
 #content_right_holder .segment.more_stats .text h3{
     margin:0px 0px 5px 0px;
-    font-family:Arial;
+    font-family:'Alef Hebrew', Arial, serif;
     font-weight:bold;
 }
 
@@ -1157,7 +1157,7 @@ span.remark{
 
 .quotes_holder .status{
     font-size:14px;
-    font-family:Arial;
+    font-family:'Alef Hebrew', Arial, serif;
     color:#FFFFFF;
     padding:17px 20px 17px 40px;
     position:relative;
@@ -1218,7 +1218,7 @@ span.remark{
     background:#f6f6f6;
     float:right;
     width:190px;
-    font-family:Arial;
+    font-family:'Alef Hebrew', Arial, serif;
     color:#50504f;
     position:relative;
     top:30px;
@@ -1414,7 +1414,7 @@ span.remark{
 
 .discussions_page .segment.main .segment_bottom .statement .second{
     color: #515151;
-    font-family: Arial;
+    font-family: 'Alef Hebrew', Arial, serif;
     font-size: 12px;
     line-height: 24px;
 
@@ -1454,7 +1454,7 @@ span.remark{
     margin:0px;
     font-size:26px;
     width: 525px;
-    font-family: Arial;
+    font-family: 'Alef Hebrew', Arial, serif;
 }
 
 .discussions_page .segment.main .social_holder{
@@ -2059,7 +2059,7 @@ span.remark{
     border-right:1px solid #e0e0e0;
     border-left:1px solid #e0e0e0;
     margin-bottom:30px;
-    display: none;
+    /*display: none;*/
 }
 
 .post_or_suggestion_comments_holder .comment.even{
@@ -2942,7 +2942,7 @@ input.button_submit_comment_no_text{
     resize: none;
     border: none;
     color: #50504f;
-    font: normal 13px/17px Arial;
+    font: normal 13px/17px 'Alef Hebrew', Arial, serif;
 
 }
 
@@ -3225,7 +3225,7 @@ input.button_submit_comment_no_text{
 
 .write-comment .text-box .left p {
     color: #7f7f7e;
-    font: italic 13px/17px Arial;
+    font: italic 13px/17px 'Alef Hebrew', Arial, serif;
     margin-bottom: 5px;
     padding-bottom: 10px;
     border-bottom: 1px solid #e7e7e7;
@@ -3233,7 +3233,7 @@ input.button_submit_comment_no_text{
 
 .write-comment .text-box .left label {
     color: #50504f;
-    font: bold 13px/30px Arial;
+    font: bold 13px/30px 'Alef Hebrew', Arial, serif;
     display: block;
     cursor: pointer;
 }
@@ -3244,7 +3244,7 @@ input.button_submit_comment_no_text{
     margin-bottom: 0;
     display: block;
     color: #7f7f7e;
-    font: normal 13px/23px Arial;
+    font: normal 13px/23px 'Alef Hebrew', Arial, serif;
     width: 95%;
     padding: 0 5px;
 }
@@ -3264,12 +3264,12 @@ input.button_submit_comment_no_text{
 
 .write-comment .text-box .user-right h4 {
     color: #50504f;
-    font: bold 13px/17px Arial;
+    font: bold 13px/17px 'Alef Hebrew', Arial, serif;
     margin: 0;
 }
 
 .write-comment .text-box .user-right .date {
-    font: italic 11px/17px Arial;
+    font: italic 11px/17px 'Alef Hebrew', Arial, serif;
     color: #b7b6b6;
     padding-bottom: 6px;
 }
@@ -3283,7 +3283,7 @@ input.button_submit_comment_no_text{
 .write-comment .text-box .user-right .proxy span {
     display: block;
     color: #ffffff;
-    font: bold 10px/14px Arial;
+    font: bold 10px/14px 'Alef Hebrew', Arial, serif;
     background: #263a81;
     border-radius: 3px;
     -moz-border-radius: 3px;
@@ -3299,7 +3299,7 @@ input.button_submit_comment_no_text{
 .write-comment .text-box .user-right .respect span {
     display: block;
     color: #ffffff;
-    font: bold 10px/14px Arial;
+    font: bold 10px/14px 'Alef Hebrew', Arial, serif;
     background: #263a81;
     border-radius: 3px;
     -moz-border-radius: 3px;
@@ -3604,7 +3604,7 @@ input.button_submit_comment_no_text{
 
 .arrow_box_content{
     color: #50504f;
-    font-family: Arial;
+    font-family: 'Alef Hebrew', Arial, serif;
     font-weight: bold;
     font-size: 13px;
     display: inline-block;
@@ -3773,5 +3773,14 @@ input.button_submit_comment_no_text{
     text-align: center;
 }
 
+.welcome-window .welcome-title {
+    font-size: 21px;
+}
 
+.welcome-window .welcome-text {
+    font-size: 18px;
+}
 
+.welcome-window .welcome-text .last-p {
+    font-size: 14px;
+}
