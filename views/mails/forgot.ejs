@@ -1,3 +1,4 @@
+<% if (settings.port != 80 && settings.root_path.indexOf(settings.port) < 0) {settings.root_path += ':' + settings.port; } %>
 <div style="direction:rtl">
     <div align="center"><font face="arial"><br><br></font></div>
     <table width="600" border="0" align="center" cellpadding="0" cellspacing="0" dir="rtl">
@@ -19,7 +20,7 @@
                    style="color:rgb(80,0,80);text-align:right;direction:rtl;font-size:13px;font-family:arial,sans-serif">
                     <span lang="HE" style="font-family:Arial,sans-serif" >ליצירת סיסמא חדשה לאתר , אנא
                         <%
-                            var resetPassPath = settings.index_path  + "?redir=" + encodeURIComponent("/account/reset_password?code=" + user.validation_code + "&id=" + user.id);
+                            var resetPassPath = settings.index_path  + "?redir=" + encodeURIComponent(settings.root_path + "/account/reset_password?code=" + user.validation_code + "&id=" + user.id);
                         %>
                         <a href="<%= resetPassPath %>">לחץ כאן
                         </a>
@@ -49,7 +50,7 @@
 </div>
 
 <%
-    var resetPassPath2 = settings.index_path  + "?redir=" + encodeURIComponent("/account/reset_password?validation=" + user.validation_code + "&id=" + user.id);
+    var resetPassPath2 = settings.index_path  + "?redir=" + encodeURIComponent(settings.root_path + "/account/reset_password?validation=" + user.validation_code + "&id=" + user.id);
 %>
 <a href="<%= resetPassPath2 %>">
     לחץ כאן כדי להיכנס לאתר

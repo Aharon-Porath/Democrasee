@@ -14,7 +14,7 @@
 
                 <p>תודה על הרשמתך וברוך הבא לאתר . אנא לחץ
                     <%
-                        var activationPath = settings.index_path + '?redir=' + encodeURIComponent("/account/activation?code=" + user.validation_code + "&id=" + user.id  + "&next=" + encodeURIComponent(next || ''));
+                        var activationPath = settings.index_path + '?redir=' + encodeURIComponent(settings.root_path + "/account/activation?code=" + user.validation_code + "&id=" + user.id  + "&next=" + encodeURIComponent(next || ''));
                     %>
                     <a href="<%= activationPath %>">
                         כאן
@@ -31,7 +31,7 @@
                 <p>
                     אפשר להחליף אותה ולבחור סיסמא אישית
                     <%
-                        var resetPassPath = settings.index_path + '?redir=' + encodeURIComponent("/account/reset_password?code=" + user.validation_code + "&id=" + user.id  + "&next=" + encodeURIComponent(next || ''));
+                        var resetPassPath = settings.index_path + '?redir=' + encodeURIComponent(settings.root_path + "/account/reset_password?code=" + user.validation_code + "&id=" + user.id  + "&next=" + encodeURIComponent(next || ''));
 
                     %>
                     <a href="<%= resetPassPath %>">
