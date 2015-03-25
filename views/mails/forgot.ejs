@@ -18,7 +18,10 @@
                 <p class="MsoNormal" dir="RTL"
                    style="color:rgb(80,0,80);text-align:right;direction:rtl;font-size:13px;font-family:arial,sans-serif">
                     <span lang="HE" style="font-family:Arial,sans-serif" >ליצירת סיסמא חדשה לאתר , אנא
-                        <a href="<%= settings.root_path %>/account/reset_password?code=<%= user.validation_code %>&id=<%= user.id %>">לחץ כאן
+                        <%
+                            var resetPassPath = settings.index_path  + "?redir=" + encodeURIComponent("/account/reset_password?code=" + user.validation_code + "&id=" + user.id);
+                        %>
+                        <a href="<%= resetPassPath %>">לחץ כאן
                         </a>
 
 
@@ -45,7 +48,9 @@
     </table>
 </div>
 
-
-<a href="<%= settings.root_path %>/account/reset_password?validation=<%= user.validation_code %>&id=<%= user.id %>">
+<%
+    var resetPassPath2 = settings.index_path  + "?redir=" + encodeURIComponent("/account/reset_password?validation=" + user.validation_code + "&id=" + user.id);
+%>
+<a href="<%= resetPassPath2 %>">
     לחץ כאן כדי להיכנס לאתר
 </a>
