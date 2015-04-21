@@ -1,0 +1,20 @@
+<li item-id="{_id}"
+    {?content_file}
+        href="{content_file.url}"
+        target="_blank"
+    {:else}
+        href="/information_items/{_id}"
+    {/content_file}
+        >
+
+    <div href="/information_items/{_id}" class="information-item-link">
+        {?image_field_preview.url}
+        <div >
+            <img src="{image_field_preview.url}" alt="{title}" title="{title}">
+        </div>
+
+        {/image_field_preview.url}
+        <h2>{title}</h2>
+        <p> {text_field_preview|s}</p>
+    </div>
+</li>
