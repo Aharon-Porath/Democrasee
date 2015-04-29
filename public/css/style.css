@@ -10516,7 +10516,7 @@ body {
     /*background: none;*/
 }
 
-#back-to-discussion {
+#back-to-discussion{
     position: absolute;
     top: 19px;
     left: 50%;
@@ -10527,6 +10527,16 @@ body {
     color: #FFFFFF;
 }
 
+.back-to-discussion-terms{
+    position: absolute;
+    top: 19px;
+    left: 44%;
+    font-size: 19px;
+}
+
+.back-to-discussion-terms a{
+    color: #000000;
+}
 .cboxIframe {
     background: #FFF !important;
 }
