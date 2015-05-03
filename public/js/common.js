@@ -244,7 +244,11 @@ $(function(){
    סגנית ראש העירייה והממונה על התחבורה – הגב מיטל להבי, יפתח שוע – נציג מטעמה, יותם אביזוהר – יו"ר עמותת ישראל בשביל האופניים, ופעילים בתחום ההליכה הבטוחה במדרכות.\
 <br><br>\
     עם הרשמתכם לאתר הנכם מאשרים את <a href="/page/terms" target="_self">תנאי השימוש</a>\
-    </div></div>',
+    </div></div> <div class="welcome-powered-link"> \
+        <a href="http://www.linnovate.net" target="_BLANK"> \
+        <p>מופעל על ידי<img src="/images/logo_linnovate.png" style="width: 65px; height:10%;"></p> \
+        </a> \
+        </div></div>',
     width: '650',
     className: 'welcome-window'});
 
