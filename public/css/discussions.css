@@ -3817,7 +3817,9 @@ input.button_submit_comment_no_text{
 
 .welcome-powered-link {
     font-size: 12px;
-    float: left;
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
 }
 
 
