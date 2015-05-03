@@ -248,7 +248,7 @@ $(function(){
         <a href="http://www.linnovate.net" target="_BLANK"> \
         <p>מופעל על ידי<img src="/images/logo_linnovate.png" style="width: 65px; height:10%;"></p> \
         </a> \
-        </div></div>',
+        </div>',
     width: '650',
     className: 'welcome-window'});
 
