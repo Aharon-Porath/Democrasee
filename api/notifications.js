@@ -259,6 +259,7 @@ var sendNotificationToUser = function (notification) {
 
     var email;
     var  uru_group = [
+        'chava@linnovate.net'
         /*'saarsta@gmail.com',*/
         //'konfortydor@gmail.com',
         //'aharon.porath@gmail.com',
