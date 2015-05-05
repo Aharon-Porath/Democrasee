@@ -95,7 +95,7 @@ var NotificationCategoryResource = module.exports = resources.MongooseResource.e
     });
 
 
-var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_hash, info_items_hash, actions_hash, cycles_hash, updates_hash, resources_hash, user_id) {
+var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_hash, info_items_hash, actions_hash, cycles_hash, updates_hash, resources_hash, suggestions, user_id) {
     return function (notification, itr_cbk) {
         {
             var user_obj = notification.notificators.length ?
@@ -165,12 +165,6 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                     break;
 
                 case "change_suggestion_on_discussion_you_are_part_of":
-                    //var suggestion;
-                    console.error(notification.entity_id);
-                    console.error(models.Suggestion);
-                    models.Suggestion.findOne({ suggestion_id: notification.entity_id }, function (result) {
-                        console.error(result);
-                    });
                     var num_of_comments = notification.notificators.length;
                     if(discussion){
                         notification.main_link = "/discussions/" + discussion._id + "#post_" +  post_id;
@@ -183,6 +177,23 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                         notification.title = discussion.title;
                         notification.text_preview = discussion.text_field_preview;
                         notification.mail_settings_link = "/mail_settings/discussion/" + discussion.id + '?force_login=1';
+
+                        // get original  and changed text
+                        var suggestions_content = [];
+                        _.each(suggestions, function (suggestion) {
+                            if (suggestion.parts && suggestion.parts.length) {
+                                var content = {};
+                                var from = suggestion.parts[0].start;
+                                var end = suggestion.parts[0].end;
+                                content = "הטקסט המקורי: "  +  discussion.text_field.substr(from, end - from);
+                                content += '<br>';
+                                content += "ההצעה לשינוי: " + suggestion.parts[0].text;
+                                suggestions_content.push(content);
+                            }
+                        });
+
+                        notification.suggestions = suggestions_content.join('<br><br>');
+
                     }
 
                     if (num_of_comments > 1) {
@@ -276,7 +287,12 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                     break;
 
                 case "approved_change_suggestion_on_discussion_you_are_part_of":
-                    notification.part_one = "התקבלה הצעה לשינוי שדירגת בדיון - ";
+                    if(user_obj){
+                        notification.user = user_obj.first_name + " " + user_obj.last_name + " ";
+                        notification.user_link = "/profile/"  + user_obj._id + '';
+                    }
+                    notification.part_one = "'התקבלה הצעה לשינוי של '";
+
                     if(discussion){
                         notification.main_link = "/discussions/" + discussion._id + "#post_" +  post_id;
                         notification.pic = discussion.image_field_preview || discussion.image_field;
@@ -988,6 +1004,14 @@ var populateNotifications = module.exports.populateNotifications = function(resu
         .uniq()
         .value();
 
+    var suggestions_ids = _.chain(results.objects)
+        .map(function (notification) {
+            return notification.entity_id
+        })
+        .compact()
+        .uniq()
+        .value();
+
     var discussion_notification_types = [
         "new_discussion",
         "been_quoted",
@@ -1267,9 +1291,22 @@ var populateNotifications = module.exports.populateNotifications = function(resu
                     })
             }else
                 cbk(null,{});
+        },
+        function(cbk) {
+            if (suggestions_ids.length) {
+                models.Suggestion.find()
+                    .where('_id').in(suggestions_ids)
+                    .select({'parts': 1})
+                    .exec(function (err, suggestions) {
+                        cbk(err, suggestions);
+                    });
+            }
+            else
+                cbk(null,{});
         }
+
     ], function(err, args){
-        async.forEach(results.objects, iterator(args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8], user_id), function (err, obj) {
+        async.forEach(results.objects, iterator(args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8], args[9], user_id), function (err, obj) {
             callback(err, results);
         })
     })
