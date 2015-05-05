@@ -31,7 +31,7 @@ config.system_email = ' אמנת הולכי רגל ורוכבי אופניים  
 config.MAIN_DISCUSSION = process.env['MAIN_DISCUSSION'] || '549ab39ada8a349714000026';
 
 config.DB_URL = process.env['MONGOLAB_URI'] || 'mongodb://localhost/idemos';
-config.ROOT_PATH = process.env.ROOT_PATH || 'http://idemos.herokuapp.com';
-config.INDEX_PATH = process.env.INDEX_PATH || 'http://localhost:1180/tlv/';
+config.ROOT_PATH = process.env.ROOT_PATH || 'http://localhost:1180';
+config.INDEX_PATH = process.env.INDEX_PATH || 'http://localhost:1180';
 
 module.exports = config;

@@ -192,7 +192,6 @@ var SuggestionResource = module.exports = common.GamificationMongooseResource.ex
 
         var iterator = function (unique_user, itr_cbk) {
             user_id = user_id || user_id.id;
-
             if (unique_user  == user_id || !unique_user || unique_user === "undefined"){
                 console.log("user should not get mail if he is the notificator");
                 itr_cbk(null, 0);

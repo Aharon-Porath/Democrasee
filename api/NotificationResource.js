@@ -165,6 +165,12 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                     break;
 
                 case "change_suggestion_on_discussion_you_are_part_of":
+                    //var suggestion;
+                    console.error(notification.entity_id);
+                    console.error(models.Suggestion);
+                    models.Suggestion.findOne({ suggestion_id: notification.entity_id }, function (result) {
+                        console.error(result);
+                    });
                     var num_of_comments = notification.notificators.length;
                     if(discussion){
                         notification.main_link = "/discussions/" + discussion._id + "#post_" +  post_id;
@@ -180,14 +186,14 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                     }
 
                     if (num_of_comments > 1) {
-                        notification.user = num_of_comments + " " + "אנשים";
-                        notification.part_one = "העלו הצעה לשינוי בדיון שלקחת בו חלק - ";
+                        notification.user = num_of_comments + " " + "אנשים" + " ";
+                        notification.part_one = "פרסמו הצעה חדשה לשינוי המסמך - ";
                     } else {
                         if(user_obj){
-                            notification.user = user_obj.first_name + " " + user_obj.last_name;
+                            notification.user = user_obj.first_name + " " + user_obj.last_name + " ";
                             notification.user_link = "/profile/"  + user_obj._id + '';
                         }
-                        notification.part_one = "העלה הצעה לשינוי בדיון שלקחת בו חלק - ";
+                        notification.part_one = "פרסמ/ה הצעה חדשה לשינוי המסמך - ";
                     }
                     itr_cbk();
                     break;
