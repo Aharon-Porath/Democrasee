@@ -332,7 +332,7 @@ var sendNotificationToUser = function (notification) {
                 }else{
                     // 3.2) notification populate references by notification type
                     email = user.email;
-                    //notification.type = "approved_change_suggestion_on_discussion_you_are_part_of";
+                    notification.type = "approved_change_suggestion_you_created";
                     notificationResource.populateNotifications({objects:[notification]}, user.id, function(err, result){
                         cbk(err, result);
                     });
@@ -344,7 +344,7 @@ var sendNotificationToUser = function (notification) {
                 notification.entity_name = notification.name || '';
                 notification.description_of_notificators = notification.description_of_notificators || '';
                 notification.message_of_notificators = notification.message_of_notificators || '';
-                //notification.type = "approved_change_suggestion_on_discussion_you_are_part_of";
+                notification.type = "approved_change_suggestion_you_created";
                 templates.renderTemplate('notifications/' + notification.type, notification, function(err, result){
                     cbk(err, result);
                 });

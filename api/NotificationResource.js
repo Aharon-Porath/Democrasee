@@ -263,9 +263,9 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                     break;
 
                 case "approved_change_suggestion_you_created":
-                    notification.part_one = "התקבלה הצעה לשינוי שהעלת בדיון - ";
+                    notification.part_one = "הצעה לשינוי שהעלית למסמך  ";
                     if(discussion){
-                        notification.part_two = discussion.title;
+                        notification.part_two = ' התקבלה!';
                         notification.link_two = "/discussions/" + discussion._id;
                         notification.main_link = "/discussions/" + discussion._id + '#post_' + post_id;
                         notification.pic = discussion.image_field_preview || discussion.image_field;
