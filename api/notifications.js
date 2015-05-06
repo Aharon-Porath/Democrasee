@@ -332,6 +332,7 @@ var sendNotificationToUser = function (notification) {
                 }else{
                     // 3.2) notification populate references by notification type
                     email = user.email;
+                    //notification.type = "approved_change_suggestion_on_discussion_you_are_part_of";
                     notificationResource.populateNotifications({objects:[notification]}, user.id, function(err, result){
                         cbk(err, result);
                     });
@@ -343,11 +344,19 @@ var sendNotificationToUser = function (notification) {
                 notification.entity_name = notification.name || '';
                 notification.description_of_notificators = notification.description_of_notificators || '';
                 notification.message_of_notificators = notification.message_of_notificators || '';
+                //notification.type = "approved_change_suggestion_on_discussion_you_are_part_of";
                 templates.renderTemplate('notifications/' + notification.type, notification, function(err, result){
                     cbk(err, result);
                 });
             },
-            // 5) send message
+            //5) create global mail template
+            function (results, cbk) {
+                var globalObj = { message: results, mail_settings_link: '/mail_settings' };
+                templates.renderTemplate('notifications/global_template', globalObj, function(err, result){
+                    cbk(err, result);
+                });
+            },
+            // 6) send message
             function (message, cbk) {
                 mail.sendMailFromTemplate(email, message, cbk);
             }

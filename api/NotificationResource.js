@@ -163,8 +163,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                     }
                     itr_cbk();
                     break;
-
-                case "change_suggestion_on_discussion_you_are_part_of":
+                    case "change_suggestion_on_discussion_you_are_part_of":
                     var num_of_comments = notification.notificators.length;
                     if(discussion){
                         notification.main_link = "/discussions/" + discussion._id + "#post_" +  post_id;
@@ -291,7 +290,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                         notification.user = user_obj.first_name + " " + user_obj.last_name + " ";
                         notification.user_link = "/profile/"  + user_obj._id + '';
                     }
-                    notification.part_one = "'התקבלה הצעה לשינוי של '";
+                    notification.part_one = 'התקבלה הצעה לשינוי של ';
 
                     if(discussion){
                         notification.main_link = "/discussions/" + discussion._id + "#post_" +  post_id;
