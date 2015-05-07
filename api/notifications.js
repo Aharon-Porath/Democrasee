@@ -42,13 +42,15 @@ exports.create_user_notification = function (notification_type, entity_id, user_
     var multi_notification_arr = [
         'comment_on_discussion_you_are_part_of',
         "comment_on_discussion_you_created",
+        'comment_on_discussion_change_suggestion',
+        'comment_on_discussion_change_suggestion_you_created',
         "post_added_to_action_you_joined",
         "post_added_to_action_you_created"
     ];
 
     // notifications from this array will not be sent to users email
     var blocked_email_notifications = [
-        'approved_change_suggestion_on_discussion_you_are_part_of'
+        //'approved_change_suggestion_on_discussion_you_are_part_of'
     ];
 
     if (notificatior_id && _.indexOf(single_notification_arr, notification_type) == -1) {
@@ -332,7 +334,7 @@ var sendNotificationToUser = function (notification) {
                 }else{
                     // 3.2) notification populate references by notification type
                     email = user.email;
-                    notification.type = "approved_change_suggestion_you_created";
+                    //notification.type = "comment_on_discussion_change_suggestion";
                     notificationResource.populateNotifications({objects:[notification]}, user.id, function(err, result){
                         cbk(err, result);
                     });
@@ -344,7 +346,7 @@ var sendNotificationToUser = function (notification) {
                 notification.entity_name = notification.name || '';
                 notification.description_of_notificators = notification.description_of_notificators || '';
                 notification.message_of_notificators = notification.message_of_notificators || '';
-                notification.type = "approved_change_suggestion_you_created";
+                //notification.type = "comment_on_discussion_change_suggestion";
                 templates.renderTemplate('notifications/' + notification.type, notification, function(err, result){
                     cbk(err, result);
                 });
@@ -377,6 +379,7 @@ var sendNotificationToUser = function (notification) {
 
                     notification.save(function (err) {
                         if (err) {
+                            console.error(err);
                             console.error('saving notification flag failed');
                         }
                     });
