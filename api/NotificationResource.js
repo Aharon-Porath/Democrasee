@@ -165,7 +165,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                 case "comment_on_discussion_change_suggestion":
                     var num_of_comments = notification.notificators.length;
                     if(discussion){
-                        notification.main_link = "/discussions/" + discussion._id + "" + "#post_" +  post_id;
+                        notification.main_link = "/discussions/" + discussion._id + "" + "#post_" +  notification.entity_id;
                         notification.part_two = discussion.title;
                         notification.link_two = "/discussions/" + discussion._id;
                     }
@@ -185,7 +185,7 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                 case "comment_on_discussion_change_suggestion_you_created":
                     var num_of_comments = notification.notificators.length;
                     if(discussion){
-                        notification.main_link = "/discussions/" + discussion._id + "" + "#post_" +  post_id;
+                        notification.main_link = "/discussions/" + discussion._id + "" + "#post_" +  notification.entity_id;
                         notification.part_two = discussion.title;
                         notification.link_two = "/discussions/" + discussion._id;
                     }

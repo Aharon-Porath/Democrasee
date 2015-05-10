@@ -12827,11 +12827,11 @@ var db_functions = {
         });
     },
 
-    addCommentToSuggestion : function(suggestion_id, discussion_id, suggestion_creator_id, text, callback){
+    addCommentToSuggestion : function(suggestion_id, discussion_id, text, callback){
         db_functions.loggedInAjax({
             url:'/api/suggestion_posts',
             type:"POST",
-            data: {suggestion_id: suggestion_id, discussion_id: discussion_id, suggestion_creator_id: suggestion_creator_id, text: text},
+            data: {suggestion_id: suggestion_id, discussion_id: discussion_id, text: text},
             async:true,
 
             success:function (data) {

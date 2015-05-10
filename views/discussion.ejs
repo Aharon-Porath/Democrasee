@@ -2254,13 +2254,13 @@ $(document).ready(function () {
                 if (err){
                     console.log(err);
                 }else{
-                    var $this = $('#' + popupConfig.post_id);
+                    var $this = $('#post_' + popupConfig.post_id);
                     $this.slideUp(1200, "swing");
                 }
             });
             $.colorbox.close();
         },
-        popupConfig.post_id = $(this).parent('.comment').attr('id');
+        popupConfig.post_id = $(this).parent('.comment').data('id');
         popupProvider.showDeletePostPopup(popupConfig);
     });
 
