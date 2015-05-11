@@ -25,7 +25,8 @@ config.s3_creds = {
 
 config.sendgrid_user = 'shailinnovate';
 config.sendgrid_key = 'Zaq1Xsw2';
-config.system_email = ' אמנת הולכי רגל ורוכבי אופניים  <democracy@linnovate.net> ';
+//config.system_email = ' אמנת הולכי רגל ורוכבי אופניים  <democracy@linnovate.net> ';
+config.system_email = 'democracy@linnovate.net';
 
 
 config.MAIN_DISCUSSION = process.env['MAIN_DISCUSSION'] || '549ab39ada8a349714000026';
