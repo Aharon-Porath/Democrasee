@@ -76,11 +76,11 @@ var PostOnSuggestionResource = module.exports = common.GamificationMongooseResou
                 itr_cbk(null, 0);
             } else {
                 if (suggestion_creator_id === unique_user) {
-                    notifications.create_user_notification("comment_on_discussion_change_suggestion_you_created", suggestion_id, unique_user, user_id, discussion_id, '/discussions/' + discussion_id, function (err, results) {
+                    notifications.create_user_notification("comment_on_discussion_change_suggestion_you_created", post_id, unique_user, user_id, discussion_id, '/discussions/' + discussion_id, function (err, results) {
                         itr_cbk(err, results);
                     }, post_id);
                 } else {
-                    notifications.create_user_notification("comment_on_discussion_change_suggestion", suggestion_id, unique_user, user_id, discussion_id, '/discussions/' + discussion_id, function (err, results) {
+                    notifications.create_user_notification("comment_on_discussion_change_suggestion", post_id, unique_user, user_id, discussion_id, '/discussions/' + discussion_id, function (err, results) {
                         itr_cbk(err, results);
                     }, post_id);
                 }

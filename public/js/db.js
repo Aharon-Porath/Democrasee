@@ -1815,9 +1815,8 @@ var db_functions = {
             type:"PUT",
             async:true,
             data: data,
-            success:function (data) {
-                console.log(data);
-                callback(null, data);
+            success:function (result) {
+                callback(null, result);
             },
             error:function (err) {
                 callback(err, null);

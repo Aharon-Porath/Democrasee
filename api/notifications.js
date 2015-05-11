@@ -39,12 +39,12 @@ exports.create_user_notification = function (notification_type, entity_id, user_
     ];
 
     var multi_notification_arr = [
-        'comment_on_discussion_you_are_part_of',
-        "comment_on_discussion_you_created",
-        "comment_on_discussion_change_suggestion",
-        "comment_on_discussion_change_suggestion_you_created",
-        "post_added_to_action_you_joined",
-        "post_added_to_action_you_created"
+        //'comment_on_discussion_you_are_part_of',
+        //"comment_on_discussion_you_created",
+        //"comment_on_discussion_change_suggestion",
+        //"comment_on_discussion_change_suggestion_you_created",
+        //"post_added_to_action_you_joined",
+        //"post_added_to_action_you_created"
     ];
 
     // notifications from this array will not be sent to users email
@@ -120,7 +120,7 @@ exports.create_user_notification = function (notification_type, entity_id, user_
                 } else {
                     create_new_notification(notification_type, entity_id, user_id, notificatior_id, sub_entity, url, function (err, obj) {
                         cbk(err, obj);
-                    }, post_id);
+                    });
                 }
             }
         ], function (err, obj) {
@@ -220,7 +220,6 @@ var create_new_notification = function (notification_type, entity_id, user_id, n
     notification.user_id = user_id;
     notification.notificators = notificator;
     notification.type = notification_type;
-   // notification.type = "approved_change_suggestion_you_created";
     notification.entity_id = entity_id;
     notification.url = url;
     notification.seen = false;
@@ -333,7 +332,6 @@ var sendNotificationToUser = function (notification) {
                 }else{
                     // 3.2) notification populate references by notification type
                     email = user.email;
-                    //notification.type = "comment_on_discussion_change_suggestion";
                     notificationResource.populateNotifications({objects:[notification]}, user.id, function(err, result){
                         cbk(err, result);
                     });
@@ -345,14 +343,17 @@ var sendNotificationToUser = function (notification) {
                 notification.entity_name = notification.name || '';
                 notification.description_of_notificators = notification.description_of_notificators || '';
                 notification.message_of_notificators = notification.message_of_notificators || '';
-                //notification.type = "comment_on_discussion_change_suggestion";
                 templates.renderTemplate('notifications/' + notification.type, notification, function(err, result){
                     cbk(err, result);
                 });
             },
             //5) create global mail template
             function (results, cbk) {
-                var globalObj = { message: results, mail_settings_link: '/mail_settings' };
+                var disc_id = notification.notificators[0].sub_entity_id;
+                var globalObj = {
+                    message: results,
+                    mail_settings_link: '/discussions/' + disc_id + '?is_new=block_mails&id=' + notification.user_id
+                };
                 templates.renderTemplate('notifications/global_template', globalObj, function(err, result){
                     cbk(err, result);
                 });
