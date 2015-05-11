@@ -71,6 +71,7 @@ var PostOnSuggestionResource = module.exports = common.GamificationMongooseResou
         fields.last_name = user.last_name;
 
         var iterator = function (unique_user, itr_cbk) {
+            console.error(unique_user.email);
             if (unique_user  === req.session.user.id || !unique_user || unique_user === "undefined"){
                 console.log("user should not get mail if he is the notificator");
                 itr_cbk(null, 0);
