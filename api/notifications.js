@@ -512,118 +512,118 @@ function isNotiInUserMailConfig(user, noti){
     if (!user._doc.mail_notification_configuration.get_mails) return false;
 
     // discussions notification
-    if (noti.type === "comment_on_discussion_you_are_part_of" || noti.type === "comment_on_discussion_you_created"){
-        // check if should get mail and when
-        var discussion = _.find(user.discussions, function(discussion){ return discussion.discussion_id + "" == noti.notificators[0].sub_entity_id });
-
-        if (!discussion || discussion.get_alert_of_comments !== true) return false;
-
-        if (discussion.time_of_alert === 'now') {
-            return true;
-        }else{
-            updateNotificationToSendMail(noti);
-            return false;
-        }
-    }
-
-    if (noti.type === "change_suggestion_on_discussion_you_are_part_of" || noti.type === "change_suggestion_on_discussion_you_created"){
-        // check if should get mail and when
-        var discussion = _.find(user.discussions, function(discussion){ return discussion.discussion_id + "" == noti.notificators[0].sub_entity_id });
-
-        if (!discussion) return false;
-
-        // this way i guarantee that by default this is true
-        if (discussion.get_alert_of_suggestions === false) return false;
-
-        if (discussion.time_of_alert === 'now') {
-            return true;
-        }else{
-            updateNotificationToSendMail(noti);
-            return false;
-        }
-    }
-
-    if (noti.type === "approved_change_suggestion_on_discussion_you_are_part_of"){
-        // check if should get mail and when
-        var discussion = _.find(user.discussions, function(discussion){ return discussion.discussion_id + "" == noti.notificators[0].sub_entity_id });
-
-        if (!discussion) return false;
-
-        console.log('*******');
-        console.log(discussion.discussion_id);
-        console.log('*******');
-
-        console.log('*******');
-        console.log(user.first_name);
-        console.log('*******');
-
-        console.log('*******');
-        console.log(discussion);
-        console.log('*******');
-
-        console.log('*******');
-        console.log(discussion.get_alert_of_approved_suggestions);
-        console.log('*******');
-
-        console.log('**********');
-        console.log(discussion.get_alert_of_approved_suggestions === false);
-        console.log('**********');
-
-        if (discussion.get_alert_of_approved_suggestions === false) return false;
-
-        if (discussion.time_of_alert === 'now') {
-            return true;
-        }else{
-            updateNotificationToSendMail(noti);
-            return false;
-        }
-    }
-
-    // in this case we created a site notification only if user set it in the config
-    if (noti.type === "new_discussion") return true;
-
-    if (noti.type === "approved_change_suggestion_you_created") return true;
-
-
-    // cycles notification
-
-    if (noti.type === "action_suggested_in_cycle_you_are_part_of") {
-        // check if should get mail and when
-        var cycle = _.find(user.cycles, function(cycle){ return cycle.cycle_id + "" == noti.notificators[0].sub_entity_id });
-
-        if (!cycle) return false;
-
-        if (cycle.get_alert_of_new_action !== false) return false;
-
-        if (cycle.time_of_alert === 'now') {
-            return true;
-        }else{
-            updateNotificationToSendMail(noti);
-            return false;
-        }
-    }
-
-    if (noti.type === "action_added_in_cycle_you_are_part_of") {
-        // check if should get mail and when
-        var cycle = _.find(user.cycles, function(cycle){ return cycle.cycle_id + "" == noti.notificators[0].sub_entity_id });
-
-        if (!cycle) return false;
-
-        if (cycle.get_alert_of_approved_action !== false) return false;
-
-        if (cycle.time_of_alert === 'now') {
-            return true;
-        }else{
-            updateNotificationToSendMail(noti);
-            return false;
-        }
-    }
-
-    if (noti.type === "action_you_created_was_approved") return true;
-
-    // actions
-
-    if(noti.type === "get_alert_of_new_posts_in_actions") return user.mail_notification_configuration.get_alert_of_new_posts_in_actions;
+    //if (noti.type === "comment_on_discussion_you_are_part_of" || noti.type === "comment_on_discussion_you_created"){
+    //    // check if should get mail and when
+    //    var discussion = _.find(user.discussions, function(discussion){ return discussion.discussion_id + "" == noti.notificators[0].sub_entity_id });
+    //
+    //    if (!discussion || discussion.get_alert_of_comments !== true) return false;
+    //
+    //    if (discussion.time_of_alert === 'now') {
+    //        return true;
+    //    }else{
+    //        updateNotificationToSendMail(noti);
+    //        return false;
+    //    }
+    //}
+    //
+    //if (noti.type === "change_suggestion_on_discussion_you_are_part_of" || noti.type === "change_suggestion_on_discussion_you_created"){
+    //    // check if should get mail and when
+    //    var discussion = _.find(user.discussions, function(discussion){ return discussion.discussion_id + "" == noti.notificators[0].sub_entity_id });
+    //
+    //    if (!discussion) return false;
+    //
+    //    // this way i guarantee that by default this is true
+    //    if (discussion.get_alert_of_suggestions === false) return false;
+    //
+    //    if (discussion.time_of_alert === 'now') {
+    //        return true;
+    //    }else{
+    //        updateNotificationToSendMail(noti);
+    //        return false;
+    //    }
+    //}
+    //
+    //if (noti.type === "approved_change_suggestion_on_discussion_you_are_part_of"){
+    //    // check if should get mail and when
+    //    var discussion = _.find(user.discussions, function(discussion){ return discussion.discussion_id + "" == noti.notificators[0].sub_entity_id });
+    //
+    //    if (!discussion) return false;
+    //
+    //    console.log('*******');
+    //    console.log(discussion.discussion_id);
+    //    console.log('*******');
+    //
+    //    console.log('*******');
+    //    console.log(user.first_name);
+    //    console.log('*******');
+    //
+    //    console.log('*******');
+    //    console.log(discussion);
+    //    console.log('*******');
+    //
+    //    console.log('*******');
+    //    console.log(discussion.get_alert_of_approved_suggestions);
+    //    console.log('*******');
+    //
+    //    console.log('**********');
+    //    console.log(discussion.get_alert_of_approved_suggestions === false);
+    //    console.log('**********');
+    //
+    //    if (discussion.get_alert_of_approved_suggestions === false) return false;
+    //
+    //    if (discussion.time_of_alert === 'now') {
+    //        return true;
+    //    }else{
+    //        updateNotificationToSendMail(noti);
+    //        return false;
+    //    }
+    //}
+    //
+    //// in this case we created a site notification only if user set it in the config
+    //if (noti.type === "new_discussion") return true;
+    //
+    //if (noti.type === "approved_change_suggestion_you_created") return true;
+    //
+    //
+    //// cycles notification
+    //
+    //if (noti.type === "action_suggested_in_cycle_you_are_part_of") {
+    //    // check if should get mail and when
+    //    var cycle = _.find(user.cycles, function(cycle){ return cycle.cycle_id + "" == noti.notificators[0].sub_entity_id });
+    //
+    //    if (!cycle) return false;
+    //
+    //    if (cycle.get_alert_of_new_action !== false) return false;
+    //
+    //    if (cycle.time_of_alert === 'now') {
+    //        return true;
+    //    }else{
+    //        updateNotificationToSendMail(noti);
+    //        return false;
+    //    }
+    //}
+    //
+    //if (noti.type === "action_added_in_cycle_you_are_part_of") {
+    //    // check if should get mail and when
+    //    var cycle = _.find(user.cycles, function(cycle){ return cycle.cycle_id + "" == noti.notificators[0].sub_entity_id });
+    //
+    //    if (!cycle) return false;
+    //
+    //    if (cycle.get_alert_of_approved_action !== false) return false;
+    //
+    //    if (cycle.time_of_alert === 'now') {
+    //        return true;
+    //    }else{
+    //        updateNotificationToSendMail(noti);
+    //        return false;
+    //    }
+    //}
+    //
+    //if (noti.type === "action_you_created_was_approved") return true;
+    //
+    //// actions
+    //
+    //if(noti.type === "get_alert_of_new_posts_in_actions") return user.mail_notification_configuration.get_alert_of_new_posts_in_actions;
     return true;
 }
 
