@@ -224,6 +224,24 @@ function fbs_click(ui) {
     ui.attr('href','javascript:void(0);');
 }
 
+function block_mails_to_user (user_id) {
+    var new_settings = {};
+    new_settings.mail_notification_configuration = {};
+    new_settings.mail_notification_configuration['get_mails'] = false;
+
+    db_functions.updateMailNotification(user_id, new_settings, function(err, result){
+        if (!err) {
+            popupProvider.showOkPopup({
+                message: 'לא ישלחו יותר עדכונים במייל.'
+            });
+        } else {
+            popupProvider.showOkPopup({
+                message: err
+            });
+        }
+    })
+}
+
 
 // handle image loading stuff
 
@@ -271,10 +289,16 @@ $(function(){
             popupProvider.showOkPopup({
                 message:'הרשמתך התקבלה בהצלחה.'            +   pixel
             });
-        if(is_new[1] == 'reset')
+        if(is_new[1] == 'reset') {
             popupProvider.showOkPopup({
-                message:'הסיסמא שונתה בהצלחה.'
+                message: 'הסיסמא שונתה בהצלחה.'
             });
+        } else {
+            if (is_new[1] === 'block_mails') {
+                var user_id = /id=([^&#]+)/.exec(window.location.href);
+                block_mails_to_user(user_id[1]);
+            }
+        }
     }
 
 

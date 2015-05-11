@@ -1140,6 +1140,7 @@ $(document).ready(function () {
         if (text.trim() == '') return false;
 
         var post_or_suggestion_id = $(this).parents('.post_or_suggestion').data('id');
+        var post_or_suggestion_creator_id = $(this).parents('.post_or_suggestion').data('creator_id');
         var is_suggestion = $(this).parents('.suggestion_wrapper').length > 0;
         var add_comment = $(this).parent('.add_comment');
         var can_continue = $(this).parent().data('can-add');
@@ -1167,7 +1168,7 @@ $(document).ready(function () {
 
             //TODO improve this
             if (is_suggestion){
-                db_functions.addCommentToSuggestion(post_or_suggestion_id, discussion_id, text, callback);
+                db_functions.addCommentToSuggestion(post_or_suggestion_id, discussion_id, post_or_suggestion_creator_id, text, callback);
             }else {
                 db_functions.addCommentToPost(post_or_suggestion_id, discussion_id, text, callback);
             }
@@ -2253,13 +2254,13 @@ $(document).ready(function () {
                 if (err){
                     console.log(err);
                 }else{
-                    var $this = $('#' + popupConfig.post_id);
+                    var $this = $('#post_' + popupConfig.post_id);
                     $this.slideUp(1200, "swing");
                 }
             });
             $.colorbox.close();
         },
-        popupConfig.post_id = $(this).parent('.comment').attr('id');
+        popupConfig.post_id = $(this).parent('.comment').data('id');
         popupProvider.showDeletePostPopup(popupConfig);
     });
 

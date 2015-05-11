@@ -17,7 +17,6 @@ var models = require('../models'),
 
 exports.create_user_notification = function (notification_type, entity_id, user_id, notificatior_id, sub_entity, url, no_mail,callback) {
 
-
     if(typeof no_mail === 'function' && typeof callback !== 'function'){
         callback = no_mail;
         no_mail = null;
@@ -40,15 +39,17 @@ exports.create_user_notification = function (notification_type, entity_id, user_
     ];
 
     var multi_notification_arr = [
-        'comment_on_discussion_you_are_part_of',
-        "comment_on_discussion_you_created",
-        "post_added_to_action_you_joined",
-        "post_added_to_action_you_created"
+        //'comment_on_discussion_you_are_part_of',
+        //"comment_on_discussion_you_created",
+        //"comment_on_discussion_change_suggestion",
+        //"comment_on_discussion_change_suggestion_you_created",
+        //"post_added_to_action_you_joined",
+        //"post_added_to_action_you_created"
     ];
 
     // notifications from this array will not be sent to users email
     var blocked_email_notifications = [
-        'approved_change_suggestion_on_discussion_you_are_part_of'
+        //'approved_change_suggestion_on_discussion_you_are_part_of'
     ];
 
     if (notificatior_id && _.indexOf(single_notification_arr, notification_type) == -1) {
@@ -78,7 +79,6 @@ exports.create_user_notification = function (notification_type, entity_id, user_
 
                     var date = Date.now();
                     //var last_update_date = noti.update_date;
-
 
                     //TODO change it later to something prettier
                     if ((_.contains(multi_notification_arr, notification_type)) &&
@@ -115,7 +115,7 @@ exports.create_user_notification = function (notification_type, entity_id, user_
                     // do not send email notifications for blocked notifications
                     // it's temporary for demo
                     if (!_.contains(blocked_email_notifications, notification_type)) {
-                        //sendNotificationToUser(noti);
+                        sendNotificationToUser(noti);
                     }
                 } else {
                     create_new_notification(notification_type, entity_id, user_id, notificatior_id, sub_entity, url, function (err, obj) {
@@ -259,10 +259,10 @@ var sendNotificationToUser = function (notification) {
 
     var email;
     var  uru_group = [
-        'chava@linnovate.net'
+        'chava@linnovate.net',
+        'aharon.porath@gmail.com'
         /*'saarsta@gmail.com',*/
         //'konfortydor@gmail.com',
-        //'aharon.porath@gmail.com',
         //'poaharon@gmail.com',
         //'aharon.porath@gmail.com',
         //'liorur@gmail.com',
@@ -347,7 +347,18 @@ var sendNotificationToUser = function (notification) {
                     cbk(err, result);
                 });
             },
-            // 5) send message
+            //5) create global mail template
+            function (results, cbk) {
+                var disc_id = notification.notificators[0].sub_entity_id;
+                var globalObj = {
+                    message: results,
+                    mail_settings_link: '/discussions/' + disc_id + '?is_new=block_mails&id=' + notification.user_id
+                };
+                templates.renderTemplate('notifications/global_template', globalObj, function(err, result){
+                    cbk(err, result);
+                });
+            },
+            // 6) send message
             function (message, cbk) {
                 mail.sendMailFromTemplate(email, message, cbk);
             }
@@ -368,6 +379,7 @@ var sendNotificationToUser = function (notification) {
 
                     notification.save(function (err) {
                         if (err) {
+                            console.error(err);
                             console.error('saving notification flag failed');
                         }
                     });
@@ -479,7 +491,11 @@ exports.create_user_vote_or_grade_notification = function (notification_type, en
 }
 
 exports.update_user_notification = function (notification_type, obj_id, user, callback) {
-
+    //models.Notification.update({user_id: user._id, type: notification_type, entity_id: obj_id}, {$set:{visited:true}}, {multi:true}, function (err) {
+    //    if (err) {
+    //        console.error('failed setting notification visited to true', err);
+    //    }
+    //})
 
 }
 
@@ -608,7 +624,7 @@ function isNotiInUserMailConfig(user, noti){
     // actions
 
     if(noti.type === "get_alert_of_new_posts_in_actions") return user.mail_notification_configuration.get_alert_of_new_posts_in_actions;
-    return false;
+    return true;
 }
 
 function updateNotificationToSendMail(noti){

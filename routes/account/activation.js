@@ -134,40 +134,10 @@ var sendActivationMail = module.exports.sendActivationMail = function(user,next,
             templates.renderTemplate(template,{user:user, temp_password:temp_password,next:next},cbk);
         },
         function(body,cbk) {
-            sendSMTPMail(user.email, body, 'אימות חשבון באתר', cbk);
-            //mail.sendMail(user.email, body, 'אימות חשבון באתר', cbk);
+            mail.sendMail(user.email, body, 'אימות חשבון באתר', cbk);
         }
     ],function(err) {
         callback(err,temp_password);
     });
 };
 
-var sendSMTPMail = module.exports.sendSMTPMail = function (userMail, body, subject, callback) {
-    var nodemailer = require('nodemailer');
-    var smtpTransport = require('nodemailer-smtp-transport');
-
-    // create reusable transporter object using SMTP transport
-    var transporter = nodemailer.createTransport(smtpTransport({
-        secure: false,
-        debug: true,
-        tls: {rejectUnauthorized: false}
-    }));
-
-    var mailOptions = {
-        from: ' אמנת הולכי רגל ורוכבי אופניים  <democracy@linnovate.net> ', // sender address
-        to: userMail, // list of receivers
-        subject: subject, // Subject line
-        html: body // html body
-    };
-    //
-    //// send mail with defined transport object
-    transporter.sendMail(mailOptions, function(error, info){
-        if(error){
-            console.log(error);
-            callback(null, info);
-        }else{
-            console.log('Message sent: ' + info.response);
-            callback();
-        }
-    });
-};
