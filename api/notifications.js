@@ -285,20 +285,20 @@ var sendNotificationToUser = function (notification) {
     if (SEND_MAIL_NOTIFICATION)
         async.waterfall([
             //1) had user visited the notification page since the last mail
-            function (cbk) {
-
-                // if any of the notifications of this entity and user id is false, user wont get the notification, when he enters the
-                // entity id page all notifications will be visited = true
-                models.Notification.findOne({user_id: notification.user_id + "", url: notification.url, visited: false}, function(err, noti) {
-                    if(err || noti){
-                        console.log('user should not receive notification because he or she have not visited since');
-                        cbk('break');
-                        return;
-                    }else{
-                        cbk();
-                    }
-                });
-            },
+            //function (cbk) {
+            //
+            //    // if any of the notifications of this entity and user id is false, user wont get the notification, when he enters the
+            //    // entity id page all notifications will be visited = true
+            //    models.Notification.findOne({user_id: notification.user_id + "", url: notification.url, visited: false}, function(err, noti) {
+            //        if(err || noti){
+            //            console.log('user should not receive notification because he or she have not visited since');
+            //            cbk('break');
+            //            return;
+            //        }else{
+            //            cbk();
+            //        }
+            //    });
+            //},
             // 2) Get user email
             function (cbk) {
                 models.User.findById(notification.user_id._doc ? notification.user_id.id : notification.user_id, cbk);
