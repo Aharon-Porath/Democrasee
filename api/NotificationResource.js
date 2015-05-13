@@ -226,6 +226,8 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                                 content = "הטקסט המקורי: "  +  discussion.text_field.substr(from, end - from);
                                 content += '<br>';
                                 content += "ההצעה לשינוי: " + suggestion.parts[0].text;
+                                content += '<br>';
+                                content += "נימוק: " + suggestion.explanation;
                                 suggestions_content.push(content);
                             }
                         });
@@ -1338,7 +1340,7 @@ var populateNotifications = module.exports.populateNotifications = function(resu
             if (suggestions_ids.length) {
                 models.Suggestion.find()
                     .where('_id').in(suggestions_ids)
-                    .select({'parts': 1})
+                    .select({'parts': 1, 'explanation': 1})
                     .exec(function (err, suggestions) {
                         cbk(err, suggestions);
                     });
