@@ -320,10 +320,10 @@ var sendNotificationToUser = function (notification) {
                 //TODO just for debugging
                 email = user.email;
 
-                if(!_.any(uru_group, function(mail) { return email === mail }) && !_.any(users, function(user) { return email === user.email })) {
-                    cbk('we send mail only to uru_group for now');
-                    return
-                }
+                //if(!_.any(uru_group, function(mail) { return email === mail }) && !_.any(users, function(user) { return email === user.email })) {
+                //    cbk('we send mail only to uru_group for now');
+                //    return
+                //}
                 // 3.1) check for user notification configuration
                 if  (!isNotiInUserMailConfig(user, notification)){
                     console.log('user should not receive notification because his/her notification mail configuration');
