@@ -301,14 +301,6 @@ $(function(){
         }
     }
 
-    // target parent links
-        var query = parent.location.href;
-        var pos = query.indexOf('=');
-        if (pos > 0) {
-            var windowSource = query.substring(pos + 1);
-            window.location = window.location.host + "/" + windowSource;
-        }
-
     $('#election_menu').live('click', function(){
         window.location.replace('www.uru.org.il/elections');
     })

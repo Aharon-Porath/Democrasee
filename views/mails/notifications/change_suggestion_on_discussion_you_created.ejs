@@ -37,7 +37,10 @@
                     <span lang="HE" style="font-family:Arial,sans-serif">
 לצפייה בפריט לחץ
                         <font color="#3333ff"><b><u><span lang="HE" style="font-family:Arial,sans-serif">
-                        <a href="<%= settings.index_path %>?fs=<%= main_link %>">
+                        <%
+                        var path = settings.index_path + '?redir=' + encodeURIComponent(settings.root_path + main_link);
+                        %>
+                        <a href="<%= path %>">
                             כאן
                         </a>
                             </span></u></b></font>

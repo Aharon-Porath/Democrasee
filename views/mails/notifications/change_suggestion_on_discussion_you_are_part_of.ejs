@@ -17,7 +17,10 @@
                     <span lang="HE" style="font-family:Arial,sans-serif">
 
                         <font color="#3333ff"><b><u><span lang="HE" style="font-family:Arial,sans-serif">
-                        <a href="<%= settings.index_path %>?fs=<%=main_link %>">
+                            <%
+                            var path = settings.index_path + '?redir=' + encodeURIComponent(settings.root_path + main_link);
+                            %>
+                            <a href="<%= path %>">
                             לחצו כאן כדי להצביע בעד או נגד ההצעה
                         </a>
                             </span></u></b></font>
