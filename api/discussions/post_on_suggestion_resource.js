@@ -99,6 +99,7 @@ var PostOnSuggestionResource = module.exports = common.GamificationMongooseResou
                     callback(err, post_suggestion);
             }, post_id);
 
+
             //async.waterfall([
             //    function (cbk) {
             //        models.Discussion.findById(fields.discussion_id, cbk);
