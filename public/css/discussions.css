@@ -1915,7 +1915,7 @@ span.remark{
 
 .suggestion_bottom_segment.one{	width:260px; border-left:5px solid #fff; }
 .suggestion_bottom_segment.two{	width:150px; border-left:5px solid #fff; color:#757d7e; }
-.suggestion_bottom_segment.three{	width:250px; margin-right: 20px; }
+.suggestion_bottom_segment.three{	width:250px; margin-right: 10px; }
 .suggestion_bottom_segment.wide{	width:98%; }
 
 .suggestion_bottom_segment .button{
@@ -1998,6 +1998,7 @@ span.remark{
     background:url(/images/icon_comments.png) center right no-repeat;
     padding-right:30px;
     margin-top:15px;
+    float: right;
 }
 
 .comments_counter.approved{
@@ -2005,13 +2006,12 @@ span.remark{
     margin-top:-16px;
 }
 .add_fast_comment{
-    color:#60605f;
-    font-size:14px;
-    font-weight:bold;
-    padding-right:30px;
-    margin-top:-19px;
-    margin-bottom: -15px;
-    float: left;
+    color: #60605f;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-right: 10px;
+    float: right;
 }
 
 .comments_counter span{
