@@ -223,11 +223,14 @@ var iterator = function (users_hash, discussions_hash, posts_hash, action_posts_
                                 var content = {};
                                 var from = suggestion.parts[0].start;
                                 var end = suggestion.parts[0].end;
-                                content = "הטקסט המקורי: "  +  discussion.text_field.substr(from, end - from);
+                                content = '<span style="font-weight:bold">' + "הטקסט המקורי: " + '</span>' +
+                                discussion.text_field.substr(from, end - from);
                                 content += '<br>';
-                                content += "ההצעה לשינוי: " + suggestion.parts[0].text;
+                                content += '<span style="font-weight:bold">' + "ההצעה לשינוי: " + '</span>' +
+                                suggestion.parts[0].text;
                                 content += '<br>';
-                                content += "נימוק: " + suggestion.explanation;
+                                content += '<span style="font-weight:bold">' + "נימוק: " + '</span>' +
+                                suggestion.explanation;
                                 suggestions_content.push(content);
                             }
                         });
