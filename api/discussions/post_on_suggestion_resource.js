@@ -80,7 +80,8 @@ var PostOnSuggestionResource = module.exports = common.GamificationMongooseResou
                     notifications.create_user_notification("comment_on_discussion_change_suggestion_you_created", post_id, unique_user, user_id, discussion_id, '/discussions/' + discussion_id, function (err, results) {
                         itr_cbk(err, results);
                     }, post_id);
-                } else {
+                }
+                else {
                     notifications.create_user_notification("comment_on_discussion_change_suggestion", post_id, unique_user, user_id, discussion_id, '/discussions/' + discussion_id, function (err, results) {
                         itr_cbk(err, results);
                     }, post_id);
@@ -88,49 +89,53 @@ var PostOnSuggestionResource = module.exports = common.GamificationMongooseResou
             }
         };
 
-        self._super(req, fields, function(err, post_suggestion){
+        self._super(req, fields, function(err, post_suggestion) {
             post_suggestion.avatar = req.user.avatar_url();
             post_suggestion.username = req.user + "";
             post_id = post_suggestion._id;
 
-            async.waterfall([
-                function (cbk) {
-                    models.Discussion.findById(fields.discussion_id, cbk);
-                },
-                function (disc_obj, cbk){
-                    // find all users that has this discussion in their discussion list (for notifications)
-                    models.User.find({'discussions.discussion_id': discussion_id}, function(err, users){
-                        cbk(err, disc_obj, users);
-                    });
-                },
-                //add notification for the dicussion's participants or creator
-                function (disc_obj, users, cbk) {
+            notifications.create_user_notification("comment_on_discussion_change_suggestion_you_created", post_id,
+                suggestion_creator_id, user_id, discussion_id, '/discussions/' + discussion_id, function (err, results) {
+                    callback(err, post_suggestion);
+            }, post_id);
 
-                    cbk();
+            //async.waterfall([
+            //    function (cbk) {
+            //        models.Discussion.findById(fields.discussion_id, cbk);
+            //    },
+            //    function (disc_obj, cbk){
+            //        // find all users that has this discussion in their discussion list (for notifications)
+            //        models.User.find({'discussions.discussion_id': discussion_id}, function(err, users){
+            //            cbk(err, disc_obj, users);
+            //        });
+            //    },
+            //    //add notification for the dicussion's participants or creator
+            //    function (disc_obj, users, cbk) {
+            //
+            //        cbk();
+            //
+            //        var unique_users = [];
+            //
+            //        // be sure that there are no duplicated users in discussion.users
+            //        _.each(disc_obj.users, function (user) {
+            //            unique_users.push(user.id || user.user_id + "")
+            //        });
+            //        _.each(users, function (user) {
+            //            unique_users.push(user.id)
+            //        });
+            //        unique_users = _.uniq(unique_users);
+            //
+            //        async.forEach(unique_users, iterator, function(err){
+            //            if(err){
+            //                console.error(err);
+            //                err.trace();
+            //            }
+            //        });
+            //
+            //    }
+            //
+            //]);
 
-                    var unique_users = [];
-
-                    // be sure that there are no duplicated users in discussion.users
-                    _.each(disc_obj.users, function (user) {
-                        unique_users.push(user.id || user.user_id + "")
-                    });
-                    _.each(users, function (user) {
-                        unique_users.push(user.id)
-                    });
-                    unique_users = _.uniq(unique_users);
-
-                    async.forEach(unique_users, iterator, function(err){
-                        if(err){
-                            console.error(err);
-                            err.trace();
-                        }
-                    });
-
-                }
-
-            ]);
-
-            callback(err, post_suggestion);
         });
 
     },
