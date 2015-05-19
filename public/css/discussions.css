@@ -2957,6 +2957,9 @@ input.button_submit_comment_no_text{
 }
 
 
+#full-showed:focus {
+    border: 2px solid red;
+}
 
 #content_right_holder .segment.main .marker_1{
     background:#FFFF07;
@@ -2967,6 +2970,10 @@ input.button_submit_comment_no_text{
     background:#ffff07;
     color: #000000;
     text-decoration: underline;
+}
+
+#content_right_holder .segment.main .marker_1:focus {
+    background: white;
 }
 
 #content_right_holder .segment.main .marker_1.off{

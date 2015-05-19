@@ -2,7 +2,7 @@
 var unseen_notifications = user_logged && user ? user.unseen_notifications || 0 : 0;
 %>
     <%if(user_logged && user){%>
-<div class="user-box">
+<div class="user-box" tabindex="1">
     <%if(unseen_notifications > 0){%>
         <a class="notifications" href="/profile#notifications"><%=unseen_notifications%></a>
     <%}%>
@@ -47,7 +47,7 @@ var unseen_notifications = user_logged && user ? user.unseen_notifications || 0 
                     <div class="hide help"><p>
                         עזרה
                     </p> </div>
-                    <div class="logout"><p>
+                    <div class="logout" tabindex="1"><p>
                         התנתק
                         </p></div>
 
@@ -60,8 +60,8 @@ var unseen_notifications = user_logged && user ? user.unseen_notifications || 0 
 
 
     <%}else{%>
-<div id="login_button" >
-    <a  class="login_button" href="javascript:void(0)" > </a>
+<div id="login_button" tabindex="1">
+    <a  class="login_button" href="javascript:void(0)"> </a>
 </div>
     <%}%>
 
@@ -70,22 +70,23 @@ var unseen_notifications = user_logged && user ? user.unseen_notifications || 0 
 
     $(document).ready(function () {
 
-        $("#login_button a").click(function(){
-            popupProvider.showLoginPopup({}, function(err, result){
-                if(!err)
-                {
+        $("#login_button a, #login_button").bind("click keydown", function(e){
+            if (e.type == 'click' || e.keyCode == 13) {
+                popupProvider.showLoginPopup({}, function (err, result) {
+                    if (!err) {
 
-                  if(typeof window.vars === "undefined" || typeof window.vars.afterLogin === "undefined") {
-                      window.location = window.location ;
-                  }   else   {
-                      //  window.location = window.location + '?user_name=' + userName + '&proxy_id=' + proxyId + '&post_id=' + post_id;
-                      window.vars.afterLogin();
-                  }
+                        if (typeof window.vars === "undefined" || typeof window.vars.afterLogin === "undefined") {
+                            window.location = window.location;
+                        } else {
+                            //  window.location = window.location + '?user_name=' + userName + '&proxy_id=' + proxyId + '&post_id=' + post_id;
+                            window.vars.afterLogin();
+                        }
 
-                }
+                    }
 
-            });
-            return false;
+                });
+                return false;
+            }
         })
 
         $(".user-box.icon").click(function(){ window.location = "/profile";});
@@ -97,9 +98,11 @@ var unseen_notifications = user_logged && user ? user.unseen_notifications || 0 
         });
         $(".user-info-box .tokens").click(function(){ window.location = "/profile";});
         $(".user-info-box .fame").click(function(){ window.location = "/profile";});
-        $(".user-info-box .logout").click(function(){
-            $.removeCookie("fb_login",{ path: '/' });
-            window.location = "/account/logout";
+        $(".user-info-box .logout").bind("click keydown", function(e){
+            if (e.type == 'click' || e.keyCode == 13) {
+                $.removeCookie("fb_login",{ path: '/' });
+                window.location = "/account/logout";
+            }
         });
 
 

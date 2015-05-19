@@ -498,11 +498,17 @@ body {
     top: 90px;
 }
 
+#login_button:focus a, #login_button a:focus {
+    border: 2px solid white;
+    border-radius: 9px;
+    box-sizing: border-box;
+}
+
 #login_button a
 {
 
     display: inline-block;
-    background: url(/images/URU_Connect_btn_sprite.png) -240px 0 no-repeat;
+    background: url(/images/URU_Connect_btn_sprite.png) -241px 0 no-repeat;
     height: 42px;
     width: 120px;
     margin: 0 auto;
@@ -722,6 +728,10 @@ color: #ff00af;
     box-shadow: 1px 1px 2px #888;
 
     margin-right: 40px;;
+}
+
+.user-info-box .user-box-bottom div.logout:focus {
+    background-color: red;
 }
 .user-info-box .user-box-bottom div.logout p{
     padding: 5px 10px 0 10px;

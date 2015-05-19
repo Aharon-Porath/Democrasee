@@ -51,7 +51,7 @@ var error_message = error_message || '';
                             <a class="read_more" href="javascript:void(0);">להמשך קריאה ולעריכת המסמך</a>
                         </div>
 
-                        <div id="full-showed">
+                        <div id="full-showed" tabindex="2">
                             <div class="msg">
                                 איך משתתפים בעריכת האמנה? פשוט מאוד: לחצו על הקטעים הממורקרים כדי להצביע בעד או נגד הצעות עריכה שהעלו משתמשים אחרים, ואם ברצונכם לפרסם הצעת עריכה משלכם - פשוט סמנו עם העכבר את הטקסט שברצונכם לשנות, ופרסמו הצעה לשינוי
                             </div>
@@ -205,22 +205,22 @@ var error_message = error_message || '';
 
     <!-- TABS TEST start -->
     <div class="tabs">
-        <ul class="tab-links">
-            <li class="active">
+        <ul class="tab-links" role="tablist">
+            <li id="tab-link-1" class="active" role="tab">
                 <a href="#tab1">
                     <h2>הצעות לשינוי
                         <small id="suggestion_number"></small>
                     </h2>
                 </a>
             </li>
-            <li>
+            <li id="tab-link-2" role="tab">
                 <a href="#tab2">
                     <h2>הצעות שהתקבלו
                         <small id="approved_suggestion_number"></small>
                     </h2>
                 </a>
             </li>
-            <li>
+            <li id="tab-link-3" role="tab">
                 <a href="#tab3">
                     <h2 id="comments-title">תגובות <small id="comments_number"></small></h2>
                 </a>
@@ -228,7 +228,7 @@ var error_message = error_message || '';
         </ul>
 
         <div class="tab-content">
-            <div id="tab1" class="tab active">
+            <div id="tab1" class="tab active" role="tabpanel" aria-labelledby="tab-link-1">
                 <div id="content_wrapper_suggestions">
                     <div id="suggestions_wrapper">
                     </div>
@@ -238,14 +238,14 @@ var error_message = error_message || '';
                 </div>
             </div>
 
-            <div id="tab2" class="tab">
+            <div id="tab2" class="tab" role="tabpanel" aria-labelledby="tab-link-2">
                 <div id="content_wrapper_approved_suggestions" class="active">
                     <div id="approved_suggestions_wrapper">
                     </div>
                 </div>
             </div>
 
-            <div id="tab3" class="tab">
+            <div id="tab3" class="tab" role="tabpanel" aria-labelledby="tab-link-3">
                 <!--<div class="content_break comments">-->
                     <!--<div class="content_break_content comments">-->
                         <!--<div id="comments_filter">-->
@@ -336,6 +336,7 @@ $(document).ready(function () {
     var editor;
     var on_load = true;
     var global_hash = null;
+    var suggestions_count;
 
     if (is_creator){
         my_discussion_grade = discussion_grade;
@@ -898,7 +899,9 @@ $(document).ready(function () {
         })
 
         suggestions_list = data.objects ;
+        suggestions_count = suggestions_list.length;
         displaySuggestionsRanges();
+
         suggestion = suggestions_list[0];
 
         // set title and img for fb share
@@ -1528,12 +1531,13 @@ $(document).ready(function () {
             }
            text=text.replace(/\r\n/g, '\r\n<br>');
            text=text.replace(/\n/g, '\n<br>') ;
-           html =  html.substring(0, suggestion.parts[0].start) +html.substring(suggestion.parts[0].start).replace(text,'<span data-id="'+suggestion.id+'" class="marker_1">'+text+'</span>');
+           html =  html.substring(0, suggestion.parts[0].start) +
+           html.substring(suggestion.parts[0].start).replace(
+           text,'<span data-id="'+suggestion.id+'" class="marker_1">'+text+'</span>');
            $('#discussion_content').html(html);
 
-        })
+        });
     }
-
     var mouseDown, mouseUp, top, left;
     var range_txt;
 
@@ -1634,8 +1638,8 @@ $(document).ready(function () {
                 }
             });
 
-    $("#content_main_holder").on("click", ".marker_1", function () {
-        if(!mouseDown){
+    $("#content_main_holder").on("click keydown", ".marker_1", function (e) {
+        if(!mouseDown && (e.type == 'click' || e.keyCode == 13)){
             // open tab with suggestions first
             $('#wrap > div.tabs > ul > li:nth-child(1) a').click();
             displayAllSuggestions();
@@ -1644,6 +1648,18 @@ $(document).ready(function () {
                 scrollTop: $("div[data-id=" +id+ "]").offset().top
             }, 500);
         }
+    });
+
+    function indexItems() {
+        var i = 3;
+        $("#content_main_holder .marker_1").each(function() {
+            $(this).attr('tabindex', (i++));
+        });
+        $(".feedback-box").attr('tabindex', suggestions_count + 3);
+    }
+
+    $(window).load(function () {
+        indexItems();
     });
 
     function updateVisionAndSuggestionText(data){
