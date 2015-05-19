@@ -12,6 +12,11 @@
     left: 15px;
     z-index: 1;
 }
+
+.feedback-box:focus {
+    border-color: #3a6af0;
+}
+
 #feedback-form{
     height: 164px;
 }
