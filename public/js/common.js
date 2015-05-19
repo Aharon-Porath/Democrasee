@@ -356,6 +356,8 @@ $(function(){
 
     $('input, textarea').placeholder();
 
+    $('#colorbox').attr('aria-label', 'dialog');
+
     $('#failureForm').live('submit', function(e){
         e.preventDefault();
         var feedbackTb=this.feedbackTb;

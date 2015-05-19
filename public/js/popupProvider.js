@@ -28,6 +28,7 @@ var popupProvider={
             if(!err){
                  $.colorbox(
                      { html:out,
+                       fixed: true,
                      onComplete:function(e){
                        $('.ok-button').click(popupConfig.onOkCilcked);
                      },
@@ -60,6 +61,7 @@ var popupProvider={
         dust.render('ok_popup_link',popupConfig,function(err,out){
             if(!err){
                 $.colorbox({ html:out,
+                    fixed: true,
                     onComplete:function(e){
                         $('.ok-button').click(popupConfig.onOkCilcked);
                     },
@@ -96,6 +98,7 @@ var popupProvider={
         dust.render('explanation_popup',popupConfig,function(err,out){
             if(!err){
                 $.colorbox({ html:out,
+                    fixed: true,
                     onComplete:function(e){
                         $('.ok-button').click(popupConfig.onOkCilcked);
                         $('.cancel-button').click(popupConfig.onCancelClicked);
@@ -168,6 +171,7 @@ var popupProvider={
             }
 
             popup = $.colorbox({ html:out,
+                fixed: true,
                 onComplete:function (e) {
                     var realProxy = popupConfig.userProxy.number_of_tokens - popupConfig.userProxy.number_of_tokens_to_get_back;
                     $('.ok-button').click(popupConfig.onOkCilcked);
@@ -199,8 +203,9 @@ var popupProvider={
                 return;
             }
 
-             $.colorbox({ html:out,
-                onComplete:function (e) {
+             $.colorbox({ html: out,
+                 fixed: true,
+                 onComplete:function (e) {
                     $('#login_pop_form').submit(function() {
                         // get all the inputs into an array.
                         var $inputs = $('#login_pop_form :input');
