@@ -23,7 +23,7 @@
 		  פרופיל משתמש 
 	      <%} %>
         </h2>
-        <div id="back-to-discussion"><a href="/">חזרה לעמוד האמנה</a></div>
+        <div id="back-to-discussion"><a href="/" tabindex="1">חזרה לעמוד האמנה</a></div>
         <div class="white-box">
             <div class="user">
                 <%
@@ -45,7 +45,7 @@
             </div>
             <form action="">
                 <textarea id="biography" placeholder=" כאן אפשר לכתוב ביוגרפיה קצרה דברים שאתה אוהב, אג’נדה, דעות, ומה שתרצה על עצמך." cols="0" <%=biographyReadonly? 'readonly': '' %>
-                rows="0"><% if(pageUser.biography){%><%=pageUser.biography%> <% } else { %><% } %></textarea>
+                rows="0" tabindex="2"><% if(pageUser.biography){%><%=pageUser.biography%> <% } else { %><% } %></textarea>
             </form>
         </div>
     </div>

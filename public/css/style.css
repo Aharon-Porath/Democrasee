@@ -563,6 +563,10 @@ body {
     padding: 13px 0 0 10px;
 }
 
+.user-box a.name:focus {
+    text-decoration: underline;
+}
+
 .notifications{
     position: absolute;
     left: -8px;
@@ -731,8 +735,9 @@ color: #ff00af;
 }
 
 .user-info-box .user-box-bottom div.logout:focus {
-    background-color: red;
+    background-color: white;
 }
+
 .user-info-box .user-box-bottom div.logout p{
     padding: 5px 10px 0 10px;
     color: #dc0032;
@@ -1326,6 +1331,9 @@ color: #ff00af;
     border-top: 1px solid #ebebeb;
     padding: 17px 0 14px 130px;
     position: relative;
+}
+.renewal .one:focus {
+    border: 2px dotted #ebebeb;
 }
 
 .renewal .one:first-child {
@@ -9400,7 +9408,8 @@ a.menu-elections:hover {
     color: #ffffff;
 }
 
-.underline_and_cursor_when_hover:hover {
+.underline_and_cursor_when_hover:hover,
+.underline_and_cursor_when_hover:focus {
     cursor: pointer;
     text-decoration:underline;
 }
@@ -10074,6 +10083,11 @@ change .current class name using plugin option, currentPanel : 'current' */
     text-align: center;
     outline: 0;
 }
+
+#info_items .mb-slider li.mb-panel:focus {
+    border: 2px solid #EADC00;
+}
+
 #info_items .mb-controls a:hover {
     color: #666;
 }
@@ -10537,6 +10551,10 @@ body {
     color: #FFFFFF;
 }
 
+#back-to-discussion a:focus {
+    color: #EADC00;
+}
+
 .back-to-discussion-terms{
     position: absolute;
     top: 19px;
@@ -10571,6 +10589,10 @@ body {
 .powered-link a, .welcome-powered-link a {
     color: black;
     text-decoration: none;
+}
+
+.powered-link a:focus {
+    text-decoration: underline;
 }
 
 .terms-link {

@@ -1738,6 +1738,10 @@ span.remark{
     display: table-cell;
 }
 
+.suggestion_wrapper:focus {
+    border: 2px dotted white;
+}
+
 #content_wrapper_suggestions input.button_more_results{
     text-align: center;
     background:url(/images/more-deals.png) no-repeat;
@@ -1780,6 +1784,10 @@ span.remark{
 }*/
 .suggestion_wrapper.edit_suggestion.show_edit_button .button_edit_comment{
     display:block;
+}
+
+.suggestion_details.person a:focus .img-box {
+    border: 2px dotted white;
 }
 
 .suggestion_details{
@@ -1937,6 +1945,10 @@ span.remark{
      margin-left:10px;
      margin-top: 3px;
  }
+
+.grading_button:focus {
+    border: 2px dotted white;
+}
 
 .button_pro input:hover{
     background:url(/images/URU_pro.con_btns_sprite.png) no-repeat -87px -43px;
@@ -2150,6 +2162,10 @@ span.remark{
 .post_comments_holder .add_comment input,
 .suggestion_comments_holder .add_comment input{
     float: left;
+}
+
+.suggestion_comments_holder .add_comment input:focus {
+    border: 2px dotted;
 }
 
 .button_edit_comment{
@@ -2956,11 +2972,6 @@ input.button_submit_comment_no_text{
     clear: both;
 }
 
-
-#full-showed:focus {
-    border: 2px solid red;
-}
-
 #content_right_holder .segment.main .marker_1{
     background:#FFFF07;
     color: #000000;
@@ -2974,6 +2985,10 @@ input.button_submit_comment_no_text{
 
 #content_right_holder .segment.main .marker_1:focus {
     background: white;
+}
+
+#content_right_holder .segment.main .marker:focus {
+    background: white !important;
 }
 
 #content_right_holder .segment.main .marker_1.off{

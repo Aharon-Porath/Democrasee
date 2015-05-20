@@ -2,12 +2,12 @@
 var unseen_notifications = user_logged && user ? user.unseen_notifications || 0 : 0;
 %>
     <%if(user_logged && user){%>
-<div class="user-box" tabindex="1">
+<div class="user-box">
     <%if(unseen_notifications > 0){%>
         <a class="notifications" href="/profile#notifications"><%=unseen_notifications%></a>
     <%}%>
     <a class="icon" href="javascript:void(0)"></a>
-    <a data-bablic-exclude class="name" href="/profile"> <%=user.first_name%></a>
+    <a class="name" data-bablic-exclude href="/profile" tabindex="2"> <%=user.first_name%></a>
 </div>
 
         <div class="user-info-box-container">
