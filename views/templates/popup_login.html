@@ -1,20 +1,20 @@
 
 
-<div class="popup login-popup"  >
-    <div class="alert">     <p>
+<div class="popup login-popup">
+    <div class="alert" role="alert">     <p>
         שם המשתמש שהוזן שגוי. אנא נסו שוב
  </p>   </div>
-       <div>
+       <div class="login-popup-content">
                 <form id="login_pop_form" action="javascript:void(0)" method="POST">
                     <h2 id="login_title">
                        הזינו את הפרטים האישיים
                     </h2>
                     <div class="box">
-                        <input name="email" type="text" placeholder='דוא"ל'/>
-                        <input name="password" type="password" placeholder="סיסמא" />
+                        <input name="email" aria-label="email" type="text" tabindex="1" placeholder='דוא"ל'/>
+                        <input name="password" aria-label="password" type="password" tabindex="1" placeholder="סיסמא" />
                     </div>
                     <div class="box left">
-                        <input id="login_ajax" type="submit" value="" />
+                        <input id="login_ajax" aria-label="login-ajax" type="submit" value="" tabindex="1"/>
                         <br>
                         משתמש חדש?
                         <br>
