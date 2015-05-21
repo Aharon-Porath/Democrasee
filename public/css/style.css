@@ -861,9 +861,6 @@ color: #ff00af;
 }
 
 #content h2 {
-
-
-
     border-top: 6px solid #d6dbde;
     color: #FFFFFF;
     font: normal 24px/49px 'Arial';
@@ -5278,6 +5275,14 @@ div.action_list::-webkit-scrollbar-button {
 .profile-page #wrap,
 .profile-page #content {
     background: rgba(0, 0, 0, 0.5);
+}
+
+.profile-page #content h2 {
+    font: normal 24px/49px 'Alef';
+}
+
+.profile-page .renewal .one p {
+    font-family: 'Alef';
 }
 
 .profile-top .right {
