@@ -5159,7 +5159,7 @@ div.action_list::-webkit-scrollbar-button {
 }
 
 .login-form .title {
-    /*color: #50504f;*/
+    color: white;
     font: bold 16px/28px Arial;
     padding-bottom: 55px;
 }
@@ -5212,6 +5212,7 @@ div.action_list::-webkit-scrollbar-button {
 .login-form label {
     float: right;
     width: 124px;
+    color: white;
     /*color: #50504f;*/
     font: bold 16px/32px Arial;
 }
