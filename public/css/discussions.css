@@ -3794,6 +3794,14 @@ input.button_submit_comment_no_text{
     text-align: center;
 }
 
+.welcome-window .welcome-wrapper {
+    font-family: alef;
+}
+
+.welcome-window a.terms {
+    color: blue;
+}
+
 .welcome-window .welcome-title {
     font-size: 21px;
 }
