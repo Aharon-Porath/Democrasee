@@ -1318,7 +1318,6 @@ color: #ff00af;
 
 /*-------------------------*/
 .renewal {
-    background: #fff;
     padding: 0 8px 30px 8px;
     margin-bottom: 20px;
 }
@@ -5276,6 +5275,11 @@ div.action_list::-webkit-scrollbar-button {
 }
 
 /*------------------------*/
+.profile-page #wrap,
+.profile-page #content {
+    background: rgba(0, 0, 0, 0.5);
+}
+
 .profile-top .right {
     float: right;
    /* width: 711px;*/
@@ -5284,7 +5288,7 @@ div.action_list::-webkit-scrollbar-button {
 }
 
 .profile-top .right .white-box {
-    background: #fff /*url(/images/border-vertical-dotted.png) 0 0 repeat-y*/;
+    /*background: #fff *//*url(/images/border-vertical-dotted.png) 0 0 repeat-y*//*;*/
     height: 202px;
     padding: 18px 18px 0 0;
 }
@@ -5386,7 +5390,7 @@ div.action_list::-webkit-scrollbar-button {
 }
 
 .profile-top .right .user-links h4 {
-    color: #7f7f7e;
+    color: white;
     font: bold 17px/20px Arial;
     margin-bottom: 12px;
 }
@@ -5722,6 +5726,11 @@ div.action_list::-webkit-scrollbar-button {
 .profile-bottom .right {
     float: right;
     width: 671px;
+}
+
+.profile-bottom .part_one,
+.profile-bottom .renewal .one .date {
+    color: white;
 }
 
 .profile-bottom .left {
