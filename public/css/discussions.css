@@ -1944,6 +1944,7 @@ span.remark{
      cursor:pointer;
      margin-left:10px;
      margin-top: 3px;
+
  }
 
 .grading_button:focus {
@@ -1968,6 +1969,15 @@ span.remark{
     margin-left:10px;
     margin-top: 3px;
 }
+
+input.grading_button {
+    color: white;
+    font-size: 22px;
+    text-indent: 20px;
+    line-height: 2;
+    text-shadow: 1px 1px #323131;
+}
+
 .button_against input:hover{
     background:url(/images/URU_pro.con_btns_sprite.png) no-repeat 0 -43px;
     cursor: default;
@@ -2780,7 +2790,11 @@ input.button_submit_comment{
     cursor:pointer;
     float:left;
     margin-top:0px;
+    color: white;
+    font-size: 22px;
+    line-height: 2;
 }
+
 input.button_submit_comment.disable{
     background:url(/images/button_submit_comment_d.png) no-repeat 0 0;
 }

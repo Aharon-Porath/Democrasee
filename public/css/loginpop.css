@@ -62,6 +62,13 @@
     height: 42px;
     width: 230px;
     margin: 0 auto;
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+    font-family: 'Arial';
+    font-size: 18px;
+    line-height: 2.5;
+    text-indent: 8px;
 }
 
 .login-popup a.facebook:hover
