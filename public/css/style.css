@@ -4429,7 +4429,7 @@ h2 small {
     margin-bottom: 10px;
     border-top: 1px solid #f1f1f1;
     border-bottom: 1px solid #f1f1f1;
-    background: #fff;
+    background: rgba(0, 0, 0, 0.5);
     padding: 8px 9px;
 }
 
@@ -4493,7 +4493,6 @@ h2 small {
 }
 
 .one-box .right .text h4 a {
-    color: #50504f;
     font: bold 16px/30px Arial;
     margin: 0;
     text-decoration: none;
@@ -4507,7 +4506,7 @@ h2 small {
 }
 
 .one-box .right .text p {
-    color: #50504f;
+    color: #fff;
     font: normal 13px/17px Arial;
     margin-bottom: 16px;
 }
@@ -4516,7 +4515,7 @@ h2 small {
     border-top: 1px solid #ebebeb;
     padding-top: 5px;
     clear: both;
-    color: #50504f;
+    color: #fff;
     font: normal 13px/22px Arial;
     margin-top: 15px;
 }
