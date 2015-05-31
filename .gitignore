@@ -69,6 +69,7 @@ modules/views/
 /public/build/
 /packages/custom/
 /packages/contrib/
+/public/js/compiled_templates.js
 
 # --------------------
 # vim Files
