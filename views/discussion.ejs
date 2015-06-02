@@ -1657,9 +1657,8 @@ $(document).ready(function () {
             $('#wrap > div.tabs > ul > li:nth-child(1) a').click();
             displayAllSuggestions();
             var id= $(this).data('id');
-            var sug_content = $("div[data-id=" +id+ "]");
             $('html, body').animate({
-                scrollTop: sug_content.offset().top + sug_content.height()
+                scrollTop: $("div[data-id=" +id+ "]").offset().top
             }, 500);
         }
     });
