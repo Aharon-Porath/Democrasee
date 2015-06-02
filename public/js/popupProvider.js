@@ -215,7 +215,6 @@ var popupProvider={
 
              $.colorbox({ html: out,
                  fixed: true,
-                 trapFocus: false,
                  onComplete:function (e) {
                     $('body').css('overflow', 'hidden');
                     $('input[name="email"]').focus();
