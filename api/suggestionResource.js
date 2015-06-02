@@ -341,7 +341,7 @@ var SuggestionResource = module.exports = common.GamificationMongooseResource.ex
                         unique_users = _.uniq(unique_users);
 
                         async.forEach(unique_users, iterator, function(err){
-                            if(err){
+                            if (err){
                                 console.error(err);
                                 err.trace();
                             }
