@@ -336,7 +336,8 @@ var SuggestionResource = module.exports = common.GamificationMongooseResource.ex
                         discussion_creator_id = disc_obj.creator_id;
 
                         // be sure that there are no duplicated users in discussion.users
-                        _.each(disc_obj.users, function(user){ unique_users.push(user.id || user.user_id + "")});
+                        //console.error(disc_obj);
+                        _.each(disc_obj.users, function(user){ unique_users.push(user.user_id)});
                         //_.each(users, function(user){ unique_users.push(user.id)});
                         unique_users = _.uniq(unique_users);
 
