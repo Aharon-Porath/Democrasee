@@ -348,6 +348,10 @@ $(document).ready(function () {
     var global_hash = null;
     var suggestions_count;
 
+    var isMobile = function () {
+        return (/iphone|ipod|android|blackberry\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+    };
+
     if (is_creator){
         my_discussion_grade = discussion_grade;
     }
@@ -989,7 +993,12 @@ $(document).ready(function () {
                     }
                     return displayAllSuggestions() ;
                 });
-                //$(".more-deals a").click();
+                if (!isMobile()) {
+                    $(".more-deals a").click();
+                } else {
+                    $(".more-deals a").css("visibility", "visible");
+                }
+
             }
 
              // if needs to scroll to suggestion that is not shown, open list of suggestions and scroll to suggestion
