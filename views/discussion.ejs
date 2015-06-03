@@ -1651,8 +1651,8 @@ $(document).ready(function () {
                 }
             });
 
-    $("#content_main_holder").on("click keydown", ".marker_1", function (e) {
-        if(!mouseDown && (e.type == 'click' || e.keyCode == 13)){
+    $("#content_main_holder").on("click tap keydown", ".marker_1", function (e) {
+        if(!mouseDown && (e.type == 'click' || e.type == 'tap' || e.keyCode == 13)){
             // open tab with suggestions first
 //            $('#wrap > div.tabs > ul > li:nth-child(1) a').click();
 //            displayAllSuggestions();
