@@ -2432,7 +2432,7 @@ $(document).ready(function () {
     $(window).scroll(function () {
         console.log("scroll");
         console.log(suggestions_offset);
-        console.log(suggestions_list);
+        console.log(suggestions_list.length);
         if (suggestions_offset < suggestions_list.length) {
             var last_pos = $('.suggestion_wrapper:last-child').offset().top;
             console.log(last_pos);
