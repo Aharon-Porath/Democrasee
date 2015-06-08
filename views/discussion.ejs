@@ -1106,7 +1106,6 @@ $(document).ready(function () {
             suggestion.image_field_preview = discussion_img_field_preview;
 
             render_suggestion(suggestion);
-            console.log(suggestion.id);
 
             XHRs.push(db_functions.getCommentsBySuggestion(suggestion.id, function(err, data){
                 if (data.objects.length > 0) {
