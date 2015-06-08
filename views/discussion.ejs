@@ -2431,9 +2431,13 @@ $(document).ready(function () {
 
     $(window).scroll(function () {
         console.log("scroll");
+        console.log(suggestions_offset);
+        console.log(suggestions_list);
         if (suggestions_offset < suggestions_list.length) {
             var last_pos = $('.suggestion_wrapper:last-child').offset().top;
+            console.log(last_pos);
             if ($(window).scrollTop() > last_pos) {
+                console.log('display');
                 displayAllSuggestions();
             }
         }
