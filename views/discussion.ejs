@@ -2434,7 +2434,8 @@ $(document).ready(function () {
         console.log(suggestions_offset);
         console.log(suggestions_list.length);
         if (suggestions_offset < suggestions_list.length) {
-            var last_pos = $('.suggestion_wrapper:last-child').offset().top;
+            console.log($('#suggestions_wrapper .suggestion_wrapper:last-child').attr('id'));
+            var last_pos = $('#suggestions_wrapper .suggestion_wrapper:last-child').offset().top;
             console.log(last_pos);
             console.log($(window).scrollTop());
             if ($(window).scrollTop() > last_pos) {
