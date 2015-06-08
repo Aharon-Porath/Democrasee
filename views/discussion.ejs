@@ -2430,15 +2430,10 @@ $(document).ready(function () {
     });
 
     $(window).scroll(function () {
-        console.log("scroll");
-        console.log(suggestions_offset);
-        console.log(suggestions_list.length);
         if (suggestions_offset < suggestions_list.length) {
-            console.log($('#suggestions_wrapper .suggestion_wrapper:last-child').attr('id'));
             var last_pos = $('#suggestions_wrapper .suggestion_wrapper:last-child').offset().top;
-            console.log(last_pos);
-            console.log($(window).scrollTop());
-            if ($(window).scrollTop() > last_pos) {
+            var height = $('#suggestions_wrapper .suggestion_wrapper:last-child').height();
+            if ($(window).scrollTop() > last_pos - height) {
                 console.log('display');
                 displayAllSuggestions();
             }
