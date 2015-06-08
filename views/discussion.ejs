@@ -1098,6 +1098,7 @@ $(document).ready(function () {
         if (index) {
             for(;suggestions_limit <= index; suggestions_limit += 5);
         }
+
         for (;suggestions_offset < suggestions_limit && suggestions_offset < suggestions_list.length; suggestions_offset++) {
             var suggestion = suggestions_list[suggestions_offset];
  			// set title and img for fb share
@@ -1108,15 +1109,15 @@ $(document).ready(function () {
             console.log(suggestion.id);
 
             XHRs.push(db_functions.getCommentsBySuggestion(suggestion.id, function(err, data){
+                if (data.objects.length > 0) {
+                    var suggestion_id = data.objects[0].suggestion_id;
+                    var curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion_id + ']') ;
+                    // set comments counter
+                    curr_suggestion.find('.comments_counter span').text(data.objects.length);
 
-                console.log("comments");
-                console.log(suggestion.id);
-                console.log(data);
-                var curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion.id + ']') ;
-                // set comments counter
-                curr_suggestion.find('.comments_counter span').text(data.objects.length);
+                    renderNestedComments(data.objects, curr_suggestion, suggestion_id);
+                }
 
-                renderNestedComments(data.objects, curr_suggestion, suggestion.id);
 
                 /*curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion.id + ']') ;
 
