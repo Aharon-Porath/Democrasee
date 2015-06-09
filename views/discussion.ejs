@@ -856,7 +856,7 @@ $(document).ready(function () {
             };
 
             dust.render('discussion_suggestion', suggestion, function (err, out) {
-                $('#suggestions_wrapper').append(out);
+                $(out).appendTo('#suggestions_wrapper');
                 image_autoscale($('#suggestions_wrapper .auto-scale img'));
                 if(use_animation == true){
                     var bgc =$('.suggestion_holder').last().css('background-color');
