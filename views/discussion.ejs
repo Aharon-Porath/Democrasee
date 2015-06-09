@@ -2428,22 +2428,17 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-    var scrollListener = function () {
-        $(window).scroll(function () {
-            if (suggestions_offset < suggestions_list.length) {
-                //var last_pos = $('#suggestions_wrapper .suggestion_wrapper:last-child').offset().top;
-                var height = $('#suggestions_wrapper .suggestion_wrapper:last-child').height();
-                if ($(window).scrollTop() >= $(document).height() - $(window).height() - (height*3)) {
-                    console.log('display');
-                    displayAllSuggestions();
-                }
+    $(window).scroll(function () {
+        if (suggestions_offset < suggestions_list.length) {
+            //var last_pos = $('#suggestions_wrapper .suggestion_wrapper:last-child').offset().top;
+            var height = $('#suggestions_wrapper .suggestion_wrapper:last-child').height();
+            if ($(window).scrollTop() >= $(document).height() - $(window).height() - (height*3)) {
+                console.log('display');
+                displayAllSuggestions();
             }
+        }
 
-        });
-        setTimeout(scrollListener, 200);
-    }
-
-    scrollListener();
+    });
 
 });
 
