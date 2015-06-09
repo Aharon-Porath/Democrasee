@@ -856,14 +856,15 @@ $(document).ready(function () {
             };
 
             dust.render('discussion_suggestion', suggestion, function (err, out) {
-                $('#suggestions_wrapper').append(out);
-//                image_autoscale($('#suggestions_wrapper .auto-scale img'));
-//
-//                if(use_animation == true){
-//                    var bgc =$('.suggestion_holder').last().css('background-color');
-//                    $('.suggestion_holder ').last().css('background-color', 'pink');
-//                    $('.suggestion_holder ').last().animate({backgroundColor: bgc}, 3000);
-//                }
+                console.log(out);
+//                $('#suggestions_wrapper').append(out);
+                image_autoscale($('#suggestions_wrapper .auto-scale img'));
+                if(use_animation == true){
+                    var bgc =$('.suggestion_holder').last().css('background-color');
+                    $('.suggestion_holder ').last().css('background-color', 'pink');
+                    $('.suggestion_holder ').last().animate({backgroundColor: bgc}, 3000);
+                }
+
                 // check if got here after not logged user tryed to grade suggestion
                 var action = getURLParameter('action');
                 if (action !== "null") {
