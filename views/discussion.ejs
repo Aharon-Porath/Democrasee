@@ -2430,7 +2430,8 @@ $(document).ready(function () {
     });
 
     $(window).scroll(function () {
-        alert('arrive');
+        alert($(window).scrollTop());
+        alert(last_pos - height);
         if (suggestions_offset < suggestions_list.length) {
             var last_pos = $('#suggestions_wrapper .suggestion_wrapper:last-child').offset().top;
             var height = $('#suggestions_wrapper .suggestion_wrapper:last-child').height();
