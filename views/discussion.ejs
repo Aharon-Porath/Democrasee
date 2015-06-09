@@ -1100,7 +1100,7 @@ $(document).ready(function () {
         var XHRs = [];
         //$('#suggestions_wrapper').empty();
         if (index) {
-            for(;suggestions_limit <= index; suggestions_limit += 5);
+            for(;suggestions_limit <= index; suggestions_limit += 1);
         }
 
         for (;suggestions_offset < suggestions_limit && suggestions_offset < suggestions_list.length; suggestions_offset++) {
@@ -1145,7 +1145,7 @@ $(document).ready(function () {
             }));
 
         }
-        suggestions_limit += 5;
+        suggestions_limit += 1;
 
         // if needs to scroll to suggestion that is not shown, open list of suggestions and scroll to suggestion
         var hash = window.location.hash;
