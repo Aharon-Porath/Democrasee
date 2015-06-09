@@ -2432,8 +2432,8 @@ $(document).ready(function () {
         $(window).scroll(function () {
             if (suggestions_offset < suggestions_list.length) {
                 //var last_pos = $('#suggestions_wrapper .suggestion_wrapper:last-child').offset().top;
-                //var height = $('#suggestions_wrapper .suggestion_wrapper:last-child').height();
-                if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                var height = $('#suggestions_wrapper .suggestion_wrapper:last-child').height();
+                if ($(window).scrollTop() >= $(document).height() - $(window).height() - height) {
                     console.log('display');
                     displayAllSuggestions();
                 }
