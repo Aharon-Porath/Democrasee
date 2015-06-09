@@ -1117,7 +1117,6 @@ $(document).ready(function () {
                     renderNestedComments(data.objects, curr_suggestion, suggestion_id);
                 }
 
-
                 /*curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion.id + ']') ;
 
                 // set comments counter
@@ -1158,7 +1157,7 @@ $(document).ready(function () {
 
         self.text('סגור הצעות ');
         self.addClass('flip');
-        self.data('executing', true);
+        //self.data('executing', true);
         return false;
     }
 
@@ -2430,12 +2429,10 @@ $(document).ready(function () {
     });
 
     $(window).scroll(function () {
-        alert($(window).scrollTop());
-
         if (suggestions_offset < suggestions_list.length) {
-            var last_pos = $('#suggestions_wrapper .suggestion_wrapper:last-child').offset().top;
-            var height = $('#suggestions_wrapper .suggestion_wrapper:last-child').height();
-            if ($(window).scrollTop() > last_pos - height) {
+            //var last_pos = $('#suggestions_wrapper .suggestion_wrapper:last-child').offset().top;
+            //var height = $('#suggestions_wrapper .suggestion_wrapper:last-child').height();
+            if ($(window).scrollTop() == $(document).height() - $(window).height()) {
                 console.log('display');
                 displayAllSuggestions();
             }
