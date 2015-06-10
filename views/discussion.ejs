@@ -1139,9 +1139,9 @@ var error_message = error_message || '';
                     //run a function when all deferred objects resolve
                     $.when(XHRs).then(function (){
 
-//                        if (index === suggestions_list.length - 1) {
-//                            $('#suggestions_wrapper').show();
-//                        }
+                        if (index === suggestions_list.length - 1) {
+                            $('#suggestions_wrapper').show();
+                        }
 
                         // if needs to scroll to suggestion that is not shown, open list of suggestions and scroll to suggestion
                         var hash = window.location.hash;
