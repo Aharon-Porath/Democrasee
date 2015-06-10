@@ -240,7 +240,8 @@ var error_message = error_message || '';
         <div class="tab-content">
             <div id="tab1" class="tab active" role="tabpanel" aria-labelledby="tab-link-1">
                 <div id="content_wrapper_suggestions">
-                    <div id="suggestions_wrapper" style="display: none">
+                    <div class="loading-suggestion"></div>
+                    <div id="suggestions_wrapper" style="display: none; visibility: hidden">
                     </div>
                     <div class="more-deals" data-executing="false" style="visibility: hidden">
                         <a href="javascript: void(0)">עוד הצעות</a>
@@ -991,7 +992,12 @@ var error_message = error_message || '';
                                 scrollTo('#content_wrapper_suggestions')
                                 return false;
                             }
-                            return displayAllSuggestions() ;
+                            var result = displayAllSuggestions() ;
+                            $('#suggestions_wrapper').show(400, function () {
+                                $(this).css("visibility", "visible");
+                                $('.loading-suggestion').hide();
+                            });
+                            return result;
                         });
                         // if (!isMobile()) {
                         $(".more-deals a").click();
@@ -1138,11 +1144,6 @@ var error_message = error_message || '';
 
                     //run a function when all deferred objects resolve
                     $.when(XHRs).then(function (){
-
-                        if (index === suggestions_list.length - 1) {
-                            $('#suggestions_wrapper').show();
-                        }
-
                         // if needs to scroll to suggestion that is not shown, open list of suggestions and scroll to suggestion
                         var hash = window.location.hash;
                         if(hash && on_load){
