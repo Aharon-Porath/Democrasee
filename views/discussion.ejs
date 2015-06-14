@@ -240,7 +240,8 @@ var error_message = error_message || '';
         <div class="tab-content">
             <div id="tab1" class="tab active" role="tabpanel" aria-labelledby="tab-link-1">
                 <div id="content_wrapper_suggestions">
-                    <div id="suggestions_wrapper">
+                    <div class="loading-suggestion"></div>
+                    <div id="suggestions_wrapper" style="display: none; visibility: hidden">
                     </div>
                     <div class="more-deals" data-executing="false" style="visibility: hidden">
                         <a href="javascript: void(0)">עוד הצעות</a>
@@ -340,9 +341,6 @@ var error_message = error_message || '';
             var vision_text_history_count = "<%= discussion.vision_text_history ? discussion.vision_text_history.length : 0 %>";
             var suggestions_list=null;
             var approved_suggestions_list=null;
-            var suggestions_offset = 0;
-            var SUG_RANGE = 5;
-            var suggestions_limit = SUG_RANGE;
             var original = $('#discussion_content_textarea').val() ;
             var text_field_preview = "<%= discussion.text_field_preview%>";
             var range = {};
@@ -350,7 +348,6 @@ var error_message = error_message || '';
             var on_load = true;
             var global_hash = null;
             var suggestions_count;
-            var curr_suggestion;
 
             var isMobile = function () {
                 return (/iphone|ipod|android|blackberry\sce|palm/i.test(navigator.userAgent.toLowerCase()));
@@ -857,14 +854,14 @@ var error_message = error_message || '';
                     };
 
                     dust.render('discussion_suggestion', suggestion, function (err, out) {
-                        $(out).appendTo('#suggestions_wrapper');
+                        $('#suggestions_wrapper').append(out);
                         image_autoscale($('#suggestions_wrapper .auto-scale img'));
+
                         if(use_animation == true){
                             var bgc =$('.suggestion_holder').last().css('background-color');
                             $('.suggestion_holder ').last().css('background-color', 'pink');
                             $('.suggestion_holder ').last().animate({backgroundColor: bgc}, 3000);
                         }
-
                         // check if got here after not logged user tryed to grade suggestion
                         var action = getURLParameter('action');
                         if (action !== "null") {
@@ -920,37 +917,38 @@ var error_message = error_message || '';
                 suggestions_count = suggestions_list.length;
                 displaySuggestionsRanges();
 
-//        suggestion = suggestions_list[0];
-//
-//        // set title and img for fb share
-//        suggestion.title = discussion_title;
-//        suggestion.image_field_preview = discussion_img_field_preview;
-//
-//        render_suggestion(suggestion);
+                suggestion = suggestions_list[0];
 
-//        curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion.id + ']');
-//
-//        db_functions.getCommentsBySuggestion(suggestion.id, function(err, data){
-//            // set comments counter
-//            curr_suggestion.find('.comments_counter span').text(data.objects.length);
-//
-//            if (data.objects.length===0){
-//                curr_suggestion.find('.close').hide();
-//            }
-//
-//            $.each(data.objects, function (index, comment) {
-//                var is_first_comment = (index == 0);
-//                comment.is_even = (index % 2) == 0;
-//                dust.render('nested_comment', comment, function (err, out) {
-//                    // append before "add_comment"
-//                    curr_suggestion.find('.suggestion_comments_holder .add_comment').before(out);
-//                   /* if (is_first_comment) {
-//                        $(curr_suggestion).find('.suggestion_comments_holder .comment').show();
-//                    }*/
-//                    image_autoscale(curr_suggestion.find('.auto-scale img'));
-//                });
-//            });
-//        });
+                // set title and img for fb share
+                suggestion.title = discussion_title;
+                suggestion.image_field_preview = discussion_img_field_preview;
+
+                render_suggestion(suggestion);
+
+                var curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion.id + ']');
+
+                db_functions.getCommentsBySuggestion(suggestion.id, function(err, data){
+
+                    // set comments counter
+                    curr_suggestion.find('.comments_counter span').text(data.objects.length);
+
+                    if (data.objects.length===0){
+                        curr_suggestion.find('.close').hide();
+                    }
+
+                    $.each(data.objects, function (index, comment) {
+                        var is_first_comment = (index == 0);
+                        comment.is_even = (index % 2) == 0;
+                        dust.render('nested_comment', comment, function (err, out) {
+                            // append before "add_comment"
+                            curr_suggestion.find('.suggestion_comments_holder .add_comment').before(out);
+                            /* if (is_first_comment) {
+                             $(curr_suggestion).find('.suggestion_comments_holder .comment').show();
+                             }*/
+                            image_autoscale(curr_suggestion.find('.auto-scale img'));
+                        });
+                    });
+                });
 
                 $('#suggestion_number').text(' (' + data.meta.total_count + ')');
                 if (data.objects.length > 0) {
@@ -961,9 +959,10 @@ var error_message = error_message || '';
                         $(".more-deals").show();
 
                         $(".more-deals a").on('click', function (e) {
+                            $('#suggestions_wrapper').empty();
                             var self = $(this);
                             if(self.data('executing')){
-                                $('#suggestions_wrapper').empty();
+
                                 render_suggestion(first_suggestion);
                                 curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + first_suggestion.id + ']');
 
@@ -993,10 +992,16 @@ var error_message = error_message || '';
                                 scrollTo('#content_wrapper_suggestions')
                                 return false;
                             }
-                            return displayAllSuggestions() ;
+                            var result = displayAllSuggestions() ;
+                            $('#suggestions_wrapper').show(400, function () {
+                                $(this).css("visibility", "visible");
+                                $('.loading-suggestion').hide();
+                            });
+                            return result;
                         });
                         // if (!isMobile()) {
                         $(".more-deals a").click();
+
                         // } else {
                         //     $(".more-deals a").css("visibility", "visible");
                         // }
@@ -1014,7 +1019,7 @@ var error_message = error_message || '';
                             var is_suggestion = false;
                             $.each(suggestions_list, function(index, suggestion){ if ("#post_" + suggestion.id + "" == hash) is_suggestion = true });
                             if (is_suggestion){
-                                displayAllSuggestions(index);
+                                displayAllSuggestions();
                             }
                         }
                     }
@@ -1092,34 +1097,28 @@ var error_message = error_message || '';
                 }
             });
 
-            function displayAllSuggestions(index){
+            function displayAllSuggestions(){
+
                 var self=$(".more-deals a");
                 var XHRs = [];
-                //$('#suggestions_wrapper').empty();
-                if (index) {
-                    for(;suggestions_limit <= index; suggestions_limit += SUG_RANGE);
-                }
+                $('#suggestions_wrapper').empty();
 
-                for (;suggestions_offset < suggestions_limit && suggestions_offset < suggestions_list.length; suggestions_offset++) {
-                    var suggestion = suggestions_list[suggestions_offset];
+                $.each(suggestions_list, function (index, suggestion) {
+
                     // set title and img for fb share
                     suggestion.title = discussion_title;
                     suggestion.image_field_preview = discussion_img_field_preview;
 
                     render_suggestion(suggestion);
-                    $('#suggestions_wrapper').find('[data-id=' + suggestion.id + ']').show(200, function () {
-                        $(this).css('visibility', 'visible');
-                    });
 
                     XHRs.push(db_functions.getCommentsBySuggestion(suggestion.id, function(err, data){
-                        if (data.objects.length > 0) {
-                            var suggestion_id = data.objects[0].suggestion_id;
-                            var curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion_id + ']') ;
-                            // set comments counter
-                            curr_suggestion.find('.comments_counter span').text(data.objects.length);
 
-                            renderNestedComments(data.objects, curr_suggestion, suggestion_id);
-                        }
+                        curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion.id + ']') ;
+
+                        // set comments counter
+                        curr_suggestion.find('.comments_counter span').text(data.objects.length);
+
+                        renderNestedComments(data.objects, curr_suggestion, suggestion.id);
 
                         /*curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion.id + ']') ;
 
@@ -1142,26 +1141,22 @@ var error_message = error_message || '';
                          //                        image_autoscale(curr_suggestion.find('.auto-scale img'));
                          });
                          });*/
-                    }));
+                    }))
 
-                }
-                suggestions_limit += SUG_RANGE;
-
-                // if needs to scroll to suggestion that is not shown, open list of suggestions and scroll to suggestion
-                var hash = window.location.hash;
-                if(hash && on_load){
-                    if ($(hash).length > 0) {
-                        scrollTo(hash);
-                        on_load = false;
-                    }
-                    else {
-                        displayAllSuggestions();
-                    }
-                }
+                    //run a function when all deferred objects resolve
+                    $.when(XHRs).then(function (){
+                        // if needs to scroll to suggestion that is not shown, open list of suggestions and scroll to suggestion
+                        var hash = window.location.hash;
+                        if(hash && on_load){
+                            scrollTo(hash);
+                            on_load = false;
+                        }
+                    });
+                });
 
                 self.text('סגור הצעות ');
                 self.addClass('flip');
-                //self.data('executing', true);
+                self.data('executing', true);
                 return false;
             }
 
@@ -1563,7 +1558,7 @@ var error_message = error_message || '';
                     text=text.replace(/\n/g, '\n<br>') ;
                     html =  html.substring(0, suggestion.parts[0].start) +
                     html.substring(suggestion.parts[0].start).replace(
-                            text,'<span data-id="'+suggestion.id+'" data-index="' + index + '" class="marker_1">'+text+'</span>');
+                            text,'<span data-id="'+suggestion.id+'" class="marker_1">'+text+'</span>');
                     $('#discussion_content').html(html);
 
                 });
@@ -1675,15 +1670,13 @@ var error_message = error_message || '';
                 if(!mouseDown && (e.type == 'click' || e.type == 'tap' || e.keyCode == 13)){
                     // open tab with suggestions first
 //            $('#wrap > div.tabs > ul > li:nth-child(1) a').click();
-                    var index = $(this).data('index');
-                    if (suggestions_offset <= index) {
-                        displayAllSuggestions(index);
-                    }
-
+//            displayAllSuggestions();
                     var id= $(this).data('id');
                     $('html, body').animate({
                         scrollTop: $("div[data-id=" +id+ "]").offset().top
                     }, 500);
+
+
                 }
             });
 
@@ -2431,18 +2424,6 @@ var error_message = error_message || '';
 
                 e.preventDefault();
             });
-
-            $(window).scroll(function () {
-                if (suggestions_offset < suggestions_list.length) {
-                    //var last_pos = $('#suggestions_wrapper .suggestion_wrapper:last-child').offset().top;
-                    var height = $('#suggestions_wrapper .suggestion_wrapper:last-child').height();
-                    if ($(window).scrollTop() >= $(document).height() - $(window).height() - (height*3)) {
-                        displayAllSuggestions();
-                    }
-                }
-
-            });
-
         });
 
     </script>
