@@ -240,8 +240,7 @@ var error_message = error_message || '';
         <div class="tab-content">
             <div id="tab1" class="tab active" role="tabpanel" aria-labelledby="tab-link-1">
                 <div id="content_wrapper_suggestions">
-                    <div class="loading-suggestion"></div>
-                    <div id="suggestions_wrapper" style="display: none; visibility: hidden">
+                    <div id="suggestions_wrapper">
                     </div>
                     <div class="more-deals" data-executing="false" style="visibility: hidden">
                         <a href="javascript: void(0)">עוד הצעות</a>
@@ -341,12 +340,9 @@ var error_message = error_message || '';
             var vision_text_history_count = "<%= discussion.vision_text_history ? discussion.vision_text_history.length : 0 %>";
             var suggestions_list=null;
             var approved_suggestions_list=null;
-<<<<<<< HEAD
-=======
             var suggestions_offset = 0;
             var SUG_RANGE = 10
             var suggestions_limit = SUG_RANGE;
->>>>>>> merge_sug
             var original = $('#discussion_content_textarea').val() ;
             var text_field_preview = "<%= discussion.text_field_preview%>";
             var range = {};
@@ -354,10 +350,7 @@ var error_message = error_message || '';
             var on_load = true;
             var global_hash = null;
             var suggestions_count;
-<<<<<<< HEAD
-=======
             var curr_suggestion;
->>>>>>> merge_sug
 
             var isMobile = function () {
                 return (/iphone|ipod|android|blackberry\sce|palm/i.test(navigator.userAgent.toLowerCase()));
@@ -433,7 +426,6 @@ var error_message = error_message || '';
                 $(this).parents('.comment_wrapper').toggleClass('edit');
             }).on('mouseleave', '.edit_comment .content', function() {
                 $(this).parents('.comment_wrapper').toggleClass('edit');
-<<<<<<< HEAD
             });
 
             // when clicking the edit_comment popup show text editor and update button
@@ -482,56 +474,6 @@ var error_message = error_message || '';
                 }
             });
 
-=======
-            });
-
-            // when clicking the edit_comment popup show text editor and update button
-            $('#comments_wrapper').on('click', '.content .button_edit_comment', function(){
-                var text = $(this).parent('.content').text();
-                var post_id = $(this).parents('.comment_wrapper').data('id');
-                var content = $(this).parent('.content');
-
-                content.html(
-                        '<textarea id="discussion_edit_comment" dir="rtl" class="four-col" cols="0" rows="0" style="margin: 2px; width: 676px; height: 86px;">' + text +'</textarea>' +
-                        '<input id="update_post" value="עדכן" type="button" class="button_submit_comment_no_text">');
-
-                var edit_editor;
-                // set ck editor
-                $( '#discussion_edit_comment').ckeditor({
-                    height: 100,
-                    'line-height':10,
-                    language:'he',
-                    removePlugins : 'elementspath',
-                    on :
-                    {
-                        instanceReady : function( ev )
-                        {
-                            edit_editor = this;
-                        }
-                    }
-                });
-
-                // add click listener to update_button
-                $('#update_post').click(function(){
-                    var updated_text = $(this).siblings('#discussion_edit_comment').val();
-                    db_functions.editDiscussionPost(post_id, updated_text, function(err, data){
-                        if(!err){
-                            content.html(data.text);
-                        }
-                    });
-                });
-            });
-
-
-
-            $(".main_text").dotdotdot({
-                callback	: function( isTruncated, orgContent ) {
-                    $(".main_text").css('color','#4a4a4b')  ;
-                    $("#short .read_more").show()  ;
-                }
-            });
-
->>>>>>> merge_sug
             db_functions.getDiscussionShoppingCart(discussion_id, function (err, data) {
                 if (err || data.objects.length === 0) {
                     $('.segment.info').hide();
@@ -777,21 +719,12 @@ var error_message = error_message || '';
 
             function setUserScore(userID, score) {
                 $('[ data-creator_id=' + userID + ']').find('.score').empty().append(score);
-<<<<<<< HEAD
             }
 
             function setCommentNumber(number) {
                 $('#comments_number')[0].innerHTML = '(' + number + ')';
             }
 
-=======
-            }
-
-            function setCommentNumber(number) {
-                $('#comments_number')[0].innerHTML = '(' + number + ')';
-            }
-
->>>>>>> merge_sug
             function vote(actionType){
                 var post_id = $(this).parents('.comment_wrapper').data("id");
                 var button = $(this);
@@ -853,7 +786,6 @@ var error_message = error_message || '';
                         });
                     });
                 }
-<<<<<<< HEAD
             });
             // click on  quoted take you to comment
             $('#comments_wrapper').on('click', '.quote', function () {
@@ -870,24 +802,6 @@ var error_message = error_message || '';
                     });
                 }
             });
-=======
-            });
-            // click on  quoted take you to comment
-            $('#comments_wrapper').on('click', '.quote', function () {
-                var id = $(this).parents('.comment_wrapper ').data('ref-id');
-                var post_id = "post_" + id;
-                if(!scrollTo(window[post_id])) {
-                    db_functions.getPostById(id, function (err, post) {
-                        dust.render('discussion_comment', post, function (err, out) {
-                            if (!err){
-                                $(".second_pagination").before(out);
-                                scrollTo(window[post_id])
-                            }
-                        });
-                    });
-                }
-            });
->>>>>>> merge_sug
             /* *** end of scroll to qoutes *** */
 
             // copy the post text+ user to   discussion_comment
@@ -914,45 +828,6 @@ var error_message = error_message || '';
 
                 $("textarea#discussion_comment").val($("textarea#discussion_comment").val() + text).focus();
                 focusOnCommentBox(text_height);
-<<<<<<< HEAD
-
-                $("textarea#discussion_comment").height($("textarea#discussion_comment").height() + text_height);
-            });
-
-            var current_offset = 0;
-            var limit = 20;
-            var num_of_pages;
-            var num_of_pages_in_section = 7;
-            var total_post_count;
-
-            //render change suggestion
-            function render_suggestion(suggestion, use_animation) {
-                // get original text and alternative text
-                if (suggestion.parts && suggestion.parts.length) {
-                    suggestion.original_part = function () {
-                        var from = suggestion.parts[0].start;
-                        var end = suggestion.parts[0].end;
-                        return original.substr(from, end - from);
-                    };
-
-                    // set text for context popup
-                    suggestion.context_before = original.substring(Math.max(suggestion.parts[0].start - 400, 0), suggestion.parts[0].start, suggestion.parts[0].start);
-                    suggestion.context_after = original.substring(suggestion.parts[0].end, Math.min(original.length, suggestion.parts[0].end + 400));
-
-                    suggestion.alternative_part = function () {
-                        return suggestion.parts[0].text;
-                    };
-
-                    dust.render('discussion_suggestion', suggestion, function (err, out) {
-                        $('#suggestions_wrapper').append(out);
-                        image_autoscale($('#suggestions_wrapper .auto-scale img'));
-
-                        if(use_animation == true){
-                            var bgc =$('.suggestion_holder').last().css('background-color');
-                            $('.suggestion_holder ').last().css('background-color', 'pink');
-                            $('.suggestion_holder ').last().animate({backgroundColor: bgc}, 3000);
-                        }
-=======
 
                 $("textarea#discussion_comment").height($("textarea#discussion_comment").height() + text_height);
             });
@@ -990,7 +865,6 @@ var error_message = error_message || '';
                             $('.suggestion_holder ').last().animate({backgroundColor: bgc}, 3000);
                         }
 
->>>>>>> merge_sug
                         // check if got here after not logged user tryed to grade suggestion
                         var action = getURLParameter('action');
                         if (action !== "null") {
@@ -1046,294 +920,38 @@ var error_message = error_message || '';
                 suggestions_count = suggestions_list.length;
                 displaySuggestionsRanges();
 
-                suggestion = suggestions_list[0];
+//        suggestion = suggestions_list[0];
+//
+//        // set title and img for fb share
+//        suggestion.title = discussion_title;
+//        suggestion.image_field_preview = discussion_img_field_preview;
+//
+//        render_suggestion(suggestion);
 
-                // set title and img for fb share
-                suggestion.title = discussion_title;
-                suggestion.image_field_preview = discussion_img_field_preview;
+//        curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion.id + ']');
+//
+//        db_functions.getCommentsBySuggestion(suggestion.id, function(err, data){
+//            // set comments counter
+//            curr_suggestion.find('.comments_counter span').text(data.objects.length);
+//
+//            if (data.objects.length===0){
+//                curr_suggestion.find('.close').hide();
+//            }
+//
+//            $.each(data.objects, function (index, comment) {
+//                var is_first_comment = (index == 0);
+//                comment.is_even = (index % 2) == 0;
+//                dust.render('nested_comment', comment, function (err, out) {
+//                    // append before "add_comment"
+//                    curr_suggestion.find('.suggestion_comments_holder .add_comment').before(out);
+//                   /* if (is_first_comment) {
+//                        $(curr_suggestion).find('.suggestion_comments_holder .comment').show();
+//                    }*/
+//                    image_autoscale(curr_suggestion.find('.auto-scale img'));
+//                });
+//            });
+//        });
 
-<<<<<<< HEAD
-                render_suggestion(suggestion);
-
-                var curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion.id + ']');
-
-                db_functions.getCommentsBySuggestion(suggestion.id, function(err, data){
-
-                    // set comments counter
-                    curr_suggestion.find('.comments_counter span').text(data.objects.length);
-
-                    if (data.objects.length===0){
-                        curr_suggestion.find('.close').hide();
-                    }
-
-                    $.each(data.objects, function (index, comment) {
-                        var is_first_comment = (index == 0);
-                        comment.is_even = (index % 2) == 0;
-                        dust.render('nested_comment', comment, function (err, out) {
-                            // append before "add_comment"
-                            curr_suggestion.find('.suggestion_comments_holder .add_comment').before(out);
-                            /* if (is_first_comment) {
-                             $(curr_suggestion).find('.suggestion_comments_holder .comment').show();
-                             }*/
-                            image_autoscale(curr_suggestion.find('.auto-scale img'));
-                        });
-                    });
-                });
-
-                $('#suggestion_number').text(' (' + data.meta.total_count + ')');
-                if (data.objects.length > 0) {
-                    var curr_suggestion;
-                    first_suggestion = data.objects[0];
-                    $(".content_break_content").show();
-                    if (data.meta.total_count >= 2) {
-                        $(".more-deals").show();
-
-                        $(".more-deals a").on('click', function (e) {
-                            $('#suggestions_wrapper').empty();
-                            var self = $(this);
-                            if(self.data('executing')){
-
-                                render_suggestion(first_suggestion);
-                                curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + first_suggestion.id + ']');
-
-                                db_functions.getCommentsBySuggestion(first_suggestion.id, function(err, data){
-
-                                    // set comments counter
-                                    curr_suggestion.find('.comments_counter span').text(data.objects.length);
-
-                                    $.each(data.objects, function (index, comment) {
-                                        var is_first_comment = (index == 0);
-                                        comment.is_even = (index % 2) == 0;
-
-                                        dust.render('nested_comment', comment, function (err, out) {
-                                            // append before "add_comment"
-                                            curr_suggestion.find('.add_comment').before(out);
-                                            /*if (is_first_comment) {
-                                             $(curr_suggestion).find('.suggestion_comments_holder .comment').show();
-                                             }*/
-                                            image_autoscale(curr_suggestion.find('.auto-scale img'));
-                                        });
-                                    });
-                                })
-                                self.text('עוד הצעות');
-                                $(this).removeClass('flip');
-
-                                $(this).data('executing', false);
-                                scrollTo('#content_wrapper_suggestions')
-                                return false;
-                            }
-                            var result = displayAllSuggestions() ;
-                            $('#suggestions_wrapper').show(400, function () {
-                                $(this).css("visibility", "visible");
-                                $('.loading-suggestion').hide();
-                            });
-                            return result;
-                        });
-                        // if (!isMobile()) {
-                        $(".more-deals a").click();
-                        
-                        // } else {
-                        //     $(".more-deals a").css("visibility", "visible");
-                        // }
-
-                    }
-
-                    // if needs to scroll to suggestion that is not shown, open list of suggestions and scroll to suggestion
-                    var hash = window.location.hash;
-                    if(hash){
-                        if (!scrollTo(hash)) {
-                            var match = /^#post_([0-9a-f]+)/.exec(hash);
-
-                            if (!match) return false;
-
-                            var is_suggestion = false;
-                            $.each(suggestions_list, function(index, suggestion){ if ("#post_" + suggestion.id + "" == hash) is_suggestion = true });
-                            if (is_suggestion){
-                                displayAllSuggestions();
-                            }
-                        }
-                    }
-                }
-                else {
-                    $(".content_break_content").hide();
-                }
-            });
-
-            $('.history_button, .approved_suggestions h2').click(function(e){
-                $('input.history').toggleClass('active');
-                $('#content_wrapper_approved_suggestions').toggleClass('active');
-                if (on_load && global_hash) {
-                    scrollTo(global_hash);
-                    on_load = false;
-                }else{
-                    if ($('#content_wrapper_approved_suggestions').hasClass('active')){
-                        scrollTo('.approved_suggestions');
-                    }
-                }
-
-            });
-
-            db_functions.getApprovedSuggestionsByDiscussion(discussion_id, 0, 0, function(err, data){
-                if (data.objects.length > 0){
-                    approved_suggestions_list = data.objects || {};
-                    // set vision version details
-                    $('.draft_no span').text(data.objects.length + 1);
-
-                    if (data.objects[0].approve_date)
-                        $('.history_details_holder .item.last span').text($.datepicker.formatDate('dd.mm.yy', new Date(Date.parse(data.objects[0].approve_date))));
-                    else {
-                        $('.history_details_holder .item.last').hide();
-                        $('.history_details_holder .item.by').hide();
-                    }
-                    $('.history_details_holder .item.by a').text(data.objects[0].creator_id.first_name + " " + data.objects[0].creator_id.last_name);
-                    $('.history_details_holder .item.by a').attr('href', '../profile/' + data.objects[0].creator_id.id);
-                    $('.history_details_holder').show();
-                    $('.content_break.approved_suggestions').show();
-
-                    $('#approved_suggestion_number').text(' (' + data.meta.total_count + ')');
-
-                    var XHRs = [];
-
-                    $.each(data.objects, function(index, sugg){
-                        render_approved_suggestion(sugg);
-
-                        XHRs.push(db_functions.getCommentsBySuggestion(sugg.id, function(err, data){
-                            curr_suggestion = $('#approved_suggestions_wrapper').find('[data-id=' + sugg.id + ']') ;
-                            // set comments counter
-                            curr_suggestion.find('.comments_counter span').text(data.objects.length);
-                            renderNestedComments(data.objects, curr_suggestion, sugg.id);
-                        }))
-                    });
-
-                    image_autoscale($('#approved_suggestions_wrapper .auto-scale img'));
-
-                    var hash = window.location.hash;
-
-                    if(hash){
-                        var match = /^#post_([0-9a-f]+)/.exec(hash);
-                        if (match) {
-                            var post_id = match[1];
-                            var is_hash_to_approved_suggestion = false;
-                            $.each(approved_suggestions_list, function(index, app_sugg){
-                                if(app_sugg._id == post_id) is_hash_to_approved_suggestion = true;
-                            })
-
-                            if(is_hash_to_approved_suggestion){
-                                global_hash = hash;
-                                $('.approved_suggestions h2').click();
-                            }
-                        }
-                    }
-                }
-            });
-
-            function displayAllSuggestions(){
-
-                var self=$(".more-deals a");
-                var XHRs = [];
-                $('#suggestions_wrapper').empty();
-
-                $.each(suggestions_list, function (index, suggestion) {
-
-                    // set title and img for fb share
-                    suggestion.title = discussion_title;
-                    suggestion.image_field_preview = discussion_img_field_preview;
-
-                    render_suggestion(suggestion);
-
-                    XHRs.push(db_functions.getCommentsBySuggestion(suggestion.id, function(err, data){
-
-                        curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion.id + ']') ;
-
-                        // set comments counter
-                        curr_suggestion.find('.comments_counter span').text(data.objects.length);
-
-                        renderNestedComments(data.objects, curr_suggestion, suggestion.id);
-
-                        /*curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion.id + ']') ;
-
-                         // set comments counter
-                         curr_suggestion.find('.comments_counter span').text(data.objects.length);
-
-                         $.each(data.objects, function (index, comment) {
-
-                         // bug work around
-                         var duplicate = false;
-                         $.each($('.suggestion_comments_holder .comment'), function(index, curr_comment){
-                         if ($(curr_comment).attr('id') == comment._id) duplicate = true;}
-                         );
-                         if (duplicate) return false;
-
-                         comment.is_even = (index % 2) == 0;
-                         dust.render('nested_comment', comment, function (err, out) {
-                         // append before "add_comment"
-                         curr_suggestion.find('.add_comment').before(out);
-                         //                        image_autoscale(curr_suggestion.find('.auto-scale img'));
-                         });
-                         });*/
-                    }))
-
-                    //run a function when all deferred objects resolve
-                    $.when(XHRs).then(function (){
-                        // if needs to scroll to suggestion that is not shown, open list of suggestions and scroll to suggestion
-                        var hash = window.location.hash;
-                        if(hash && on_load){
-                            scrollTo(hash);
-                            on_load = false;
-                        }
-                    });
-                });
-
-                self.text('סגור הצעות ');
-                self.addClass('flip');
-                self.data('executing', true);
-                return false;
-            }
-
-            $('#suggestions_wrapper, #comments_wrapper').on('click', '.add_comment input', function(e){
-                activateMailNotifications();
-                var self = $(this);
-                var text = $(this).parent('.add_comment').find('textarea').val();
-
-                if (text.trim() == '') return false;
-
-                var post_or_suggestion_id = $(this).parents('.post_or_suggestion').data('id');
-                var post_or_suggestion_creator_id = $(this).parents('.post_or_suggestion').data('creator_id');
-                var is_suggestion = $(this).parents('.suggestion_wrapper').length > 0;
-                var add_comment = $(this).parent('.add_comment');
-                var can_continue = $(this).parent().data('can-add');
-
-                if (can_continue) {
-                    $(this).parent().attr('data-can-add', false);
-
-//            var function = is_suggestion ? db_functions.addCommentToSuggestion() : db_functions.addCommentToPost()
-                    var callback = function (err, comment) {
-                        $(this).parent().attr('data-can-add', true);
-                        add_comment.find('textarea').val('');
-                        var $suggestion_or_post = $('[data-id=' + post_or_suggestion_id + ']');
-                        var num_of_comments = $suggestion_or_post.find('.post_or_suggestion_comments_holder .comment').length;
-                        $suggestion_or_post.find('.comments_counter span').text(num_of_comments + 1);
-
-                        if (num_of_comments % 2 === 0) comment.is_even = true;
-
-                        dust.render('nested_comment', comment, function (err, out) {
-                            // append before "add_comment"
-                            add_comment.before(out);
-                            image_autoscale(add_comment.parent('.suggestion_comments_holder').find('.auto-scale img'));
-                            /*scrollTo('#' + comment._id);*/
-                        });
-                    };
-
-                    //TODO improve this
-                    if (is_suggestion) {
-                        db_functions.addCommentToSuggestion(post_or_suggestion_id, discussion_id, post_or_suggestion_creator_id, text, callback);
-                    } else {
-                        db_functions.addCommentToPost(post_or_suggestion_id, discussion_id, text, callback);
-                    }
-                }
-            });
-
-=======
                 $('#suggestion_number').text(' (' + data.meta.total_count + ')');
                 if (data.objects.length > 0) {
                     var curr_suggestion;
@@ -1590,7 +1208,6 @@ var error_message = error_message || '';
                 }
             });
 
->>>>>>> merge_sug
             // close/open suggestion comments
             $('#suggestions_wrapper').on('click', '.suggestion_bottom .close', function(){
                 $(this).hide();
@@ -1765,7 +1382,6 @@ var error_message = error_message || '';
                                 if ($('.pagination .down-dots').length === 0){
                                     $('.pagination').find("[data-first=true]").before('<span class="page down-dots">...</span>');
                                 }
-<<<<<<< HEAD
 
                                 //removeing 3 dots
                                 if ((parseInt($($('.first_pagination .pagination .page[data-last=true]')[0]).text()) === num_of_pages)){
@@ -1781,23 +1397,6 @@ var error_message = error_message || '';
                                     a.text(parseInt(a.text()) - paging_down);
                                 });
 
-=======
-
-                                //removeing 3 dots
-                                if ((parseInt($($('.first_pagination .pagination .page[data-last=true]')[0]).text()) === num_of_pages)){
-                                    //remove 3 dots
-                                    $('.pagination .up-dots').remove();
-                                }
-                            }
-                            if (pagination_action === 'move_down'){
-                                var paging_down = Math.min(Math.floor(num_of_pages_in_section / 2), page_number - 1);
-
-                                $.each($('.pagination .page a'), function(index, page){
-                                    var a = $(this);
-                                    a.text(parseInt(a.text()) - paging_down);
-                                });
-
->>>>>>> merge_sug
                                 if ($($('.first_pagination .pagination .page[data-first=true]')[0]).text() === "1"){
                                     //remove 3 dots
                                     $('.pagination .down-dots').remove();
@@ -1942,149 +1541,6 @@ var error_message = error_message || '';
                     var selected_ranges = s.getRanges();
                     selected_ranges[0].collapse(false);  //  false collapses the range to the end of the selected node, true before the node.
                     s.selectRanges(selected_ranges);
-<<<<<<< HEAD
-
-                    if(text_height){
-                        CKEDITOR.instances.discussion_comment.resize(755, 100 + text_height);
-                        $('#comments_wrapper #add_comment_wrapper .comment_wrapper').height(100 + text_height);
-                    }
-
-                },100);
-            };
-
-            function displaySuggestionsRanges(){
-                $.each(suggestions_list, function (index, suggestion) {
-                    var html =  $('#discussion_content').html();
-                    var text =  original.substr(suggestion.parts[0].start,suggestion.parts[0].end - suggestion.parts[0].start);
-                    //  console.log(text);
-                    if (suggestion.parts[0].start > original.length) {
-                        console.log('range problem |' + suggestion.id);
-                        return
-                    }
-                    text=text.replace(/\r\n/g, '\r\n<br>');
-                    text=text.replace(/\n/g, '\n<br>') ;
-                    html =  html.substring(0, suggestion.parts[0].start) +
-                    html.substring(suggestion.parts[0].start).replace(
-                            text,'<span data-id="'+suggestion.id+'" class="marker_1">'+text+'</span>');
-                    $('#discussion_content').html(html);
-
-                });
-            }
-            var mouseDown, mouseUp, top, left;
-            var range_txt;
-
-            $('body').on('mousedown', function(e) {
-                mouseDown = e;
-            });
-            $('#discussion_content,#discussion_content_textarea')
-                    .on('mousedown', function (e) {
-                        mouseDown = e;
-                        $("#old_suggestion_popup").hide();
-                        console.log(mouseDown) ;
-                    })
-                    .on('keydown', function (e) {
-                        if (!(e.shiftKey && (e.keyCode <= 40 && e.keyCode >= 37) || (e.ctrlKey && e.keyCode == 65) || e.keyCode == 9))
-                            e.preventDefault();
-                    })
-                    .on('dragstart', function (e) {               mouseDown = e;  e.preventDefault(); console.log(mouseDown) ;              })
-                    .on('mouseup',function (e) {
-                        e.stopPropagation();
-                        mouseUp = e;
-                        console.log(e) ;
-                        var err = false;
-
-                        left = Math.ceil((mouseDown.clientX + mouseUp.clientX) / 2 - 97);
-                        top = Math.min(mouseDown.clientY, mouseUp.clientY) - $("#new_suggestion_popup").height() - 40 + $(window).scrollTop() +35;
-
-                        range_txt = window.getSelection().toString();
-
-                        // if we got here after flipping the discussion content to textarea get range easily
-                        if ($(this).attr('id') === "discussion_content_textarea"){
-                            range = $(this).getSelection();
-                            range_txt = range.text;
-                        }else {
-
-                            var flag = discoverRange (range_txt);
-                            console.log(range_txt);
-                            if (range_txt.length == 0){
-                                mouseDown=null
-                                return false;
-                            }
-
-                            if(flag === false || (range.start == 0 && range.end == 0)){
-                                var popupConfig = {};
-                                popupConfig.message = "קרתה תקלה, נסה שנית";
-                                popupConfig.onOkCilcked = function(e){
-                                    e.preventDefault();
-                                    clicked = 'ok';
-                                    //   if (flag === false){
-                                    $('#discussion_content').hide();
-                                    $('#discussion_content_textarea').show();
-                                    $('#discussion_content_textarea').css('height',$("#discussion_content_textarea")[0].scrollHeight);
-                                    $('.read_less').click();
-                                    $('.read_more').click();
-                                    //    }
-                                    $.colorbox.close();
-                                },
-                                        popupProvider.showOkPopup(popupConfig);
-                                return false;
-                            }
-                        }
-
-                        if(range.length > 0 || range_txt.length > 0 ){
-                            if(!my_id){
-                                popupProvider.showLoginPopup({}, function(err, result){
-                                    if(!err)
-                                        window.location = window.location
-                                });
-                                return false;
-                            }
-
-                            //this chunk is for preventing adding suggestion before grading  the discussion
-                            /* if (!my_discussion_grade && !is_creator){
-                             var popupConfig = {};
-                             popupConfig.message = 'אנא דרג קודם את החזון בראש העמוד.'
-                             popupConfig.onOkCilcked = function(e){
-                             e.preventDefault();
-                             clicked = 'ok';
-                             $.colorbox.close();
-                             scrollTo('.segment.main .tags')
-                             },
-                             popupProvider.showOkPopup(popupConfig);
-                             return false;
-                             }
-                             */
-                            if(navigator.appName === "Microsoft Internet Explorer"){
-                                $("#pop_suggest_bt").click();
-                            }else{
-                                $("#old_suggestion_popup").hide();
-                                var widthPopup  = $("#new_suggestion_popup .tooltip_2").width();
-                                var leftPopup = e.pageX-97;
-                                leftPopup = leftPopup <= 0 ? 0 : leftPopup;
-                                leftPopup = e.pageX+widthPopup-97 > window.innerWidth ? window.innerWidth-widthPopup-26 : leftPopup;
-                                $("#new_suggestion_popup")
-                                        .css({ top:top, left: leftPopup, opacity:0 })
-                                        .show()
-                                        .animate({ top:'-=20px', opacity:1 }, 100, 'linear');
-                                setTimeout(function (){  mouseDown=null;},500)
-                            }
-                        }else  {
-                            mouseDown=null
-                        }
-                    });
-
-            $("#content_main_holder").on("click tap keydown", ".marker_1", function (e) {
-                if(!mouseDown && (e.type == 'click' || e.type == 'tap' || e.keyCode == 13)){
-                    // open tab with suggestions first
-//            $('#wrap > div.tabs > ul > li:nth-child(1) a').click();
-//            displayAllSuggestions();
-                    var id= $(this).data('id');
-                    $('html, body').animate({
-                        scrollTop: $("div[data-id=" +id+ "]").offset().top
-                    }, 500);
-
-
-=======
 
                     if(text_height){
                         CKEDITOR.instances.discussion_comment.resize(755, 100 + text_height);
@@ -2228,7 +1684,6 @@ var error_message = error_message || '';
                     $('html, body').animate({
                         scrollTop: $("div[data-id=" +id+ "]").offset().top
                     }, 500);
->>>>>>> merge_sug
                 }
             });
 
@@ -2831,155 +2286,6 @@ var error_message = error_message || '';
                 },
                         popupConfig.post_id = $(this).parents('.comment_wrapper').data('id');
                 popupProvider.showDeletePostPopup(popupConfig);
-<<<<<<< HEAD
-            });
-
-            // toggle delete suggestion button
-            $('#suggestions_wrapper').on('mouseenter', '.suggestion_wrapper .suggestion_holder', function(e){
-                $(this).find('.close').addClass('show');
-            }).on('mouseleave', '.suggestion_wrapper .suggestion_holder' , function(){
-                $(this).find('.close').removeClass('show');
-            });
-
-            $('#content_wrapper_suggestions').on('click', '.suggestion_holder > .close', function(e){
-                var popupConfig = {};
-                popupConfig.popup_text = "" +
-
-                'למחוק הצעה זו? יחד איתה יימחקו תגובות שפורסמו לה ע"י משתמשים אחרים'
-                ;
-                popupConfig.onOkCilcked = function(e){
-                    e.preventDefault();
-                    clicked = 'ok';
-                    db_functions.removeSuggestion(popupConfig.post_id, function(err){
-                        if (err){
-                            console.log(err);
-                        }else{
-                            var $this = $('#post_' + popupConfig.post_id);
-                            $this.slideUp(1200, "swing", function(e){
-                                $.each(suggestions_list, function(index, object){
-                                    if(object.id == popupConfig.post_id){
-                                        suggestions_list.splice(index, i);
-                                    }
-                                });
-                            });
-                        }
-                    });
-                    $.colorbox.close();
-                },
-                        popupConfig.post_id = $(this).parents('.suggestion_wrapper').data('id');
-                popupProvider.showDeletePostPopup(popupConfig);
-            })
-
-            // toggle delete comment on suggestion button
-            $('#content_wrapper_suggestions').on('mouseenter', '.suggestion_comments_holder .comment', function(e){
-                $(this).find('.close').addClass('show');
-            }).on('mouseleave', '.suggestion_comments_holder .comment', function(){
-                $(this).find('.close').removeClass('show');
-            });
-
-            $('#content_wrapper_suggestions').on('click', '.suggestion_comments_holder .comment>.close', function(e){
-                var popupConfig = {};
-                popupConfig.popup_text = "" +
-                "למחוק תגובה זו?"
-                ;
-                popupConfig.onOkCilcked = function(e){
-                    e.preventDefault();
-                    clicked = 'ok';
-                    db_functions.removeSuggestionComment(popupConfig.post_id, function(err){
-                        if (err){
-                            console.log(err);
-                        }else{
-                            var $this = $('#post_' + popupConfig.post_id);
-                            $this.slideUp(1200, "swing");
-                        }
-                    });
-                    $.colorbox.close();
-                },
-                        popupConfig.post_id = $(this).parent('.comment').data('id');
-                popupProvider.showDeletePostPopup(popupConfig);
-            });
-
-            $('.service-8, .upload-popup .close-popup').click(function () {
-                $(this).parents('.services-box').toggleClass('upload-active');
-
-                return false;
-            });
-
-            $(".upload-tabs").tabs();
-
-            $('.upload-popup .upload-bottom input').click(function (){
-                var form = $('.upload-popup');
-                var saveData = {
-                    title: form.find('textarea').val(),
-                    text_field: form.find('textarea').val(),
-                    category: 'statistics'
-                };
-
-                var selectedTab = form.find('.upload-tabs').tabs('option', 'selected');
-                var image, link;
-                switch (selectedTab) {
-                    case 0: // image
-                        image = form.find('input[name="image_field"]');
-                        break;
-
-                    case 1: // video
-                        image = form.find('input[name="video_field"]');
-                        link = form.find('#video input[type=url]');
-                        break;
-
-                    case 2: // link
-                        link = form.find('#link input[type=url]');
-                        break;
-                };
-
-                if (image && image.val()) {
-                    saveData.image_field = image.val();
-                }
-                if (link && link.val()) {
-                    saveData.text_field += '\n\n' + link.val();
-                }
-
-                db_functions.createInformationItem(saveData, function (error) {
-                    if (error) {
-                        popupProvider.showOkPopup({ message: 'קרתה תקלה בעת שמירת פריט המידע' });
-                    } else {
-                        popupProvider.showOkPopup({ message: 'פריט המידע נשמר' });
-                        $('.upload-popup').hide();
-                    }
-                });
-                event.preventDefault();
-                return false;
-            });
-
-            function  activateMailNotifications(){
-                db_functions.activateMailNotification(my_id, function(err,data){})
-            };
-
-            $('.add_fast_comment').live('click', function(e){
-                var post_or_suggestion = $(this).parents('.post_or_suggestion');
-
-                // show comments
-                post_or_suggestion.find('.post_or_suggestion_comments_holder').show();
-                image_autoscale('.auto-scale img');
-
-                $(post_or_suggestion.find('.add_comment textarea')).focus();
-            });
-
-            // TABS
-            jQuery('.tabs .tab-links a').on('click', function(e)  {
-                var currentAttrValue = jQuery(this).attr('href');
-
-                // Show/Hide Tabs
-                jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
-
-                // Change/remove current tab to active
-                jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
-
-                e.preventDefault();
-            });
-        });
-
-=======
             });
 
             // toggle delete suggestion button
@@ -3139,7 +2445,6 @@ var error_message = error_message || '';
 
         });
 
->>>>>>> merge_sug
     </script>
 </body>
 </html>
