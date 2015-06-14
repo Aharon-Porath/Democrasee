@@ -240,8 +240,7 @@ var error_message = error_message || '';
         <div class="tab-content">
             <div id="tab1" class="tab active" role="tabpanel" aria-labelledby="tab-link-1">
                 <div id="content_wrapper_suggestions">
-                    <div class="loading-suggestion"></div>
-                    <div id="suggestions_wrapper" style="display: none; visibility: hidden">
+                    <div id="suggestions_wrapper">
                     </div>
                     <div class="more-deals" data-executing="false" style="visibility: hidden">
                         <a href="javascript: void(0)">עוד הצעות</a>
@@ -323,7 +322,6 @@ var error_message = error_message || '';
     </div>
     <!-- TABS TEST end -->
 
-    <<<<<<< HEAD
     <% include partials/footer.ejs %>
 
     <script type="text/javascript">
@@ -443,197 +441,70 @@ var error_message = error_message || '';
                 var edit_editor;
                 // set ck editor
                 $( '#discussion_edit_comment').ckeditor({
-                        height: 100,
-                        'line-height':10,
-                        language:'he',
-                        removePlugins : 'elementspath',
-                        on :
-                                {
-                                        instanceReady : function( ev )
-                {
-                    edit_editor = this;
-                }
-                =======
-                <% include partials/footer.ejs %>
-
-                <script type="text/javascript">
-
-                var current_section = 1;
-
-                $(document).ready(function () {
-                    var my_id = "<%=user_logged ? user._id : ''%>";
-                    var my_name = "<%= user && user.first_name + ' '+ user.last_name%>";
-                    var discussion_id = "<%=discussion_id%>";
-                    var creator_id = "<%=discussion.creator_id && discussion.creator_id.id%>";
-                    var is_creator = (my_id == creator_id);
-                    var my_discussion_grade = Number("<%= discussion.grade_obj ? discussion.grade_obj.value || discussion.grade : discussion.grade %>");
-                    var discussion_grade = Number("<%= discussion.grade%>");
-                    var grade_id = "<%= discussion.grade_obj ? discussion.grade_obj.grade_id : 0 %>";
-                    var vision_text_history_count = "<%= discussion.vision_text_history ? discussion.vision_text_history.length : 0 %>";
-                    var suggestions_list=null;
-                    var approved_suggestions_list=null;
-                    var original = $('#discussion_content_textarea').val() ;
-                    var text_field_preview = "<%= discussion.text_field_preview%>";
-                    var range = {};
-                    var editor;
-                    var on_load = true;
-                    var global_hash = null;
-                    var suggestions_count;
-
-                    var isMobile = function () {
-                        return (/iphone|ipod|android|blackberry\sce|palm/i.test(navigator.userAgent.toLowerCase()));
-                    };
-
-                    if (is_creator){
-                        my_discussion_grade = discussion_grade;
-                    >>>>>>> master
+                    height: 100,
+                    'line-height':10,
+                    language:'he',
+                    removePlugins : 'elementspath',
+                    on :
+                    {
+                        instanceReady : function( ev )
+                        {
+                            edit_editor = this;
+                        }
                     }
+                });
 
-                    if (user && !user.actions_done_by_user) user.actions_done_by_user = {};
-
-
-                    // toggle edit class to open/close contxt popup window or edit suggestion button
-                    $('#suggestions_wrapper').on('mouseenter', '.text.change_proposal', function(e){
-                        var edit_window = $(this).find('.edit_window');
-                        var window_height = edit_window.height();
-                        var window_padding = parseInt(edit_window.css("padding-top"));
-                        var window_border = parseInt(edit_window.css("border-top-width"));
-
-                        $(this).parents('.suggestion_wrapper').toggleClass('edit');
-                        $(this).parents('.suggestion_wrapper').toggleClass('show_edit_button');
-
-                        //set window top
-                        edit_window.css('top', 0 - window_height - (window_padding * 2 + window_border * 2));
-
-                    }).on('mouseleave', '.text.change_proposal', function(){
-                        $(this).parents('.suggestion_wrapper').toggleClass('edit');
-                    });
-
-                    // toggle edit class to open/close contxt popup window or edit suggestion button
-                    $('#approved_suggestions_wrapper').on('mouseenter', '.text.change_proposal', function(e){
-                        var edit_window = $(this).parents('.suggestion_wrapper').find('.edit_window');
-                        var window_height = edit_window.height();
-                        var window_padding = parseInt(edit_window.css("padding-top"));
-                        var window_border = parseInt(edit_window.css("border-top-width"));
-
-                        $(this).parents('.suggestion_wrapper').toggleClass('edit');
-                        $(this).parents('.suggestion_wrapper').toggleClass('show_edit_button');
-
-                        //set window top
-                        edit_window.css('top', 35 - window_height - (window_padding * 2 + window_border * 2));
-                        edit_window.css('right', 66);
-                    }).on('mouseleave', '.suggestion_wrapper .edit_window, .suggestion_wrapper .suggestion_holder', function(){
-                        $(this).parents('.suggestion_wrapper').removeClass('edit');
-                    });
-
-
-                    // when clicking the edit_comment popup show go to creatק suggestion window
-                    $('#suggestions_wrapper, #approved_suggestions_wrapper').on('click', '.button_edit_comment', function(){
-                        var $suggestion_content = $(this).next();
-                        var orig_text = $suggestion_content.find('.original_part').text();
-                        var alternative_part = $suggestion_content.find('.alternative_part').text();
-                        var explanation =  $suggestion_content.find('.explanation').text();
-
-                        // set text and then focus
-                        $('#discussion_content_txt').text('"' + orig_text + '"');
-                        $('#write-comment').show();
-                        $('#reload-img').attr('src', $('#reload-img').attr('src'));
-                        $('textarea#discussion_suggest').text(alternative_part);
-                        $('textarea#discussion_explanation').text(explanation);
-                        $('textarea#discussion_suggest').focus();
-
-                        // change button text and set it to edit instead of creating new suggestion
-                        $('#send_suggestion').text('ערוך');
-                        $('#send_suggestion').data('edit', true);
-
-                        var sug_id =  $(this).parents('.suggestion_wrapper').data('id');
-                        $('#send_suggestion').data('suggestion-id', sug_id);
-                    });
-
-                    // edit comment popup when hover in comment text (only if user is the comment creator and hovering in the first 15 min after published)
-                    $('#comments_wrapper').on('mouseenter', '.edit_comment .content', function(){
-                        $(this).parents('.comment_wrapper').toggleClass('edit');
-                    }).on('mouseleave', '.edit_comment .content', function() {
-                        $(this).parents('.comment_wrapper').toggleClass('edit');
-                    });
-
-                    // when clicking the edit_comment popup show text editor and update button
-                    $('#comments_wrapper').on('click', '.content .button_edit_comment', function(){
-                        var text = $(this).parent('.content').text();
-                        var post_id = $(this).parents('.comment_wrapper').data('id');
-                        var content = $(this).parent('.content');
-
-                        content.html(
-                                '<textarea id="discussion_edit_comment" dir="rtl" class="four-col" cols="0" rows="0" style="margin: 2px; width: 676px; height: 86px;">' + text +'</textarea>' +
-                                '<input id="update_post" value="עדכן" type="button" class="button_submit_comment_no_text">');
-
-                        var edit_editor;
-                        // set ck editor
-                        $( '#discussion_edit_comment').ckeditor({
-                            height: 100,
-                            'line-height':10,
-                            language:'he',
-                            removePlugins : 'elementspath',
-                            on :
-                            {
-                                instanceReady : function( ev )
-                                {
-                                    edit_editor = this;
-                                }
-                            }
-                        });
-
-                        // add click listener to update_button
-                        $('#update_post').click(function(){
-                            var updated_text = $(this).siblings('#discussion_edit_comment').val();
-                            db_functions.editDiscussionPost(post_id, updated_text, function(err, data){
-                                if(!err){
-                                    content.html(data.text);
-                                }
-                            });
-                        });
-                    });
-
-
-
-                    $(".main_text").dotdotdot({
-                        callback	: function( isTruncated, orgContent ) {
-                            $(".main_text").css('color','#4a4a4b')  ;
-                            $("#short .read_more").show()  ;
+                // add click listener to update_button
+                $('#update_post').click(function(){
+                    var updated_text = $(this).siblings('#discussion_edit_comment').val();
+                    db_functions.editDiscussionPost(post_id, updated_text, function(err, data){
+                        if(!err){
+                            content.html(data.text);
                         }
                     });
-
-                    db_functions.getDiscussionShoppingCart(discussion_id, function (err, data) {
-                        if (err || data.objects.length === 0) {
-                            $('.segment.info').hide();
-                            return;
-                        }
-
-                        $.each(data.objects, function (index, item) {
-                            dust.render('discussion_information_item', item, function (err, out) {
-                                $('#slider').append(out);
+                });
+            });
 
 
-                            });
-                        });
 
-                        // open information item in colorbox popup
-                        $('#slider li[target!="_blank"]').colorbox({
+            $(".main_text").dotdotdot({
+                callback	: function( isTruncated, orgContent ) {
+                    $(".main_text").css('color','#4a4a4b')  ;
+                    $("#short .read_more").show()  ;
+                }
+            });
+
+            db_functions.getDiscussionShoppingCart(discussion_id, function (err, data) {
+                if (err || data.objects.length === 0) {
+                    $('.segment.info').hide();
+                    return;
+                }
+
+                $.each(data.objects, function (index, item) {
+                    dust.render('discussion_information_item', item, function (err, out) {
+                        $('#slider').append(out);
+
+
+                    });
+                });
+
+                // open information item in colorbox popup
+                $('#slider li[target!="_blank"]').colorbox({
 //    //                        inline: true,
-                            href: $(this).attr('href'),
-                            iframe: true,
+                    href: $(this).attr('href'),
+                    iframe: true,
 //            initHeight: "50%",
 //            initWidth: "50%",
-                            height: 500,
-                            width: 650,
-                            onComplete: function () {
-                            },
-                            onClosed: function () {
-                            }
-                        });
-                        $('#slider li[target="_blank"]').click(function() {
-                            window.open($(this).attr('href'), 'pdf');
-                        });
+                    height: 500,
+                    width: 650,
+                    onComplete: function () {
+                    },
+                    onClosed: function () {
+                    }
+                });
+                $('#slider li[target="_blank"]').click(function() {
+                    window.open($(this).attr('href'), 'pdf');
+                });
 
 //        $('#slider li').each(function() {
 //            $(this).click(function() {
@@ -660,368 +531,368 @@ var error_message = error_message || '';
 //        });
 
 
-                        $('#info_items #slider').movingBoxes({
-                            /* width and panelWidth options deprecated, but still work to keep the plugin backwards compatible
-                             width: 500,
-                             panelWidth: 0.5,
-                             */
-                            initAnimation :false,
-                            fixedHeight :true,
-                            reducedSize :1,
-                            startPanel   : 1,      // start with this panel
-                            wrap         : true,   // if true, the panel will "wrap" (it really rewinds/fast forwards) at the ends
-                            buildNav     : true,   // if true, navigation links will be added
-                            navFormatter : function(){ return "&#9679;"; }, // function which returns the navigation text for each panel
-                            completed       : function(e, slider, tar){
-                                $('#info_items #slider li').dotdotdot({});
+                $('#info_items #slider').movingBoxes({
+                    /* width and panelWidth options deprecated, but still work to keep the plugin backwards compatible
+                     width: 500,
+                     panelWidth: 0.5,
+                     */
+                    initAnimation :false,
+                    fixedHeight :true,
+                    reducedSize :1,
+                    startPanel   : 1,      // start with this panel
+                    wrap         : true,   // if true, the panel will "wrap" (it really rewinds/fast forwards) at the ends
+                    buildNav     : true,   // if true, navigation links will be added
+                    navFormatter : function(){ return "&#9679;"; }, // function which returns the navigation text for each panel
+                    completed       : function(e, slider, tar){
+                        $('#info_items #slider li').dotdotdot({});
+                    }
+                });
+            });
+
+            $('#send_suggestion').click(function () {
+                var $this = $(this);
+
+                if ($this.data('executing')){
+                    return;
+                }
+
+                $this.data('executing', true);
+                $this.addClass('disable');
+
+                var part = {start:range.start, end:range.end, text:$("textarea#discussion_suggest").val()};
+
+                // todo i have replaced vision with original, see that it works
+                //arrange spaces
+                if (original[part.end - 1] == " " && part.text[part.text.length - 1] != " ")
+
+                    part.text += " ";
+
+                // in case of editing existing suggestion
+                if ($('#send_suggestion').data('edit') === true){
+                    $('#send_suggestion').data('edit', false);
+
+                    var sugg_id = $('#send_suggestion').data('suggestion-id');
+
+                    db_functions.editSuggestion(sugg_id, part.text, function(err, data){
+                        if(!err){
+                            $this.data('executing', false);
+                            $this.removeClass('disable');
+
+                            // hide edit box
+                            $('#write-comment').hide();
+
+                            // change text of suggestion
+                            $('#suggestions_wrapper').find('[data-id=' + sugg_id + ']').find('.alternative_part').text(part.text);
+
+                            // edit button text back t what it used to be
+                            $('#send_suggestion').text('הצע');
+                        }
+                    })
+                }else{
+                    // create new suggestion
+                    var explanation = $("#discussion_explanation").val();
+                    var user_info = {
+                        user_logged_in : user.first_name ? true : false,
+                        action_done : (user.actions_done_by_user && user.actions_done_by_user.suggestion_on_object) ? true : false,
+                        action_name : "suggestion_on_object",
+                        tokens_owned : user.tokens ? user.tokens : 0,
+                        /*price: gamification_price['suggestion_on_discussion']*/
+                    }
+
+                    db_functions.addSuggestionToDiscussion(discussion_id, vision_text_history_count, [part], explanation, user_info, function doWork(err, data) {
+                        if (!err) {
+                            activateMailNotifications();
+                            // vision was updated while composing suggestion
+                            if (data.cancel === true){
+                                updateVisionAndSuggestionText(data);
+                                $this.data('executing', false);
+                                $this.removeClass('disable');
+                                return;
+                            }
+                            $this.data('executing', false);
+                            $this.removeClass('disable');
+
+                            if(data != 'canceled'){
+                                if(!user.actions_done_by_user.suggestion_on_object)
+                                {
+                                    user.actions_done_by_user.suggestion_on_object = true;
+                                }
+                                $('#write-comment').hide();
+                                /*
+                                 $("textarea#discussion_suggest").val('');
+                                 $("#user_tokens").text(data.updated_user_tokens);*/
+                                render_suggestion(data,true);
+                                $(".deals-box").show();
+                            }
+                        } else {
+                            var err = err;
+                            if(err.responseText == "a suggestion with this indexes already exist"){
+                                popupProvider.showOkPopup({message:"????? ???? ??? ????? ?????? ?????"});
+                            }
+                        }
+                    });
+                }
+            });
+
+            $("#cancelWriteCommentBT").live("click", function () {
+                $('#write-comment').hide();
+            });
+
+            $('.button_add_comment').on("click", function (e) {
+                e.preventDefault();
+                focusOnCommentBox();
+            });
+
+            $('#comments_wrapper').on("click", ".button_comment",function (e) {
+                e.preventDefault();
+                focusOnCommentBox();
+                scrollTo('#add_comment_wrapper');
+            });
+
+            $("#submit_post").on('click', function (e) {
+                activateMailNotifications();
+                e.preventDefault();
+                var $this = $(this);
+
+                if ($this.data('executing')){
+                    return;
+                }
+
+                $this.data('executing', true);
+                $this.addClass('disable');
+
+                var user_info = {
+                    user_logged_in : user.first_name ? true : false,
+                    action_done : (user.actions_done_by_user && user.actions_done_by_user.post_on_object) ? true : false,
+                    action_name : "post_on_object",
+                    tokens_owned : user.tokens ? user.tokens : 0,
+                    /*price: gamification_price['post_on_discussion']*/
+                }
+
+                db_functions.addPostToDiscussion(discussion_id, $("textarea#discussion_comment").val(), new_post_ref_id, user_info, function (err, post) {
+                    if (!err) {
+                        if(post == 'canceled'){
+                            $this.data('executing', false);
+                            $this.removeClass('disable');
+                        }
+                        else
+                        {
+                            if(!user.actions_done_by_user.post_on_object)
+                            {
+                                user.actions_done_by_user.post_on_object = true;
+                            }
+                            if (my_id)
+                                setUserScore(my_id, post.creator_id.score);
+                            post.voting = post.votes_for - post.votes_against;
+
+                            //is new comment even or not
+                            var num_of_comments = $('.comment_wrapper.regular_comment').length;
+                            if (num_of_comments % 2 === 0) post. is_even = true;
+
+                            dust.render('discussion_comment', post, function (err, out) {
+                                var pagination = $(".first_pagination");
+
+                                pagination.after(out);
+                                var new_comment =$('.regular_comment').first();
+                                new_comment.addClass('odd');
+                                var bgc  =new_comment.css('background-color')
+                                new_comment.css('background-color', 'pink')
+                                new_comment.animate({backgroundColor: bgc}, 3000);
+                                $('html, body').animate({
+                                    scrollTop: new_comment.offset().top -50
+                                }, 500);
+                                $("textarea#discussion_comment").val('');
+                                new_post_ref_id = null;
+//                        postsNumber++;
+//                        setCommentNumber(postsNumber);
+                                $this.data('executing', false);
+                                $this.removeClass('disable')
+                            });
+                        }
+                    }
+                })
+            });
+
+            var new_post_ref_id = null;  //if not null =>the create new post is connected to anther post
+            var discussion_title = "<%= discussion.title%>"
+            var discussion_img_field_preview = "<%= discussion.image_field ? discussion.image_field.url ||'' : '' %>";
+
+            function setUserScore(userID, score) {
+                $('[ data-creator_id=' + userID + ']').find('.score').empty().append(score);
+            }
+
+            function setCommentNumber(number) {
+                $('#comments_number')[0].innerHTML = '(' + number + ')';
+            }
+
+            function vote(actionType){
+                var post_id = $(this).parents('.comment_wrapper').data("id");
+                var button = $(this);
+                var user_info = {
+                    user_logged_in : user.first_name ? true : false,
+                    action_done : (user.actions_done_by_user && user.actions_done_by_user.vote_on_object) ? true : false,
+                    action_name : "vote_on_object",
+                    tokens_owned : user.tokens ? user.tokens : 0,
+                    /*price: gamification_price['vote_on_post']*/
+                }
+                var func = $(this).parents('#comments_wrapper').length ? db_functions.voteForPost : db_functions.voteForSuggestion;
+                func.call(db_functions, post_id, actionType, user_info, function (err, post_obj) {
+                    if(post_obj != 'canceled'){
+                        if (!err) {
+                            if(user && !user.actions_done_by_user.vote_on_object)
+                            {
+                                user.actions_done_by_user.vote_on_object = true;
+                            }
+                            button.parents(".rating_small").find(".counter").text(Math.round(post_obj.votes_for-post_obj.votes_against ));
+                            var down_arrow = button.parents(".rating_small").find(".bad");
+                            var up_arrow =button.parents(".rating_small").find(".good");
+                            down_arrow.removeClass("balance0").removeClass("balance1").removeClass("balance-1").addClass("balance"+post_obj.voter_balance);
+                            up_arrow.removeClass("balance0").removeClass("balance1").removeClass("balance-1").addClass("balance"+post_obj.voter_balance);
+                        }
+                        else {
+                            if (err.responseText == 'Error: there is not enought tokens')
+                                popupProvider.showOkPopup( {message:     'אין לך מספיק אסימונים'});
+                            if (err.responseText == 'user already voted for this post')
+                                popupProvider.showOkPopup( {message:     'כבר דירגת תגובה זו'});
+                            if (err.responseText == 'soory, can\'t vote to your own post')
+                                popupProvider.showOkPopup( {message:     'מצטערים, לא ניתן להצביע לתגובה של עצמך'});
+                        }
+                    }
+                })
+            }
+
+            $('#comments_wrapper').on('click', '.good', function () {
+                activateMailNotifications();
+                vote.apply($(this),['add']);
+            });
+
+            $('#comments_wrapper').on('click', ".bad", function () {
+                activateMailNotifications();
+                vote.apply($(this),['remove']);
+            });
+
+            /* *** scroll to qoutes *** */
+            // click on  quoted-by take you to comment
+            $('#comments_wrapper').on('click', '.quote-ref', function () {
+                var id = $(this).data('ref-id');
+                var post_id = "post_" + id;
+                if(!scrollTo(window[post_id])) {
+                    db_functions.getPostById(id, function (err, post) {
+                        dust.render('discussion_comment', post, function (err, out) {
+                            if (!err){
+                                $(".second_pagination").before(out);
+                                scrollTo(window[post_id]);
                             }
                         });
                     });
-
-                    $('#send_suggestion').click(function () {
-                        var $this = $(this);
-
-                        if ($this.data('executing')){
-                            return;
-                        }
-
-                        $this.data('executing', true);
-                        $this.addClass('disable');
-
-                        var part = {start:range.start, end:range.end, text:$("textarea#discussion_suggest").val()};
-
-                        // todo i have replaced vision with original, see that it works
-                        //arrange spaces
-                        if (original[part.end - 1] == " " && part.text[part.text.length - 1] != " ")
-
-                            part.text += " ";
-
-                        // in case of editing existing suggestion
-                        if ($('#send_suggestion').data('edit') === true){
-                            $('#send_suggestion').data('edit', false);
-
-                            var sugg_id = $('#send_suggestion').data('suggestion-id');
-
-                            db_functions.editSuggestion(sugg_id, part.text, function(err, data){
-                                if(!err){
-                                    $this.data('executing', false);
-                                    $this.removeClass('disable');
-
-                                    // hide edit box
-                                    $('#write-comment').hide();
-
-                                    // change text of suggestion
-                                    $('#suggestions_wrapper').find('[data-id=' + sugg_id + ']').find('.alternative_part').text(part.text);
-
-                                    // edit button text back t what it used to be
-                                    $('#send_suggestion').text('הצע');
-                                }
-                            })
-                        }else{
-                            // create new suggestion
-                            var explanation = $("#discussion_explanation").val();
-                            var user_info = {
-                                user_logged_in : user.first_name ? true : false,
-                                action_done : (user.actions_done_by_user && user.actions_done_by_user.suggestion_on_object) ? true : false,
-                                action_name : "suggestion_on_object",
-                                tokens_owned : user.tokens ? user.tokens : 0,
-                                /*price: gamification_price['suggestion_on_discussion']*/
+                }
+            });
+            // click on  quoted take you to comment
+            $('#comments_wrapper').on('click', '.quote', function () {
+                var id = $(this).parents('.comment_wrapper ').data('ref-id');
+                var post_id = "post_" + id;
+                if(!scrollTo(window[post_id])) {
+                    db_functions.getPostById(id, function (err, post) {
+                        dust.render('discussion_comment', post, function (err, out) {
+                            if (!err){
+                                $(".second_pagination").before(out);
+                                scrollTo(window[post_id])
                             }
-
-                            db_functions.addSuggestionToDiscussion(discussion_id, vision_text_history_count, [part], explanation, user_info, function doWork(err, data) {
-                                if (!err) {
-                                    activateMailNotifications();
-                                    // vision was updated while composing suggestion
-                                    if (data.cancel === true){
-                                        updateVisionAndSuggestionText(data);
-                                        $this.data('executing', false);
-                                        $this.removeClass('disable');
-                                        return;
-                                    }
-                                    $this.data('executing', false);
-                                    $this.removeClass('disable');
-
-                                    if(data != 'canceled'){
-                                        if(!user.actions_done_by_user.suggestion_on_object)
-                                        {
-                                            user.actions_done_by_user.suggestion_on_object = true;
-                                        }
-                                        $('#write-comment').hide();
-                                        /*
-                                         $("textarea#discussion_suggest").val('');
-                                         $("#user_tokens").text(data.updated_user_tokens);*/
-                                        render_suggestion(data,true);
-                                        $(".deals-box").show();
-                                    }
-                                } else {
-                                    var err = err;
-                                    if(err.responseText == "a suggestion with this indexes already exist"){
-                                        popupProvider.showOkPopup({message:"????? ???? ??? ????? ?????? ?????"});
-                                    }
-                                }
-                            });
-                        }
+                        });
                     });
+                }
+            });
+            /* *** end of scroll to qoutes *** */
 
-                    $("#cancelWriteCommentBT").live("click", function () {
-                        $('#write-comment').hide();
-                    });
+            // copy the post text+ user to   discussion_comment
+            $('#comments_wrapper').on('click', ".button_quote", function (e) {
+                var userName;
+                var text;
+                var postDiv = $(this).parents('.comment_wrapper');
+                // TODO chnge this text height
+                var text_height = $(this).parents('.comment_wrapper ').find('.content').height();
+                new_post_ref_id;
+                e.preventDefault();
+                userName = postDiv.data('creator_name');
+                new_post_ref_id = postDiv.data('id');
 
-                    $('.button_add_comment').on("click", function (e) {
-                        e.preventDefault();
-                        focusOnCommentBox();
-                    });
+                // TODO replace actual_text selector
+                var text_to_quote = $('.actual_text', postDiv).length ? $('.actual_text', postDiv).text() : $('.content', postDiv).text();
 
-                    $('#comments_wrapper').on("click", ".button_comment",function (e) {
-                        e.preventDefault();
-                        focusOnCommentBox();
-                        scrollTo('#add_comment_wrapper');
-                    });
+                text = "[ציטוט=" + '"' + userName + '"' + " " + "]\n"
+                + text_to_quote
+                + '\n'
+                + "[/ציטוט]"
+                + '<p>&nbsp;</p>'
+                + '\n';
 
-                    $("#submit_post").on('click', function (e) {
-                        activateMailNotifications();
-                        e.preventDefault();
-                        var $this = $(this);
+                $("textarea#discussion_comment").val($("textarea#discussion_comment").val() + text).focus();
+                focusOnCommentBox(text_height);
 
-                        if ($this.data('executing')){
-                            return;
-                        }
+                $("textarea#discussion_comment").height($("textarea#discussion_comment").height() + text_height);
+            });
 
-                        $this.data('executing', true);
-                        $this.addClass('disable');
+            var current_offset = 0;
+            var limit = 20;
+            var num_of_pages;
+            var num_of_pages_in_section = 7;
+            var total_post_count;
 
-                        var user_info = {
-                            user_logged_in : user.first_name ? true : false,
-                            action_done : (user.actions_done_by_user && user.actions_done_by_user.post_on_object) ? true : false,
-                            action_name : "post_on_object",
-                            tokens_owned : user.tokens ? user.tokens : 0,
-                            /*price: gamification_price['post_on_discussion']*/
-                        }
-
-                        db_functions.addPostToDiscussion(discussion_id, $("textarea#discussion_comment").val(), new_post_ref_id, user_info, function (err, post) {
-                            if (!err) {
-                                if(post == 'canceled'){
-                                    $this.data('executing', false);
-                                    $this.removeClass('disable');
-                                }
-                                else
-                                {
-                                    if(!user.actions_done_by_user.post_on_object)
-                                    {
-                                        user.actions_done_by_user.post_on_object = true;
-                                    }
-                                    if (my_id)
-                                        setUserScore(my_id, post.creator_id.score);
-                                    post.voting = post.votes_for - post.votes_against;
-
-                                    //is new comment even or not
-                                    var num_of_comments = $('.comment_wrapper.regular_comment').length;
-                                    if (num_of_comments % 2 === 0) post. is_even = true;
-
-                                    dust.render('discussion_comment', post, function (err, out) {
-                                        var pagination = $(".first_pagination");
-
-                                        pagination.after(out);
-                                        var new_comment =$('.regular_comment').first();
-                                        new_comment.addClass('odd');
-                                        var bgc  =new_comment.css('background-color')
-                                        new_comment.css('background-color', 'pink')
-                                        new_comment.animate({backgroundColor: bgc}, 3000);
-                                        $('html, body').animate({
-                                            scrollTop: new_comment.offset().top -50
-                                        }, 500);
-                                        $("textarea#discussion_comment").val('');
-                                        new_post_ref_id = null;
-//                        postsNumber++;
-//                        setCommentNumber(postsNumber);
-                                        $this.data('executing', false);
-                                        $this.removeClass('disable')
-                                    });
-                                }
-                            }
-                        })
-                    });
-
-                    var new_post_ref_id = null;  //if not null =>the create new post is connected to anther post
-                    var discussion_title = "<%= discussion.title%>"
-                    var discussion_img_field_preview = "<%= discussion.image_field ? discussion.image_field.url ||'' : '' %>";
-
-                    function setUserScore(userID, score) {
-                        $('[ data-creator_id=' + userID + ']').find('.score').empty().append(score);
-                    }
-
-                    function setCommentNumber(number) {
-                        $('#comments_number')[0].innerHTML = '(' + number + ')';
-                    }
-
-                    function vote(actionType){
-                        var post_id = $(this).parents('.comment_wrapper').data("id");
-                        var button = $(this);
-                        var user_info = {
-                            user_logged_in : user.first_name ? true : false,
-                            action_done : (user.actions_done_by_user && user.actions_done_by_user.vote_on_object) ? true : false,
-                            action_name : "vote_on_object",
-                            tokens_owned : user.tokens ? user.tokens : 0,
-                            /*price: gamification_price['vote_on_post']*/
-                        }
-                        var func = $(this).parents('#comments_wrapper').length ? db_functions.voteForPost : db_functions.voteForSuggestion;
-                        func.call(db_functions, post_id, actionType, user_info, function (err, post_obj) {
-                            if(post_obj != 'canceled'){
-                                if (!err) {
-                                    if(user && !user.actions_done_by_user.vote_on_object)
-                                    {
-                                        user.actions_done_by_user.vote_on_object = true;
-                                    }
-                                    button.parents(".rating_small").find(".counter").text(Math.round(post_obj.votes_for-post_obj.votes_against ));
-                                    var down_arrow = button.parents(".rating_small").find(".bad");
-                                    var up_arrow =button.parents(".rating_small").find(".good");
-                                    down_arrow.removeClass("balance0").removeClass("balance1").removeClass("balance-1").addClass("balance"+post_obj.voter_balance);
-                                    up_arrow.removeClass("balance0").removeClass("balance1").removeClass("balance-1").addClass("balance"+post_obj.voter_balance);
-                                }
-                                else {
-                                    if (err.responseText == 'Error: there is not enought tokens')
-                                        popupProvider.showOkPopup( {message:     'אין לך מספיק אסימונים'});
-                                    if (err.responseText == 'user already voted for this post')
-                                        popupProvider.showOkPopup( {message:     'כבר דירגת תגובה זו'});
-                                    if (err.responseText == 'soory, can\'t vote to your own post')
-                                        popupProvider.showOkPopup( {message:     'מצטערים, לא ניתן להצביע לתגובה של עצמך'});
-                                }
-                            }
-                        })
-                    }
-
-                    $('#comments_wrapper').on('click', '.good', function () {
-                        activateMailNotifications();
-                        vote.apply($(this),['add']);
-                    });
-
-                    $('#comments_wrapper').on('click', ".bad", function () {
-                        activateMailNotifications();
-                        vote.apply($(this),['remove']);
-                    });
-
-                    /* *** scroll to qoutes *** */
-                    // click on  quoted-by take you to comment
-                    $('#comments_wrapper').on('click', '.quote-ref', function () {
-                        var id = $(this).data('ref-id');
-                        var post_id = "post_" + id;
-                        if(!scrollTo(window[post_id])) {
-                            db_functions.getPostById(id, function (err, post) {
-                                dust.render('discussion_comment', post, function (err, out) {
-                                    if (!err){
-                                        $(".second_pagination").before(out);
-                                        scrollTo(window[post_id]);
-                                    }
-                                });
-                            });
-                        }
-                    });
-                    // click on  quoted take you to comment
-                    $('#comments_wrapper').on('click', '.quote', function () {
-                        var id = $(this).parents('.comment_wrapper ').data('ref-id');
-                        var post_id = "post_" + id;
-                        if(!scrollTo(window[post_id])) {
-                            db_functions.getPostById(id, function (err, post) {
-                                dust.render('discussion_comment', post, function (err, out) {
-                                    if (!err){
-                                        $(".second_pagination").before(out);
-                                        scrollTo(window[post_id])
-                                    }
-                                });
-                            });
-                        }
-                    });
-                    /* *** end of scroll to qoutes *** */
-
-                    // copy the post text+ user to   discussion_comment
-                    $('#comments_wrapper').on('click', ".button_quote", function (e) {
-                        var userName;
-                        var text;
-                        var postDiv = $(this).parents('.comment_wrapper');
-                        // TODO chnge this text height
-                        var text_height = $(this).parents('.comment_wrapper ').find('.content').height();
-                        new_post_ref_id;
-                        e.preventDefault();
-                        userName = postDiv.data('creator_name');
-                        new_post_ref_id = postDiv.data('id');
-
-                        // TODO replace actual_text selector
-                        var text_to_quote = $('.actual_text', postDiv).length ? $('.actual_text', postDiv).text() : $('.content', postDiv).text();
-
-                        text = "[ציטוט=" + '"' + userName + '"' + " " + "]\n"
-                        + text_to_quote
-                        + '\n'
-                        + "[/ציטוט]"
-                        + '<p>&nbsp;</p>'
-                        + '\n';
-
-                        $("textarea#discussion_comment").val($("textarea#discussion_comment").val() + text).focus();
-                        focusOnCommentBox(text_height);
-
-                        $("textarea#discussion_comment").height($("textarea#discussion_comment").height() + text_height);
-                    });
-
-                    var current_offset = 0;
-                    var limit = 20;
-                    var num_of_pages;
-                    var num_of_pages_in_section = 7;
-                    var total_post_count;
-
-                    //render change suggestion
-                    function render_suggestion(suggestion, use_animation) {
-                        // get original text and alternative text
-                        if (suggestion.parts && suggestion.parts.length) {
-                            suggestion.original_part = function () {
-                                var from = suggestion.parts[0].start;
-                                var end = suggestion.parts[0].end;
-                                return original.substr(from, end - from);
-                            };
-
-                            // set text for context popup
-                            suggestion.context_before = original.substring(Math.max(suggestion.parts[0].start - 400, 0), suggestion.parts[0].start, suggestion.parts[0].start);
-                            suggestion.context_after = original.substring(suggestion.parts[0].end, Math.min(original.length, suggestion.parts[0].end + 400));
-
-                            suggestion.alternative_part = function () {
-                                return suggestion.parts[0].text;
-                            };
-
-                            dust.render('discussion_suggestion', suggestion, function (err, out) {
-                                $('#suggestions_wrapper').append(out);
-                                image_autoscale($('#suggestions_wrapper .auto-scale img'));
-
-                                if(use_animation == true){
-                                    var bgc =$('.suggestion_holder').last().css('background-color');
-                                    $('.suggestion_holder ').last().css('background-color', 'pink');
-                                    $('.suggestion_holder ').last().animate({backgroundColor: bgc}, 3000);
-                                }
-                                // check if got here after not logged user tryed to grade suggestion
-                                var action = getURLParameter('action');
-                                if (action !== "null") {
-                                    var id = window.location.hash;
-                                    action = ".button_" + action;
-
-                                    if (!id) return false;
-
-                                    $(id).find('.suggestion_bottom_segment ' + action + ' input').click();
-                                }
-                            });
-                        }
-                        return null;
+            //render change suggestion
+            function render_suggestion(suggestion, use_animation) {
+                // get original text and alternative text
+                if (suggestion.parts && suggestion.parts.length) {
+                    suggestion.original_part = function () {
+                        var from = suggestion.parts[0].start;
+                        var end = suggestion.parts[0].end;
+                        return original.substr(from, end - from);
                     };
 
-                    function render_approved_suggestion(suggestion){
-                        suggestion.original_part = suggestion.replaced_text;
-                        suggestion.alternative_part = suggestion.parts[0].text;
+                    // set text for context popup
+                    suggestion.context_before = original.substring(Math.max(suggestion.parts[0].start - 400, 0), suggestion.parts[0].start, suggestion.parts[0].start);
+                    suggestion.context_after = original.substring(suggestion.parts[0].end, Math.min(original.length, suggestion.parts[0].end + 400));
 
-                        // set text for context popup
-                        if (suggestion.context_before && suggestion.context_after && suggestion.context_before !== "undefined") {
-                            suggestion.context_before = suggestion.context_before.substring(Math.max(suggestion.context_before.length - 400, 0), suggestion.context_before.length);
-                            suggestion.context_after = suggestion.context_after.substring(0, Math.min(suggestion.context_after.length, 400));
+                    suggestion.alternative_part = function () {
+                        return suggestion.parts[0].text;
+                    };
+
+                    dust.render('discussion_suggestion', suggestion, function (err, out) {
+                        $(out).appendTo('#suggestions_wrapper');
+                        image_autoscale($('#suggestions_wrapper .auto-scale img'));
+                        if(use_animation == true){
+                            var bgc =$('.suggestion_holder').last().css('background-color');
+                            $('.suggestion_holder ').last().css('background-color', 'pink');
+                            $('.suggestion_holder ').last().animate({backgroundColor: bgc}, 3000);
                         }
 
-                        dust.render('discussion_approved_suggestion', suggestion, function (err, out) {
-                            $('#approved_suggestions_wrapper').append(out);
-                            image_autoscale($('#approved_suggestions_wrapper .auto-scale img'));
+                        // check if got here after not logged user tryed to grade suggestion
+                        var action = getURLParameter('action');
+                        if (action !== "null") {
+                            var id = window.location.hash;
+                            action = ".button_" + action;
+
+                            if (!id) return false;
+
+                            $(id).find('.suggestion_bottom_segment ' + action + ' input').click();
+                        }
+                    });
+                }
+                return null;
+            };
+
+            function render_approved_suggestion(suggestion){
+                suggestion.original_part = suggestion.replaced_text;
+                suggestion.alternative_part = suggestion.parts[0].text;
+
+                // set text for context popup
+                if (suggestion.context_before && suggestion.context_after && suggestion.context_before !== "undefined") {
+                    suggestion.context_before = suggestion.context_before.substring(Math.max(suggestion.context_before.length - 400, 0), suggestion.context_before.length);
+                    suggestion.context_after = suggestion.context_after.substring(0, Math.min(suggestion.context_after.length, 400));
+                }
+
+                dust.render('discussion_approved_suggestion', suggestion, function (err, out) {
+                    $('#approved_suggestions_wrapper').append(out);
+                    image_autoscale($('#approved_suggestions_wrapper .auto-scale img'));
 
 
 //                var $this = $('#post_' + suggestion_id);
@@ -1030,204 +901,193 @@ var error_message = error_message || '';
 //                var bgc =$('.suggestion_holder').last().css('background-color');
 //                $('.suggestion_holder ').last().css('background-color', 'pink');
 //                $('.suggestion_holder ').last().animate({backgroundColor: bgc}, 3000);
-                        });
-                    }
-                    var first_suggestion;
+                });
+            }
+            var first_suggestion;
 
-                    // get change suggestions and render
-                    db_functions.getSuggestionByDiscussion(discussion_id, 0, 0, function (err, data) {
+            // get change suggestions and render
+            db_functions.getSuggestionByDiscussion(discussion_id, 0, 0, function (err, data) {
 
-                        if(err || data.objects.length === 0) return false;
+                if(err || data.objects.length === 0) return false;
 
-                        $.each(data.objects, function(index, suggestion){
-                            suggestion.my_discussion_grade = my_discussion_grade;
-                            suggestion.my_grade_val = suggestion.grade_obj ? suggestion.grade_obj.evaluation_grade : my_discussion_grade;
-                            suggestion.my_grade_id = suggestion.grade_obj ? suggestion.grade_obj._id : null;
-                        })
+                $.each(data.objects, function(index, suggestion){
+                    suggestion.my_discussion_grade = my_discussion_grade;
+                    suggestion.my_grade_val = suggestion.grade_obj ? suggestion.grade_obj.evaluation_grade : my_discussion_grade;
+                    suggestion.my_grade_id = suggestion.grade_obj ? suggestion.grade_obj._id : null;
+                })
 
-                        suggestions_list = data.objects ;
-                        suggestions_count = suggestions_list.length;
-                        displaySuggestionsRanges();
+                suggestions_list = data.objects ;
+                suggestions_count = suggestions_list.length;
+                displaySuggestionsRanges();
 
-                        suggestion = suggestions_list[0];
+//        suggestion = suggestions_list[0];
+//
+//        // set title and img for fb share
+//        suggestion.title = discussion_title;
+//        suggestion.image_field_preview = discussion_img_field_preview;
+//
+//        render_suggestion(suggestion);
 
-                        // set title and img for fb share
-                        suggestion.title = discussion_title;
-                        suggestion.image_field_preview = discussion_img_field_preview;
+//        curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion.id + ']');
+//
+//        db_functions.getCommentsBySuggestion(suggestion.id, function(err, data){
+//            // set comments counter
+//            curr_suggestion.find('.comments_counter span').text(data.objects.length);
+//
+//            if (data.objects.length===0){
+//                curr_suggestion.find('.close').hide();
+//            }
+//
+//            $.each(data.objects, function (index, comment) {
+//                var is_first_comment = (index == 0);
+//                comment.is_even = (index % 2) == 0;
+//                dust.render('nested_comment', comment, function (err, out) {
+//                    // append before "add_comment"
+//                    curr_suggestion.find('.suggestion_comments_holder .add_comment').before(out);
+//                   /* if (is_first_comment) {
+//                        $(curr_suggestion).find('.suggestion_comments_holder .comment').show();
+//                    }*/
+//                    image_autoscale(curr_suggestion.find('.auto-scale img'));
+//                });
+//            });
+//        });
 
-                        render_suggestion(suggestion);
+                $('#suggestion_number').text(' (' + data.meta.total_count + ')');
+                if (data.objects.length > 0) {
+                    var curr_suggestion;
+                    first_suggestion = data.objects[0];
+                    $(".content_break_content").show();
+                    if (data.meta.total_count >= 2) {
+                        $(".more-deals").show();
 
-                        var curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion.id + ']');
+                        $(".more-deals a").on('click', function (e) {
+                            var self = $(this);
+                            if(self.data('executing')){
+                                $('#suggestions_wrapper').empty();
+                                render_suggestion(first_suggestion);
+                                curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + first_suggestion.id + ']');
 
-                        db_functions.getCommentsBySuggestion(suggestion.id, function(err, data){
+                                db_functions.getCommentsBySuggestion(first_suggestion.id, function(err, data){
 
-                            // set comments counter
-                            curr_suggestion.find('.comments_counter span').text(data.objects.length);
-
-                            if (data.objects.length===0){
-                                curr_suggestion.find('.close').hide();
-                            }
-
-                            $.each(data.objects, function (index, comment) {
-                                var is_first_comment = (index == 0);
-                                comment.is_even = (index % 2) == 0;
-                                dust.render('nested_comment', comment, function (err, out) {
-                                    // append before "add_comment"
-                                    curr_suggestion.find('.suggestion_comments_holder .add_comment').before(out);
-                                    /* if (is_first_comment) {
-                                     $(curr_suggestion).find('.suggestion_comments_holder .comment').show();
-                                     }*/
-                                    image_autoscale(curr_suggestion.find('.auto-scale img'));
-                                });
-                            });
-                        });
-
-                        $('#suggestion_number').text(' (' + data.meta.total_count + ')');
-                        if (data.objects.length > 0) {
-                            var curr_suggestion;
-                            first_suggestion = data.objects[0];
-                            $(".content_break_content").show();
-                            if (data.meta.total_count >= 2) {
-                                $(".more-deals").show();
-
-                                $(".more-deals a").on('click', function (e) {
-                                    $('#suggestions_wrapper').empty();
-                                    var self = $(this);
-                                    if(self.data('executing')){
-
-                                        render_suggestion(first_suggestion);
-                                        curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + first_suggestion.id + ']');
-
-                                        db_functions.getCommentsBySuggestion(first_suggestion.id, function(err, data){
-
-                                            // set comments counter
-                                            curr_suggestion.find('.comments_counter span').text(data.objects.length);
-
-                                            $.each(data.objects, function (index, comment) {
-                                                var is_first_comment = (index == 0);
-                                                comment.is_even = (index % 2) == 0;
-
-                                                dust.render('nested_comment', comment, function (err, out) {
-                                                    // append before "add_comment"
-                                                    curr_suggestion.find('.add_comment').before(out);
-                                                    /*if (is_first_comment) {
-                                                     $(curr_suggestion).find('.suggestion_comments_holder .comment').show();
-                                                     }*/
-                                                    image_autoscale(curr_suggestion.find('.auto-scale img'));
-                                                });
-                                            });
-                                        })
-                                        self.text('עוד הצעות');
-                                        $(this).removeClass('flip');
-
-                                        $(this).data('executing', false);
-                                        scrollTo('#content_wrapper_suggestions')
-                                        return false;
-                                    }
-                                    var result = displayAllSuggestions() ;
-                                    $('#suggestions_wrapper').show(400, function () {
-                                        $(this).css("visibility", "visible");
-                                        $('.loading-suggestion').hide();
-                                    });
-                                    return result;
-                                });
-                                // if (!isMobile()) {
-                                $(".more-deals a").click();
-
-                                // } else {
-                                //     $(".more-deals a").css("visibility", "visible");
-                                // }
-
-                            }
-
-                            // if needs to scroll to suggestion that is not shown, open list of suggestions and scroll to suggestion
-                            var hash = window.location.hash;
-                            if(hash){
-                                if (!scrollTo(hash)) {
-                                    var match = /^#post_([0-9a-f]+)/.exec(hash);
-
-                                    if (!match) return false;
-
-                                    var is_suggestion = false;
-                                    $.each(suggestions_list, function(index, suggestion){ if ("#post_" + suggestion.id + "" == hash) is_suggestion = true });
-                                    if (is_suggestion){
-                                        displayAllSuggestions();
-                                    }
-                                }
-                            }
-                        }
-                        else {
-                            $(".content_break_content").hide();
-                        }
-                    });
-
-                    $('.history_button, .approved_suggestions h2').click(function(e){
-                        $('input.history').toggleClass('active');
-                        $('#content_wrapper_approved_suggestions').toggleClass('active');
-                        if (on_load && global_hash) {
-                            scrollTo(global_hash);
-                            on_load = false;
-                        }else{
-                            if ($('#content_wrapper_approved_suggestions').hasClass('active')){
-                                scrollTo('.approved_suggestions');
-                            }
-                        }
-
-                    });
-
-                    db_functions.getApprovedSuggestionsByDiscussion(discussion_id, 0, 0, function(err, data){
-                        if (data.objects.length > 0){
-                            approved_suggestions_list = data.objects || {};
-                            // set vision version details
-                            $('.draft_no span').text(data.objects.length + 1);
-
-                            if (data.objects[0].approve_date)
-                                $('.history_details_holder .item.last span').text($.datepicker.formatDate('dd.mm.yy', new Date(Date.parse(data.objects[0].approve_date))));
-                            else {
-                                $('.history_details_holder .item.last').hide();
-                                $('.history_details_holder .item.by').hide();
-                            }
-                            $('.history_details_holder .item.by a').text(data.objects[0].creator_id.first_name + " " + data.objects[0].creator_id.last_name);
-                            $('.history_details_holder .item.by a').attr('href', '../profile/' + data.objects[0].creator_id.id);
-                            $('.history_details_holder').show();
-                            $('.content_break.approved_suggestions').show();
-
-                            $('#approved_suggestion_number').text(' (' + data.meta.total_count + ')');
-
-                            var XHRs = [];
-
-                            $.each(data.objects, function(index, sugg){
-                                render_approved_suggestion(sugg);
-
-                                XHRs.push(db_functions.getCommentsBySuggestion(sugg.id, function(err, data){
-                                    curr_suggestion = $('#approved_suggestions_wrapper').find('[data-id=' + sugg.id + ']') ;
                                     // set comments counter
                                     curr_suggestion.find('.comments_counter span').text(data.objects.length);
-                                    renderNestedComments(data.objects, curr_suggestion, sugg.id);
-                                }))
-                            });
 
-                            image_autoscale($('#approved_suggestions_wrapper .auto-scale img'));
+                                    $.each(data.objects, function (index, comment) {
+                                        var is_first_comment = (index == 0);
+                                        comment.is_even = (index % 2) == 0;
 
-                            var hash = window.location.hash;
+                                        dust.render('nested_comment', comment, function (err, out) {
+                                            // append before "add_comment"
+                                            curr_suggestion.find('.add_comment').before(out);
+                                            /*if (is_first_comment) {
+                                             $(curr_suggestion).find('.suggestion_comments_holder .comment').show();
+                                             }*/
+                                            image_autoscale(curr_suggestion.find('.auto-scale img'));
+                                        });
+                                    });
+                                })
+                                self.text('עוד הצעות');
+                                $(this).removeClass('flip');
 
-                            if(hash){
-                                var match = /^#post_([0-9a-f]+)/.exec(hash);
-                                if (match) {
-                                    var post_id = match[1];
-                                    var is_hash_to_approved_suggestion = false;
-                                    $.each(approved_suggestions_list, function(index, app_sugg){
-                                        if(app_sugg._id == post_id) is_hash_to_approved_suggestion = true;
-                                    })
+                                $(this).data('executing', false);
+                                scrollTo('#content_wrapper_suggestions')
+                                return false;
+                            }
+                            return displayAllSuggestions() ;
+                        });
+                        // if (!isMobile()) {
+                        $(".more-deals a").click();
+                        // } else {
+                        //     $(".more-deals a").css("visibility", "visible");
+                        // }
 
-                                    if(is_hash_to_approved_suggestion){
-                                        global_hash = hash;
-                                        $('.approved_suggestions h2').click();
-                                    }
-                                }
+                    }
+
+                    // if needs to scroll to suggestion that is not shown, open list of suggestions and scroll to suggestion
+                    var hash = window.location.hash;
+                    if(hash){
+                        if (!scrollTo(hash)) {
+                            var match = /^#post_([0-9a-f]+)/.exec(hash);
+
+                            if (!match) return false;
+
+                            var is_suggestion = false;
+                            $.each(suggestions_list, function(index, suggestion){ if ("#post_" + suggestion.id + "" == hash) is_suggestion = true });
+                            if (is_suggestion){
+                                displayAllSuggestions(index);
                             }
                         }
-                        <<<<<<< HEAD
+                    }
+                }
+                else {
+                    $(".content_break_content").hide();
+                }
+            });
+
+            $('.history_button, .approved_suggestions h2').click(function(e){
+                $('input.history').toggleClass('active');
+                $('#content_wrapper_approved_suggestions').toggleClass('active');
+                if (on_load && global_hash) {
+                    scrollTo(global_hash);
+                    on_load = false;
+                }else{
+                    if ($('#content_wrapper_approved_suggestions').hasClass('active')){
+                        scrollTo('.approved_suggestions');
+                    }
+                }
+
+            });
+
+            db_functions.getApprovedSuggestionsByDiscussion(discussion_id, 0, 0, function(err, data){
+                if (data.objects.length > 0){
+                    approved_suggestions_list = data.objects || {};
+                    // set vision version details
+                    $('.draft_no span').text(data.objects.length + 1);
+
+                    if (data.objects[0].approve_date)
+                        $('.history_details_holder .item.last span').text($.datepicker.formatDate('dd.mm.yy', new Date(Date.parse(data.objects[0].approve_date))));
+                    else {
+                        $('.history_details_holder .item.last').hide();
+                        $('.history_details_holder .item.by').hide();
+                    }
+                    $('.history_details_holder .item.by a').text(data.objects[0].creator_id.first_name + " " + data.objects[0].creator_id.last_name);
+                    $('.history_details_holder .item.by a').attr('href', '../profile/' + data.objects[0].creator_id.id);
+                    $('.history_details_holder').show();
+                    $('.content_break.approved_suggestions').show();
+
+                    $('#approved_suggestion_number').text(' (' + data.meta.total_count + ')');
+
+                    var XHRs = [];
+
+                    $.each(data.objects, function(index, sugg){
+                        render_approved_suggestion(sugg);
+
+                        XHRs.push(db_functions.getCommentsBySuggestion(sugg.id, function(err, data){
+                            curr_suggestion = $('#approved_suggestions_wrapper').find('[data-id=' + sugg.id + ']') ;
+                            // set comments counter
+                            curr_suggestion.find('.comments_counter span').text(data.objects.length);
+                            renderNestedComments(data.objects, curr_suggestion, sugg.id);
+                        }))
+                    });
+
+                    image_autoscale($('#approved_suggestions_wrapper .auto-scale img'));
+
+                    var hash = window.location.hash;
+
+                    if(hash){
+                        var match = /^#post_([0-9a-f]+)/.exec(hash);
+                        if (match) {
+                            var post_id = match[1];
+                            var is_hash_to_approved_suggestion = false;
+                            $.each(approved_suggestions_list, function(index, app_sugg){
+                                if(app_sugg._id == post_id) is_hash_to_approved_suggestion = true;
+                            })
+
+                            if(is_hash_to_approved_suggestion){
+                                global_hash = hash;
+                                $('.approved_suggestions h2').click();
+                            }
+                        }
                     }
                 }
             });
@@ -1257,96 +1117,51 @@ var error_message = error_message || '';
                             var curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion_id + ']') ;
                             // set comments counter
                             curr_suggestion.find('.comments_counter span').text(data.objects.length);
-                        =======
-                        });
-                        >>>>>>> master
 
-                        function displayAllSuggestions(){
+                            renderNestedComments(data.objects, curr_suggestion, suggestion_id);
+                        }
 
-                            var self=$(".more-deals a");
-                            var XHRs = [];
-                            $('#suggestions_wrapper').empty();
+                        /*curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion.id + ']') ;
 
-                            $.each(suggestions_list, function (index, suggestion) {
+                         // set comments counter
+                         curr_suggestion.find('.comments_counter span').text(data.objects.length);
 
-                                // set title and img for fb share
-                                suggestion.title = discussion_title;
-                                suggestion.image_field_preview = discussion_img_field_preview;
+                         $.each(data.objects, function (index, comment) {
 
-                                render_suggestion(suggestion);
+                         // bug work around
+                         var duplicate = false;
+                         $.each($('.suggestion_comments_holder .comment'), function(index, curr_comment){
+                         if ($(curr_comment).attr('id') == comment._id) duplicate = true;}
+                         );
+                         if (duplicate) return false;
 
-                                <<<<<<< HEAD
-                                comment.is_even = (index % 2) == 0;
-                                dust.render('nested_comment', comment, function (err, out) {
-                                    // append before "add_comment"
-                                    curr_suggestion.find('.add_comment').before(out);
-//                        image_autoscale(curr_suggestion.find('.auto-scale img'));
-                                });
-                            });*/
-                        }));
+                         comment.is_even = (index % 2) == 0;
+                         dust.render('nested_comment', comment, function (err, out) {
+                         // append before "add_comment"
+                         curr_suggestion.find('.add_comment').before(out);
+                         //                        image_autoscale(curr_suggestion.find('.auto-scale img'));
+                         });
+                         });*/
+                    }));
 
+                }
+                suggestions_limit += SUG_RANGE;
+
+                // if needs to scroll to suggestion that is not shown, open list of suggestions and scroll to suggestion
+                var hash = window.location.hash;
+                if(hash && on_load){
+                    if ($(hash).length > 0) {
+                        scrollTo(hash);
+                        on_load = false;
                     }
-                    suggestions_limit += SUG_RANGE;
-
-                    // if needs to scroll to suggestion that is not shown, open list of suggestions and scroll to suggestion
-                    var hash = window.location.hash;
-                    if(hash && on_load){
-                        if ($(hash).length > 0) {
-                            scrollTo(hash);
-                            on_load = false;
-                        }
-                        else {
-                            displayAllSuggestions();
-                        }
+                    else {
+                        displayAllSuggestions();
                     }
-                =======
-                            XHRs.push(db_functions.getCommentsBySuggestion(suggestion.id, function(err, data){
-                                >>>>>>> master
-
-                                curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion.id + ']') ;
-
-                                // set comments counter
-                                curr_suggestion.find('.comments_counter span').text(data.objects.length);
-
-                                renderNestedComments(data.objects, curr_suggestion, suggestion.id);
-
-                                /*curr_suggestion = $('#suggestions_wrapper').find('[data-id=' + suggestion.id + ']') ;
-
-                                 // set comments counter
-                                 curr_suggestion.find('.comments_counter span').text(data.objects.length);
-
-                                 $.each(data.objects, function (index, comment) {
-
-                                 // bug work around
-                                 var duplicate = false;
-                                 $.each($('.suggestion_comments_holder .comment'), function(index, curr_comment){
-                                 if ($(curr_comment).attr('id') == comment._id) duplicate = true;}
-                                 );
-                                 if (duplicate) return false;
-
-                                 comment.is_even = (index % 2) == 0;
-                                 dust.render('nested_comment', comment, function (err, out) {
-                                 // append before "add_comment"
-                                 curr_suggestion.find('.add_comment').before(out);
-                                 //                        image_autoscale(curr_suggestion.find('.auto-scale img'));
-                                 });
-                                 });*/
-                            }))
-
-                    //run a function when all deferred objects resolve
-                    $.when(XHRs).then(function (){
-                        // if needs to scroll to suggestion that is not shown, open list of suggestions and scroll to suggestion
-                        var hash = window.location.hash;
-                        if(hash && on_load){
-                            scrollTo(hash);
-                            on_load = false;
-                        }
-                    });
-                });
+                }
 
                 self.text('סגור הצעות ');
                 self.addClass('flip');
-                self.data('executing', true);
+                //self.data('executing', true);
                 return false;
             }
 
@@ -1748,7 +1563,7 @@ var error_message = error_message || '';
                     text=text.replace(/\n/g, '\n<br>') ;
                     html =  html.substring(0, suggestion.parts[0].start) +
                     html.substring(suggestion.parts[0].start).replace(
-                            text,'<span data-id="'+suggestion.id+'" class="marker_1">'+text+'</span>');
+                            text,'<span data-id="'+suggestion.id+'" data-index="' + index + '" class="marker_1">'+text+'</span>');
                     $('#discussion_content').html(html);
 
                 });
@@ -1860,13 +1675,15 @@ var error_message = error_message || '';
                 if(!mouseDown && (e.type == 'click' || e.type == 'tap' || e.keyCode == 13)){
                     // open tab with suggestions first
 //            $('#wrap > div.tabs > ul > li:nth-child(1) a').click();
-//            displayAllSuggestions();
+                    var index = $(this).data('index');
+                    if (suggestions_offset <= index) {
+                        displayAllSuggestions(index);
+                    }
+
                     var id= $(this).data('id');
                     $('html, body').animate({
                         scrollTop: $("div[data-id=" +id+ "]").offset().top
                     }, 500);
-
-
                 }
             });
 
@@ -2544,7 +2361,77 @@ var error_message = error_message || '';
 
             $(".upload-tabs").tabs();
 
-            <<<<<<< HEAD
+            $('.upload-popup .upload-bottom input').click(function (){
+                var form = $('.upload-popup');
+                var saveData = {
+                    title: form.find('textarea').val(),
+                    text_field: form.find('textarea').val(),
+                    category: 'statistics'
+                };
+
+                var selectedTab = form.find('.upload-tabs').tabs('option', 'selected');
+                var image, link;
+                switch (selectedTab) {
+                    case 0: // image
+                        image = form.find('input[name="image_field"]');
+                        break;
+
+                    case 1: // video
+                        image = form.find('input[name="video_field"]');
+                        link = form.find('#video input[type=url]');
+                        break;
+
+                    case 2: // link
+                        link = form.find('#link input[type=url]');
+                        break;
+                };
+
+                if (image && image.val()) {
+                    saveData.image_field = image.val();
+                }
+                if (link && link.val()) {
+                    saveData.text_field += '\n\n' + link.val();
+                }
+
+                db_functions.createInformationItem(saveData, function (error) {
+                    if (error) {
+                        popupProvider.showOkPopup({ message: 'קרתה תקלה בעת שמירת פריט המידע' });
+                    } else {
+                        popupProvider.showOkPopup({ message: 'פריט המידע נשמר' });
+                        $('.upload-popup').hide();
+                    }
+                });
+                event.preventDefault();
+                return false;
+            });
+
+            function  activateMailNotifications(){
+                db_functions.activateMailNotification(my_id, function(err,data){})
+            };
+
+            $('.add_fast_comment').live('click', function(e){
+                var post_or_suggestion = $(this).parents('.post_or_suggestion');
+
+                // show comments
+                post_or_suggestion.find('.post_or_suggestion_comments_holder').show();
+                image_autoscale('.auto-scale img');
+
+                $(post_or_suggestion.find('.add_comment textarea')).focus();
+            });
+
+            // TABS
+            jQuery('.tabs .tab-links a').on('click', function(e)  {
+                var currentAttrValue = jQuery(this).attr('href');
+
+                // Show/Hide Tabs
+                jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
+
+                // Change/remove current tab to active
+                jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+
+                e.preventDefault();
+            });
+
             $(window).scroll(function () {
                 if (suggestions_offset < suggestions_list.length) {
                     //var last_pos = $('#suggestions_wrapper .suggestion_wrapper:last-child').offset().top;
@@ -2553,79 +2440,10 @@ var error_message = error_message || '';
                         displayAllSuggestions();
                     }
                 }
-                =======
-                        $('.upload-popup .upload-bottom input').click(function (){
-                            var form = $('.upload-popup');
-                            var saveData = {
-                                title: form.find('textarea').val(),
-                                text_field: form.find('textarea').val(),
-                                category: 'statistics'
-                            };
-                            >>>>>>> master
 
-                            var selectedTab = form.find('.upload-tabs').tabs('option', 'selected');
-                            var image, link;
-                            switch (selectedTab) {
-                                case 0: // image
-                                    image = form.find('input[name="image_field"]');
-                                    break;
-
-                                case 1: // video
-                                    image = form.find('input[name="video_field"]');
-                                    link = form.find('#video input[type=url]');
-                                    break;
-
-                                case 2: // link
-                                    link = form.find('#link input[type=url]');
-                                    break;
-                            };
-
-                            if (image && image.val()) {
-                                saveData.image_field = image.val();
-                            }
-                            if (link && link.val()) {
-                                saveData.text_field += '\n\n' + link.val();
-                            }
-
-                            db_functions.createInformationItem(saveData, function (error) {
-                                if (error) {
-                                    popupProvider.showOkPopup({ message: 'קרתה תקלה בעת שמירת פריט המידע' });
-                                } else {
-                                    popupProvider.showOkPopup({ message: 'פריט המידע נשמר' });
-                                    $('.upload-popup').hide();
-                                }
-                            });
-                            event.preventDefault();
-                            return false;
-                        });
-
-                function  activateMailNotifications(){
-                    db_functions.activateMailNotification(my_id, function(err,data){})
-                };
-
-                $('.add_fast_comment').live('click', function(e){
-                    var post_or_suggestion = $(this).parents('.post_or_suggestion');
-
-                    // show comments
-                    post_or_suggestion.find('.post_or_suggestion_comments_holder').show();
-                    image_autoscale('.auto-scale img');
-
-                    $(post_or_suggestion.find('.add_comment textarea')).focus();
-                });
-
-                // TABS
-                jQuery('.tabs .tab-links a').on('click', function(e)  {
-                    var currentAttrValue = jQuery(this).attr('href');
-
-                    // Show/Hide Tabs
-                    jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
-
-                    // Change/remove current tab to active
-                    jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
-
-                    e.preventDefault();
-                });
             });
+
+        });
 
     </script>
 </body>
