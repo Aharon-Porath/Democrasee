@@ -2430,9 +2430,9 @@ var error_message = error_message || '';
 
         window.addEventListener('load', function(){ // on page load
             var disc = document.getElementById('discussion_content');
-            disc.addEventListener('touchstart', function(e){
-                alert(e.changedTouches[0].pageX) // alert pageX coordinate of touch point
-            }, false);
+//            disc.addEventListener('touchstart', function(e){
+//                alert(e.changedTouches[0].pageX) // alert pageX coordinate of touch point
+//            }, false);
             disc.addEventListener('touchend', function (e) {
                 alert(window.getSelection());
             }, false);
