@@ -66,7 +66,7 @@ var error_message = error_message || '';
                             <div id="discussion_content" class="">
                                 <%- discussion.text_field.replace(/\n/g, '<br />') %>
                             </div>
-                            <textarea id="discussion_content_textarea" class="hidden_textarea"><%=discussion.text_field%></textarea>
+                            <textarea id="discussion_content_textarea" style="width: 100%; height:800px"><%=discussion.text_field%></textarea>
                             <!--<a class="read_less" href="javascript:void(0);">סגור</a>-->
                         </div>
 
@@ -1569,6 +1569,8 @@ var error_message = error_message || '';
             $('body').on('mousedown', function(e) {
                 mouseDown = e;
             });
+
+
             $('#discussion_content,#discussion_content_textarea')
                     .on('mousedown', function (e) {
                         mouseDown = e;
