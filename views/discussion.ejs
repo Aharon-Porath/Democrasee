@@ -66,7 +66,7 @@ var error_message = error_message || '';
                             <div id="discussion_content" class="">
                                 <%- discussion.text_field.replace(/\n/g, '<br />') %>
                             </div>
-                            <textarea id="discussion_content_textarea" style="width:100%;height:1000px"><%=discussion.text_field%></textarea>
+                            <textarea id="discussion_content_textarea" class="hidden_textarea"><%=discussion.text_field%></textarea>
                             <!--<a class="read_less" href="javascript:void(0);">סגור</a>-->
                         </div>
 
@@ -1572,26 +1572,24 @@ var error_message = error_message || '';
 
 
             $('#discussion_content,#discussion_content_textarea')
-//                    .on('mousedown', function (e) {
-//                        mouseDown = e;
-//                        $("#old_suggestion_popup").hide();
-//                        console.log(mouseDown) ;
-//                    })
-//                    .on('keydown', function (e) {
-//                        if (!(e.shiftKey && (e.keyCode <= 40 && e.keyCode >= 37) || (e.ctrlKey && e.keyCode == 65) || e.keyCode == 9))
-//                            e.preventDefault();
-//                    })
-//                    .on('dragstart', function (e) {               mouseDown = e;  e.preventDefault(); console.log(mouseDown) ;              })
-                    .on('select', function (e) {
-                        alert('arrive');
+                    .on('mousedown', function (e) {
+                        mouseDown = e;
                         $("#old_suggestion_popup").hide();
+                        console.log(mouseDown) ;
+                    })
+                    .on('keydown', function (e) {
+                        if (!(e.shiftKey && (e.keyCode <= 40 && e.keyCode >= 37) || (e.ctrlKey && e.keyCode == 65) || e.keyCode == 9))
+                            e.preventDefault();
+                    })
+                    .on('dragstart', function (e) {               mouseDown = e;  e.preventDefault(); console.log(mouseDown) ;              })
+                    .on('mouseup',function (e) {
                         e.stopPropagation();
                         mouseUp = e;
                         console.log(e) ;
                         var err = false;
 
-                        //left = Math.ceil((mouseDown.clientX + mouseUp.clientX) / 2 - 97);
-                        //top = Math.min(mouseDown.clientY, mouseUp.clientY) - $("#new_suggestion_popup").height() - 40 + $(window).scrollTop() +35;
+                        left = Math.ceil((mouseDown.clientX + mouseUp.clientX) / 2 - 97);
+                        top = Math.min(mouseDown.clientY, mouseUp.clientY) - $("#new_suggestion_popup").height() - 40 + $(window).scrollTop() +35;
 
                         range_txt = window.getSelection().toString();
 
@@ -1657,7 +1655,6 @@ var error_message = error_message || '';
                                 $("#old_suggestion_popup").hide();
                                 var widthPopup  = $("#new_suggestion_popup .tooltip_2").width();
                                 var leftPopup = e.pageX-97;
-                                var top = e.pageY;
                                 leftPopup = leftPopup <= 0 ? 0 : leftPopup;
                                 leftPopup = e.pageX+widthPopup-97 > window.innerWidth ? window.innerWidth-widthPopup-26 : leftPopup;
                                 $("#new_suggestion_popup")
