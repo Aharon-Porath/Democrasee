@@ -2428,6 +2428,17 @@ var error_message = error_message || '';
             });
         });
 
+        window.addEventListener('load', function(){ // on page load
+            var disc = $('#discussion_content');
+                disc.on('vmouseup', function() {
+                    var selection = window.getSelection().toString();
+                    if (selection.length > 0) {
+                        alert(selection);
+                    }
+                });
+
+        }, false);
+
     </script>
 </body>
 </html>
