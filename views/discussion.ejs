@@ -2428,6 +2428,17 @@ var error_message = error_message || '';
             });
         });
 
+        window.addEventListener('load', function(){ // on page load
+
+            $('#discussion_content,#discussion_content_textarea')
+                    .addEventListener('touchstart', function(e){
+                alert(e.changedTouches[0].pageX) // alert pageX coordinate of touch point
+            }, false).addEventListener('touchend', function (e) {
+                alert(window.getSelection());
+            }, false);
+
+        }, false)
+
     </script>
 </body>
 </html>
