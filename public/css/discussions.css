@@ -1733,8 +1733,9 @@ span.remark{
     display: table-cell;
 }
 
-.suggestion_wrapper:focus {
-    border: 2px dotted white;
+.suggestion_wrapper:focus,
+.comment_wrapper:focus {
+    border: 2px dotted white !important;
 }
 
 #content_wrapper_suggestions input.button_more_results{
@@ -1781,7 +1782,8 @@ span.remark{
     display:block;
 }
 
-.suggestion_details.person a:focus .img-box {
+.suggestion_details.person a:focus .img-box,
+.comment_details.person a:focus .img-box {
     border: 2px dotted white;
 }
 
@@ -2168,7 +2170,8 @@ input.grading_button {
     float: left;
 }
 
-.suggestion_comments_holder .add_comment input:focus {
+.suggestion_comments_holder .add_comment input:focus,
+.post_comments_holder .add_comment input:focus {
     border: 2px dotted;
 }
 
@@ -2788,6 +2791,10 @@ input.button_submit_comment{
     color: white;
     font-size: 22px;
     line-height: 2;
+}
+
+input.button_submit_comment:focus {
+    border: 2px dotted;
 }
 
 input.button_submit_comment.disable{

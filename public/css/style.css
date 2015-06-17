@@ -10590,6 +10590,9 @@ body {
 }
 
 #login_pop_form .register {color: darkblue; font-weight: bold; font-size: 18px;}
+#login_pop_form .register:focus {
+    color: black;
+}
 
 .powered-link, .terms-link {
     position: fixed;

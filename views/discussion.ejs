@@ -1694,29 +1694,30 @@ var error_message = error_message || '';
                     $(this).attr('tabindex', tabindex++);
                 });
 
-                $(".suggestion_wrapper").each(function () {
+                $(".tabs ul.tab-links li a").each(function () {
                     $(this).attr('tabindex', tabindex++);
-                    $(this).find('.person a,' +
-                            '.suggestion_details .date_time a, ' +
-                            '.button_pro .grading_button,' +
-                            '.button_against .grading_button, ' +
-                            '.add_comment textarea,' +
-                            '.add_comment input'
-                    )
-                            .attr('tabindex', tabindex++);
+                    $($(this).attr('href')).find('.suggestion_wrapper')
+                        .each(function () {
+                            $(this).attr('tabindex', tabindex++);
+                            $(this).find('.person a,' +
+                                    '.suggestion_details .date_time a, ' +
+                                    '.button_pro .grading_button,' +
+                                    '.button_against .grading_button, ' +
+                                    '.add_comment textarea,' +
+                                    '.add_comment input'
+                            )
+                                    .attr('tabindex', tabindex++);
+                    });
                 });
 
-                $('#content_wrapper_comments').attr('tabindex', tabindex++);
-                $('#discussion_comment').attr('tabindex', tabindex++);
-                $('#submit_post').attr('tabindex', tabindex++);
-
-                $(".comment_main_wrapper").each(function () {
+                $(".comment_wrapper").each(function () {
                     $(this).attr('tabindex', tabindex++);
                     $(this).find('.person a,' +
                             '.comment_details .date_time a, ' +
                             '.rating_small a,' +
-                            '.add_comment textarea,' +
-                            '.add_comment input'
+                            '+ #submit_post,' +
+                            '+ .post_comments_holder .add_comment textarea,' +
+                            '+ .post_comments_holder .add_comment input'
                     )
                             .attr('tabindex', tabindex++);
                 });
@@ -2415,7 +2416,7 @@ var error_message = error_message || '';
             });
 
             // TABS
-            jQuery('.tabs .tab-links a').on('click', function(e)  {
+            jQuery('.tabs .tab-links a').on('click, focusin', function(e)  {
                 var currentAttrValue = jQuery(this).attr('href');
 
                 // Show/Hide Tabs

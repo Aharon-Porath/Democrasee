@@ -71,6 +71,11 @@
     text-indent: 8px;
 }
 
+.login-popup a.facebook:focus {
+    border: 2px solid black;
+    border-radius: 9px;
+}
+
 .login-popup a.facebook:hover
 {
     background-position:0 -42px;
@@ -115,6 +120,11 @@
     margin-bottom: 10px;
     display: block;
 }
+
+.forgot_password:focus {
+    color: black;
+}
+
 .login-popup input[type=password]
 {
     background-image:url('/images/URU_Connect_Form_Pass_icon.gif');
@@ -158,6 +168,11 @@
     text-indent: 20px;
 }
 
+.login-popup  input[type=submit]:focus {
+    border: 2px solid black;
+    border-radius: 9px;
+    box-sizing: border-box;
+}
 
 .login-popup input[type=submit]:hover
 {
