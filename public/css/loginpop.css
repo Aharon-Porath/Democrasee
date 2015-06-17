@@ -144,8 +144,6 @@
 
 .login-popup  input[type=submit]
 {
-   padding-bottom: 7px;
-
     background: white url(/images/URU_Connect_btn_sprite.png)   -241px 0 no-repeat;
     height: 45px;
     color: white;
@@ -157,6 +155,7 @@
     font-family: 'Arial';
      border: 0;
     display: block;
+    text-indent: 20px;
 }
 
 

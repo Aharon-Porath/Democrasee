@@ -506,7 +506,6 @@ body {
 
 #login_button a
 {
-
     display: inline-block;
     background: url(/images/URU_Connect_btn_sprite.png) -241px 0 no-repeat;
     height: 42px;
@@ -515,6 +514,13 @@ body {
     position: absolute;
     left: 40px;
     top: -80px;
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+    font-family: 'Arial';
+    font-size: 19px;
+    line-height: 2.3;
+    text-indent: 42px;
 }
 
 #login_button a:hover
