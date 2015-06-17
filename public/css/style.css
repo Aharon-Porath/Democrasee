@@ -5162,7 +5162,8 @@ div.action_list::-webkit-scrollbar-button {
 .login-form .title {
     color: white;
     font: bold 16px/28px Arial;
-    padding-bottom: 55px;
+    padding-bottom: 40px;
+    line-height: 2.8;
 }
 
 .login-form .title .link {
@@ -5200,7 +5201,7 @@ div.action_list::-webkit-scrollbar-button {
 
 .login-form .title .spacer {
     float: right;
-    margin: 13px 20px 0 14px;
+    margin: 18px 20px 0 14px;
     background: url(/images/or-spacer.png) 0 0 no-repeat;
     height: 6px;
     width: 73px;
@@ -5274,6 +5275,24 @@ div.action_list::-webkit-scrollbar-button {
     float: left;
     font: normal 18px/32px "AdumaFOTRegular";
     cursor: pointer;
+}
+
+
+#register_form_full #fb_ajax_connect {
+    float: right;
+    display: inline-block;
+    background: url(/images/URU_FB_Connect_btn_sprite.png) 0 0 no-repeat;
+    height: 42px;
+    width: 230px;
+    margin: 0 auto;
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+    font-family: 'Arial';
+    font-size: 18px;
+    line-height: 2.5;
+    text-indent: 8px;
+    margin-right: 20px;
 }
 
 /*------------------------*/
