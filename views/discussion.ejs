@@ -1685,6 +1685,7 @@ var error_message = error_message || '';
 
             $("#content_main_holder").on("click tap keydown", ".marker_1", function (e) {
                 if(!mouseDown && (e.type == 'click' || e.type == 'tap' || e.keyCode == 13)){
+                    var tabindex = $(this).attr('tabindex');
                     // open tab with suggestions first
 //            $('#wrap > div.tabs > ul > li:nth-child(1) a').click();
 //            displayAllSuggestions();
@@ -1692,6 +1693,11 @@ var error_message = error_message || '';
                     $('html, body').animate({
                         scrollTop: $("div[data-id=" +id+ "]").offset().top
                     }, 500);
+
+                    $("div[data-id=" +id+ "]").attr('tabindex', tabindex);
+                    $("div[data-id=" +id+ "]").find('[tabindex]').each(function () {
+                        $(this).attr('tabindex', tabindex);
+                    });
 
 
                 }
