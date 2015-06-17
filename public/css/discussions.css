@@ -702,11 +702,6 @@ blockquote{
 #content_right_holder .segment{
 
 }
-#content_main_holder .segment.info{
-
-
-    background-color: rgba(0, 0, 0, 0.5);
-}
 
 #info_items{
     margin-top: 15px;
@@ -3775,16 +3770,17 @@ input.button_submit_comment_no_text{
  */
 
 #info_items .mb-inside p {
-    font: normal 13px/20px 'Arial';
-    color: #7f7f7e;
+    font: normal 13px/20px 'Alef';
+    color: #ffffff;
 }
 #info_items .mb-inside h2 {
-    color: #EADC00;
-    font: bold 13px/20px 'Arial';
+    color: #ffffff;
+    font: bold 15px/20px 'Alef';
     margin: 0;
     padding: 0;
     border: 0;
 }
+
 #info_items .mb-inside {
     padding: 20px 20px 17px 20px;
      cursor: pointer;
