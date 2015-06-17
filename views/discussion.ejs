@@ -486,21 +486,36 @@ var error_message = error_message || '';
                 });
 
                 // open information item in colorbox popup
-                $('#slider li[target!="_blank"]').colorbox({
-//    //                        inline: true,
-                    href: $(this).attr('href'),
-                    iframe: true,
-//            initHeight: "50%",
-//            initWidth: "50%",
-                    height: 500,
-                    width: 650,
-                    onComplete: function () {
-                    },
-                    onClosed: function () {
+//                $('#slider li[target!="_blank"]').colorbox({
+////    //                        inline: true,
+//                    href: $(this).attr('href'),
+//                    iframe: true,
+////            initHeight: "50%",
+////            initWidth: "50%",
+//                    height: 500,
+//                    width: 650,
+//                    onComplete: function () {
+//                    },
+//                    onClosed: function () {
+//                    }
+//                });
+                $('#slider li').on('click keydown tap', function(e) {
+                    if (e.type === 'click' || e.type === 'tap' || e.keyCode === 13) {
+                        if ($(this).attr("target") === "_blank") {
+                            window.open($(this).attr('href'));
+                        } else {
+                            $.colorbox({
+                                href: $(this).attr('href'),
+                                iframe: true,
+                                height: 500,
+                                width: 650,
+                                onComplete: function () {
+                                },
+                                onClosed: function () {
+                                }
+                            });
+                        }
                     }
-                });
-                $('#slider li[target="_blank"]').click(function() {
-                    window.open($(this).attr('href'), 'pdf');
                 });
 
 //        $('#slider li').each(function() {
@@ -2427,6 +2442,7 @@ var error_message = error_message || '';
 
                 e.preventDefault();
             });
+
         });
 
     </script>
