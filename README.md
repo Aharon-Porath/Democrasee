@@ -1,5 +1,3 @@
-This is URU
-
 Installation instructions
 =========================
 
@@ -10,7 +8,9 @@ git clone https://github.com/Aharon-Porath/Democrasee.git
 cd Democrasee
 # install all node requirements
 npm install
-# one time - mongo install
+# create mongo db root if it doesn't exist
+[ -e .data ] || mkdir .data
+# mongo run
 ## windows
 RunMongo.bat
 ## linux
