@@ -224,6 +224,24 @@ function fbs_click(ui) {
     ui.attr('href','javascript:void(0);');
 }
 
+function block_mails_to_user (user_id) {
+    var new_settings = {};
+    new_settings.mail_notification_configuration = {};
+    new_settings.mail_notification_configuration['get_mails'] = false;
+
+    db_functions.updateMailNotification(user_id, new_settings, function(err, result){
+        if (!err) {
+            popupProvider.showOkPopup({
+                message: 'לא ישלחו יותר עדכונים במייל.'
+            });
+        } else {
+            popupProvider.showOkPopup({
+                message: err
+            });
+        }
+    })
+}
+
 
 // handle image loading stuff
 
@@ -232,19 +250,23 @@ $(function(){
     var is_new = /is_new=([^&#]+)/.exec(window.location.href);
     if (!$.cookie('welcome_popup')) {
         popupProvider.showOkPopup({
-            message: '<div class="welcome-title"><b>אבן דרך: הזמנה להשתתפות בעריכת אמנה משותפת להולכי רגל ורוכבי אופניים</b></div>\
+            message: '<div class="welcome-wrapper"><div class="welcome-title"><b>אבן דרך: הזמנה להשתתפות בעריכת אמנה משותפת להולכי רגל ורוכבי אופניים</b></div>\
 <br ><br ><div class="welcome-text">\
-        עיריית תל-אביב-יפו מעודדת את התנועה בעיר ברגל ובאופניים כאלטרנטיבה בריאה, ירוקה וחסכונית לשימוש ברכב. בשנים האחרונות חלה עלייה במספר רוכבי האופניים והאופניים החשמליים בעיר, ולא אחת, נוצרים חיכוכים בינם ובין הולכי הרגל. במקביל למאמצי העירייה להמשך סלילת שבילי אופניים ולהגברת האכיפה, אנו פונים אליכם התושבים – רוכבים, הולכי רגל ונהגים - ומזמינים אתכם ליצור יחד כללי התנהגות מוסכמים במרחב הציבורי.\
+              עיריית תל-אביב-יפו והרשות הלאומית לבטיחות בדרכים מעודדות את התנועה בעיר ברגל ובאופניים כאלטרנטיבה בריאה, ירוקה וחסכונית לשימוש ברכב. בשנים האחרונות חלה עלייה במספר רוכבי האופניים והאופניים החשמליים בעיר, ולא אחת, נוצרים חיכוכים בינם ובין הולכי הרגל. במקביל למאמצי העירייה להמשך סלילת שבילי אופניים ולהגברת האכיפה, אנו פונים אליכם התושבים – רוכבים, הולכי רגל ונהגים - ומזמינים אתכם ליצור יחד כללי התנהגות מוסכמים במרחב הציבורי.\
 <br><br>\
         באמצעות המערכת שלפניכם תוכלו להשתתף בעריכת אמנה לרוכבי אופניים והולכי רגל. באפשרותכם להוסיף התייחסות לנושאים שטרם עלו באמנה כמו אופניים חשמליים, אופנועים ועוד באמצעות מנגנון ההצעות לשינוי המובנה במערכת, ולהשתתף בדיון.\
 <br><br>\
-        המטרה הינה ליצור אמנה משותפת ומוסכמת להסדרת כללי ההתנהגות של הולכי הרגל ורוכבי האופניים בעת התניידותם בעיר.\
+        המטרה הינה ליצור אמנה משותפת ומוסכמת להסדרת כללי ההתנהגות של הולכבי הרגל ורוכבי האופניים בעת התניידותם בעיר.\
 <br><br ><div class="last-p">\
         טיוטת האמנה הראשונה היא יציר כפיהם של:\
-        סגנית ראש העירייה והממונה על התחבורה – הגב מיטל להבי, יפתח שוע – נציג מטעמה, יותם אביזוהר – יו"ר עמותת ישראל בשביל האופניים".\
+   סגנית ראש העירייה והממונה על התחבורה – הגב מיטל להבי, יפתח שוע – נציג מטעמה, יותם אביזוהר – יו"ר עמותת ישראל בשביל האופניים, ופעילים בתחום ההליכה הבטוחה במדרכות.\
 <br><br>\
-    עם הרשמתכם לאתר הנכם מאשרים את <a href="http://bicycle.tel-aviv.gov.il/home/index2" target="_top">תנאי השימוש</a>\
-    </div></div>',
+    עם הרשמתכם לאתר הנכם מאשרים את <a class="terms" href="/page/terms" target="_self">תנאי השימוש</a>\
+    </div></div> <div class="welcome-powered-link"> \
+        <a href="http://www.linnovate.net" target="_BLANK"> \
+        <p>מופעל על ידי<img src="/images/logo_linnovate.png" style="width: 65px; height:10%;"></p> \
+        </a> \
+        </div></div>',
     width: '650',
     className: 'welcome-window'});
 
@@ -267,12 +289,17 @@ $(function(){
             popupProvider.showOkPopup({
                 message:'הרשמתך התקבלה בהצלחה.'            +   pixel
             });
-        if(is_new[1] == 'reset')
+        if(is_new[1] == 'reset') {
             popupProvider.showOkPopup({
-                message:'הסיסמא שונתה בהצלחה.'
+                message: 'הסיסמא שונתה בהצלחה.'
             });
+        } else {
+            if (is_new[1] === 'block_mails') {
+                var user_id = /id=([^&#]+)/.exec(window.location.href);
+                block_mails_to_user(user_id[1]);
+            }
+        }
     }
-
 
     $('#election_menu').live('click', function(){
         window.location.replace('www.uru.org.il/elections');
@@ -324,10 +351,11 @@ $(function(){
         });
     });
 
-
     var host = window.location.protocol + '//' + window.location.host;
 
     $('input, textarea').placeholder();
+
+    $('#colorbox').attr('role', 'dialog');
 
     $('#failureForm').live('submit', function(e){
         e.preventDefault();

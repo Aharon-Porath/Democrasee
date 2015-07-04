@@ -26,7 +26,6 @@
 
 }
 
-
 .user-box span.icon
 {
     width: 21px;
@@ -63,6 +62,18 @@
     height: 42px;
     width: 230px;
     margin: 0 auto;
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+    font-family: 'Arial';
+    font-size: 18px;
+    line-height: 2.5;
+    text-indent: 8px;
+}
+
+.login-popup a.facebook:focus {
+    border: 2px solid black;
+    border-radius: 9px;
 }
 
 .login-popup a.facebook:hover
@@ -109,6 +120,11 @@
     margin-bottom: 10px;
     display: block;
 }
+
+.forgot_password:focus {
+    color: black;
+}
+
 .login-popup input[type=password]
 {
     background-image:url('/images/URU_Connect_Form_Pass_icon.gif');
@@ -138,8 +154,6 @@
 
 .login-popup  input[type=submit]
 {
-   padding-bottom: 7px;
-
     background: white url(/images/URU_Connect_btn_sprite.png)   -241px 0 no-repeat;
     height: 45px;
     color: white;
@@ -151,8 +165,14 @@
     font-family: 'Arial';
      border: 0;
     display: block;
+    text-indent: 20px;
 }
 
+.login-popup  input[type=submit]:focus {
+    border: 2px solid black;
+    border-radius: 9px;
+    box-sizing: border-box;
+}
 
 .login-popup input[type=submit]:hover
 {

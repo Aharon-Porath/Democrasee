@@ -140,3 +140,4 @@ var sendActivationMail = module.exports.sendActivationMail = function(user,next,
         callback(err,temp_password);
     });
 };
+

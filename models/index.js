@@ -166,6 +166,8 @@ var Schemas = exports.Schemas = {
             'approved_discussion_i_took_part',
             'comment_on_discussion_you_are_part_of',
             "comment_on_discussion_you_created",
+            'comment_on_discussion_change_suggestion',
+            'comment_on_discussion_change_suggestion_you_created',
             "change_suggestion_on_discussion_you_are_part_of",
             "change_suggestion_on_discussion_you_created",
             "approved_change_suggestion_you_created",

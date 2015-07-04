@@ -251,10 +251,11 @@ var GradeSuggestionResource = module.exports = common.GamificationMongooseResour
                             method = "add";
                         else
                             method = "remove";
-                        notifications.create_user_vote_or_grade_notification("user_gave_my_suggestion_tokens",
-                            suggestion_obj._id, suggestion_obj.creator_id, req.user._id, discussion_id, method, false, true, '/discussions/' + discussion_id, function (err, result) {
-                                cbk1(err, result);
-                            })
+                            cbk1();
+                        //notifications.create_user_vote_or_grade_notification("user_gave_my_suggestion_tokens",
+                        //    suggestion_obj._id, suggestion_obj.creator_id, req.user._id, discussion_id, method, false, true, '/discussions/' + discussion_id, function (err, result) {
+                        //        cbk1(err, result);
+                        //    })
                     },
 
                     //set notifications for all users of proxy
@@ -411,10 +412,11 @@ var GradeSuggestionResource = module.exports = common.GamificationMongooseResour
                     function (cbk1) {
                         if (did_user_change_his_agree) {
                             if (sugg_obj.creator_id) {
-                                notifications.create_user_vote_or_grade_notification("user_gave_my_suggestion_tokens",
-                                    sugg_obj._id, sugg_obj.creator_id, req.user._id, discussion_id, method, did_user_change_his_agree, true, '/discussions/' + discussion_id, function (err, result) {
-                                        cbk1(err, result);
-                                    })
+                                //notifications.create_user_vote_or_grade_notification("user_gave_my_suggestion_tokens",
+                                //    sugg_obj._id, sugg_obj.creator_id, req.user._id, discussion_id, method, did_user_change_his_agree, true, '/discussions/' + discussion_id, function (err, result) {
+                                //        cbk1(err, result);
+                                //    })
+                                cbk1();
                             } else {
                                 console.log('this suggestion - id number ' + sugg_obj.creator_id + 'doesnt have creator id!!!')
                                 cbk1(null, 0);

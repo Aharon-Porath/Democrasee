@@ -29,11 +29,11 @@
                     <span class="time">{?creation_date}{creation_date|time}{/creation_date}</span>
                 </a>
             </div>
-            <div class="ratings">
-                <span class="awards">{creator_id.score}</span>
-                &nbsp;
-                <span class="friends">{creator_id.num_of_proxies_i_represent}</span>
-            </div>
+            <!--<div class="ratings">-->
+                <!--<span class="awards">{creator_id.score}</span>-->
+                <!--&nbsp;-->
+                <!--<span class="friends">{creator_id.num_of_proxies_i_represent}</span>-->
+            <!--</div>-->
         </div>
         <div class="button_edit_comment">
             <input type="button" />
@@ -51,7 +51,7 @@
                 <span class="alternative_part">{alternative_part}</span>
                 <h3 class="title">נימוק:</h3>
                     <span class="explanation">{explanation}</span>
-                <div class="edit_window">
+                <div class="edit_window" role="tooltip">
                     <p class="title">
                         טקסט החזון הנוכחי בשילוב ההצעה לשינוי מודגשת. לחץ כדי לחזור לחזון
                     </p>
@@ -66,11 +66,11 @@
                 {^is_my_suggestion}
                 <div class="button button_pro">
                     <a class="notifications" href="#notifications">{agrees}</a>
-                    <input class="grading_button  {?grade_obj} {?grade_obj.does_support_the_suggestion} active {/grade_obj.does_support_the_suggestion} {/grade_obj}" type="button" />
+                    <input class="grading_button  {?grade_obj} {?grade_obj.does_support_the_suggestion} active {/grade_obj.does_support_the_suggestion} {/grade_obj}" type="button" value="בעד"/>
                 </div>
                 <div class="button button_against">
                     <a class="notifications" href="#notifications">{not_agrees}</a>
-                    <input class="grading_button  {?grade_obj} {^grade_obj.does_support_the_suggestion} active {/grade_obj.does_support_the_suggestion} {/grade_obj}" type="button" />
+                    <input class="grading_button  {?grade_obj} {^grade_obj.does_support_the_suggestion} active {/grade_obj.does_support_the_suggestion} {/grade_obj}" type="button" value="נגד"/>
                 </div>
                 {/is_my_suggestion}
                 <div class="button" style= "width: 80px; height: 20px; left: 0; top: 19px; overflow: hidden;
@@ -110,7 +110,7 @@
     </div>
     <div class="suggestion_comments_holder post_or_suggestion_comments_holder">
         <div class="add_comment" data-can-add="true">
-            <textarea type="text" placeholder="כתוב תגובה..." />
+            <textarea type="text" aria-label="add-comment" placeholder="כתוב תגובה..."   />
             <input type="submit" value="שלח"> </input>
         </div>
     </div>

@@ -702,11 +702,6 @@ blockquote{
 #content_right_holder .segment{
 
 }
-#content_main_holder .segment.info{
-
-
-    background-color: rgba(0, 0, 0, 0.5);
-}
 
 #info_items{
     margin-top: 15px;
@@ -1738,6 +1733,11 @@ span.remark{
     display: table-cell;
 }
 
+.suggestion_wrapper:focus,
+.comment_wrapper:focus {
+    border: 2px dotted white !important;
+}
+
 #content_wrapper_suggestions input.button_more_results{
     text-align: center;
     background:url(/images/more-deals.png) no-repeat;
@@ -1780,6 +1780,11 @@ span.remark{
 }*/
 .suggestion_wrapper.edit_suggestion.show_edit_button .button_edit_comment{
     display:block;
+}
+
+.suggestion_details.person a:focus .img-box,
+.comment_details.person a:focus .img-box {
+    border: 2px dotted white;
 }
 
 .suggestion_details{
@@ -1915,7 +1920,7 @@ span.remark{
 
 .suggestion_bottom_segment.one{	width:260px; border-left:5px solid #fff; }
 .suggestion_bottom_segment.two{	width:150px; border-left:5px solid #fff; color:#757d7e; }
-.suggestion_bottom_segment.three{	width:250px; margin-right: 20px; }
+.suggestion_bottom_segment.three{	width:250px; margin-right: 10px; }
 .suggestion_bottom_segment.wide{	width:98%; }
 
 .suggestion_bottom_segment .button{
@@ -1936,7 +1941,12 @@ span.remark{
      cursor:pointer;
      margin-left:10px;
      margin-top: 3px;
+
  }
+
+.grading_button:focus {
+    border: 2px dotted white;
+}
 
 .button_pro input:hover{
     background:url(/images/URU_pro.con_btns_sprite.png) no-repeat -87px -43px;
@@ -1956,6 +1966,15 @@ span.remark{
     margin-left:10px;
     margin-top: 3px;
 }
+
+input.grading_button {
+    color: white;
+    font-size: 22px;
+    text-indent: 20px;
+    line-height: 2;
+    text-shadow: 1px 1px #323131;
+}
+
 .button_against input:hover{
     background:url(/images/URU_pro.con_btns_sprite.png) no-repeat 0 -43px;
     cursor: default;
@@ -1998,6 +2017,7 @@ span.remark{
     background:url(/images/icon_comments.png) center right no-repeat;
     padding-right:30px;
     margin-top:15px;
+    float: right;
 }
 
 .comments_counter.approved{
@@ -2005,13 +2025,12 @@ span.remark{
     margin-top:-16px;
 }
 .add_fast_comment{
-    color:#60605f;
-    font-size:14px;
-    font-weight:bold;
-    padding-right:30px;
-    margin-top:-18px;
-    margin-bottom: -15px;
-    float: left;
+    color: #60605f;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-right: 10px;
+    float: right;
 }
 
 .comments_counter span{
@@ -2142,7 +2161,6 @@ span.remark{
     height: 40px;
     width: 475px;
     padding:0 5px;
-    color:#a3a3a3;
     font-size:12px;
     line-height:20px;
 }
@@ -2150,6 +2168,11 @@ span.remark{
 .post_comments_holder .add_comment input,
 .suggestion_comments_holder .add_comment input{
     float: left;
+}
+
+.suggestion_comments_holder .add_comment input:focus,
+.post_comments_holder .add_comment input:focus {
+    border: 2px dotted;
 }
 
 .button_edit_comment{
@@ -2765,7 +2788,15 @@ input.button_submit_comment{
     cursor:pointer;
     float:left;
     margin-top:0px;
+    color: white;
+    font-size: 22px;
+    line-height: 2;
 }
+
+input.button_submit_comment:focus {
+    border: 2px dotted;
+}
+
 input.button_submit_comment.disable{
     background:url(/images/button_submit_comment_d.png) no-repeat 0 0;
 }
@@ -2956,8 +2987,6 @@ input.button_submit_comment_no_text{
     clear: both;
 }
 
-
-
 #content_right_holder .segment.main .marker_1{
     background:#FFFF07;
     color: #000000;
@@ -2967,6 +2996,14 @@ input.button_submit_comment_no_text{
     background:#ffff07;
     color: #000000;
     text-decoration: underline;
+}
+
+#content_right_holder .segment.main .marker_1:focus {
+    background: white;
+}
+
+#content_right_holder .segment.main .marker:focus {
+    background: white !important;
 }
 
 #content_right_holder .segment.main .marker_1.off{
@@ -3740,16 +3777,17 @@ input.button_submit_comment_no_text{
  */
 
 #info_items .mb-inside p {
-    font: normal 13px/20px 'Arial';
-    color: #7f7f7e;
+    font: normal 13px/20px 'Alef';
+    color: #ffffff;
 }
 #info_items .mb-inside h2 {
-    color: #EADC00;
-    font: bold 13px/20px 'Arial';
+    color: #ffffff;
+    font: bold 15px/20px 'Alef';
     margin: 0;
     padding: 0;
     border: 0;
 }
+
 #info_items .mb-inside {
     padding: 20px 20px 17px 20px;
      cursor: pointer;
@@ -3773,6 +3811,14 @@ input.button_submit_comment_no_text{
     text-align: center;
 }
 
+.welcome-window .welcome-wrapper {
+    font-family: alef;
+}
+
+.welcome-window a.terms {
+    color: blue;
+}
+
 .welcome-window .welcome-title {
     font-size: 21px;
 }
@@ -3784,3 +3830,16 @@ input.button_submit_comment_no_text{
 .welcome-window .welcome-text .last-p {
     font-size: 14px;
 }
+
+.loading-suggestion {
+    background: url(/images/ajax-loader-5.gif) no-repeat 5%;
+    background-size: 100%;
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+    padding-top: 5%;
+}
+
+
+
+

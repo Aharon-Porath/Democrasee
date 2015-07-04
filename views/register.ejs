@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="he">
 <head>
     <% include partials/head.ejs %>
 </head>
@@ -8,7 +8,7 @@
 <div id="wrap">
         <div id="header">
             <% //include partials/menu.ejs %>
-            <% include partials/user_box.ejs %>
+            <% //include partials/user_box.ejs %>
             <% include partials/failures.ejs %>
             <% include partials/tag_search.ejs %>
         </div>
@@ -30,25 +30,25 @@
                 </div>
                 <div class="areas">
                     <div class="title">
-                        <a id="fb_ajax_connect" href="javascript:void(0)"><img src="/images/facebook-btn.png" alt="" /></a>
+                        <a id="fb_ajax_connect" href="javascript:void(0)">התחברו באמצעות פייסבוק</a>
                         <span class="spacer"></span>
                         מלא את הפרטים הבאים:
 
                     </div>
                     <div class="one">
-                        <label>
+                        <label for="full_name">
                             שם מלא:
                         </label>
                         <input id="full_name" name="full_name" class="text" type="text" value="<%= body.first_name || '' %>" />
                     </div>
                     <div class="one">
-                        <label>
+                        <label for="email">
                             דוא”ל:
                         </label>
                         <input id="email" name="email" class="text" type="email" value="<%= body.email || '' %>" />
                     </div>
                     <div class="one hide">
-                        <label>
+                        <label for="invitation_code">
                             קוד הזמנה:
                         </label>
                         <textarea id="invitation_code" name="invitation_code" cols="0" rows="0"></textarea>
@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 <input type="hidden" name="next" value="<%= next || '' %>" />
-                <input type="submit" value="שלח" />
+                <input type="submit" value="שלח" title="שלח"/>
             </form>
         </div>
     </div>
@@ -71,7 +71,10 @@
 
         $('#register_form_full').validate({
             errorElement: "p",
-
+            errorPlacement: function(error, element) {
+                error.attr('role', 'alert');
+                error.insertAfter(element);
+            },
             rules:{
                 full_name:{
                     required: true,

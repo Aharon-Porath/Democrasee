@@ -192,7 +192,6 @@ var SuggestionResource = module.exports = common.GamificationMongooseResource.ex
 
         var iterator = function (unique_user, itr_cbk) {
             user_id = user_id || user_id.id;
-
             if (unique_user  == user_id || !unique_user || unique_user === "undefined"){
                 console.log("user should not get mail if he is the notificator");
                 itr_cbk(null, 0);
@@ -337,12 +336,13 @@ var SuggestionResource = module.exports = common.GamificationMongooseResource.ex
                         discussion_creator_id = disc_obj.creator_id;
 
                         // be sure that there are no duplicated users in discussion.users
-                        _.each(disc_obj.users, function(user){ unique_users.push(user.id || user.user_id + "")});
-                        _.each(users, function(user){ unique_users.push(user.id)});
+                        //console.error(disc_obj);
+                        _.each(disc_obj.users, function(user){ unique_users.push(user.user_id)});
+                        //_.each(users, function(user){ unique_users.push(user.id)});
                         unique_users = _.uniq(unique_users);
 
                         async.forEach(unique_users, iterator, function(err){
-                            if(err){
+                            if (err){
                                 console.error(err);
                                 err.trace();
                             }
@@ -471,7 +471,7 @@ module.exports.approveSuggestion = function (id, callback) {
     var noti_itr = function(user_id, itr_cbk){
         if (suggestion_creator != user_id + "") {
             notifications.create_user_notification("approved_change_suggestion_on_discussion_you_are_part_of",
-                suggestion_object._id, user_id + "", null, discussion_id, '/discussions/' + discussion_id, itr_cbk);
+                suggestion_object._id, user_id + "", suggestion_creator, discussion_id, '/discussions/' + discussion_id, itr_cbk);
         } else {
             itr_cbk(null, 0);
         }

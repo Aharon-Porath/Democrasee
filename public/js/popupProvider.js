@@ -28,10 +28,13 @@ var popupProvider={
             if(!err){
                  $.colorbox(
                      { html:out,
+                       fixed: true,
                      onComplete:function(e){
+                       $('body').css('overflow', 'hidden');
                        $('.ok-button').click(popupConfig.onOkCilcked);
                      },
                      onClosed:function(){
+                         $('body').css('overflow', 'auto');
                          popupConfig.callback();
                      },
                      width: popupConfig.width || 'auto',
@@ -60,10 +63,13 @@ var popupProvider={
         dust.render('ok_popup_link',popupConfig,function(err,out){
             if(!err){
                 $.colorbox({ html:out,
+                    fixed: true,
                     onComplete:function(e){
+                        $('body').css('overflow', 'hidden');
                         $('.ok-button').click(popupConfig.onOkCilcked);
                     },
                     onClosed:function(){
+                        $('body').css('overflow', 'auto');
                         popupConfig.callback();
                     }
                 });
@@ -96,11 +102,14 @@ var popupProvider={
         dust.render('explanation_popup',popupConfig,function(err,out){
             if(!err){
                 $.colorbox({ html:out,
+                    fixed: true,
                     onComplete:function(e){
+                        $('body').css('overflow', 'hidden');
                         $('.ok-button').click(popupConfig.onOkCilcked);
                         $('.cancel-button').click(popupConfig.onCancelClicked);
                     },
                     onClosed:function(){
+                        $('body').css('overflow', 'auto');
                         popupConfig.callback(clicked);
                     }
                 });
@@ -127,10 +136,12 @@ var popupProvider={
             if(!err){
                 $.colorbox({ html:out,
                     onComplete:function(e){
+                        $('body').css('overflow', 'hidden');
                         $('.ok-button').click(popupConfig.onOkCilcked);
                         $('.cancel-button').click(popupConfig.onCancelClicked);
                     },
                     onClosed:function(){
+                        $('body').css('overflow', 'auto');
                         popupConfig.callback(clicked);
                     }
                 });
@@ -168,7 +179,9 @@ var popupProvider={
             }
 
             popup = $.colorbox({ html:out,
+                fixed: true,
                 onComplete:function (e) {
+                    $('body').css('overflow', 'hidden');
                     var realProxy = popupConfig.userProxy.number_of_tokens - popupConfig.userProxy.number_of_tokens_to_get_back;
                     $('.ok-button').click(popupConfig.onOkCilcked);
                     $('.cancel-button').click(popupConfig.onCancelCilcked);
@@ -176,6 +189,7 @@ var popupProvider={
 
                 },
                 onClosed:function (e) {
+                    $('body').css('overflow', 'auto');
                     popupConfig.onClosed(e);
                 }
             });
@@ -199,8 +213,11 @@ var popupProvider={
                 return;
             }
 
-             $.colorbox({ html:out,
-                onComplete:function (e) {
+             $.colorbox({ html: out,
+                 fixed: true,
+                 onComplete:function (e) {
+                    $('body').css('overflow', 'hidden');
+                    $('input[name="email"]').focus();
                     $('#login_pop_form').submit(function() {
                         // get all the inputs into an array.
                         var $inputs = $('#login_pop_form :input');
@@ -242,6 +259,7 @@ var popupProvider={
                     })
                 },
                 onClosed:function (e) {
+                    $('body').css('overflow', 'auto');
                     popupConfig.onClosed(e);
                 }
             });

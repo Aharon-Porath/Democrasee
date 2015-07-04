@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="he">
 <head>
     <% include partials/head.ejs %>
 </head>
@@ -16,8 +16,8 @@
 
     <div id="content" class="cf">
         <div class="rightCol">
-
             <div class="main-text" style="margin-bottom: 50px">
+            <div class="back-to-discussion-terms"><a href="/">חזרה לעמוד האמנה</a></div>
                 <div class="about-one" <%= page.tab == 'english' || page.tab == 'русский' || page.tab == 'Arabic' ? 'bablic-exclude' : '' %>>
                     <% if(page.title) { %>
                     <h4>

@@ -498,17 +498,29 @@ body {
     top: 90px;
 }
 
+#login_button:focus a, #login_button a:focus {
+    border: 2px solid white;
+    border-radius: 9px;
+    box-sizing: border-box;
+}
+
 #login_button a
 {
-
     display: inline-block;
-    background: url(/images/URU_Connect_btn_sprite.png) -240px 0 no-repeat;
+    background: url(/images/URU_Connect_btn_sprite.png) -241px 0 no-repeat;
     height: 42px;
     width: 120px;
     margin: 0 auto;
     position: absolute;
     left: 40px;
     top: -80px;
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+    font-family: 'Arial';
+    font-size: 19px;
+    line-height: 2.3;
+    text-indent: 42px;
 }
 
 #login_button a:hover
@@ -555,6 +567,10 @@ body {
     font-size: 14px;
     color: #FFFFFF;
     padding: 13px 0 0 10px;
+}
+
+.user-box a.name:focus {
+    text-decoration: underline;
 }
 
 .notifications{
@@ -723,6 +739,11 @@ color: #ff00af;
 
     margin-right: 40px;;
 }
+
+.user-info-box .user-box-bottom div.logout:focus {
+    background-color: white;
+}
+
 .user-info-box .user-box-bottom div.logout p{
     padding: 5px 10px 0 10px;
     color: #dc0032;
@@ -846,9 +867,6 @@ color: #ff00af;
 }
 
 #content h2 {
-
-
-
     border-top: 6px solid #d6dbde;
     color: #FFFFFF;
     font: normal 24px/49px 'Arial';
@@ -1303,7 +1321,6 @@ color: #ff00af;
 
 /*-------------------------*/
 .renewal {
-    background: #fff;
     padding: 0 8px 30px 8px;
     margin-bottom: 20px;
 }
@@ -1316,6 +1333,9 @@ color: #ff00af;
     border-top: 1px solid #ebebeb;
     padding: 17px 0 14px 130px;
     position: relative;
+}
+.renewal .one:focus {
+    border: 2px dotted #ebebeb;
 }
 
 .renewal .one:first-child {
@@ -4415,7 +4435,7 @@ h2 small {
     margin-bottom: 10px;
     border-top: 1px solid #f1f1f1;
     border-bottom: 1px solid #f1f1f1;
-    background: #fff;
+    background: rgba(0, 0, 0, 0.5);
     padding: 8px 9px;
 }
 
@@ -4479,7 +4499,6 @@ h2 small {
 }
 
 .one-box .right .text h4 a {
-    color: #50504f;
     font: bold 16px/30px Arial;
     margin: 0;
     text-decoration: none;
@@ -4493,7 +4512,7 @@ h2 small {
 }
 
 .one-box .right .text p {
-    color: #50504f;
+    color: #fff;
     font: normal 13px/17px Arial;
     margin-bottom: 16px;
 }
@@ -4502,7 +4521,7 @@ h2 small {
     border-top: 1px solid #ebebeb;
     padding-top: 5px;
     clear: both;
-    color: #50504f;
+    color: #fff;
     font: normal 13px/22px Arial;
     margin-top: 15px;
 }
@@ -5141,9 +5160,10 @@ div.action_list::-webkit-scrollbar-button {
 }
 
 .login-form .title {
-    /*color: #50504f;*/
+    color: white;
     font: bold 16px/28px Arial;
-    padding-bottom: 55px;
+    padding-bottom: 40px;
+    line-height: 2.8;
 }
 
 .login-form .title .link {
@@ -5181,7 +5201,7 @@ div.action_list::-webkit-scrollbar-button {
 
 .login-form .title .spacer {
     float: right;
-    margin: 13px 20px 0 14px;
+    margin: 18px 20px 0 14px;
     background: url(/images/or-spacer.png) 0 0 no-repeat;
     height: 6px;
     width: 73px;
@@ -5194,6 +5214,7 @@ div.action_list::-webkit-scrollbar-button {
 .login-form label {
     float: right;
     width: 124px;
+    color: white;
     /*color: #50504f;*/
     font: bold 16px/32px Arial;
 }
@@ -5256,7 +5277,38 @@ div.action_list::-webkit-scrollbar-button {
     cursor: pointer;
 }
 
+
+#register_form_full #fb_ajax_connect {
+    float: right;
+    display: inline-block;
+    background: url(/images/URU_FB_Connect_btn_sprite.png) 0 0 no-repeat;
+    height: 42px;
+    width: 230px;
+    margin: 0 auto;
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+    font-family: 'Arial';
+    font-size: 18px;
+    line-height: 2.5;
+    text-indent: 8px;
+    margin-right: 20px;
+}
+
 /*------------------------*/
+.profile-page #wrap,
+.profile-page #content {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.profile-page #content h2 {
+    font: normal 24px/49px 'Alef';
+}
+
+.profile-page .renewal .one p {
+    font-family: 'Alef';
+}
+
 .profile-top .right {
     float: right;
    /* width: 711px;*/
@@ -5265,7 +5317,7 @@ div.action_list::-webkit-scrollbar-button {
 }
 
 .profile-top .right .white-box {
-    background: #fff /*url(/images/border-vertical-dotted.png) 0 0 repeat-y*/;
+    /*background: #fff *//*url(/images/border-vertical-dotted.png) 0 0 repeat-y*//*;*/
     height: 202px;
     padding: 18px 18px 0 0;
 }
@@ -5367,7 +5419,7 @@ div.action_list::-webkit-scrollbar-button {
 }
 
 .profile-top .right .user-links h4 {
-    color: #7f7f7e;
+    color: white;
     font: bold 17px/20px Arial;
     margin-bottom: 12px;
 }
@@ -5703,6 +5755,11 @@ div.action_list::-webkit-scrollbar-button {
 .profile-bottom .right {
     float: right;
     width: 671px;
+}
+
+.profile-bottom .part_one,
+.profile-bottom .renewal .one .date {
+    color: white;
 }
 
 .profile-bottom .left {
@@ -9390,7 +9447,8 @@ a.menu-elections:hover {
     color: #ffffff;
 }
 
-.underline_and_cursor_when_hover:hover {
+.underline_and_cursor_when_hover:hover,
+.underline_and_cursor_when_hover:focus {
     cursor: pointer;
     text-decoration:underline;
 }
@@ -9870,8 +9928,8 @@ body.search-active #header {
 
 #info_items #slider li {
     width: 263px;
-    background-color:#fff;
     height:290px;
+    background-color: rgba(0, 0, 0, 0.498039);
     text-align: right;
 }
 
@@ -10064,6 +10122,11 @@ change .current class name using plugin option, currentPanel : 'current' */
     text-align: center;
     outline: 0;
 }
+
+#info_items .mb-slider li.mb-panel:focus {
+    border: 2px solid #EADC00;
+}
+
 #info_items .mb-controls a:hover {
     color: #666;
 }
@@ -10516,7 +10579,7 @@ body {
     /*background: none;*/
 }
 
-#back-to-discussion {
+#back-to-discussion{
     position: absolute;
     top: 19px;
     left: 50%;
@@ -10527,8 +10590,67 @@ body {
     color: #FFFFFF;
 }
 
+#back-to-discussion a:focus {
+    color: #EADC00;
+}
+
+.back-to-discussion-terms{
+    position: absolute;
+    top: 19px;
+    left: 44%;
+    font-size: 19px;
+}
+
+.back-to-discussion-terms a{
+    color: #000000;
+}
 .cboxIframe {
     background: #FFF !important;
 }
 
 #login_pop_form .register {color: darkblue; font-weight: bold; font-size: 18px;}
+#login_pop_form .register:focus {
+    color: black;
+}
+
+.powered-link, .terms-link {
+    position: fixed;
+    bottom: 0;
+    background-color: #EADC00;
+    padding: 0 15px;
+    border-radius: 12px 12px 0px 0px;
+    margin-right: 15px;
+    border: 3px solid #fff;
+    border-bottom: none;
+}
+
+.welcome-powered-link img, .powered-link img {
+    margin-right: 6px;
+}
+
+.powered-link a, .welcome-powered-link a {
+    color: black;
+    text-decoration: none;
+}
+
+.powered-link a:focus {
+    text-decoration: underline;
+}
+
+.terms-link {
+    right: 200px;
+    background-color: #2e2e2e !important;
+}
+
+.terms-link a {
+    color: white;
+    text-decoration: none;
+}
+
+.welcome-powered-link {
+    font-size: 12px;
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+}
+
